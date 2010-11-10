@@ -1,0 +1,3 @@
+*.pyc
+/db
+/site_media
