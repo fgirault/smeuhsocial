@@ -140,6 +140,10 @@ urlpatterns += patterns("",
     url(r"^tags/$", "tagging_ext.views.index", name="tagging_ext_index"),
 )
 
+urlpatterns += patterns("",
+    url(r"^(?P<username>[\w\._-]+)/$", "pinax.apps.profiles.views.profile", name="profile_detail"),
+)
+
 if settings.SERVE_MEDIA:
     urlpatterns += patterns("",
         url(r"", include("staticfiles.urls")),
