@@ -48,7 +48,7 @@ TIME_ZONE = "US/Eastern"
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "fr"
 
 SITE_ID = 1
 
@@ -244,6 +244,7 @@ EMAIL_DEBUG = DEBUG
 
 ugettext = lambda s: s
 LANGUAGES = [
+    ("fr", u"Français"),
     ("en", u"English"),
 ]
 
