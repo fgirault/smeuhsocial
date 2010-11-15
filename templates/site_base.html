@@ -45,6 +45,7 @@
         <ul class="tabs">{% spaceless %}
             <li id="tab_profile"><a href="{% url profile_detail user.username %}">{% trans "Profile" %}</a></li>
             <li id="tab_photos"><a href="{% url photos %}">{% trans "Photos" %}</a></li>
+            <li id="tab_smeuhmusic"><a href="{% url smeuhmusic user.username %}">{% trans "Music" %}</a></li>
             <li id="tab_blogs"><a href="{% url blog_list_all %}">{% trans "Blogs" %}</a></li>
             <li id="tab_tribes"><a href="{% url tribe_list %}">{% trans "Tribes" %}</a></li>
             <li id="tab_tweets"><a href="{% url tweets_you_follow %}">{% trans "Tweets" %}</a></li>

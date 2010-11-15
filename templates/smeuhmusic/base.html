@@ -1,0 +1,48 @@
+{% extends "site_base.html" %}
+{% comment %}
+This template is copied from the base templates to provide the friends
+photos link which is specific to social_project.
+
+NOTE: we don't extend that since it would extend itself and Django will
+crash.
+{% endcomment %}
+
+{% load i18n %}
+{% load group_tags %}
+
+{% block body_class %}smeuhmusic{% endblock %}
+
+{% block subnav %}
+    {% if user.is_authenticated %}
+        <ul>
+            <li><a href="#">Onglet 1</a></li>
+            <li><a href="#">Onglet 2</a></li>
+            <li><a href="#">Onglet 3</a></li>
+        </ul>
+    {% else %}
+        &nbsp;
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+{% if user.is_authenticated %}
+<form method="POST" action="{% url create_track %}">
+  {% csrf_token %}
+  <fieldset>
+    <legend>Add a new track</legend>
+    <p>
+      Title: <input name="title"></input>
+    </p>
+    <p>
+    <input type="submit" />
+    </p>
+  </fieldset>
+</form>
+{% endif %}
+<h2>Tracks</h2>
+<ul>
+{% for track in tracks %}
+<li>{{ track.title }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

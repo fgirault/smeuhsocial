@@ -144,6 +144,13 @@ urlpatterns += patterns("",
     url(r"^(?P<username>[\w\._-]+)/$", "pinax.apps.profiles.views.profile", name="profile_detail"),
 )
 
+urlpatterns += patterns("",
+        url("^(?P<username>[\w\._-]+)/music", "smeuhmusic.views.index",
+        name="smeuhmusic"),
+        url("^music/create_track", "smeuhmusic.views.create_track",
+        name="create_track"),
+        )
+
 if settings.SERVE_MEDIA:
     urlpatterns += patterns("",
         url(r"", include("staticfiles.urls")),

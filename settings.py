@@ -202,6 +202,7 @@ INSTALLED_APPS = [
     
     # project
     "about",
+    "smeuhmusic",
 ]
 
 FIXTURE_DIRS = [
