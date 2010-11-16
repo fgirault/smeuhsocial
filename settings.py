@@ -293,9 +293,8 @@ AUTH_LDAP_USER_SEARCH = LDAPSearch("ou=people,o=loc",
 
 # This doesn't work very well
 AUTH_LDAP_USER_ATTR_MAP = {
-    "first_name": "givenName",
-    "last_name": "sn",
-    "email": "mail"
+    "first_name": "sn",
+    "last_name": "givenName",
 }
 
 AUTH_LDAP_GROUP_SEARCH = LDAPSearch("ou=people,o=loc",
@@ -309,10 +308,6 @@ AUTH_LDAP_USER_FLAGS_BY_GROUP = {
     "is_staff": "cn=admin,ou=groups,o=loc",
     "is_superuser": "cn=admin,ou=groups,o=loc"
 }
-
-AUTHENTICATION_BACKENDS = (
-    'django_auth_ldap.backend.LDAPBackend',
-)
 
 ldap_log = logging.getLogger('django_auth_ldap')
 ldap_log_handler = logging.StreamHandler()
