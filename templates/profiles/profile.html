@@ -202,7 +202,7 @@
                     <div class="clearfix">
                     {% for photo in photos %}
                         <div class="gallery-photo-thumb">
-                            <a href="/photos/details/{{ photo.id }}/"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
+                            <a href="{% groupurl photo_details group id=photo.id %}"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
                         </div>
                     {% endfor %}
                     </div>
