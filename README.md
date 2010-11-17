@@ -7,7 +7,7 @@ members and friends of [Smeuh.Org ](http://smeuh.org).  It's based on
 [Django](http://djangoproject.com).  This document is written in
 [Markdown](http://daringfireball.net/projects/markdown/syntax).
 
-Instruction presented here are incomplete and poorly tested so don't hesitate to
+Instructions presented here are incomplete and poorly tested so don't hesitate to
 ask for help if you run into trouble.
 
 
@@ -20,23 +20,22 @@ Requirements
 
  - Python version 2.5.x, because this is the version we have on smeuh's server.
    Using the same version for development will prevent you from writing
-   incompatiblel code. If you don't have this version currently installed on
+   incompatible code. If you don't have this version currently installed on
    your system, the easiest and safest way to get version 2.5 is probably to
    install it from source in your home directory.
  - [virtualenv](http://pypi.python.org/pypi/virtualenv). This is used to create
    an isolated Python environement containing the dependencies necessary to run
    the project, without affecting your global Python installation. Make sure you
    have a version of virtualenv working against your version of Python 2.5.x
- - [PIL](http://www.pythonware.com/products/pil/) This can be a bit tricky to
-   install with the right options, ie. with support for PNG and JPEG. Sorry for
-   not being helpful on this one. I know I had trouble to install PIL within a
-   virtualenv so I eventually installed it globally in site-packages.
+ - [PIL](http://www.pythonware.com/products/pil/) Make sure you have
+   libjpeg62-dev and zlib1g-dev installed on your system or you won't be able to
+   upload JPEG and PNG files.
  - [OpenLDAP](http://www.openldap.org/).     You will at least need the OpenLDAP
    client headers in order to run the app.  OpenLDAP server is necessary only if
    you want to work on OpenLDAP authentication. You might get into trouble with
    a pre-packaged version so just grab the official source tarball and install
    it following instructions at
-   http://www.openldap.org/doc/admin24/quickstart.html. See section "Setup LDAP
+   <http://www.openldap.org/doc/admin24/quickstart.html>. See section "Setup LDAP
    directory" below for more info on this.
 
 
@@ -67,6 +66,18 @@ Switch to the directory containing the source code:
 Install dependancies:
 
     $ pip install -r requirements/project.txt
+
+Create a file local_settings.py with this content:
+
+    MEDIA_URL = "/site_media/"
+
+(This is because static media location is a bit odd on the live server right now)
+
+
+Initialize the database
+-----------------------
+
+    $ python manage.py syncdb
 
 
 Start development server
@@ -115,4 +126,4 @@ procedure worked for me:
 
     $ sudo /usr/local/libexec/slapd
 
-You should now be able to log into the app with your smeuh credentials.
+you should now be able to log into the app with your smeuh credentials.
