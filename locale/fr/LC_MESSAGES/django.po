@@ -249,7 +249,7 @@ msgstr "Contacts"
 #: templates/friends_app/contacts.html:24
 #, fuzzy
 msgid "upload"
-msgstr "téléchangerement"
+msgstr "Téléchargement"
 
 #: templates/friends_app/contacts.html:34
 msgid "Import Google Contacts"
@@ -278,7 +278,7 @@ msgstr "Invitez quelqu'un de nouveau à nous rejoindre"
 #: templates/friends_app/invitations.html:13
 #, fuzzy
 msgid "Friendship Requests Received"
-msgstr "Demande d'ami recu"
+msgstr "Demande d'ami reçu"
 
 #: templates/friends_app/invitations.html:28
 msgid "accept"
