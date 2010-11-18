@@ -65,6 +65,10 @@ Switch to the directory containing the source code:
 
 Install dependancies:
 
+You will need the following development packages for python, ldap, sasl and ssk. For Debian-like systems :
+
+    $ sudo apt-get install python-dev libldap-dev libsasl2-dev libssl-dev
+
     $ pip install -r requirements/project.txt
 
 Create a file local_settings.py with this content:
@@ -76,6 +80,12 @@ Create a file local_settings.py with this content:
 
 Initialize the database
 -----------------------
+
+Default database backend is sqlite that will store data in db/dev.db
+
+If the "db" sub directory does not exist, create it :
+
+    $ mkdir db
 
     $ python manage.py syncdb
 
