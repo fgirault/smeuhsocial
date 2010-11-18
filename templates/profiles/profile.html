@@ -24,7 +24,7 @@
             <div id="profile_avatar">
                 <div><img src="{% avatar_url other_user 80 %}" alt="Photo of {{ other_user }}" class="photo" /></div>
                 {% if is_me %}
-                <a href="{% url avatar_change %}" id="avatar_replace">(replace)</a>
+                <a href="{% url avatar_change %}" id="avatar_replace">({% trans "replace" %})</a>
                 {% endif %}
             </div>
             
@@ -42,7 +42,7 @@
             </div>
             
             {% if is_me %}
-                <p><a href="{% url profile_edit %}" rel="facebox">Edit profile</a></p>
+                <p><a href="{% url profile_edit %}" rel="facebox">{% trans "Edit profile" %}</a></p>
             {% endif %}
             
             {% if 1 %}
