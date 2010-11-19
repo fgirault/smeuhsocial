@@ -27,16 +27,16 @@ Requirements
    an isolated Python environement containing the dependencies necessary to run
    the project, without affecting your global Python installation. Make sure you
    have a version of virtualenv working against your version of Python 2.5.x
- - [PIL](http://www.pythonware.com/products/pil/) Make sure you have
-   libjpeg62-dev and zlib1g-dev installed on your system or you won't be able to
-   upload JPEG and PNG files.
- - [OpenLDAP](http://www.openldap.org/).     You will at least need the OpenLDAP
-   client headers in order to run the app.  OpenLDAP server is necessary only if
-   you want to work on OpenLDAP authentication. You might get into trouble with
-   a pre-packaged version so just grab the official source tarball and install
-   it following instructions at
-   <http://www.openldap.org/doc/admin24/quickstart.html>. See section "Setup LDAP
-   directory" below for more info on this.
+ - Development packages for Python, LDAP, SASL and SSL. For Debian-like systems:
+
+    $ sudo apt-get install python-dev libldap-dev libsasl2-dev libssl-dev
+
+ - [OpenLDAP](http://www.openldap.org/) server. OpenLDAP server is necessary
+   only if you want to work on OpenLDAP authentication. You might get into
+   trouble with a pre-packaged version so just grab the official source tarball
+   and install it following instructions at
+   <http://www.openldap.org/doc/admin24/quickstart.html>. See section "Setup
+   LDAP directory" below for more info on this.
 
 
 
@@ -63,11 +63,7 @@ Switch to the directory containing the source code:
 
     $ cd smeuhsocial
 
-Install dependancies:
-
-You will need the following development packages for python, ldap, sasl and ssk. For Debian-like systems :
-
-    $ sudo apt-get install python-dev libldap-dev libsasl2-dev libssl-dev
+Install required Python packages dependancies:
 
     $ pip install -r requirements/project.txt
 
@@ -83,9 +79,11 @@ Initialize the database
 
 Default database backend is sqlite that will store data in db/dev.db
 
-If the "db" sub directory does not exist, create it :
+If the "db" sub directory does not exist, create it:
 
     $ mkdir db
+
+Then load the schema:
 
     $ python manage.py syncdb
 
@@ -95,7 +93,7 @@ Start development server
 
     $ python manage.py runserver
 
-and point your browser at  http://127.0.0.1:8000/
+and point your browser at <http://127.0.0.1:8000/>
 
 
 Setup LDAP directory
@@ -137,3 +135,17 @@ procedure worked for me:
     $ sudo /usr/local/libexec/slapd
 
 you should now be able to log into the app with your smeuh credentials.
+
+
+Hacking Pinax
+-------------
+
+If you've followed the setup presented here, you should have a clone of Pinax
+Git repository in smeuhsocial_env/src/pinax. You can hack in there and
+potentially send patches or you could fork Pinax code and change
+requirements/project.txt to point to your own Pinax repository by changing this
+line:
+
+    -e git+ssh://git@github.com/alex-marandon/pinax.git#egg=Pinax
+
+to point to your own fork of Pinax.
