@@ -56,4 +56,4 @@ django-photologue==2.3
 django-attachments==0.3.1
 django-markup==0.3
 django-groups==0.1.dev10
-django-tagging-ext==0.2.0
+-e git+git://github.com/alex-marandon/django-tagging-ext.git#egg=django-tagging-ext
