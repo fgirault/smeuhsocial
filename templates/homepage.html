@@ -9,39 +9,21 @@
 
 {% block body %}
     
-    <h1>{% trans "Welcome to Pinax" %}</h1>
+    <h1>Bienvenue dans votre Smeuh</h1>
     
     <p>
-        {% blocktrans %}
-        <b>Pinax</b> is a <a href="http://djangoproject.com/">Django</a>
-        project intended to provide a starting point for websites. By
-        integrating numerous reusable Django apps to take care of the
-        things that many sites have in common, it lets you focus on what
-        makes your site different.
-        {% endblocktrans %}
-    </p>
-    
-    <p>
-        {% blocktrans %}
-        For more information about Pinax, see
-        <a href="http://pinaxproject.com/">http://pinaxproject.com/</a>.
-        {% endblocktrans %}
-    </p>
-    
-    <h2>{% trans "About this project" %}</h2>
-    
-    <p>
-        {% blocktrans %}
-        This project demonstrates a social networking site. It provides
-        profiles, friends, photos, blogs, tribes, wikis, tweets, bookmarks,
-        swaps, locations and user-to-user messaging.
-        {% endblocktrans %}
+        Le but de ce site est de permettre aux
+        adhérents et sympatisants de <a href="http://smeuh.org">Smeuh.Org</a>
+        d'échanger et de publier des photos, des idées, des liens,
+        éventuellement un jour du son, etc.
     </p>
     <p>
-        {% blocktrans %}
-        In 0.5 this was called "complete_project".
-        {% endblocktrans %}
+      Pour en savoir plus sur le code qui fait tourner ce site, signaler des
+      bugs et
+      éventuellement contribuer, c'est <a
+        href="https://github.com/alex-marandon/smeuhsocial">par ici</a>.
     </p>
+    
     
     <hr />
     {% if user.is_authenticated %}
