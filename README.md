@@ -136,6 +136,15 @@ procedure worked for me:
 
 you should now be able to log into the app with your smeuh credentials.
 
+If you need to edit the content of your ldap database, you can use ldapvi with a
+command such as:
+
+    $ ldapvi -D 'cn=admin,o=loc'  --discover
+
+To add an entry, you can copy an existing entry, change the attributes you wish
+to change, replace the sequence number at the beginning of its first line by
+the word 'add'. To delete an entry, just remove it.
+
 
 Hacking Pinax
 -------------
