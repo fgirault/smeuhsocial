@@ -306,7 +306,6 @@ AUTH_LDAP_GROUP_SEARCH = LDAPSearch("ou=people,o=loc",
 AUTH_LDAP_GROUP_TYPE = PosixGroupType()
 
 AUTH_LDAP_USER_FLAGS_BY_GROUP = {
-    "is_active": "cn=admin,ou=groups,o=loc",
     "is_staff": "cn=admin,ou=groups,o=loc",
     "is_superuser": "cn=admin,ou=groups,o=loc"
 }
