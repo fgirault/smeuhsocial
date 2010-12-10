@@ -166,7 +166,7 @@ msgstr "Locations"
 
 #: templates/site_base.html:60
 msgid "Inbox"
-msgstr "Boite de récéption"
+msgstr "Boite de réception"
 
 #: templates/site_base.html:67
 msgid "&copy; 2010 &lt;your company here&gt;"
