@@ -285,6 +285,9 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 
 
+AVATAR_DEFAULT_URL = "http://la.buvette.org/vrac/avatar-defaut.png"
+AVATAR_GRAVATAR_BACKUP = False
+
 import ldap
 from django_auth_ldap.config import LDAPSearch, PosixGroupType
 
