@@ -4,7 +4,7 @@
 {% load analytics %}
 
 {% block extra_head_base %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/site_tabs.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/site_tabs.css" />
     <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/avatar.css" />
     <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/blogs.css" />
     <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/comments.css" />
@@ -23,7 +23,7 @@
     {% block extra_head %}{% endblock %}
 {% endblock %}
 
-{% block logo_link_image %}<a href="{% url home %}"><h1>My Smeuh</h1></a>{% endblock %}
+{% block logo_link_image %}<a href="{% url home %}"><img title="Logo MySmeuh" src="{{ STATIC_URL }}pinax/img/logo.gif" /></a>{% endblock %}
 
 {% block login %}
     {% include "_account_bar.html" %}
