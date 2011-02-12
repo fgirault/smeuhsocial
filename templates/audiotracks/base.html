@@ -15,9 +15,9 @@ crash.
 {% block subnav %}
     {% if user.is_authenticated %}
         <ul>
-            <li><a href="#">Onglet 1</a></li>
-            <li><a href="#">Onglet 2</a></li>
-            <li><a href="#">Onglet 3</a></li>
+          <li><a href="{% url audiotracks user.username %}">{% trans 'Latest tracks' %}</a></li>
+          <li><a href="{% url user_index user.username %}">{% trans 'Your tracks' %}</a></li>
+          <li><a href="{% url upload_track user.username %}">{% trans 'Upload track' %}</a></li>
         </ul>
     {% else %}
         &nbsp;
@@ -25,24 +25,4 @@ crash.
 {% endblock %}
 
 {% block body %}
-{% if user.is_authenticated %}
-<form method="POST" action="{% url create_track %}">
-  {% csrf_token %}
-  <fieldset>
-    <legend>Add a new track</legend>
-    <p>
-      Title: <input name="title"></input>
-    </p>
-    <p>
-    <input type="submit" />
-    </p>
-  </fieldset>
-</form>
-{% endif %}
-<h2>Tracks</h2>
-<ul>
-{% for track in tracks %}
-<li>{{ track.title }}</li>
-{% endfor %}
-</ul>
 {% endblock %}

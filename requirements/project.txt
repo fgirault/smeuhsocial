@@ -9,3 +9,4 @@
 PIL
 python-ldap
 django-auth-ldap
+mutagen

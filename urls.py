@@ -145,10 +145,7 @@ urlpatterns += patterns("",
 )
 
 urlpatterns += patterns("",
-        url("^(?P<username>[\w\._-]+)/music", "audiotracks.views.index",
-        name="audiotracks"),
-        url("^music/create_track", "audiotracks.views.create_track",
-        name="create_track"),
+        url("^(?P<username>[\w\._-]+)/music", include("audiotracks.urls"))
         )
 
 if settings.SERVE_MEDIA:
