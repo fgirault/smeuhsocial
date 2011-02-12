@@ -36,7 +36,6 @@ def user_index(request, username):
 
 def track_detail(request, username, track_id):
     track = Track.objects.get(id=track_id)
-    print "***", username
     return render_to_response("audiotracks/detail.html", {'username': username, 'track': track}, 
             context_instance=RequestContext(request))
 
@@ -69,7 +68,7 @@ def edit_track(request, username, track_id):
     if request.method == "POST":
         form = TrackEditForm(request.POST, request.FILES, instance=track)
         if form.is_valid():
-            track = form.save(commit=False)
+            track = form.save()
             return HttpResponseRedirect(urlresolvers.reverse('audiotracks',
                 args=[username]))
     else:
