@@ -203,7 +203,7 @@ INSTALLED_APPS = [
     
     # project
     "about",
-    "smeuhmusic",
+    "audiotracks",
     "smeuhoverride",
 ]
 
