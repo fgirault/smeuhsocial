@@ -8,6 +8,7 @@ from site import addsitedir
 
 addsitedir("/home/smeuhsocial/env/lib/python2.5/site-packages")
 sys.path.insert(0, "/home/smeuhsocial")
+sys.path.insert(1, "/home/smeuhsocial/env/lib/python2.5/site-packages")
 
 from django.conf import settings
 os.environ["DJANGO_SETTINGS_MODULE"] = "smeuhsocial.settings"

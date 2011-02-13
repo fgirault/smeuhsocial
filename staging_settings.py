@@ -6,6 +6,7 @@ from secret_settings import STAGING_DB_PASSWORD
 import os
 
 DEBUG = False
+SITE_ID = 2
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 MEDIA_ROOT = os.path.join(os.path.dirname(PROJECT_ROOT), 
