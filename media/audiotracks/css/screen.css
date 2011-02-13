@@ -1,19 +1,42 @@
 .audiotracks-list {
     padding: 0;
 }
+
 .audiotracks-list li {
     list-style: none;
 }
+
 .audiotracks-detail img {
     float: right;
     margin-left: 20px;
 }
+
 .audiotracks-description {
     margin: 1em 1em 2em 0;
 }
+
 .audiotracks-download a {
     font-size: x-large;
     background: #00B000;
     color: #F4C021;
     padding: 0.3em;
+}
+
+.audiotracks-edit-current-data {
+    font-size: 16px;
+}
+
+.audiotracks-edit-row {
+    clear: both;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.audiotracks-edit-row div {
+    float: left;
+    margin-right: 1em;
+}
+
+.audiotracks-edit-row img {
+    vertical-align: top;
 }
