@@ -6,7 +6,7 @@
 # Put project-specific requirements here.
 # See http://pip-installer.org/requirement-format.html for more information.
 -e git+ssh://git@github.com/alex-marandon/pinax.git#egg=Pinax
+-e git+ssh://git@github.com/alex-marandon/django-audiotracks.git#egg=django_audiotracks
 PIL
 python-ldap
 django-auth-ldap
-mutagen
