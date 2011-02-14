@@ -40,3 +40,7 @@
 .audiotracks-edit-row img {
     vertical-align: top;
 }
+
+.audiotracks-delete-image-label {
+    display: inline;
+}
