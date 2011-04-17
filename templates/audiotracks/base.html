@@ -19,7 +19,7 @@ crash.
         <ul>
           <li><a href="{% url audiotracks user.username %}">{% trans 'Latest tracks' %}</a></li>
           <li><a href="{% url user_index user.username %}">{% trans 'Your tracks' %}</a></li>
-          <li><a href="{% url upload_track user.username %}">{% trans 'Upload track' %}</a></li>
+          <li><a href="{% url upload_track %}">{% trans 'Upload track' %}</a></li>
         </ul>
     {% else %}
         &nbsp;
