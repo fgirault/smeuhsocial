@@ -119,6 +119,41 @@ h1 {
     color: #FFF; /* login bar link hover colour */
 }
 
+.toolbox {
+    background-color: #F4C021;
+    margin-bottom: 20px;
+    padding: 8px;
+}
+
+.toolbox h2 {
+    margin: 0 0 5px;
+    padding: 0;
+}
+
+.toolbox a {
+    color: #0B0;
+}
+
+.toolbox ul li {
+    background: none repeat scroll 0 0 #FFFFFF;
+    margin: 2px 0;
+    padding: 2px 4px;
+}
+
+.toolbox ul {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+
+fieldset.inlineLabels {
+    width: 500px;
+}
+
+fieldset.inlineLabels textarea {
+    width: 95%;
+}
+
 #locale_switcher {
     display: inline;
 }

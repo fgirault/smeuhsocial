@@ -122,7 +122,10 @@
                 {% if other_user.tracks.all %}
                     <ul>
                     {% for track in other_user.tracks.all %}
-                    <li>{{ track.title }}</li>
+                    <li>
+                      <a href="{% url track_detail track.user.username,
+                        track.slug %}">{{ track.title }}</a>
+                    </li>
                     {% endfor %}
                     </ul>
                 {% else %}

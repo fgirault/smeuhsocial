@@ -19,6 +19,7 @@ from pinax.apps.blog.models import Post
 from pinax.apps.photos.models import Image
 from pinax.apps.topics.models import Topic
 from pinax.apps.tribes.models import Tribe
+from audiotracks.models import Track
 
 
 handler500 = "pinax.views.server_error"
@@ -114,6 +115,10 @@ tagged_models = (
     dict(title="Photos",
         query=lambda tag: TaggedItem.objects.get_by_model(Image, tag).filter(safetylevel=1),
         content_template="pinax_tagging_ext/photos.html",
+    ),
+    dict(title="Audio Tracks",
+        query=lambda tag: TaggedItem.objects.get_by_model(Track, tag),
+        content_template="pinax_tagging_ext/audiotracks.html",
     ),
     dict(title="Swap Offers",
         query=lambda tag : TaggedItem.objects.get_by_model(Offer, tag),

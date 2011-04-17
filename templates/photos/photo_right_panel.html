@@ -5,7 +5,7 @@
 {% load group_tags %}
 {% load theme_tags %}
 
-<div class="photo-right-profile clearfix">
+<div class="toolbox clearfix">
     <div class="photo-avatar"><a href="{% url profile_detail photo.member.username %}" title="{% user_display photo.member %}">{% avatar photo.member.username 50 %}</a></div>
     <div class="photo-profile-details">
       <h2>{% trans "Posted by" %}</h2>
@@ -15,7 +15,7 @@
     </div>
 </div>
 
-<div class="photo-right-tools">
+<div class="toolbox":
     {% if photo.tags %}
         <h2>{% silk "tag_blue" %} Tags</h2>
         <ul>
