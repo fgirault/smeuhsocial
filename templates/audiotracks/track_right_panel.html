@@ -1,0 +1,37 @@
+{% load i18n %}
+{% load account_tags %}
+{% load avatar_tags %}
+{% load tagging_tags %}
+{% load group_tags %}
+{% load theme_tags %}
+
+<div class="photo-right-profile clearfix">
+    <div class="photo-avatar"><a href="{% url profile_detail track.user.username %}" title="{% user_display track.user %}">{% avatar track.user.username 50 %}</a></div>
+    <div class="photo-profile-details">
+      <h2>{% trans "Posted by" %}</h2>
+        <a href="{% url profile_detail track.user.username %}" title="{% user_display track.user %}">{% user_display track.user %}</a><br />
+        {{ track.created_at|date }}<br />
+        Viewed {{ track.view_count }} times
+    </div>
+</div>
+
+<div class="photo-right-tools">
+    {% if track.tags %}
+        <h2>{% silk "tag_blue" %} Tags</h2>
+        <ul>
+            {% tags_for_object track as tags %}
+            {% for tag in tags %}
+                <li><a href="/tags/{{ tag }}">{{ tag }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    {% if track.user == request.user %}
+        <a href="{% url edit_track track.id %}">{% trans 'Edit Track' %}</a><br>
+        <a href="{% url confirm_delete_track track.id %}">{% trans 'Delete Track' %}</a>
+    {% endif %}
+    
+</div>
+
+<div class="photo-right-exif">
+</div>
