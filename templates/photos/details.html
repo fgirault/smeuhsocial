@@ -24,7 +24,7 @@
           <a href="{{ photo.image.url }}"><img src="{{ photo_url }}" alt="{{ photo.title }}"/></a>
         </div>
         <div class="photo-caption">
-            <p>{{ photo.caption }}</p>
+            <p>{{ photo.caption|urlize }}</p>
         </div>
         
         <div class="form-toggle">
