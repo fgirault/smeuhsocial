@@ -14,3 +14,7 @@ def render_tweet_text(tweet):
     text = microblogging_tags.render_tweet_text(tweet)
     text = template.defaultfilters.urlize(text)
     return text
+
+@register.inclusion_tag("_user_link.html")
+def profile_link(member):
+    return {'member': member}

@@ -313,3 +313,20 @@ div.right_panel {
 label {
     display: block;
 }
+
+.latest-comment-entry {
+    width: 45%;
+    padding: 12px 0px 12px;
+    border-top: 1px solid silver;
+    clear: both;
+}
+
+.comment-blurb {
+    margin: 6px 0 6px 0;
+    font-style: italic;
+}
+
+.comment-blurb-date {
+    color: #5E5;
+    font-size: 11px;
+}

@@ -2,6 +2,8 @@
 
 {% load i18n %}
 {% load ifsetting_tag %}
+{% load threadedcommentstags %}
+{% load override_tags %}
 
 {% block head_title %}{% trans "Welcome" %}{% endblock %}
 
@@ -23,7 +25,19 @@
       éventuellement contribuer, c'est <a
         href="https://github.com/alex-marandon/smeuhsocial">par ici</a>.
     </p>
-    
+
+
+    {% get_latest_comments 10 as latest_comments %}
+    <div class="latest-comments">
+      <h2>{% blocktrans %}Latest comments{% endblocktrans %}</h2>
+      {% for comment in latest_comments %}
+      <div class="latest-comment-entry">
+        {% profile_link comment.user %} on <a href="{{ comment.content_object.get_absolute_url }}">{{ comment.content_object.title }}</a><br>
+        <div class="comment-blurb">{{ comment.comment|truncatewords:30 }}</div>
+        <div class="comment-blurb-date"> {{ comment.date_modified|date }} </div>
+      </div>
+      {% endfor %}
+    <div>
     
     <hr />
     {% if user.is_authenticated %}
