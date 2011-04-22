@@ -315,18 +315,49 @@ label {
 }
 
 .latest-comment-entry {
-    width: 45%;
-    padding: 12px 0px 12px;
+    padding: 6px 0px 6px;
     border-top: 1px solid silver;
     clear: both;
 }
 
 .comment-blurb {
     margin: 6px 0 6px 0;
-    font-style: italic;
 }
 
 .comment-blurb-date {
-    color: #5E5;
-    font-size: 11px;
+    color: #999999;
+    font-size: 80%;
+}
+
+.clear {
+    clear: both;
+}
+
+#homepage-left-col {
+    float: left;
+    width: 47%;
+}
+
+#homepage-right-col {
+    float: right;
+    width: 47%;
+}
+
+#homepage-left-col h2, #homepage-right-col h2 {
+    font-size: 16px;
+}
+
+#homepage-right-col div.tweet {
+    font-size: 10pt;
+    width: 370px;
+    padding: 6px 0px 6px 0px;
+}
+
+.homepage-view-more {
+    margin-top: 1em;
+}
+
+.latest-photos img {
+    margin-right: 6px;
+    margin-bottom: 6px;
 }

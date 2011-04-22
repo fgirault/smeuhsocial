@@ -38,10 +38,16 @@ blogs_feed_dict = {"feed_dict": {
 
 bookmarks_feed_dict = {"feed_dict": {"": BookmarkFeed }}
 
-
 urlpatterns = patterns("",
     url(r"^$", direct_to_template, {
         "template": "homepage.html",
+        "extra_context": {
+            "latest_tweets": lambda: Tweet.objects.all().order_by("-sent")[:5],
+            "latest_blogs": lambda: Post.objects.filter(status=2).order_by("-publish")[:5],
+            "latest_photos": lambda: Image.objects.all().order_by("-date_added")[:6],
+            "latest_tracks": lambda: Track.objects.all().order_by("-created_at")[:5],
+            "prefix_sender": True,
+            }
     }, name="home"),
     url(r"^admin/invite_user/$", "pinax.apps.signup_codes.views.admin_invite_user", name="admin_invite_user"),
     url(r"^admin/", include(admin.site.urls)),
@@ -51,6 +57,7 @@ urlpatterns = patterns("",
     url(r"^profiles/", include("pinax.apps.profiles.urls")),
     url(r"^bbauth/", include("pinax.apps.bbauth.urls")),
     url(r"^authsub/", include("pinax.apps.authsub.urls")),
+    url(r"^(?P<username>[-\w]+)/blog/", include("pinax.apps.blog.urls")),
     url(r"^blog/", include("pinax.apps.blog.urls")),
     url(r"^invitations/", include("friends_app.urls")),
     url(r"^notices/", include("notification.urls")),

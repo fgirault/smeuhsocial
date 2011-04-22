@@ -179,6 +179,7 @@
                 
                 
                 <h2>{% trans "Blog Posts" %}</h2>
+                <a href="{% url blog_list_all other_user %}">{% trans "View all posts" %}</a>
                 
                 {% if other_user.added_posts.all %}
                     {% for blog_post in other_user.added_posts.all %}
