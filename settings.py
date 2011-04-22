@@ -227,12 +227,12 @@ MARKUP_CHOICES = [
 ]
 
 MARKUP_SETTINGS = {
-        'restructuredtext': { 
-            'settings_overrides': {
-                'initial_header_level': 2 
-                } 
-            }
-        }
+    'restructuredtext': { 
+        'settings_overrides': {
+            'initial_header_level': 2 
+        } 
+    }
+}
 
 
 AUTH_PROFILE_MODULE = "profiles.Profile"

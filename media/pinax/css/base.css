@@ -373,3 +373,7 @@ label {
     margin-bottom: 24px;
     margin-top: 24px;
 }
+
+.highlight pre {
+    padding: 24px;
+}

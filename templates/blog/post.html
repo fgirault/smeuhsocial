@@ -14,6 +14,7 @@
 {% block extra_head %}
     <link rel="alternate" type="application/atom+xml" title="Blog Post Feed for All Users" href="/feeds/posts/all/" />
     <link rel="alternate" type="application/atom+xml" title="Blog Post Feed for User {{ post.author.username }}" href="/feeds/posts/only/{{ post.author.username }}/" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/pygments.css" />
 {% endblock %}
 
 {% block body %}
