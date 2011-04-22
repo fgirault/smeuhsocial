@@ -226,6 +226,15 @@ MARKUP_CHOICES = [
     ("creole", u"Creole"),
 ]
 
+MARKUP_SETTINGS = {
+        'restructuredtext': { 
+            'settings_overrides': {
+                'initial_header_level': 2 
+                } 
+            }
+        }
+
+
 AUTH_PROFILE_MODULE = "profiles.Profile"
 NOTIFICATION_LANGUAGE_MODULE = "account.Account"
 

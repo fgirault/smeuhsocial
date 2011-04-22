@@ -146,14 +146,6 @@ h1 {
     padding: 0;
 }
 
-fieldset.inlineLabels {
-    width: 500px;
-}
-
-fieldset.inlineLabels textarea {
-    width: 95%;
-}
-
 #locale_switcher {
     display: inline;
 }
@@ -360,4 +352,24 @@ label {
 .latest-photos img {
     margin-right: 6px;
     margin-bottom: 6px;
+}
+
+#id_tease {
+    height: 5em;
+}
+
+.blog-post {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.blog-post h1 {
+    margin-top: 48px;
+    margin-bottom: 48px;
+    font-size: 48px;
+}
+
+.blog-post p {
+    margin-bottom: 24px;
+    margin-top: 24px;
 }
