@@ -9,9 +9,9 @@
 {% for track in tracks %}
 <li>
 <a href="{% url track_detail track.user.username,track.slug %}">{{ track.title }}</a>
-uploaded by 
+{% trans 'uploaded by' %}
 <a href="{% url profile_detail username=track.user.username %}">{{ track.user.username }}</a>
-on {{ track.created_at|date:"l d M Y" }}
+{% trans 'on' %} {{ track.created_at|date:"l d M Y" }}
 {% if track.user == request.user %}
   <a href="{% url edit_track track.id %}">[{% trans 'Edit' %}]</a>
   <a href="{% url confirm_delete_track track.id %}">[{% trans 'Delete' %}]</a>

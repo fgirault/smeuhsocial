@@ -328,6 +328,10 @@ ldap_log_handler = logging.StreamHandler()
 ldap_log_handler.setLevel(logging.DEBUG)
 ldap_log.addHandler(ldap_log_handler)
 
+LOCALE_PATHS = (
+        os.path.join(PINAX_ROOT, "locale"),
+        )
+
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.

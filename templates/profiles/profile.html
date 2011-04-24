@@ -11,7 +11,7 @@
 {% load photo_tags %}
 {% load threadedcommentstags %}
 
-{% block head_title %}{% user_display other_user as other_user_display %}{% blocktrans %}Profile for {{ other_user_display }}{% endblocktrans %}{% endblock %}
+{% block head_title %}{% user_display other_user as other_user_display %}{% blocktrans %}{{ other_user_display }}{% endblocktrans %}{% endblock %}
 
 {% block body %}
     {% user_display other_user as other_user_display %}
@@ -29,9 +29,9 @@
             </div>
             
             {% if other_user.get_profile.name %}
-                <h1>{% blocktrans %}Profile for <span class="nickname">{{ other_user_display }}</span>{% endblocktrans %}</h1>
+                <h1>{% blocktrans %}<span class="nickname">{{ other_user_display }}</span>{% endblocktrans %}</h1>
             {% else %}
-                <h1>{% blocktrans %}Profile for <span class="fn nickname">{{ other_user_display }}</span>{% endblocktrans %}</h1>
+                <h1>{% blocktrans %}<span class="fn nickname">{{ other_user_display }}</span>{% endblocktrans %}</h1>
             {% endif %}
             
             <div class="profile_info">
@@ -118,9 +118,9 @@
                     
                 {% endif %} {# is me #}
 
-                <h2>{% trans "Tracks" %}</h2>
                 {% if other_user.tracks.all %}
-                    <ul>
+                    <h2>{% trans "Tracks" %}</h2>
+                    <ul class="bare-list">
                     {% for track in other_user.tracks.all %}
                     <li>
                       <a href="{% url track_detail track.user.username, track.slug %}">{{ track.title }}</a>
@@ -132,6 +132,7 @@
                 {% endif %}
 
                 
+                {% comment %}
                 <h2>{% trans "Wiki Articles" %}</h2>
                 
                 {% if other_user.article_set.all %}
@@ -151,6 +152,7 @@
                 {% else %}
                     <p>{% trans "No wiki articles yet." %}</p>
                 {% endif %}
+                {% endcomment %}
                 
 		{% comment %}
                 <h2>{% trans "Bookmarks" %}</h2>
@@ -178,13 +180,13 @@
 		{% endcomment %}
                 
                 
-                <h2>{% trans "Blog Posts" %}</h2>
-                <a href="{% url blog_list_all other_user %}">{% trans "View all posts" %}</a>
                 
                 {% if other_user.added_posts.all %}
+                    <h2>{% trans "Blog Posts" %}</h2>
                     {% for blog_post in other_user.added_posts.all %}
                         {% show_blog_post blog_post %}
                     {% endfor %}
+                    <a href="{% url blog_list_all other_user %}">{% trans "View all posts" %}</a>
                 {% else %}
                     {% trans "No blog posts yet." %}
                 {% endif %}
@@ -199,11 +201,11 @@
                 {% endif %}
                 
                 
-                <h2>{% trans "Photos" %}</h2>
                 
                 {% public_photos for other_user as photos %}
                 
                 {% if photos %}
+                    <h2>{% trans "Photos" %}</h2>
                     <div class="clearfix">
                     {% for photo in photos %}
                         <div class="gallery-photo-thumb">

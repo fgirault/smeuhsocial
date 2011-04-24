@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-24 12:28+0700\n"
+"POT-Creation-Date: 2011-04-24 14:14+0700\n"
 "PO-Revision-Date: 2010-03-04 09:26+0100\n"
 "Last-Translator: James Pic <http://jamespic.com>\n"
 "Language-Team: Pinax French <http://www.transifex.net/projects/p/pinax/team/"
@@ -45,10 +45,17 @@ msgstr ""
 msgid "Account"
 msgstr "Compte"
 
+#: templates/_account_bar.html:11
+msgid "Logout"
+msgstr "Déconnexion"
+
 #: templates/_account_bar.html:13
-#, fuzzy
 msgid "Log in"
-msgstr "Authentification"
+msgstr "Connexion"
+
+#: templates/_account_bar.html:13
+msgid "or"
+msgstr "ou"
 
 #: templates/_account_bar.html:13
 msgid "Sign Up"
@@ -60,7 +67,7 @@ msgstr ""
 
 #: templates/base.html:58
 msgid "clear"
-msgstr ""
+msgstr "Cacher"
 
 #: templates/homepage.html:10
 msgid "Welcome"
@@ -253,6 +260,14 @@ msgstr ""
 #, fuzzy
 msgid "Latest Tracks"
 msgstr "Morceaux"
+
+#: templates/audiotracks/latest.html:12
+msgid "uploaded by"
+msgstr "envoyé par"
+
+#: templates/audiotracks/latest.html:14
+msgid "on"
+msgstr "le"
 
 #: templates/audiotracks/latest.html:16
 msgid "Edit"
@@ -687,12 +702,6 @@ msgstr "Tout les articles wiki correspondant à <i>%(tag)s</i>"
 
 #~ msgid "Admin"
 #~ msgstr "Administration"
-
-#~ msgid "Logout"
-#~ msgstr "Déconnection"
-
-#~ msgid "or"
-#~ msgstr "ou"
 
 #~ msgid "Projects"
 #~ msgstr "Projets"

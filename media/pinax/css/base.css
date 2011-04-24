@@ -369,11 +369,41 @@ label {
     font-size: 48px;
 }
 
-.blog-post p {
+.blog-post h4 {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.blog-post-tease {
+  font-size: 12px;
+}
+
+p {
     margin-bottom: 24px;
     margin-top: 24px;
 }
 
-.highlight pre {
+.blog-post .blog-post-tease p {
+  font-size: 14px;
+  margin-top: 0px;
+  margin-bottom: 12px;
+}
+
+.blog-post .highlight pre {
     padding: 24px;
+}
+
+.bare-list {
+  list-style: none;
+  padding: 0;
+}
+
+#profile_avatar {
+  float: left;
+  margin-right: 24px;
+}
+
+.profile h2 {
+  margin-top: 24px;
+  margin-bottom: 0px;
 }
