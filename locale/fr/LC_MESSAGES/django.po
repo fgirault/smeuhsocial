@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-24 14:14+0700\n"
+"POT-Creation-Date: 2011-04-24 19:54+0700\n"
 "PO-Revision-Date: 2010-03-04 09:26+0100\n"
 "Last-Translator: James Pic <http://jamespic.com>\n"
 "Language-Team: Pinax French <http://www.transifex.net/projects/p/pinax/team/"
@@ -83,24 +83,24 @@ msgstr "Derniers commentaires"
 msgid "%(tweet_age)s ago"
 msgstr "il y a %(tweet_age)s"
 
-#: templates/homepage.html:46
+#: templates/homepage.html:46 templates/homepage.html.py:55
+#: templates/homepage.html:64 templates/homepage.html.py:74
+msgid "View all"
+msgstr "Tout voir"
+
+#: templates/homepage.html:47
 msgid "Latest photos"
 msgstr "Dernières photos"
 
-#: templates/homepage.html:51 templates/homepage.html.py:60
-#: templates/homepage.html:70 templates/homepage.html.py:80
-msgid "View more"
-msgstr "En voir davantage"
-
-#: templates/homepage.html:55
+#: templates/homepage.html:56
 msgid "Latest tweets"
 msgstr "Derniers touites"
 
-#: templates/homepage.html:64
+#: templates/homepage.html:65
 msgid "Latest blog posts"
 msgstr "Derniers billets de blog"
 
-#: templates/homepage.html:74 templates/audiotracks/base.html:20
+#: templates/homepage.html:75 templates/audiotracks/base.html:20
 msgid "Latest tracks"
 msgstr "Derniers morceaux"
 
@@ -147,7 +147,7 @@ msgstr "Site Web"
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/site_base.html:47 templates/profiles/profile.html:202
+#: templates/site_base.html:47 templates/profiles/profile.html:208
 msgid "Photos"
 msgstr "Photos"
 
@@ -163,11 +163,11 @@ msgstr "Blogs"
 msgid "Tribes"
 msgstr "Tribus"
 
-#: templates/site_base.html:51 templates/profiles/profile.html:193
+#: templates/site_base.html:51 templates/profiles/profile.html:195
 msgid "Tweets"
 msgstr "Touites"
 
-#: templates/site_base.html:53 templates/profiles/profile.html:156
+#: templates/site_base.html:53 templates/profiles/profile.html:158
 msgid "Bookmarks"
 msgstr "Favoris"
 
@@ -506,22 +506,22 @@ msgid "Delete Photo"
 msgstr "Supprimer cette photo"
 
 #: templates/profiles/profile.html:14
-#, python-format
-msgid "Profile for %(other_user_display)s"
-msgstr "%(other_user_display)s"
+#, fuzzy, python-format
+msgid "%(other_user_display)s"
+msgstr "Abonnements de %(other_user_display)s"
 
 #: templates/profiles/profile.html:27
 msgid "replace"
 msgstr "modifier"
 
 #: templates/profiles/profile.html:32
-#, python-format
-msgid "Profile for <span class=\"nickname\">%(other_user_display)s</span>"
+#, fuzzy, python-format
+msgid "<span class=\"nickname\">%(other_user_display)s</span>"
 msgstr "Profil de <span class=\"nickname\">%(other_user_display)s</span>"
 
 #: templates/profiles/profile.html:34
-#, python-format
-msgid "Profile for <span class=\"fn nickname\">%(other_user_display)s</span>"
+#, fuzzy, python-format
+msgid "<span class=\"fn nickname\">%(other_user_display)s</span>"
 msgstr "Profil de <span class=\"fn nickname\">%(other_user_display)s</span>"
 
 #: templates/profiles/profile.html:45
@@ -579,7 +579,7 @@ msgstr "inviter"
 msgid "%(other_user_display)s to be a friend."
 msgstr "%(other_user_display)s comme « ami »"
 
-#: templates/profiles/profile.html:121
+#: templates/profiles/profile.html:122
 msgid "Tracks"
 msgstr "Morceaux"
 
@@ -587,15 +587,15 @@ msgstr "Morceaux"
 msgid "No tracks yet."
 msgstr "Pas de morceau."
 
-#: templates/profiles/profile.html:135
+#: templates/profiles/profile.html:136
 msgid "Wiki Articles"
 msgstr "Articles Wiki"
 
-#: templates/profiles/profile.html:152
+#: templates/profiles/profile.html:153
 msgid "No wiki articles yet."
 msgstr "Aucun article wiki pour le moment."
 
-#: templates/profiles/profile.html:176
+#: templates/profiles/profile.html:178
 #, python-format
 msgid ""
 "You haven't added any <a href=\"%(add_bookmark_url)s\">bookmarks</a> yet."
@@ -603,23 +603,23 @@ msgstr ""
 "Vous n'avez ajouté aucun <a href=\"%(add_bookmark_url)s\">bookmarks</a> pour "
 "le moment."
 
-#: templates/profiles/profile.html:181
+#: templates/profiles/profile.html:185
 msgid "Blog Posts"
 msgstr "Billets"
 
-#: templates/profiles/profile.html:182
+#: templates/profiles/profile.html:189
 msgid "View all posts"
 msgstr "Voir tous les billets"
 
-#: templates/profiles/profile.html:189
+#: templates/profiles/profile.html:191
 msgid "No blog posts yet."
 msgstr "Aucun billet pour le moment."
 
-#: templates/profiles/profile.html:215
+#: templates/profiles/profile.html:217
 msgid "No photos uploaded yet..."
 msgstr "Il n'y a pas encore de photo..."
 
-#: templates/profiles/profile.html:221
+#: templates/profiles/profile.html:223
 #, python-format
 msgid ""
 "<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log in "
@@ -689,6 +689,12 @@ msgstr "Tout les sujets de tribus correspondant à <i>%(tag)s</i>"
 #, python-format
 msgid "All Wiki Articles Matching <i>%(tag)s</i>"
 msgstr "Tout les articles wiki correspondant à <i>%(tag)s</i>"
+
+#~ msgid "View more"
+#~ msgstr "En voir davantage"
+
+#~ msgid "Profile for %(other_user_display)s"
+#~ msgstr "%(other_user_display)s"
 
 #~ msgid "Welcome to Pinax"
 #~ msgstr "Bienvenue sur notre site"

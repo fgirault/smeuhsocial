@@ -13,6 +13,7 @@
 
 {% block body %}
     
+    {% if not user.is_authenticated %}
     <h1>Bienvenue dans votre Smeuh</h1>
     
     <p>
@@ -27,13 +28,14 @@
       éventuellement contribuer, c'est <a
         href="https://github.com/alex-marandon/smeuhsocial">par ici</a>.
     </p>
+    {% endif %}
 
 
-      {% get_latest_comments 10 as latest_comments %}
+      {% get_latest_comments 12 as latest_comments %}
       <div id="homepage-left-col">
         <h2>{% blocktrans %}Latest comments{% endblocktrans %}</h2>
         {% for comment in latest_comments %}
-        <div class="latest-comment-entry">
+        <div class="latest-comment-entry {% if forloop.last %}last{% endif %}">
                     {% profile_link comment.user %} on <a href="{{ comment.content_object.get_absolute_url }}">{{ comment.content_object.title }}</a> <span class="comment-blurb-date">{% blocktrans with comment.date_modified|timesince as tweet_age %}{{ tweet_age }} ago{% endblocktrans %}</span>
 
           <div class="comment-blurb">{{ comment.comment|truncatewords:30 }}</div>
@@ -43,42 +45,34 @@
 
       <div id="homepage-right-col">
         <div class="latest-photos">
+          <a class="view-all" href="{% url photos %}">{% blocktrans %}View all{% endblocktrans %}</a>
           <h2>{% blocktrans %}Latest photos{% endblocktrans %}</h2>
           {% for photo in latest_photos%}
-            <a href="{% groupurl photo_details group id=photo.id %}"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
+          <a href="{% groupurl photo_details group id=photo.id %}"><img {% cycle '' ''  'class="row-end"' %}src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
           {% endfor %}
-          <div class="homepage-view-more">
-            <a href="{% url photos %}">{% blocktrans %}View more{% endblocktrans %}</a>
-          </div>
         </div>
         <div class="latest-tweets">
+            <a class="view-all" href="{% url all_tweets %}">{% blocktrans %}View all{% endblocktrans %}</a>
           <h2>{% blocktrans %}Latest tweets{% endblocktrans %}</h2>
           {% for tweet in latest_tweets%}
               {% include "microblogging/_tweet.html" %}
           {% endfor %}
-          <div class="homepage-view-more">
-            <a href="{% url all_tweets %}">{% blocktrans %}View more{% endblocktrans %}</a>
-          </div>
         </div>
         <div class="latest-blogs">
+            <a class="view-all" href="{% url blog_list_all %}">{% blocktrans %}View all{% endblocktrans %}</a>
           <h2>{% blocktrans %}Latest blog posts{% endblocktrans %}</h2>
           {% for blog_post in latest_blogs%}
           <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a> 
           by {% profile_link blog_post.author %}<br>
           {% endfor %}
-          <div class="homepage-view-more">
-            <a href="{% url blog_list_all %}">{% blocktrans %}View more{% endblocktrans %}</a>
-          </div>
         </div>
         <div class="latest-tracks">
+            <a class="view-all" href="{% url audiotracks %}">{% blocktrans %}View all{% endblocktrans %}</a>
           <h2>{% blocktrans %}Latest tracks{% endblocktrans %}</h2>
           {% for track in latest_tracks%}
           <a href="{{ track.get_absolute_url }}">{{ track.title }}</a> 
           by {% profile_link track.user %}<br>
           {% endfor %}
-          <div class="homepage-view-more">
-            <a href="{% url audiotracks %}">{% blocktrans %}View more{% endblocktrans %}</a>
-          </div>
         </div>
       </div>
     <div class="clear"></div>

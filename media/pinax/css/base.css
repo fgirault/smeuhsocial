@@ -15,8 +15,14 @@ a {
 }
 
 a:visited {
-    color: #00FF00;
+    color: #95de95;
 }
+
+a:hover {
+    color: #00B000;
+    text-decoration: none;
+}
+
 
 img {
     border: 0;
@@ -308,12 +314,16 @@ label {
 
 .latest-comment-entry {
     padding: 6px 0px 6px;
-    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;
     clear: both;
 }
 
+.latest-comment-entry.last, .tweet.last {
+    border-bottom: none;
+}
+
 .comment-blurb {
-    margin: 6px 0 6px 0;
+    margin: 6px 0 0px 0;
 }
 
 .comment-blurb-date {
@@ -335,23 +345,28 @@ label {
     width: 47%;
 }
 
-#homepage-left-col h2, #homepage-right-col h2 {
-    font-size: 16px;
+.home h2 {
+    font-size: 14px;
+    color: #777;
+    border-bottom: 1px solid #CCC;
+    margin-top: 24px;
+    margin-bottom: 4px;
 }
 
 #homepage-right-col div.tweet {
     font-size: 10pt;
-    width: 370px;
+    width: 375px;
     padding: 6px 0px 6px 0px;
 }
 
-.homepage-view-more {
-    margin-top: 1em;
+.latest-photos img {
+    margin-right: 4px;
+    margin-bottom: 6px;
 }
 
-.latest-photos img {
-    margin-right: 6px;
-    margin-bottom: 6px;
+.latest-photos img.row-end {
+    margin-right: 0px;
+    float: right;
 }
 
 #id_tease {
@@ -406,4 +421,13 @@ p {
 .profile h2 {
   margin-top: 24px;
   margin-bottom: 0px;
+}
+
+a.view-all {
+    color: #00b000;
+    float: right;
+    text-decoration: none;
+    font-size: 11px;
+    padding-top: 3px;
+    font-weight: bold;
 }
