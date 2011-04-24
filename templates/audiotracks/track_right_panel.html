@@ -10,8 +10,7 @@
     <div class="photo-profile-details">
       <h2>{% trans "Posted by" %}</h2>
         <a href="{% url profile_detail track.user.username %}" title="{% user_display track.user %}">{% user_display track.user %}</a><br />
-        {{ track.created_at|date }}<br />
-        Viewed {{ track.view_count }} times
+        {{ track.created_at|date:"DATE_FORMAT" }}<br />
     </div>
 </div>
 

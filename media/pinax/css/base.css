@@ -437,7 +437,10 @@ a.view-all {
     text-shadow: 1px 0.5px 1px #BBB;
 }
 
-
 .login.uniForm .inlineLabels .textInput {
     width: auto;
+}
+
+.audiotracks-detail {
+    margin-bottom: 48px;
 }

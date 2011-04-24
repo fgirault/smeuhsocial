@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-24 21:50+0700\n"
+"POT-Creation-Date: 2011-04-24 22:45+0700\n"
 "PO-Revision-Date: 2010-03-04 09:26+0100\n"
 "Last-Translator: James Pic <http://jamespic.com>\n"
 "Language-Team: Pinax French <http://www.transifex.net/projects/p/pinax/team/"
@@ -61,11 +61,11 @@ msgstr "ou"
 msgid "Sign Up"
 msgstr "Inscription"
 
-#: templates/base.html:37
+#: templates/base.html:38
 msgid "Hide announcement"
 msgstr ""
 
-#: templates/base.html:58
+#: templates/base.html:59
 msgid "clear"
 msgstr "Cacher"
 
@@ -173,7 +173,7 @@ msgstr "Favoris"
 
 #: templates/site_base.html:55
 msgid "Swaps"
-msgstr "Echanges"
+msgstr "Échanges"
 
 #: templates/site_base.html:56 templates/tags/index.html:16
 msgid "Tags"
@@ -256,6 +256,10 @@ msgstr "Envoyer une photo"
 msgid "Download Track"
 msgstr ""
 
+#: templates/audiotracks/detail.html:42
+msgid "Comments on this track:"
+msgstr "Commentaires sur ce morceau"
+
 #: templates/audiotracks/latest.html:4 templates/audiotracks/latest.html:7
 msgid "Latest Tracks"
 msgstr "Derniers Morceaux"
@@ -264,7 +268,7 @@ msgstr "Derniers Morceaux"
 msgid "uploaded by"
 msgstr "envoyé par"
 
-#: templates/audiotracks/latest.html:14
+#: templates/audiotracks/latest.html:14 templates/blog/post.html:22
 msgid "on"
 msgstr "le"
 
@@ -276,10 +280,16 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: templates/audiotracks/track_right_panel.html:11
+#: templates/audiotracks/track_right_panel.html:11 templates/blog/post.html:21
 #: templates/photos/photo_right_panel.html:11
 msgid "Posted by"
-msgstr ""
+msgstr "Posté par"
+
+#: templates/audiotracks/track_right_panel.html:14
+#: templates/photos/latest.html:26 templates/photos/photo_right_panel.html:14
+#, python-format
+msgid "Viewed %(view_count)s times"
+msgstr "Vue %(view_count)s fois"
 
 #: templates/audiotracks/track_right_panel.html:31
 #, fuzzy
@@ -293,6 +303,10 @@ msgstr ""
 #: templates/blog/post.html:12
 msgid "Blog Post"
 msgstr "Billet"
+
+#: templates/blog/post.html:45
+msgid "Comments on this post:"
+msgstr "Commentaires sur ce billet"
 
 #: templates/friends_app/contacts.html:7
 #: templates/friends_app/contacts.html:10
@@ -496,14 +510,13 @@ msgstr "Envoyer une photo"
 msgid "Flag as inappropriate"
 msgstr "Signaler comme contenu inapproprié"
 
+#: templates/photos/details.html:37
+msgid "Comments on this photo:"
+msgstr "Commentaires sur cette photo"
+
 #: templates/photos/latest.html:12
 #, python-format
 msgid "%(title)s"
-msgstr ""
-
-#: templates/photos/latest.html:26
-#, python-format
-msgid "Viewed %(view_count)s times"
 msgstr ""
 
 #: templates/photos/latest.html:32
@@ -517,6 +530,10 @@ msgstr ""
 #: templates/photos/photo_right_panel.html:42
 msgid "Delete Photo"
 msgstr "Supprimer cette photo"
+
+#: templates/photos/photo_right_panel.html:46
+msgid "Edit Photo"
+msgstr "Éditer cette photo"
 
 #: templates/profiles/profile.html:14
 #, fuzzy, python-format
@@ -702,6 +719,33 @@ msgstr "Tout les sujets de tribus correspondant à <i>%(tag)s</i>"
 #, python-format
 msgid "All Wiki Articles Matching <i>%(tag)s</i>"
 msgstr "Tout les articles wiki correspondant à <i>%(tag)s</i>"
+
+#: templates/threadedcomments/comments.html:24
+#, fuzzy
+msgid "Delete Post"
+msgstr "Supprimer cette photo"
+
+#: templates/threadedcomments/comments.html:28
+msgid "Reply to This Post"
+msgstr ""
+
+#: templates/threadedcomments/comments.html:32
+#: templates/threadedcomments/comments.html:52
+msgid "Post Response"
+msgstr ""
+
+#: templates/threadedcomments/comments.html:47
+msgid "Enter your comment"
+msgstr "Saisissez votre commentaire ci-dessous"
+
+#: templates/threadedcomments/comments.html:59
+#, python-format
+msgid ""
+"\n"
+"        <h3>Please <a href=\"%(acct_login_url)s\">Login</a> (or <a href=\"%"
+"(acct_signup_url)s\">Sign Up</a>) to leave a comment</h3>\n"
+"    "
+msgstr ""
 
 #~ msgid "View more"
 #~ msgstr "En voir davantage"
