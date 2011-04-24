@@ -153,13 +153,13 @@ urlpatterns += patterns("",
 )
 
 urlpatterns += patterns("",
-    url(r"^(?P<username>[\w\._-]+)/$", "pinax.apps.profiles.views.profile", name="profile_detail"),
-)
-
-urlpatterns += patterns("",
         url("^(?P<username>[\w\._-]+)/music", include("audiotracks.urls")),
         url("^music", include("audiotracks.urls"))
         )
+
+urlpatterns += patterns("",
+    url(r"^(?P<username>[\w\._-]+)/$", "pinax.apps.profiles.views.profile", name="profile_detail"),
+)
 
 if settings.SERVE_MEDIA:
     urlpatterns += patterns("",

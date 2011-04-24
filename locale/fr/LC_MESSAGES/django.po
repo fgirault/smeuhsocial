@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-18 11:41+0100\n"
+"POT-Creation-Date: 2011-04-24 12:28+0700\n"
 "PO-Revision-Date: 2010-03-04 09:26+0100\n"
 "Last-Translator: James Pic <http://jamespic.com>\n"
 "Language-Team: Pinax French <http://www.transifex.net/projects/p/pinax/team/"
@@ -20,12 +20,12 @@ msgstr ""
 #: apps/friends_app/views.py:33
 #, python-format
 msgid "Accepted friendship request from %(from_user)s"
-msgstr "%(from_user)s vous a ajouté comme ami."
+msgstr "%(from_user)s vous a ajouté comme « ami »"
 
 #: apps/friends_app/views.py:45
 #, python-format
 msgid "Declined friendship request from %(from_user)s"
-msgstr "%(from_user)s ne vous a pas ajouté comme ami."
+msgstr "%(from_user)s ne vous a pas ajouté comme « ami »"
 
 #: apps/friends_app/views.py:108
 #, python-format
@@ -51,64 +51,59 @@ msgid "Log in"
 msgstr "Authentification"
 
 #: templates/_account_bar.html:13
-#, fuzzy
 msgid "Sign Up"
 msgstr "Inscription"
 
-#: templates/homepage.html:6
+#: templates/base.html:37
+msgid "Hide announcement"
+msgstr ""
+
+#: templates/base.html:58
+msgid "clear"
+msgstr ""
+
+#: templates/homepage.html:10
 msgid "Welcome"
 msgstr "Bienvenue"
 
-#: templates/homepage.html:12
-msgid "Welcome to Pinax"
-msgstr "Bienvenue sur notre site"
-
-#: templates/homepage.html:15
-msgid ""
-"\n"
-"        <b>Pinax</b> is a <a href=\"http://djangoproject.com/\">Django</a>\n"
-"        project intended to provide a starting point for websites. By\n"
-"        integrating numerous reusable Django apps to take care of the\n"
-"        things that many sites have in common, it lets you focus on what\n"
-"        makes your site different.\n"
-"        "
-msgstr ""
-
-#: templates/homepage.html:25
-msgid ""
-"\n"
-"        For more information about Pinax, see\n"
-"        <a href=\"http://pinaxproject.com/\">http://pinaxproject.com/</a>.\n"
-"        "
-msgstr ""
-
-#: templates/homepage.html:31
-msgid "About this project"
-msgstr "A propos de ce projet"
-
 #: templates/homepage.html:34
-msgid ""
-"\n"
-"        This project demonstrates a social networking site. It provides\n"
-"        profiles, friends, photos, blogs, tribes, wikis, tweets, bookmarks,\n"
-"        swaps, locations and user-to-user messaging.\n"
-"        "
-msgstr ""
+msgid "Latest comments"
+msgstr "Derniers commentaires"
 
-#: templates/homepage.html:41
-msgid ""
-"\n"
-"        In 0.5 this was called \"complete_project\".\n"
-"        "
-msgstr ""
+#: templates/homepage.html:37 templates/microblogging/_tweet.html:8
+#: templates/microblogging/friends_tweets.html:25
+#, python-format
+msgid "%(tweet_age)s ago"
+msgstr "il y a %(tweet_age)s"
 
-#: templates/homepage.html:49
+#: templates/homepage.html:46
+msgid "Latest photos"
+msgstr "Dernières photos"
+
+#: templates/homepage.html:51 templates/homepage.html.py:60
+#: templates/homepage.html:70 templates/homepage.html.py:80
+msgid "View more"
+msgstr "En voir davantage"
+
+#: templates/homepage.html:55
+msgid "Latest tweets"
+msgstr "Derniers touites"
+
+#: templates/homepage.html:64
+msgid "Latest blog posts"
+msgstr "Derniers billets de blog"
+
+#: templates/homepage.html:74 templates/audiotracks/base.html:20
+msgid "Latest tracks"
+msgstr "Derniers morceaux"
+
+#: templates/homepage.html:90
 #, python-format
 msgid "Wondering <a href=\"%(what_next_url)s\">What Next</a>?"
 msgstr ""
 "Vous demandez-vous <a href=\"%(what_next_url)s\">Que faire maintenant</a>?"
 
-#: templates/homepage.html:54
+#: templates/homepage.html:95
 #, python-format
 msgid ""
 "You can <a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s"
@@ -117,24 +112,41 @@ msgstr ""
 "Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href=\"%"
 "(login_url)s\">vous authentifier</a> pour essayer le site."
 
-#: templates/homepage.html:56
+#: templates/homepage.html:97
 #, python-format
 msgid "You can <a href=\"%(login_url)s\">Log in</a> to try out the site."
 msgstr ""
 "Vous pouvez <a href=\"%(login_url)s\">vous authentifier</a> pour essayer le "
 "site."
 
+#: templates/profile_item.html:11 templates/profiles/profile.html:38
+msgid "Name"
+msgstr "Nom"
+
+#: templates/profile_item.html:12 templates/site_base.html:69
+#: templates/profiles/profile.html:39
+msgid "About"
+msgstr "A propos"
+
+#: templates/profile_item.html:13 templates/profiles/profile.html:40
+msgid "Location"
+msgstr "Lieu"
+
+#: templates/profile_item.html:14 templates/profiles/profile.html:41
+msgid "Website"
+msgstr "Site Web"
+
 #: templates/site_base.html:46
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/site_base.html:47 templates/profiles/profile.html:199
+#: templates/site_base.html:47 templates/profiles/profile.html:202
 msgid "Photos"
 msgstr "Photos"
 
 #: templates/site_base.html:48
 msgid "Music"
-msgstr ""
+msgstr "Musique"
 
 #: templates/site_base.html:49
 msgid "Blogs"
@@ -144,11 +156,11 @@ msgstr "Blogs"
 msgid "Tribes"
 msgstr "Tribus"
 
-#: templates/site_base.html:51 templates/profiles/profile.html:190
+#: templates/site_base.html:51 templates/profiles/profile.html:193
 msgid "Tweets"
-msgstr "Tweets"
+msgstr "Touites"
 
-#: templates/site_base.html:53 templates/profiles/profile.html:154
+#: templates/site_base.html:53 templates/profiles/profile.html:156
 msgid "Bookmarks"
 msgstr "Favoris"
 
@@ -162,29 +174,25 @@ msgstr "Tags"
 
 #: templates/site_base.html:58
 msgid "Locations"
-msgstr "Locations"
+msgstr "Lieux"
 
 #: templates/site_base.html:60
 msgid "Inbox"
 msgstr "Boite de réception"
 
-#: templates/site_base.html:67
+#: templates/site_base.html:68
 msgid "&copy; 2010 &lt;your company here&gt;"
 msgstr "&copy; 2010 &lt;votre entreprise ici&gt;"
 
-#: templates/site_base.html:68 templates/profiles/profile.html:39
-msgid "About"
-msgstr "A propos"
-
-#: templates/site_base.html:69
+#: templates/site_base.html:70
 msgid "Terms of Service"
 msgstr "Termes du service"
 
-#: templates/site_base.html:70
+#: templates/site_base.html:71
 msgid "Privacy Policy"
 msgstr "Politique de confidentialité"
 
-#: templates/site_base.html:71
+#: templates/site_base.html:72
 msgid "DMCA Notice"
 msgstr ""
 
@@ -227,6 +235,51 @@ msgstr "Changez votre compte avec ce formulaire"
 msgid "save"
 msgstr "sauvegarder"
 
+#: templates/audiotracks/base.html:21
+#, fuzzy
+msgid "Your tracks"
+msgstr "Pas de morceau."
+
+#: templates/audiotracks/base.html:22
+#, fuzzy
+msgid "Upload track"
+msgstr "Envoyer une photo"
+
+#: templates/audiotracks/detail.html:39
+msgid "Download Track"
+msgstr ""
+
+#: templates/audiotracks/latest.html:4
+#, fuzzy
+msgid "Latest Tracks"
+msgstr "Morceaux"
+
+#: templates/audiotracks/latest.html:16
+msgid "Edit"
+msgstr ""
+
+#: templates/audiotracks/latest.html:17
+msgid "Delete"
+msgstr ""
+
+#: templates/audiotracks/track_right_panel.html:11
+#: templates/photos/photo_right_panel.html:11
+msgid "Posted by"
+msgstr ""
+
+#: templates/audiotracks/track_right_panel.html:31
+#, fuzzy
+msgid "Edit Track"
+msgstr "Morceaux"
+
+#: templates/audiotracks/track_right_panel.html:32
+msgid "Delete Track"
+msgstr ""
+
+#: templates/blog/post.html:12
+msgid "Blog Post"
+msgstr "Billet"
+
 #: templates/friends_app/contacts.html:7
 #: templates/friends_app/contacts.html:10
 msgid "Contacts"
@@ -257,14 +310,12 @@ msgstr "Invitations"
 #: templates/friends_app/invitations.html:11
 #: templates/friends_app/invite.html:5 templates/friends_app/invite.html:9
 #: templates/friends_app/invite_facebox.html:3
-#, fuzzy
 msgid "Invite someone new to join"
 msgstr "Invitez quelqu'un de nouveau à nous rejoindre"
 
 #: templates/friends_app/invitations.html:13
-#, fuzzy
 msgid "Friendship Requests Received"
-msgstr "Demande d'ami reçu"
+msgstr "Demande d'« ami » reçue"
 
 #: templates/friends_app/invitations.html:28
 #: templates/profiles/profile.html:87
@@ -277,20 +328,18 @@ msgid "decline"
 msgstr "décliner"
 
 #: templates/friends_app/invitations.html:48
-#, fuzzy
 msgid "No friendship requests received."
-msgstr "Aucune demande d'ami recue."
+msgstr "Aucune demande d'« ami » reçue."
 
 #: templates/friends_app/invitations.html:52
 msgid "Friendship Requests Sent"
-msgstr "Demande d'ami envoyée"
+msgstr "Demande d'« ami » envoyée"
 
 #: templates/friends_app/invitations.html:65
 msgid "No friendship requests sent."
-msgstr "Pas de demande d'ami envoyé"
+msgstr "Pas de demande d'« ami » envoyé"
 
 #: templates/friends_app/invitations.html:69
-#, fuzzy
 msgid "Join Requests Sent"
 msgstr "Demandes d'inscription envoyées"
 
@@ -310,6 +359,11 @@ msgstr ""
 msgid "Someone with this email address has already joined:"
 msgstr "Quelqu'un avec cette adresse email est déjà membre du site:"
 
+#: templates/microblogging/_tweet.html:9
+#: templates/microblogging/friends_tweets.html:26
+msgid "reply"
+msgstr "répondre"
+
 #: templates/microblogging/base.html:10
 msgid "Tweets You Follow"
 msgstr "Abonnements"
@@ -317,19 +371,16 @@ msgstr "Abonnements"
 #: templates/microblogging/base.html:11
 #: templates/microblogging/friends_tweets.html:9
 #: templates/microblogging/friends_tweets.html:12
-#, fuzzy
 msgid "Friends' Tweets"
-msgstr "Tweets de vos amis"
+msgstr "Touites de vos amis"
 
 #: templates/microblogging/base.html:12
-#, fuzzy
 msgid "All Tweets"
-msgstr "Tous les tweets"
+msgstr "Tous les touites"
 
 #: templates/microblogging/base.html:13
-#, fuzzy
 msgid "Your Followers"
-msgstr "Abonnés"
+msgstr "Abonnés à vos touites"
 
 #: templates/microblogging/base.html:14
 msgid "Who You Are Following"
@@ -346,8 +397,7 @@ msgstr "Abonnés à %(other_user_display)s"
 msgid ""
 "Followers of <a href=\"%(other_user_url)s\">%(other_user_display)s</a>'s "
 "tweets:"
-msgstr ""
-"Abonnés à <a href=\"%(other_user_url)s\">%(other_user_display)s</a>'s "
+msgstr "Abonnés à <a href=\"%(other_user_url)s\">%(other_user_display)s</a>'s "
 
 #: templates/microblogging/followers.html:30
 msgid "No followers."
@@ -359,8 +409,8 @@ msgid ""
 "Also see <a href=\"%(tweet_following_url)s\">who %(other_user_display)s is "
 "following</a>."
 msgstr ""
-"Voir <a href=\"%(tweet_following_url)s\">les abonnements de %(other_user_display)s "
-"</a>."
+"Voir <a href=\"%(tweet_following_url)s\">les abonnements de %"
+"(other_user_display)s </a>."
 
 #: templates/microblogging/following.html:9
 #: templates/microblogging/following.html:14
@@ -387,32 +437,20 @@ msgid ""
 msgstr ""
 
 #: templates/microblogging/friends_tweets.html:14
-#, fuzzy
 msgid "These are tweets from your friends:"
-msgstr "Ce sont les articles de blog de tout les membres:"
-
-#: templates/microblogging/friends_tweets.html:25
-#: templates/microblogging/listing.html:15
-#, python-format
-msgid "%(tweet_age)s ago"
-msgstr "il y a %(tweet_age)s"
-
-#: templates/microblogging/friends_tweets.html:26
-#: templates/microblogging/listing.html:16
-msgid "reply"
-msgstr "répondre"
+msgstr "Voici les touites de vos amis:"
 
 #: templates/microblogging/friends_tweets.html:30
-#, fuzzy
 msgid "No tweets yet."
-msgstr "Pas de demande d'inscriptio envoyée."
+msgstr "Pas encore de touites."
 
-#: templates/microblogging/listing.html:22
+#: templates/microblogging/listing.html:14
 #, python-format
 msgid "You haven't posted any <a href=\"%(tweets_url)s\">tweets</a> yet."
-msgstr "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+msgstr ""
+"Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
 
-#: templates/microblogging/listing.html:24
+#: templates/microblogging/listing.html:16
 msgid "There are currently no tweets to be listed."
 msgstr "Il n'y a aucun tweet pour le moment."
 
@@ -421,30 +459,36 @@ msgid "Notice"
 msgstr "Notifications"
 
 #: templates/photos/base.html:18
-#, fuzzy
 msgid "Latest Photos"
-msgstr "Dernieres photos"
+msgstr "Dernières photos"
 
 #: templates/photos/base.html:19
+msgid "Most Viewed"
+msgstr "Les Plus Vues"
+
+#: templates/photos/base.html:20
 msgid "Your Photos"
 msgstr "Vos photos"
 
-#: templates/photos/base.html:20
+#: templates/photos/base.html:21
 msgid "Friends' Photos"
 msgstr "Photos de vos amis"
 
-#: templates/photos/base.html:21
+#: templates/photos/base.html:22
 msgid "Upload a Photo"
 msgstr "Envoyer une photo"
 
-#: templates/photos/details.html:12 templates/photos/details.html.py:21
-#, fuzzy
-msgid "Photo Details"
-msgstr "Photos"
-
-#: templates/photos/details.html:35
+#: templates/photos/details.html:31
 msgid "Flag as inappropriate"
 msgstr "Signaler comme contenu inapproprié"
+
+#: templates/photos/photo_right_panel.html:29
+msgid "Get Embed Code"
+msgstr ""
+
+#: templates/photos/photo_right_panel.html:42
+msgid "Delete Photo"
+msgstr "Supprimer cette photo"
 
 #: templates/profiles/profile.html:14
 #, python-format
@@ -465,23 +509,9 @@ msgstr "Profil de <span class=\"nickname\">%(other_user_display)s</span>"
 msgid "Profile for <span class=\"fn nickname\">%(other_user_display)s</span>"
 msgstr "Profil de <span class=\"fn nickname\">%(other_user_display)s</span>"
 
-#: templates/profiles/profile.html:38
-msgid "Name"
-msgstr "Nom"
-
-#: templates/profiles/profile.html:40
-#, fuzzy
-msgid "Location"
-msgstr "Locations"
-
-#: templates/profiles/profile.html:41
-msgid "Website"
-msgstr "Site Web"
-
 #: templates/profiles/profile.html:45
-#, fuzzy
 msgid "Edit profile"
-msgstr "Modifier le profil"
+msgstr "Modifier votre profil"
 
 #: templates/profiles/profile.html:50
 msgid "Followers"
@@ -493,16 +523,16 @@ msgstr "Abonnements"
 
 #: templates/profiles/profile.html:61
 msgid "unfollow"
-msgstr "se désabonner"
+msgstr "Se désabonner"
 
 #: templates/profiles/profile.html:63
 msgid "follow tweets"
-msgstr "s'abonner"
+msgstr "Suivre les Touites"
 
 #: templates/profiles/profile.html:70
 #, python-format
 msgid "You are friends with %(other_user_display)s."
-msgstr "Vous êtes ami avec %(other_user_display)s."
+msgstr "Vous êtes « « ami » avec %(other_user_display)s."
 
 #: templates/profiles/profile.html:70
 msgid "Send a message"
@@ -510,21 +540,20 @@ msgstr "Envoyer un message"
 
 #: templates/profiles/profile.html:74
 msgid "remove from friends"
-msgstr "retirer des amis"
+msgstr "Ôter de votre liste d'« amis »"
 
 #: templates/profiles/profile.html:79
 #, python-format
 msgid "%(other_user_display)s has requested friendship."
-msgstr "%(other_user_display)s demande à être votre ami."
+msgstr "%(other_user_display)s demande à être votre « ami »"
 
 #: templates/profiles/profile.html:100
-#, fuzzy
 msgid "Friendship request sent."
-msgstr "Demande d'ajout d'ami envoyée."
+msgstr "Demande d'ajout d'« ami » envoyée."
 
 #: templates/profiles/profile.html:102
 msgid "Add As Friend"
-msgstr "Ajouter comme ami."
+msgstr "Ajouter comme « ami »"
 
 #: templates/profiles/profile.html:109
 msgid "invite"
@@ -533,54 +562,91 @@ msgstr "inviter"
 #: templates/profiles/profile.html:110
 #, python-format
 msgid "%(other_user_display)s to be a friend."
-msgstr "%(other_user_display)s comme ami."
+msgstr "%(other_user_display)s comme « ami »"
 
 #: templates/profiles/profile.html:121
-#, fuzzy
 msgid "Tracks"
 msgstr "Morceaux"
 
-#: templates/profiles/profile.html:129
-#, fuzzy
+#: templates/profiles/profile.html:131
 msgid "No tracks yet."
 msgstr "Pas de morceau."
 
-#: templates/profiles/profile.html:133
+#: templates/profiles/profile.html:135
 msgid "Wiki Articles"
 msgstr "Articles Wiki"
 
-#: templates/profiles/profile.html:150
+#: templates/profiles/profile.html:152
 msgid "No wiki articles yet."
 msgstr "Aucun article wiki pour le moment."
 
-#: templates/profiles/profile.html:174
+#: templates/profiles/profile.html:176
 #, python-format
 msgid ""
 "You haven't added any <a href=\"%(add_bookmark_url)s\">bookmarks</a> yet."
-msgstr "Vous n'avez ajouté aucun <a href=\"%(add_bookmark_url)s\">bookmarks</a> pour le moment."
+msgstr ""
+"Vous n'avez ajouté aucun <a href=\"%(add_bookmark_url)s\">bookmarks</a> pour "
+"le moment."
 
-#: templates/profiles/profile.html:179
-#, fuzzy
+#: templates/profiles/profile.html:181
 msgid "Blog Posts"
-msgstr "Articles de blogs"
+msgstr "Billets"
 
-#: templates/profiles/profile.html:186
-#, fuzzy
+#: templates/profiles/profile.html:182
+msgid "View all posts"
+msgstr "Voir tous les billets"
+
+#: templates/profiles/profile.html:189
 msgid "No blog posts yet."
-msgstr "Aucun article de blog pour le moment."
+msgstr "Aucun billet pour le moment."
 
-#: templates/profiles/profile.html:212
+#: templates/profiles/profile.html:215
 msgid "No photos uploaded yet..."
-msgstr "Aucun photo envoyée pour le moment."
+msgstr "Il n'y a pas encore de photo..."
 
-#: templates/profiles/profile.html:218
-#, fuzzy, python-format
+#: templates/profiles/profile.html:221
+#, python-format
 msgid ""
 "<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log in "
 "</a> to add this person as a friend and see their tweets and blog posts."
 msgstr ""
 "Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href=\"%"
 "(login_url)s\">vous authentifier</a> pour essayer le site."
+
+#: templates/profiles/profile_right_panel.html:9
+msgid "Your Tribes"
+msgstr "Vos Tribus"
+
+#: templates/profiles/profile_right_panel.html:16
+#, fuzzy, python-format
+msgid "You are not yet a member of any <a href=\"%(tribe_url)s\">tribes</a>."
+msgstr ""
+"Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+
+#: templates/profiles/profile_right_panel.html:20
+msgid "Your Friends"
+msgstr "Vos « Amis »"
+
+#: templates/profiles/profile_right_panel.html:35
+#, python-format
+msgid ""
+"None. You should look at the list of <a href=\"%(profile_url)s\">profiles</"
+"a> and see if there's anyone you know."
+msgstr ""
+
+#: templates/profiles/profile_right_panel.html:42
+#, fuzzy, python-format
+msgid "%(other_user_display)s's Tribes"
+msgstr "Abonnements de %(other_user_display)s"
+
+#: templates/profiles/profile_right_panel.html:48
+msgid "Not yet a member of any tribes."
+msgstr ""
+
+#: templates/profiles/profile_right_panel.html:52
+#, fuzzy, python-format
+msgid "%(other_user_display)s's Friends"
+msgstr "Abonnements de %(other_user_display)s"
 
 #: templates/tags/index.html:19
 msgid "All Photos Matching "
@@ -609,6 +675,16 @@ msgstr "Tout les sujets de tribus correspondant à <i>%(tag)s</i>"
 msgid "All Wiki Articles Matching <i>%(tag)s</i>"
 msgstr "Tout les articles wiki correspondant à <i>%(tag)s</i>"
 
+#~ msgid "Welcome to Pinax"
+#~ msgstr "Bienvenue sur notre site"
+
+#~ msgid "About this project"
+#~ msgstr "A propos de ce projet"
+
+#, fuzzy
+#~ msgid "Photo Details"
+#~ msgstr "Photos"
+
 #~ msgid "Admin"
 #~ msgstr "Administration"
 
@@ -635,9 +711,6 @@ msgstr "Tout les articles wiki correspondant à <i>%(tag)s</i>"
 
 #~ msgid "Set Password"
 #~ msgstr "Définir le mot de passe"
-
-#~ msgid "Delete Password"
-#~ msgstr "Effacer le mot de passe"
 
 #~ msgid "Language"
 #~ msgstr "Langage"
