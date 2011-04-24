@@ -434,7 +434,7 @@ a.view-all {
     font-size: 11px;
     padding-top: 3px;
     font-weight: bold;
-    text-shadow: 1px 0.5px 1px #BBB;
+    text-shadow: 0.5px 0.5px 0.5px #BBB;
 }
 
 .login.uniForm .inlineLabels .textInput {
