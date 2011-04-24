@@ -26,6 +26,8 @@ ADMINS = [
      ("Alex Marandon", "al@smeuh.org"),
 ]
 
+CONTACT_EMAIL = 'al@smeuh.org'
+
 MANAGERS = ADMINS
 
 DATABASES = {

@@ -41,8 +41,11 @@ td {
     border: 0;
     padding: 0;
 }
+
 h1 {
     margin: 0;
+    color: #ccc;
+    font-size: 40px;
 }
 
 
@@ -351,6 +354,7 @@ label {
     border-bottom: 1px solid #CCC;
     margin-top: 24px;
     margin-bottom: 4px;
+    text-shadow: 1px 0.5px 1px #BBB;
 }
 
 #homepage-right-col div.tweet {
@@ -430,4 +434,10 @@ a.view-all {
     font-size: 11px;
     padding-top: 3px;
     font-weight: bold;
+    text-shadow: 1px 0.5px 1px #BBB;
+}
+
+
+.login.uniForm .inlineLabels .textInput {
+    width: auto;
 }

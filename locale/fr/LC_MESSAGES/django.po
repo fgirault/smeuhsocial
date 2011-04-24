@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-24 19:54+0700\n"
+"POT-Creation-Date: 2011-04-24 21:50+0700\n"
 "PO-Revision-Date: 2010-03-04 09:26+0100\n"
 "Last-Translator: James Pic <http://jamespic.com>\n"
 "Language-Team: Pinax French <http://www.transifex.net/projects/p/pinax/team/"
@@ -73,22 +73,22 @@ msgstr "Cacher"
 msgid "Welcome"
 msgstr "Bienvenue"
 
-#: templates/homepage.html:34
+#: templates/homepage.html:36
 msgid "Latest comments"
 msgstr "Derniers commentaires"
 
-#: templates/homepage.html:37 templates/microblogging/_tweet.html:8
+#: templates/homepage.html:39 templates/microblogging/_tweet.html:8
 #: templates/microblogging/friends_tweets.html:25
 #, python-format
 msgid "%(tweet_age)s ago"
 msgstr "il y a %(tweet_age)s"
 
-#: templates/homepage.html:46 templates/homepage.html.py:55
-#: templates/homepage.html:64 templates/homepage.html.py:74
+#: templates/homepage.html:48 templates/homepage.html.py:55
+#: templates/homepage.html:62 templates/homepage.html.py:70
 msgid "View all"
 msgstr "Tout voir"
 
-#: templates/homepage.html:47
+#: templates/homepage.html:49
 msgid "Latest photos"
 msgstr "Dernières photos"
 
@@ -96,21 +96,21 @@ msgstr "Dernières photos"
 msgid "Latest tweets"
 msgstr "Derniers touites"
 
-#: templates/homepage.html:65
+#: templates/homepage.html:63
 msgid "Latest blog posts"
 msgstr "Derniers billets de blog"
 
-#: templates/homepage.html:75 templates/audiotracks/base.html:20
+#: templates/homepage.html:71 templates/audiotracks/base.html:20
 msgid "Latest tracks"
 msgstr "Derniers morceaux"
 
-#: templates/homepage.html:90
+#: templates/homepage.html:84
 #, python-format
 msgid "Wondering <a href=\"%(what_next_url)s\">What Next</a>?"
 msgstr ""
 "Vous demandez-vous <a href=\"%(what_next_url)s\">Que faire maintenant</a>?"
 
-#: templates/homepage.html:95
+#: templates/homepage.html:89
 #, python-format
 msgid ""
 "You can <a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s"
@@ -119,7 +119,7 @@ msgstr ""
 "Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href=\"%"
 "(login_url)s\">vous authentifier</a> pour essayer le site."
 
-#: templates/homepage.html:97
+#: templates/homepage.html:91
 #, python-format
 msgid "You can <a href=\"%(login_url)s\">Log in</a> to try out the site."
 msgstr ""
@@ -256,10 +256,9 @@ msgstr "Envoyer une photo"
 msgid "Download Track"
 msgstr ""
 
-#: templates/audiotracks/latest.html:4
-#, fuzzy
+#: templates/audiotracks/latest.html:4 templates/audiotracks/latest.html:7
 msgid "Latest Tracks"
-msgstr "Morceaux"
+msgstr "Derniers Morceaux"
 
 #: templates/audiotracks/latest.html:12
 msgid "uploaded by"
@@ -496,6 +495,20 @@ msgstr "Envoyer une photo"
 #: templates/photos/details.html:31
 msgid "Flag as inappropriate"
 msgstr "Signaler comme contenu inapproprié"
+
+#: templates/photos/latest.html:12
+#, python-format
+msgid "%(title)s"
+msgstr ""
+
+#: templates/photos/latest.html:26
+#, python-format
+msgid "Viewed %(view_count)s times"
+msgstr ""
+
+#: templates/photos/latest.html:32
+msgid "No photos were found."
+msgstr ""
 
 #: templates/photos/photo_right_panel.html:29
 msgid "Get Embed Code"
