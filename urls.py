@@ -9,16 +9,16 @@ from bookmarks.feeds import BookmarkFeed
 from bookmarks.models import BookmarkInstance
 from microblogging.feeds import TweetFeedAll, TweetFeedUser, TweetFeedUserWithFriends
 from microblogging.models import Tweet
-from swaps.models import Offer
+#from swaps.models import Offer
 from tagging.models import TaggedItem
-from wakawaka.models import WikiPage
+#from wakawaka.models import WikiPage
 
 from pinax.apps.account.openid_consumer import PinaxConsumer
 from pinax.apps.blog.feeds import BlogFeedAll, BlogFeedUser
 from pinax.apps.blog.models import Post
 from pinax.apps.photos.models import Image
 from pinax.apps.topics.models import Topic
-from pinax.apps.tribes.models import Tribe
+#from pinax.apps.tribes.models import Tribe
 from audiotracks.models import Track
 
 
@@ -64,15 +64,14 @@ urlpatterns = patterns("",
     url(r"^messages/", include("messages.urls")),
     url(r"^announcements/", include("announcements.urls")),
     url(r"^tweets/", include("microblogging.urls")),
-    url(r"^tribes/", include("pinax.apps.tribes.urls")),
+#    url(r"^tribes/", include("pinax.apps.tribes.urls")),
     url(r"^comments/", include("threadedcomments.urls")),
     url(r"^i18n/", include("django.conf.urls.i18n")),
-    url(r"^bookmarks/", include("bookmarks.urls")),
+#    url(r"^bookmarks/", include("bookmarks.urls")),
     url(r"^photos/", include("pinax.apps.photos.urls")),
     url(r"^avatar/", include("avatar.urls")),
-    url(r"^swaps/", include("swaps.urls")),
+#    url(r"^swaps/", include("swaps.urls")),
     url(r"^flag/", include("flag.urls")),
-    url(r"^locations/", include("locations.urls")),
     url(r"^feeds/tweets/(.*)/$", "django.contrib.syndication.views.feed", tweets_feed_dict),
     url(r"^feeds/posts/(.*)/$", "django.contrib.syndication.views.feed", blogs_feed_dict),
     url(r"^feeds/bookmarks/(.*)/?$", "django.contrib.syndication.views.feed", bookmarks_feed_dict),
@@ -115,10 +114,10 @@ tagged_models = (
         query=lambda tag : TaggedItem.objects.get_by_model(Post, tag).filter(status=2),
         content_template="pinax_tagging_ext/blogs.html",
     ),
-    dict(title="Bookmarks",
-        query=lambda tag : TaggedItem.objects.get_by_model(BookmarkInstance, tag),
-        content_template="pinax_tagging_ext/bookmarks.html",
-    ),
+#    dict(title="Bookmarks",
+#        query=lambda tag : TaggedItem.objects.get_by_model(BookmarkInstance, tag),
+#        content_template="pinax_tagging_ext/bookmarks.html",
+#    ),
     dict(title="Photos",
         query=lambda tag: TaggedItem.objects.get_by_model(Image, tag).filter(safetylevel=1),
         content_template="pinax_tagging_ext/photos.html",
@@ -127,18 +126,18 @@ tagged_models = (
         query=lambda tag: TaggedItem.objects.get_by_model(Track, tag),
         content_template="pinax_tagging_ext/audiotracks.html",
     ),
-    dict(title="Swap Offers",
-        query=lambda tag : TaggedItem.objects.get_by_model(Offer, tag),
-    ),
+#    dict(title="Swap Offers",
+#        query=lambda tag : TaggedItem.objects.get_by_model(Offer, tag),
+#    ),
     dict(title="Topics",
         query=lambda tag: TaggedItem.objects.get_by_model(Topic, tag),
     ),
-    dict(title="Tribes",
-        query=lambda tag: TaggedItem.objects.get_by_model(Tribe, tag),
-    ),
-    dict(title="Wiki Articles",
-        query=lambda tag: TaggedItem.objects.get_by_model(WikiPage, tag),
-    ),
+#    dict(title="Tribes",
+#        query=lambda tag: TaggedItem.objects.get_by_model(Tribe, tag),
+#    ),
+#    dict(title="Wiki Articles",
+#        query=lambda tag: TaggedItem.objects.get_by_model(WikiPage, tag),
+#    ),
 )
 tagging_ext_kwargs = {
     "tagged_models": tagged_models,

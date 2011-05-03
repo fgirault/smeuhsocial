@@ -5,6 +5,7 @@
 {% user_display other_user as other_user_display %}
 
 {% if is_me %}
+    {% comment %}
     <div class="groups">
         <h2>{% trans "Your Tribes" %}</h2>
         {% if other_user.tribes.all %}
@@ -16,6 +17,7 @@
             <p>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</p>
         {% endif %}
     </div>
+    {% endcomment %}
     <div class="friends">
         <h2>{% trans "Your Friends" %}</h2>
         {% if other_friends %}

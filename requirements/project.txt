@@ -8,8 +8,9 @@
 -e git+ssh://git@github.com/alex-marandon/pinax.git#egg=Pinax
 -e git+ssh://git@github.com/alex-marandon/django-audiotracks.git#egg=django_audiotracks
 
+# We pull django-pagination from github because Pypi distribution doesn't
+# include locales
 -e git+https://github.com/ericflo/django-pagination.git#egg=django_pagination
-
 PIL
 python-ldap
 django-auth-ldap

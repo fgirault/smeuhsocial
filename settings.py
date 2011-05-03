@@ -109,7 +109,7 @@ MIDDLEWARE_CLASSES = [
     "pagination.middleware.PaginationMiddleware",
     "django_sorting.middleware.SortingMiddleware",
     "pinax.middleware.security.HideSensistiveFieldsMiddleware",
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
+#    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "smeuhsocial.middleware.WsgiLogErrors",
 ]
 
@@ -164,7 +164,7 @@ INSTALLED_APPS = [
     # external
     "notification", # must be first
     "staticfiles",
-    "debug_toolbar",
+#    "debug_toolbar",
     "mailer",
     "uni_form",
     "django_openid",
@@ -175,19 +175,19 @@ INSTALLED_APPS = [
     "pagination",
     "friends",
     "messages",
-    "oembed",
+#    "oembed",
     "groups",
     "threadedcomments",
-    "wakawaka",
-    "swaps",
-    "voting",
+#    "wakawaka",
+#    "swaps",
+#    "voting",
     "tagging",
     "bookmarks",
     "photologue",
     "avatar",
     "flag",
     "microblogging",
-    "locations",
+#    "locations",
     "django_sorting",
     "django_markup",
     "tagging_ext",
@@ -198,11 +198,11 @@ INSTALLED_APPS = [
     "pinax.apps.analytics",
     "pinax.apps.profiles",
     "pinax.apps.blog",
-    "pinax.apps.tribes",
+#    "pinax.apps.tribes",
     "pinax.apps.photos",
     "pinax.apps.topics",
     "pinax.apps.threadedcomments_extras",
-    "pinax.apps.voting_extras",
+#    "pinax.apps.voting_extras",
     
     # project
     "about",
@@ -292,9 +292,9 @@ FORCE_LOWERCASE_TAGS = True
 # following URL: https://developer.yahoo.com/wsregapp/
 # YAHOO_MAPS_API_KEY = ""
 
-DEBUG_TOOLBAR_CONFIG = {
-    "INTERCEPT_REDIRECTS": False,
-}
+#DEBUG_TOOLBAR_CONFIG = {
+#    "INTERCEPT_REDIRECTS": False,
+#}
 
 
 AVATAR_DEFAULT_URL = "http://la.buvette.org/vrac/avatar-defaut.png"

@@ -1,15 +1,14 @@
 Introduction
 ============
 
-smeuhsocial aka smeuh-tribe aims to become a social web platform for
-members and friends of [Smeuh.Org ](http://smeuh.org).  It's based on
+smeuhsocial is the app that powers [My.Smeuh](https://my.smeuh.org), the
+community platform of [Smeuh.Org](http://smeuh.org).  It's based on
 [Pinax](http://pinaxproject.com) which is itself based on
 [Django](http://djangoproject.com).  This document is written in
 [Markdown](http://daringfireball.net/projects/markdown/syntax).
 
 Instructions presented here are incomplete and poorly tested so don't hesitate to
 ask for help if you run into trouble.
-
 
 Developement Setup
 ==================
