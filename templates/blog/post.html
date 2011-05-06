@@ -18,8 +18,9 @@
 {% endblock %}
 
 {% block body %}
-<div class="blog-meta"><p>{% trans 'Posted by' %} <a href="{% url profile_detail
-    post.author.username %}">{% user_display post.author %}</a> {% trans 'on' %}
+<div class="blog-meta"><p>{% trans 'Posted by' %} 
+<a href="{% url profile_detail post.author.username %}">{% user_display post.author %}</a> 
+{% trans 'on' %}
   {{ post.publish|date:"DATE_FORMAT" }}
       {% silk "tag_blue" %}
       {% tags_for_object post as tags %}
