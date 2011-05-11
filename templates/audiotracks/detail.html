@@ -11,7 +11,9 @@
     {% include "audiotracks/track_right_panel.html" %}
 </div>
 <div class="left_panel audiotracks-detail">
+  {% if track.image %}
   <img src="{{ track.image.url_200x200 }}" />
+  {% endif %}
   <h1>
     {{ track.title }}
   </h1>

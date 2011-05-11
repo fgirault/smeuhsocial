@@ -14,6 +14,7 @@
     </div>
 </div>
 
+{% if track.tags or track.user == request.user %}
 <div class="toolbox">
     {% if track.tags %}
         <h2>{% silk "tag_blue" %} Tags</h2>
@@ -33,6 +34,7 @@
     {% endif %}
     
 </div>
+{% endif %}
 
 <div class="photo-right-exif">
 </div>
