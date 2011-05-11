@@ -7,11 +7,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-24 22:45+0700\n"
+"POT-Creation-Date: 2011-05-11 06:05+0200\n"
 "PO-Revision-Date: 2010-03-04 09:26+0100\n"
 "Last-Translator: James Pic <http://jamespic.com>\n"
 "Language-Team: Pinax French <http://www.transifex.net/projects/p/pinax/team/"
 "fr/>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -73,6 +74,34 @@ msgstr "Cacher"
 msgid "Welcome"
 msgstr "Bienvenue"
 
+#: templates/homepage.html:17
+msgid "This is your Smeuh"
+msgstr "Bienvenue dans votre Smeuh"
+
+#: templates/homepage.html:19
+msgid ""
+"\n"
+"    <p>This site is a platform for members and friends of <a\n"
+"      href=\"http://smeuh.org/\">Smeuh.org</a> to share pictures, sound and "
+"ideas.</p>\n"
+"    <p>\n"
+"      To know more about the code that runs this site, report bugs and "
+"maybe\n"
+"      contribute, please check <a\n"
+"        href=\"https://github.com/alex-marandon/smeuhsocial\">the GitHub\n"
+"        repository</a>.\n"
+"    </p>\n"
+"    "
+msgstr ""
+"\n"
+"    <p>        Le but de ce site est de permettre aux        adhérents et "
+"sympatisants de <a href=\"http://smeuh.org\">Smeuh.Org</a>        d'échanger "
+"et de publier des photos, du son et des idées."
+"</p>    <p>      Pour en savoir plus sur le code qui "
+"fait tourner ce site, signaler des      bugs et      éventuellement "
+"contribuer, c'est <a        href=\"https://github.com/alex-marandon/"
+"smeuhsocial\">par ici</a>.    </p>"
+
 #: templates/homepage.html:36
 msgid "Latest comments"
 msgstr "Derniers commentaires"
@@ -116,8 +145,8 @@ msgid ""
 "You can <a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s"
 "\">Log in</a> to try out the site."
 msgstr ""
-"Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href=\"%"
-"(login_url)s\">vous authentifier</a> pour essayer le site."
+"Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
+"\"%(login_url)s\">vous authentifier</a> pour essayer le site."
 
 #: templates/homepage.html:91
 #, python-format
@@ -130,8 +159,7 @@ msgstr ""
 msgid "Name"
 msgstr "Nom"
 
-#: templates/profile_item.html:12 templates/site_base.html:69
-#: templates/profiles/profile.html:39
+#: templates/profile_item.html:12 templates/profiles/profile.html:39
 msgid "About"
 msgstr "A propos"
 
@@ -147,7 +175,7 @@ msgstr "Site Web"
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/site_base.html:47 templates/profiles/profile.html:208
+#: templates/site_base.html:47 templates/profiles/profile.html:210
 msgid "Photos"
 msgstr "Photos"
 
@@ -155,68 +183,36 @@ msgstr "Photos"
 msgid "Music"
 msgstr "Musique"
 
-#: templates/site_base.html:49
-msgid "Blogs"
-msgstr "Blogs"
-
-#: templates/site_base.html:50
-msgid "Tribes"
-msgstr "Tribus"
-
-#: templates/site_base.html:51 templates/profiles/profile.html:195
+#: templates/site_base.html:49 templates/profiles/profile.html:197
 msgid "Tweets"
 msgstr "Touites"
 
-#: templates/site_base.html:53 templates/profiles/profile.html:158
-msgid "Bookmarks"
-msgstr "Favoris"
+#: templates/site_base.html:50
+msgid "Blogs"
+msgstr "Blogs"
 
-#: templates/site_base.html:55
-msgid "Swaps"
-msgstr "Échanges"
-
-#: templates/site_base.html:56 templates/tags/index.html:16
+#: templates/site_base.html:61 templates/tags/index.html:16
 msgid "Tags"
 msgstr "Tags"
 
-#: templates/site_base.html:58
-msgid "Locations"
-msgstr "Lieux"
-
-#: templates/site_base.html:60
+#: templates/site_base.html:66
 msgid "Inbox"
 msgstr "Boite de réception"
-
-#: templates/site_base.html:68
-msgid "&copy; 2010 &lt;your company here&gt;"
-msgstr "&copy; 2010 &lt;votre entreprise ici&gt;"
-
-#: templates/site_base.html:70
-msgid "Terms of Service"
-msgstr "Termes du service"
-
-#: templates/site_base.html:71
-msgid "Privacy Policy"
-msgstr "Politique de confidentialité"
-
-#: templates/site_base.html:72
-msgid "DMCA Notice"
-msgstr ""
 
 #: templates/about/what_next.html:6 templates/about/what_next.html.py:9
 msgid "What Next?"
 msgstr "Que faire maintenant?"
 
-#: templates/about/what_next.html:46
+#: templates/about/what_next.html:49
 #, python-format
 msgid ""
-"Start by <a href=\"%(signup_url)s\">signing up</a> and <a href=\"%(login_url)"
-"s\">logging in</a>."
+"Start by <a href=\"%(signup_url)s\">signing up</a> and <a href="
+"\"%(login_url)s\">logging in</a>."
 msgstr ""
-"Commencez par <a href=\"%(signup_url)s\">vous inscrire</a> et <a href=\"%"
-"(login_url)s\">vous authentifier</a>."
+"Commencez par <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
+"\"%(login_url)s\">vous authentifier</a>."
 
-#: templates/about/what_next.html:48
+#: templates/about/what_next.html:51
 #, python-format
 msgid "Start by <a href=\"%(login_url)s\">logging in</a>."
 msgstr "Commencez par <a href=\"%(login_url)s\">vous authentifier</a>."
@@ -268,7 +264,7 @@ msgstr "Derniers Morceaux"
 msgid "uploaded by"
 msgstr "envoyé par"
 
-#: templates/audiotracks/latest.html:14 templates/blog/post.html:22
+#: templates/audiotracks/latest.html:14 templates/blog/post.html:23
 msgid "on"
 msgstr "le"
 
@@ -281,22 +277,16 @@ msgid "Delete"
 msgstr ""
 
 #: templates/audiotracks/track_right_panel.html:11 templates/blog/post.html:21
-#: templates/photos/photo_right_panel.html:11
+#: templates/photos/latest.html:24 templates/photos/photo_right_panel.html:11
 msgid "Posted by"
 msgstr "Posté par"
 
-#: templates/audiotracks/track_right_panel.html:14
-#: templates/photos/latest.html:26 templates/photos/photo_right_panel.html:14
-#, python-format
-msgid "Viewed %(view_count)s times"
-msgstr "Vue %(view_count)s fois"
-
-#: templates/audiotracks/track_right_panel.html:31
+#: templates/audiotracks/track_right_panel.html:30
 #, fuzzy
 msgid "Edit Track"
 msgstr "Morceaux"
 
-#: templates/audiotracks/track_right_panel.html:32
+#: templates/audiotracks/track_right_panel.html:31
 msgid "Delete Track"
 msgstr ""
 
@@ -304,7 +294,7 @@ msgstr ""
 msgid "Blog Post"
 msgstr "Billet"
 
-#: templates/blog/post.html:45
+#: templates/blog/post.html:46
 msgid "Comments on this post:"
 msgstr "Commentaires sur ce billet"
 
@@ -437,8 +427,8 @@ msgid ""
 "Also see <a href=\"%(tweet_following_url)s\">who %(other_user_display)s is "
 "following</a>."
 msgstr ""
-"Voir <a href=\"%(tweet_following_url)s\">les abonnements de %"
-"(other_user_display)s </a>."
+"Voir <a href=\"%(tweet_following_url)s\">les abonnements de "
+"%(other_user_display)s </a>."
 
 #: templates/microblogging/following.html:9
 #: templates/microblogging/following.html:14
@@ -460,8 +450,8 @@ msgstr "Aucun abonnement"
 #: templates/microblogging/following.html:33
 #, python-format
 msgid ""
-"Also see <a href=\"%(tweet_followers_url)s\">who is following</a> %"
-"(other_user_display)s."
+"Also see <a href=\"%(tweet_followers_url)s\">who is following</a> "
+"%(other_user_display)s."
 msgstr ""
 
 #: templates/microblogging/friends_tweets.html:14
@@ -472,13 +462,13 @@ msgstr "Voici les touites de vos amis:"
 msgid "No tweets yet."
 msgstr "Pas encore de touites."
 
-#: templates/microblogging/listing.html:14
+#: templates/microblogging/listing.html:13
 #, python-format
 msgid "You haven't posted any <a href=\"%(tweets_url)s\">tweets</a> yet."
 msgstr ""
 "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
 
-#: templates/microblogging/listing.html:16
+#: templates/microblogging/listing.html:15
 msgid "There are currently no tweets to be listed."
 msgstr "Il n'y a aucun tweet pour le moment."
 
@@ -518,6 +508,16 @@ msgstr "Commentaires sur cette photo"
 #, python-format
 msgid "%(title)s"
 msgstr ""
+
+#: templates/photos/latest.html:25
+#, fuzzy
+msgid "comments"
+msgstr "Derniers commentaires"
+
+#: templates/photos/latest.html:26 templates/photos/photo_right_panel.html:14
+#, python-format
+msgid "Viewed %(view_count)s times"
+msgstr "Vue %(view_count)s fois"
 
 #: templates/photos/latest.html:32
 msgid "No photos were found."
@@ -617,78 +617,43 @@ msgstr "Morceaux"
 msgid "No tracks yet."
 msgstr "Pas de morceau."
 
-#: templates/profiles/profile.html:136
-msgid "Wiki Articles"
-msgstr "Articles Wiki"
-
-#: templates/profiles/profile.html:153
-msgid "No wiki articles yet."
-msgstr "Aucun article wiki pour le moment."
-
-#: templates/profiles/profile.html:178
-#, python-format
-msgid ""
-"You haven't added any <a href=\"%(add_bookmark_url)s\">bookmarks</a> yet."
-msgstr ""
-"Vous n'avez ajouté aucun <a href=\"%(add_bookmark_url)s\">bookmarks</a> pour "
-"le moment."
-
-#: templates/profiles/profile.html:185
+#: templates/profiles/profile.html:187
 msgid "Blog Posts"
 msgstr "Billets"
 
-#: templates/profiles/profile.html:189
+#: templates/profiles/profile.html:191
 msgid "View all posts"
 msgstr "Voir tous les billets"
 
-#: templates/profiles/profile.html:191
+#: templates/profiles/profile.html:193
 msgid "No blog posts yet."
 msgstr "Aucun billet pour le moment."
 
-#: templates/profiles/profile.html:217
+#: templates/profiles/profile.html:219
 msgid "No photos uploaded yet..."
 msgstr "Il n'y a pas encore de photo..."
 
-#: templates/profiles/profile.html:223
+#: templates/profiles/profile.html:225
 #, python-format
 msgid ""
 "<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log in "
 "</a> to add this person as a friend and see their tweets and blog posts."
 msgstr ""
-"Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href=\"%"
-"(login_url)s\">vous authentifier</a> pour essayer le site."
+"Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
+"\"%(login_url)s\">vous authentifier</a> pour essayer le site."
 
-#: templates/profiles/profile_right_panel.html:9
-msgid "Your Tribes"
-msgstr "Vos Tribus"
-
-#: templates/profiles/profile_right_panel.html:16
-#, fuzzy, python-format
-msgid "You are not yet a member of any <a href=\"%(tribe_url)s\">tribes</a>."
-msgstr ""
-"Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
-
-#: templates/profiles/profile_right_panel.html:20
+#: templates/profiles/profile_right_panel.html:23
 msgid "Your Friends"
 msgstr "Vos « Amis »"
 
-#: templates/profiles/profile_right_panel.html:35
+#: templates/profiles/profile_right_panel.html:38
 #, python-format
 msgid ""
 "None. You should look at the list of <a href=\"%(profile_url)s\">profiles</"
 "a> and see if there's anyone you know."
 msgstr ""
 
-#: templates/profiles/profile_right_panel.html:42
-#, fuzzy, python-format
-msgid "%(other_user_display)s's Tribes"
-msgstr "Abonnements de %(other_user_display)s"
-
-#: templates/profiles/profile_right_panel.html:48
-msgid "Not yet a member of any tribes."
-msgstr ""
-
-#: templates/profiles/profile_right_panel.html:52
+#: templates/profiles/profile_right_panel.html:58
 #, fuzzy, python-format
 msgid "%(other_user_display)s's Friends"
 msgstr "Abonnements de %(other_user_display)s"
@@ -697,28 +662,13 @@ msgstr "Abonnements de %(other_user_display)s"
 msgid "All Photos Matching "
 msgstr "Toutes les photos correspondantes "
 
-#: templates/tags/index.html:65
+#: templates/tags/index.html:70
 msgid "All Blog Posts Matching "
 msgstr "Tout les articles de blog correspondants "
 
-#: templates/tags/index.html:68
+#: templates/tags/index.html:73
 msgid "These are blog posts from everyone:"
 msgstr "Tous les articles de blog:"
-
-#: templates/tags/index.html:76
-#, python-format
-msgid "All Tribes Matching <i>%(tag)s</i>"
-msgstr "Toutes les tribus correspondant à <i>%(tag)s</i>"
-
-#: templates/tags/index.html:85
-#, python-format
-msgid "All Tribe Topics Matching <i>%(tag)s</i>"
-msgstr "Tout les sujets de tribus correspondant à <i>%(tag)s</i>"
-
-#: templates/tags/index.html:92
-#, python-format
-msgid "All Wiki Articles Matching <i>%(tag)s</i>"
-msgstr "Tout les articles wiki correspondant à <i>%(tag)s</i>"
 
 #: templates/threadedcomments/comments.html:24
 #, fuzzy
@@ -742,10 +692,65 @@ msgstr "Saisissez votre commentaire ci-dessous"
 #, python-format
 msgid ""
 "\n"
-"        <h3>Please <a href=\"%(acct_login_url)s\">Login</a> (or <a href=\"%"
-"(acct_signup_url)s\">Sign Up</a>) to leave a comment</h3>\n"
+"        <h3>Please <a href=\"%(acct_login_url)s\">Login</a> (or <a href="
+"\"%(acct_signup_url)s\">Sign Up</a>) to leave a comment</h3>\n"
 "    "
 msgstr ""
+
+#~ msgid "Tribes"
+#~ msgstr "Tribus"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Favoris"
+
+#~ msgid "Swaps"
+#~ msgstr "Échanges"
+
+#~ msgid "Locations"
+#~ msgstr "Lieux"
+
+#~ msgid "&copy; 2010 &lt;your company here&gt;"
+#~ msgstr "&copy; 2010 &lt;votre entreprise ici&gt;"
+
+#~ msgid "Terms of Service"
+#~ msgstr "Termes du service"
+
+#~ msgid "Privacy Policy"
+#~ msgstr "Politique de confidentialité"
+
+#~ msgid "Wiki Articles"
+#~ msgstr "Articles Wiki"
+
+#~ msgid "No wiki articles yet."
+#~ msgstr "Aucun article wiki pour le moment."
+
+#~ msgid ""
+#~ "You haven't added any <a href=\"%(add_bookmark_url)s\">bookmarks</a> yet."
+#~ msgstr ""
+#~ "Vous n'avez ajouté aucun <a href=\"%(add_bookmark_url)s\">bookmarks</a> "
+#~ "pour le moment."
+
+#~ msgid "Your Tribes"
+#~ msgstr "Vos Tribus"
+
+#, fuzzy
+#~ msgid ""
+#~ "You are not yet a member of any <a href=\"%(tribe_url)s\">tribes</a>."
+#~ msgstr ""
+#~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+
+#, fuzzy
+#~ msgid "%(other_user_display)s's Tribes"
+#~ msgstr "Abonnements de %(other_user_display)s"
+
+#~ msgid "All Tribes Matching <i>%(tag)s</i>"
+#~ msgstr "Toutes les tribus correspondant à <i>%(tag)s</i>"
+
+#~ msgid "All Tribe Topics Matching <i>%(tag)s</i>"
+#~ msgstr "Tout les sujets de tribus correspondant à <i>%(tag)s</i>"
+
+#~ msgid "All Wiki Articles Matching <i>%(tag)s</i>"
+#~ msgstr "Tout les articles wiki correspondant à <i>%(tag)s</i>"
 
 #~ msgid "View more"
 #~ msgstr "En voir davantage"
