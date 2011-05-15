@@ -118,6 +118,15 @@
                     
                 {% endif %} {# is me #}
 
+                <h2>{% trans "Tweets" %}</h2>
+                
+                {% if user.is_authenticated and is_me %}
+                    {% sent_tweet_listing user 0 is_me %}
+                {% else %}
+                    {% sent_tweet_listing other_user 0 is_me %}
+                {% endif %}
+                
+
                 {% if other_user.tracks.all %}
                     <h2>{% trans "Tracks" %}</h2>
                     <ul class="bare-list">
@@ -184,22 +193,14 @@
                 {% if other_user.added_posts.all %}
                     <h2>{% trans "Blog Posts" %}</h2>
                     {% for blog_post in other_user.added_posts.all %}
-                        {% show_blog_post blog_post %}
+                        {% if blog_post.published %}
+                          {% show_blog_post blog_post %}
+                        {% endif %}
                     {% endfor %}
-                    <a href="{% url blog_list_all other_user %}">{% trans "View all posts" %}</a>
+                    <a href="{% url blog_list_user other_user %}">{% trans "View all posts" %}</a>
                 {% else %}
                     {% trans "No blog posts yet." %}
                 {% endif %}
-                
-                
-                <h2>{% trans "Tweets" %}</h2>
-                
-                {% if user.is_authenticated and is_me %}
-                    {% sent_tweet_listing user 0 is_me %}
-                {% else %}
-                    {% sent_tweet_listing other_user 0 is_me %}
-                {% endif %}
-                
                 
                 
                 {% public_photos for other_user as photos %}

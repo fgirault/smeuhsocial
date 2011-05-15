@@ -18,6 +18,7 @@ from pinax.apps.blog.feeds import BlogFeedAll, BlogFeedUser
 from pinax.apps.blog.models import Post
 from pinax.apps.photos.models import Image
 from pinax.apps.topics.models import Topic
+from pinax.apps.blog.forms import BlogForm
 #from pinax.apps.tribes.models import Tribe
 from audiotracks.models import Track
 
@@ -57,8 +58,38 @@ urlpatterns = patterns("",
     url(r"^profiles/", include("pinax.apps.profiles.urls")),
     url(r"^bbauth/", include("pinax.apps.bbauth.urls")),
     url(r"^authsub/", include("pinax.apps.authsub.urls")),
-    url(r"^(?P<username>[-\w]+)/blog/", include("pinax.apps.blog.urls")),
-    url(r"^blog/", include("pinax.apps.blog.urls")),
+
+    # Blog URLs ####################################################
+
+    # all blog posts
+    url(r"^blogs/?$", "pinax.apps.blog.views.blogs", name="blog_list_all"),
+
+    # blog post
+    url(r"^(?P<username>[-\w]+)/blog/(?P<slug>[-\w]+)/?$", "pinax.apps.blog.views.post", name="blog_post"),
+    
+    # blog post for user
+    url(r"^(?P<username>\w+)/blog/?$", "smeuhoverride.views.user_blog_index", name="blog_list_user"),
+    
+    # your posts
+    url(r"^blogs/your_posts/?$", "pinax.apps.blog.views.your_posts", name="blog_list_yours"),
+    
+    # new blog post
+    url(r"^blogs/new/$", "pinax.apps.blog.views.new", name="blog_new"),
+    
+    # edit blog post
+    url(r"^blogs/edit/(\d+)/$", "pinax.apps.blog.views.edit", name="blog_edit"),
+    
+    #destory blog post
+    url(r"^blogs/destroy/(\d+)/$", "pinax.apps.blog.views.destroy", name="blog_destroy"),
+    
+    # ajax validation
+    (r"^blogs/validate/$", "ajax_validation.views.validate", {
+        "form_class": BlogForm,
+        "callback": lambda request, *args, **kwargs: {"user": request.user}
+    }, "blog_form_validate"),
+
+    # /END Blog URLs ###################################################
+
     url(r"^invitations/", include("friends_app.urls")),
     url(r"^notices/", include("notification.urls")),
     url(r"^messages/", include("messages.urls")),
@@ -148,7 +179,7 @@ urlpatterns += patterns("",
         kwargs=tagging_ext_kwargs, name="tagging_ext_tag_by_model"),
     url(r"^tags/(?P<tag>.+)/$", "tagging_ext.views.tag",
         kwargs=tagging_ext_kwargs, name="tagging_ext_tag"),
-    url(r"^tags/$", "smeuhoverride.views.index", kwargs={'limit': 1000}, name="tagging_ext_index"),
+    url(r"^tags/$", "smeuhoverride.views.tag_index", kwargs={'limit': 1000}, name="tagging_ext_index"),
 )
 
 urlpatterns += patterns("",
