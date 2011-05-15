@@ -444,3 +444,23 @@ a.view-all {
 .audiotracks-detail {
     margin-bottom: 48px;
 }
+
+#tag-cloud li {
+    display: inline;
+}
+
+.tag-size-1 {
+    font-size: 12px;
+}
+.tag-size-2 {
+    font-size: 18px;
+}
+.tag-size-3 {
+    font-size: 24px;
+}
+.tag-size-4 {
+    font-size: 28px;
+}
+.tag-size-5 {
+    font-size: 34px;
+}
