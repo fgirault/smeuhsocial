@@ -8,13 +8,13 @@ from django.shortcuts import render_to_response
 from tagging.models import Tag
 from tagging.utils import calculate_cloud, LOGARITHMIC
 
-def index(request, template_name="tagging_ext/index.html", min_size=1, limit=100):
+def index(request, template_name="tagging_ext/index.html", min_size=0, limit=100):
     query = """
         SELECT tag_item.tag_id as tag_id, COUNT(tag_item.tag_id) as counter 
         FROM tagging_taggeditem as tag_item 
         INNER JOIN tagging_tag as tag ON (tag.id = tag_item.tag_id)
-        GROUP BY tag_id
-        HAVING COUNT(tag_item.tag_id) > %s
+        GROUP BY tag.name,tag_id
+        HAVING COUNT(tag.name) > %s
         ORDER BY tag.name
         LIMIT %s
     """
@@ -37,7 +37,6 @@ def index(request, template_name="tagging_ext/index.html", min_size=1, limit=100
         tags.append(tag)    
 
     tags = calculate_cloud(tags, steps=5, distribution=LOGARITHMIC)
-    print tags
         
     return render_to_response(template_name, {'tags': tags},
         context_instance=RequestContext(request))

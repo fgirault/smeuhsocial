@@ -148,7 +148,7 @@ urlpatterns += patterns("",
         kwargs=tagging_ext_kwargs, name="tagging_ext_tag_by_model"),
     url(r"^tags/(?P<tag>.+)/$", "tagging_ext.views.tag",
         kwargs=tagging_ext_kwargs, name="tagging_ext_tag"),
-    url(r"^tags/$", "smeuhoverride.views.index", {'limit': 1000}, name="tagging_ext_index"),
+    url(r"^tags/$", "smeuhoverride.views.index", kwargs={'limit': 1000}, name="tagging_ext_index"),
 )
 
 urlpatterns += patterns("",
