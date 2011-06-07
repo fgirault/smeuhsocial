@@ -1,9 +1,10 @@
 {% load account_tags %}
-{% load threadedcommentstags %}
-{% load i18n %}
-{% load uni_form_tags %}
-{% load pagination_tags %}
 {% load avatar_tags %}
+{% load i18n %}
+{% load override_tags %}
+{% load pagination_tags %}
+{% load threadedcommentstags %}
+{% load uni_form_tags %}
 
 {% get_threaded_comment_tree for object as responses %}
 {% autopaginate responses %}
@@ -17,7 +18,7 @@
                 {{ response.date_submitted|date }}
             </div>
             <div class="bulk">
-                <div class="body">{{ response.comment|urlize|linebreaks }}</div>
+                <div class="body">{{ response.comment|urlize|profilize|linebreaks }}</div>
                 {% ifequal user response.user %}
                 <form method="POST" action="{% url tc_comment_delete response.id %}">
                     {% csrf_token %}
