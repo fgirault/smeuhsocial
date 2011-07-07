@@ -21,6 +21,7 @@ from pinax.apps.topics.models import Topic
 from pinax.apps.blog.forms import BlogForm
 #from pinax.apps.tribes.models import Tribe
 from audiotracks.models import Track
+from smeuhoverride import feeds
 
 
 handler500 = "pinax.views.server_error"
@@ -103,7 +104,11 @@ urlpatterns = patterns("",
     url(r"^avatar/", include("avatar.urls")),
 #    url(r"^swaps/", include("swaps.urls")),
     url(r"^flag/", include("flag.urls")),
-    url(r"^feeds/tweets/(.*)/$", "django.contrib.syndication.views.feed", tweets_feed_dict),
+    url(r"^feeds/tweets/(?P<username>[\w\._-]+)/with_friends/?$",
+            feeds.UserTweetWithFriends(), name="user_friends_tweets"),
+    url(r"^feeds/tweets/(?P<username>[\w\._-]+)/?$", feeds.UserTweet(),
+            name="user_tweets"),
+    url(r"^feeds/tweets/?$", feeds.AllTweet(), name="all_tweets"),
     url(r"^feeds/posts/(.*)/$", "django.contrib.syndication.views.feed", blogs_feed_dict),
     url(r"^feeds/bookmarks/(.*)/?$", "django.contrib.syndication.views.feed", bookmarks_feed_dict),
 )
