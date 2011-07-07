@@ -53,6 +53,7 @@ TIME_ZONE = "Europe/Paris"
 LANGUAGE_CODE = "fr"
 
 SITE_ID = 1
+SITE_NAME = 'MySmeuh'
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
