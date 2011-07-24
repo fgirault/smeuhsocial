@@ -437,6 +437,11 @@ a.view-all {
     text-shadow: 0.5px 0.5px 0.5px #BBB;
 }
 
+a.feed-icon {
+  padding-top: 0;
+  margin-left: 10px;
+}
+
 .login.uniForm .inlineLabels .textInput {
     width: auto;
 }

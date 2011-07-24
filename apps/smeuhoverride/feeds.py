@@ -8,12 +8,12 @@ from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import get_object_or_404
 
 from friends.models import friend_set_for
-from microblogging.models import Tweet, TweetInstance
+from microblogging.models import Tweet
 
 ITEMS_PER_FEED = getattr(settings, 'PINAX_ITEMS_PER_FEED', 20)
 
 class AllTweet(Feed):
-    title = "MySmeuh Touites"
+    title = "Touites MySmeuh"
     link = "/tweets/all"
     description = "Tous les touites de MySmeuh"
 

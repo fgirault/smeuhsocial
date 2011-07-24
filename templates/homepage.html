@@ -51,6 +51,8 @@
           {% endfor %}
         </div>
         <div class="latest-tweets">
+          <a title="Atom Feed" class="view-all feed-icon" href="{% url all_tweets_feed %}"><img 
+            src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
             <a class="view-all" href="{% url all_tweets %}">{% blocktrans %}View all{% endblocktrans %}</a>
           <h2>{% blocktrans %}Latest tweets{% endblocktrans %}</h2>
           {% for tweet in latest_tweets%}

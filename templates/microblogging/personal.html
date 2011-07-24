@@ -9,7 +9,7 @@
 {% block extra_head %}
 <link rel="alternate" type="application/atom+xml" 
 title="Tous les touites" 
-href="{% url all_tweets %}" />
+href="{% url all_tweets_feed %}" />
 <link rel="alternate" type="application/atom+xml" 
 title="Touites de {% user_display user %}" 
 href="{% url user_tweets user.username %}" />
