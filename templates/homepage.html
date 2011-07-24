@@ -58,6 +58,16 @@
           {% for tweet in latest_tweets%}
               {% include "microblogging/_tweet.html" %}
           {% endfor %}
+          {% if user.is_authenticated %}
+          <form id="homepage-tweet-form" action="{% url tweets_you_follow %}" method="POST">
+            {% csrf_token %}
+            <div style="display:none"><input type="hidden" value="cd80262ebddf15295dbf9b94d7e57482" name="csrfmiddlewaretoken"></div>
+            <input type="text" autocomplete="off" id="new_tweet" name="text" cols="30" rows="4"/>
+
+            <input type="submit" value="{% trans 'Bang' %}">
+            <span id="chars_left">140</span> caractères restant.
+          </form>
+          {% endif %}
         </div>
         <div class="latest-blogs">
             <a class="view-all" href="{% url blog_list_all %}">{% blocktrans %}View all{% endblocktrans %}</a>
@@ -93,4 +103,7 @@
         {% endifsetting %}
     {% endif %}
     
+{% endblock %}
+{% block extra_body %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/microblogging.js"></script>
 {% endblock %}
