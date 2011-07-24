@@ -63,7 +63,6 @@
           {% if user.is_authenticated %}
           <form id="homepage-tweet-form" action="{% url tweets_you_follow %}" method="POST">
             {% csrf_token %}
-            <div style="display:none"><input type="hidden" value="cd80262ebddf15295dbf9b94d7e57482" name="csrfmiddlewaretoken"></div>
             <input type="text" autocomplete="off" id="new_tweet" name="text" cols="30" rows="4"/>
 
             <input type="submit" value="{% trans 'Bang' %}">
