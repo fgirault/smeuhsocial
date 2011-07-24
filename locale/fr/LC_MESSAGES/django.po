@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-15 15:35+0200\n"
+"POT-Creation-Date: 2011-07-24 09:30+0200\n"
 "PO-Revision-Date: 2010-03-04 09:26+0100\n"
 "Last-Translator: James Pic <http://jamespic.com>\n"
 "Language-Team: Pinax French <http://www.transifex.net/projects/p/pinax/team/"
@@ -105,14 +105,18 @@ msgstr ""
 msgid "Latest comments"
 msgstr "Derniers commentaires"
 
+#: templates/homepage.html:38
+msgid " on "
+msgstr " à propos de "
+
 #: templates/homepage.html:38 templates/microblogging/_tweet.html:8
 #: templates/microblogging/friends_tweets.html:25
 #, python-format
 msgid "%(tweet_age)s ago"
 msgstr "il y a %(tweet_age)s"
 
-#: templates/homepage.html:47 templates/homepage.html.py:54
-#: templates/homepage.html:61 templates/homepage.html.py:69
+#: templates/homepage.html:47 templates/homepage.html.py:56
+#: templates/homepage.html:73 templates/homepage.html.py:81
 msgid "View all"
 msgstr "Tout voir"
 
@@ -120,25 +124,29 @@ msgstr "Tout voir"
 msgid "Latest photos"
 msgstr "Dernières photos"
 
-#: templates/homepage.html:55
+#: templates/homepage.html:57
 msgid "Latest tweets"
 msgstr "Derniers touites"
 
-#: templates/homepage.html:62
+#: templates/homepage.html:67
+msgid "Bang"
+msgstr "Pan!"
+
+#: templates/homepage.html:74
 msgid "Latest blog posts"
 msgstr "Derniers billets de blog"
 
-#: templates/homepage.html:70 templates/audiotracks/base.html:20
+#: templates/homepage.html:82 templates/audiotracks/base.html:20
 msgid "Latest tracks"
-msgstr "Derniers morceaux"
+msgstr "Derniers sons"
 
-#: templates/homepage.html:83
+#: templates/homepage.html:95
 #, python-format
 msgid "Wondering <a href=\"%(what_next_url)s\">What Next</a>?"
 msgstr ""
 "Vous demandez-vous <a href=\"%(what_next_url)s\">Que faire maintenant</a>?"
 
-#: templates/homepage.html:88
+#: templates/homepage.html:100
 #, python-format
 msgid ""
 "You can <a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s"
@@ -147,7 +155,7 @@ msgstr ""
 "Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
 "\"%(login_url)s\">vous authentifier</a> pour essayer le site."
 
-#: templates/homepage.html:90
+#: templates/homepage.html:102
 #, python-format
 msgid "You can <a href=\"%(login_url)s\">Log in</a> to try out the site."
 msgstr ""
@@ -174,7 +182,7 @@ msgstr "Site Web"
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/site_base.html:47 templates/profiles/profile.html:210
+#: templates/site_base.html:47 templates/profiles/profile.html:211
 msgid "Photos"
 msgstr "Photos"
 
@@ -182,7 +190,9 @@ msgstr "Photos"
 msgid "Music"
 msgstr "Musique"
 
-#: templates/site_base.html:49 templates/profiles/profile.html:197
+#: templates/site_base.html:49 templates/microblogging/personal.html:7
+#: templates/microblogging/personal.html:22
+#: templates/profiles/profile.html:121
 msgid "Tweets"
 msgstr "Touites"
 
@@ -322,7 +332,7 @@ msgstr "Commentaires sur ce billet"
 msgid "Blog posts by %(username)s"
 msgstr "Blog de %(username)s"
 
-#: templates/blog/user_blog.html:34 templates/profiles/profile.html:193
+#: templates/blog/user_blog.html:34 templates/profiles/profile.html:204
 msgid "No blog posts yet."
 msgstr "Aucun billet pour le moment."
 
@@ -500,6 +510,45 @@ msgstr ""
 msgid "There are currently no tweets to be listed."
 msgstr "Il n'y a aucun tweet pour le moment."
 
+#: templates/microblogging/personal.html:27
+msgid "What are you doing?"
+msgstr ""
+
+#: templates/microblogging/personal.html:30
+#, fuzzy
+msgid "You have authorized a twitter account."
+msgstr "Vous avez déjà autorisé un compte twitter."
+
+#: templates/microblogging/personal.html:32
+msgid "Publish to Twitter?"
+msgstr ""
+
+#: templates/microblogging/personal.html:36
+msgid "chars left."
+msgstr ""
+
+#: templates/microblogging/personal.html:37
+#, fuzzy
+msgid "Post"
+msgstr "Posté par"
+
+#: templates/microblogging/personal.html:41
+msgid "person,people"
+msgstr ""
+
+#: templates/microblogging/personal.html:41
+#, python-format
+msgid ""
+"\n"
+"        These are tweets from the %(follow_count)s %(follow_name)s you are "
+"following (plus your own)"
+msgstr ""
+
+#: templates/microblogging/single.html:6 templates/microblogging/single.html:9
+#, fuzzy
+msgid "Single Tweet"
+msgstr "Tous les touites"
+
 #: templates/notification/single.html:7 templates/notification/single.html:10
 msgid "Notice"
 msgstr "Notifications"
@@ -538,9 +587,8 @@ msgid "%(title)s"
 msgstr ""
 
 #: templates/photos/latest.html:25
-#, fuzzy
 msgid "comments"
-msgstr "Derniers commentaires"
+msgstr "commentaires"
 
 #: templates/photos/latest.html:26 templates/photos/photo_right_panel.html:14
 #, python-format
@@ -637,27 +685,27 @@ msgstr "inviter"
 msgid "%(other_user_display)s to be a friend."
 msgstr "%(other_user_display)s comme « ami »"
 
-#: templates/profiles/profile.html:122
+#: templates/profiles/profile.html:131
 msgid "Tracks"
 msgstr "Morceaux"
 
-#: templates/profiles/profile.html:131
+#: templates/profiles/profile.html:140
 msgid "No tracks yet."
 msgstr "Pas de morceau."
 
-#: templates/profiles/profile.html:187
+#: templates/profiles/profile.html:196
 msgid "Blog Posts"
 msgstr "Billets"
 
-#: templates/profiles/profile.html:191
+#: templates/profiles/profile.html:202
 msgid "View all posts"
 msgstr "Voir tous les billets"
 
-#: templates/profiles/profile.html:219
+#: templates/profiles/profile.html:220
 msgid "No photos uploaded yet..."
 msgstr "Il n'y a pas encore de photo..."
 
-#: templates/profiles/profile.html:225
+#: templates/profiles/profile.html:226
 #, python-format
 msgid ""
 "<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log in "
@@ -694,25 +742,25 @@ msgstr "Tout les articles de blog correspondants "
 msgid "These are blog posts from everyone:"
 msgstr "Tous les articles de blog:"
 
-#: templates/threadedcomments/comments.html:24
+#: templates/threadedcomments/comments.html:25
 #, fuzzy
 msgid "Delete Post"
 msgstr "Supprimer cette photo"
 
-#: templates/threadedcomments/comments.html:28
+#: templates/threadedcomments/comments.html:29
 msgid "Reply to This Post"
 msgstr ""
 
-#: templates/threadedcomments/comments.html:32
-#: templates/threadedcomments/comments.html:52
+#: templates/threadedcomments/comments.html:33
+#: templates/threadedcomments/comments.html:53
 msgid "Post Response"
 msgstr ""
 
-#: templates/threadedcomments/comments.html:47
+#: templates/threadedcomments/comments.html:48
 msgid "Enter your comment"
 msgstr "Saisissez votre commentaire ci-dessous"
 
-#: templates/threadedcomments/comments.html:59
+#: templates/threadedcomments/comments.html:60
 #, python-format
 msgid ""
 "\n"
