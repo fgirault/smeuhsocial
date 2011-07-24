@@ -1,12 +1,11 @@
 from django.conf import settings
 from django.conf.urls.defaults import *
-from django.views.generic.simple import direct_to_template
+from django.views.generic.simple import direct_to_template, redirect_to
 
 from django.contrib import admin
 admin.autodiscover()
 
 from bookmarks.feeds import BookmarkFeed
-from bookmarks.models import BookmarkInstance
 from microblogging.feeds import TweetFeedAll, TweetFeedUser, TweetFeedUserWithFriends
 from microblogging.models import Tweet
 #from swaps.models import Offer
@@ -41,6 +40,7 @@ blogs_feed_dict = {"feed_dict": {
 bookmarks_feed_dict = {"feed_dict": {"": BookmarkFeed }}
 
 urlpatterns = patterns("",
+    url(r"^favicon.ico/?$", redirect_to, {'url': settings.STATIC_URL + 'img/favicon.ico' }),
     url(r"^$", direct_to_template, {
         "template": "homepage.html",
         "extra_context": {
