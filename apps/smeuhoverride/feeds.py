@@ -84,7 +84,8 @@ class AllPhotos(Feed):
         return u'« %s » par %s' % (item.title, item.member.username)
 
     def item_description(self, item):
-        return urlize(item.caption)
+        return u'<img src="%s"><p>%s</p>' % (item.get_display_url(),
+                urlize(item.caption))
 
     def item_pub_date(self, item):
         return item.date_added
