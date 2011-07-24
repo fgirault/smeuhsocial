@@ -32,7 +32,11 @@
 
       {% get_latest_comments 12 as latest_comments %}
       <div id="homepage-left-col">
-        <h2>{% blocktrans %}Latest comments{% endblocktrans %}</h2>
+        <div>
+          <a title="Atom Feed" class="view-all feed-icon" href="{% url all_comments_feed %}"><img 
+              src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
+          <h2>{% blocktrans %}Latest comments{% endblocktrans %}</h2>
+        </div>
         {% for comment in latest_comments %}
             {% if comment.content_object %}
             <div class="latest-comment-entry {% if forloop.last %}last{% endif %}">
