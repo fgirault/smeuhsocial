@@ -11,6 +11,15 @@
 
 {% block body_class %}home{% endblock %}
 
+{% block extra_head %}
+<link rel="alternate" type="application/atom+xml" 
+title="Touites" href="{% url all_tweets_feed %}" />
+<link rel="alternate" type="application/atom+xml" 
+title="Photos" href="{% url all_photos_feed %}" />
+<link rel="alternate" type="application/atom+xml" 
+title="Commentaires" href="{% url all_comments_feed %}" />
+{% endblock %}
+
 {% block body %}
     
     {% if not user.is_authenticated %}
