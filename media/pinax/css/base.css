@@ -456,6 +456,11 @@ a.view-all {
     text-shadow: 0.5px 0.5px 0.5px #BBB;
 }
 
+a.view-all img {
+    margin-right: 0;
+    margin-bottom: 0;
+}
+
 a.feed-icon {
   padding-top: 0;
   margin-left: 10px;

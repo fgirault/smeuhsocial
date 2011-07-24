@@ -109,6 +109,7 @@ urlpatterns = patterns("",
     url(r"^feeds/tweets/(?P<username>[\w\._-]+)/?$", feeds.UserTweet(),
             name="user_tweets"),
     url(r"^feeds/tweets/?$", feeds.AllTweet(), name="all_tweets_feed"),
+    url(r"^feeds/photos/?$", feeds.AllPhotos(), name="all_photos_feed"),
     url(r"^feeds/posts/(.*)/$", "django.contrib.syndication.views.feed", blogs_feed_dict),
     url(r"^feeds/bookmarks/(.*)/?$", "django.contrib.syndication.views.feed", bookmarks_feed_dict),
 )

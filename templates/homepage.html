@@ -46,6 +46,8 @@
 
       <div id="homepage-right-col">
         <div class="latest-photos">
+          <a title="Atom Feed" class="view-all feed-icon" href="{% url all_photos_feed %}"><img 
+            src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
           <a class="view-all" href="{% url photos %}">{% blocktrans %}View all{% endblocktrans %}</a>
           <h2>{% blocktrans %}Latest photos{% endblocktrans %}</h2>
           {% for photo in latest_photos%}

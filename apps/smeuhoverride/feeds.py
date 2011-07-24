@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404
 
 from friends.models import friend_set_for
 from microblogging.models import Tweet
+from pinax.apps.photos.models import Image
 
 ITEMS_PER_FEED = getattr(settings, 'PINAX_ITEMS_PER_FEED', 20)
 
@@ -67,3 +68,21 @@ class UserTweetWithFriends(UserTweet):
         friends = friend_set_for(user)
         friend_ids = [friend.id for friend in friends] + [user.id]
         return Tweet.objects.filter(sender_id__in=friend_ids, sender_type__name="user")
+
+
+class AllPhotos(Feed):
+    title = "Photos MySmeuh"
+    link = "/photos"
+    descriptions = u"Les dernières photos postées sur MySmeuh"
+
+    def items(self):
+        return Image.objects.filter(is_public=True).order_by("-date_added")
+
+    def item_title(self, item):
+        return u'« %s » par %s' % (item.title, item.member.username)
+
+    def item_description(self, item):
+        return item.caption
+
+    def item_pub_date(self, item):
+        return item.date_added
