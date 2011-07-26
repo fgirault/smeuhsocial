@@ -4,7 +4,10 @@
 {% block head_title %}{% trans 'Latest Tracks' %}{% endblock %}
 
 {% block body %}
-<h1>{% trans 'Latest Tracks' %}</h1>
+<h1>{% trans 'Latest Tracks' %}
+  <a title="Atom Feed" class="feed-icon" href="{% if username %}{% url tracks_feed username=username %}{% else %}{% url tracks_feed %}{% endif %}">
+  <img src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
+</h1>
 <ul class="audiotracks-list">
 {% for track in tracks %}
 <li>

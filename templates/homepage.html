@@ -12,12 +12,14 @@
 {% block body_class %}home{% endblock %}
 
 {% block extra_head %}
-<link rel="alternate" type="application/atom+xml" 
+<link rel="alternate" type="application/rss+xml" 
 title="Touites" href="{% url all_tweets_feed %}" />
-<link rel="alternate" type="application/atom+xml" 
+<link rel="alternate" type="application/rss+xml" 
 title="Photos" href="{% url all_photos_feed %}" />
-<link rel="alternate" type="application/atom+xml" 
+<link rel="alternate" type="application/rss+xml" 
 title="Commentaires" href="{% url all_comments_feed %}" />
+<link rel="alternate" type="application/rss+xml" 
+title="Tracks" href="{% url tracks_feed %}" />
 {% endblock %}
 
 {% block body %}
@@ -42,7 +44,7 @@ title="Commentaires" href="{% url all_comments_feed %}" />
       {% get_latest_comments 12 as latest_comments %}
       <div id="homepage-left-col">
         <div>
-          <a title="Atom Feed" class="view-all feed-icon" href="{% url all_comments_feed %}"><img 
+          <a title="RSS Feed" class="view-all feed-icon" href="{% url all_comments_feed %}"><img 
               src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
           <h2>{% blocktrans %}Latest comments{% endblocktrans %}</h2>
         </div>
@@ -59,7 +61,7 @@ title="Commentaires" href="{% url all_comments_feed %}" />
 
       <div id="homepage-right-col">
         <div class="latest-photos">
-          <a title="Atom Feed" class="view-all feed-icon" href="{% url all_photos_feed %}"><img 
+          <a title="RSS Feed" class="view-all feed-icon" href="{% url all_photos_feed %}"><img 
             src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
           <a class="view-all" href="{% url photos %}">{% blocktrans %}View all{% endblocktrans %}</a>
           <h2>{% blocktrans %}Latest photos{% endblocktrans %}</h2>
@@ -68,7 +70,7 @@ title="Commentaires" href="{% url all_comments_feed %}" />
           {% endfor %}
         </div>
         <div class="latest-tweets">
-          <a title="Atom Feed" class="view-all feed-icon" href="{% url all_tweets_feed %}"><img 
+          <a title="RSS Feed" class="view-all feed-icon" href="{% url all_tweets_feed %}"><img 
             src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
             <a class="view-all" href="{% url all_tweets %}">{% blocktrans %}View all{% endblocktrans %}</a>
           <h2>{% blocktrans %}Latest tweets{% endblocktrans %}</h2>
@@ -94,6 +96,8 @@ title="Commentaires" href="{% url all_comments_feed %}" />
           {% endfor %}
         </div>
         <div class="latest-tracks">
+            <a title="RSS Feed" class="view-all feed-icon" href="{% url tracks_feed %}"><img 
+              src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
             <a class="view-all" href="{% url audiotracks %}">{% blocktrans %}View all{% endblocktrans %}</a>
           <h2>{% blocktrans %}Latest tracks{% endblocktrans %}</h2>
           {% for track in latest_tracks%}
