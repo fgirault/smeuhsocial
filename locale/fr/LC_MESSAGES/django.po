@@ -1,13 +1,12 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Copyright (C) 2011 Association Smeuh.Org
+# This file is distributed under the same license as the smeuhsocial package.
+# Alex Marandon <al@smeuh.org>, 2011
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-24 09:30+0200\n"
+"POT-Creation-Date: 2011-07-26 14:14+0200\n"
 "PO-Revision-Date: 2010-03-04 09:26+0100\n"
 "Last-Translator: James Pic <http://jamespic.com>\n"
 "Language-Team: Pinax French <http://www.transifex.net/projects/p/pinax/team/"
@@ -74,11 +73,11 @@ msgstr "Cacher"
 msgid "Welcome"
 msgstr "Bienvenue"
 
-#: templates/homepage.html:17
+#: templates/homepage.html:28
 msgid "This is your Smeuh"
 msgstr "Bienvenue dans votre Smeuh"
 
-#: templates/homepage.html:19
+#: templates/homepage.html:30
 msgid ""
 "\n"
 "    <p>This site is a platform for members and friends of <a\n"
@@ -101,52 +100,52 @@ msgstr ""
 "et      éventuellement contribuer, c'est <a        href=\"https://github.com/"
 "alex-marandon/smeuhsocial\">par ici</a>.    </p>"
 
-#: templates/homepage.html:35
+#: templates/homepage.html:49
 msgid "Latest comments"
 msgstr "Derniers commentaires"
 
-#: templates/homepage.html:38
+#: templates/homepage.html:54
 msgid " on "
 msgstr " à propos de "
 
-#: templates/homepage.html:38 templates/microblogging/_tweet.html:8
+#: templates/homepage.html:54 templates/microblogging/_tweet.html:8
 #: templates/microblogging/friends_tweets.html:25
 #, python-format
 msgid "%(tweet_age)s ago"
 msgstr "il y a %(tweet_age)s"
 
-#: templates/homepage.html:47 templates/homepage.html.py:56
-#: templates/homepage.html:73 templates/homepage.html.py:81
+#: templates/homepage.html:66 templates/homepage.html.py:75
+#: templates/homepage.html:91 templates/homepage.html.py:101
 msgid "View all"
 msgstr "Tout voir"
 
-#: templates/homepage.html:48
+#: templates/homepage.html:67
 msgid "Latest photos"
 msgstr "Dernières photos"
 
-#: templates/homepage.html:57
+#: templates/homepage.html:76
 msgid "Latest tweets"
 msgstr "Derniers touites"
 
-#: templates/homepage.html:67
+#: templates/homepage.html:85
 msgid "Bang"
 msgstr "Pan!"
 
-#: templates/homepage.html:74
+#: templates/homepage.html:92
 msgid "Latest blog posts"
 msgstr "Derniers billets de blog"
 
-#: templates/homepage.html:82 templates/audiotracks/base.html:20
+#: templates/homepage.html:102 templates/audiotracks/base.html:20
 msgid "Latest tracks"
 msgstr "Derniers sons"
 
-#: templates/homepage.html:95
+#: templates/homepage.html:115
 #, python-format
 msgid "Wondering <a href=\"%(what_next_url)s\">What Next</a>?"
 msgstr ""
 "Vous demandez-vous <a href=\"%(what_next_url)s\">Que faire maintenant</a>?"
 
-#: templates/homepage.html:100
+#: templates/homepage.html:120
 #, python-format
 msgid ""
 "You can <a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s"
@@ -155,7 +154,7 @@ msgstr ""
 "Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
 "\"%(login_url)s\">vous authentifier</a> pour essayer le site."
 
-#: templates/homepage.html:102
+#: templates/homepage.html:122
 #, python-format
 msgid "You can <a href=\"%(login_url)s\">Log in</a> to try out the site."
 msgstr ""
@@ -182,7 +181,7 @@ msgstr "Site Web"
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/site_base.html:47 templates/profiles/profile.html:211
+#: templates/site_base.html:47 templates/profiles/profile.html:214
 msgid "Photos"
 msgstr "Photos"
 
@@ -269,19 +268,19 @@ msgstr "Commentaires sur ce morceau"
 msgid "Latest Tracks"
 msgstr "Derniers Morceaux"
 
-#: templates/audiotracks/latest.html:12
+#: templates/audiotracks/latest.html:15
 msgid "uploaded by"
 msgstr "envoyé par"
 
-#: templates/audiotracks/latest.html:14 templates/blog/post.html:23
+#: templates/audiotracks/latest.html:17 templates/blog/post.html:23
 msgid "on"
 msgstr "le"
 
-#: templates/audiotracks/latest.html:16
+#: templates/audiotracks/latest.html:19
 msgid "Edit"
 msgstr ""
 
-#: templates/audiotracks/latest.html:17
+#: templates/audiotracks/latest.html:20
 msgid "Delete"
 msgstr ""
 
@@ -332,7 +331,7 @@ msgstr "Commentaires sur ce billet"
 msgid "Blog posts by %(username)s"
 msgstr "Blog de %(username)s"
 
-#: templates/blog/user_blog.html:34 templates/profiles/profile.html:204
+#: templates/blog/user_blog.html:34 templates/profiles/profile.html:207
 msgid "No blog posts yet."
 msgstr "Aucun billet pour le moment."
 
@@ -689,23 +688,27 @@ msgstr "%(other_user_display)s comme « ami »"
 msgid "Tracks"
 msgstr "Morceaux"
 
-#: templates/profiles/profile.html:140
+#: templates/profiles/profile.html:139
+msgid "View all tracks"
+msgstr "Voir tous les morceaux"
+
+#: templates/profiles/profile.html:143
 msgid "No tracks yet."
 msgstr "Pas de morceau."
 
-#: templates/profiles/profile.html:196
+#: templates/profiles/profile.html:199
 msgid "Blog Posts"
 msgstr "Billets"
 
-#: templates/profiles/profile.html:202
+#: templates/profiles/profile.html:205
 msgid "View all posts"
 msgstr "Voir tous les billets"
 
-#: templates/profiles/profile.html:220
+#: templates/profiles/profile.html:223
 msgid "No photos uploaded yet..."
 msgstr "Il n'y a pas encore de photo..."
 
-#: templates/profiles/profile.html:226
+#: templates/profiles/profile.html:229
 #, python-format
 msgid ""
 "<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log in "

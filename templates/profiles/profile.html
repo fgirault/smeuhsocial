@@ -135,6 +135,9 @@
                       <a href="{% url track_detail track.user.username, track.slug %}">{{ track.title }}</a>
                     </li>
                     {% endfor %}
+                    <p>
+                      <a href="{% url audiotracks other_user.username %}">{% trans 'View all tracks' %}</a>
+                    </p>
                     </ul>
                 {% else %}
                     <p>{% trans "No tracks yet." %}</p>
