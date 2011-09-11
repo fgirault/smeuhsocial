@@ -12,8 +12,11 @@
 {% block head_title %}{% blocktrans %}Blog Post{% endblocktrans %} : {{ post.title }}{% endblock %}
 
 {% block extra_head %}
-    <link rel="alternate" type="application/atom+xml" title="Blog Post Feed for All Users" href="/feeds/posts/all/" />
-    <link rel="alternate" type="application/atom+xml" title="Blog Post Feed for User {{ post.author.username }}" href="/feeds/posts/only/{{ post.author.username }}/" />
+<link rel="alternate" type="application/atom+xml" title="Blog Post Feed for All Users" 
+href="{% url all_blogs_feed %}" />
+<link rel="alternate" type="application/atom+xml" 
+    title="Blog Post Feed for User {{ post.author.username }}" 
+    href="{% url user_blog_feed post.author.username %}/" />
     <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/pygments.css" />
 {% endblock %}
 

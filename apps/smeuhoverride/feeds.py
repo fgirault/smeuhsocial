@@ -10,6 +10,7 @@ from django.template.defaultfilters import urlize
 
 from friends.models import friend_set_for
 from microblogging.models import Tweet
+from pinax.apps.blog.models import Post
 from pinax.apps.photos.models import Image
 from threadedcomments.models import ThreadedComment
 
@@ -115,3 +116,31 @@ class AllComments(Feed):
             return item.content_object.get_absolute_url()
         except:
             return "/"
+
+class AllBlogPosts(Feed):
+    title = "Blogs MySmeuh"
+    link = "/blogs"
+    descriptions = u"Derniers billets publiés sur MySmeuh"
+
+    def items(self):
+        posts = Post.objects.filter(status=2).select_related(depth=1).order_by("-publish")
+        return posts[:ITEMS_PER_FEED]
+
+    def item_title(self, item):
+        return u'« %s » par %s' % (item.title, item.author.username)
+
+    def item_description(self, item):
+        return item.tease
+
+    def item_pub_date(self, item):
+        return item.created_at
+
+class UserBlogPosts(AllBlogPosts):
+
+    def get_object(self, request, username):
+        return get_object_or_404(User, username=username)
+
+    def items(self, user):
+        posts = Post.objects.filter(status=2).select_related(depth=1).order_by("-publish")
+        posts = posts.filter(author=user)
+        return posts[:ITEMS_PER_FEED]

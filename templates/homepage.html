@@ -20,6 +20,8 @@ title="Photos" href="{% url all_photos_feed %}" />
 title="Commentaires" href="{% url all_comments_feed %}" />
 <link rel="alternate" type="application/rss+xml" 
 title="Tracks" href="{% url tracks_feed %}" />
+<link rel="alternate" type="application/rss+xml" 
+title="Blogs" href="{% url all_blogs_feed %}" />
 {% endblock %}
 
 {% block body %}
@@ -88,6 +90,8 @@ title="Tracks" href="{% url tracks_feed %}" />
           {% endif %}
         </div>
         <div class="latest-blogs">
+            <a title="RSS Feed" class="view-all feed-icon" href="{% url all_blogs_feed %}"><img 
+              src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
             <a class="view-all" href="{% url blog_list_all %}">{% blocktrans %}View all{% endblocktrans %}</a>
           <h2>{% blocktrans %}Latest blog posts{% endblocktrans %}</h2>
           {% for blog_post in latest_blogs%}

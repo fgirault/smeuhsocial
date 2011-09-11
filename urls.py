@@ -64,6 +64,9 @@ urlpatterns = patterns("",
 
     # all blog posts
     url(r"^blogs/?$", "pinax.apps.blog.views.blogs", name="blog_list_all"),
+ 
+    url(r"^(?P<username>[\w\._-]+)/blog/feed/?$", feeds.UserBlogPosts(),
+            name="user_blog_feed"),
 
     # blog post
     url(r"^(?P<username>[-\w]+)/blog/(?P<slug>[-\w]+)/?$", "pinax.apps.blog.views.post", name="blog_post"),
@@ -111,7 +114,7 @@ urlpatterns = patterns("",
     url(r"^feeds/tweets/?$", feeds.AllTweet(), name="all_tweets_feed"),
     url(r"^feeds/photos/?$", feeds.AllPhotos(), name="all_photos_feed"),
     url(r"^feeds/comments/?$", feeds.AllComments(), name="all_comments_feed"),
-    url(r"^feeds/posts/(.*)/$", "django.contrib.syndication.views.feed", blogs_feed_dict),
+    url(r"^feeds/blogs/?$", feeds.AllBlogPosts(), name="all_blogs_feed"),
     url(r"^feeds/bookmarks/(.*)/?$", "django.contrib.syndication.views.feed", bookmarks_feed_dict),
 )
 
