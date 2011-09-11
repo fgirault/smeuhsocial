@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-26 14:14+0200\n"
+"POT-Creation-Date: 2011-09-11 16:27+0200\n"
 "PO-Revision-Date: 2010-03-04 09:26+0100\n"
 "Last-Translator: James Pic <http://jamespic.com>\n"
 "Language-Team: Pinax French <http://www.transifex.net/projects/p/pinax/team/"
@@ -73,11 +73,11 @@ msgstr "Cacher"
 msgid "Welcome"
 msgstr "Bienvenue"
 
-#: templates/homepage.html:28
+#: templates/homepage.html:30
 msgid "This is your Smeuh"
 msgstr "Bienvenue dans votre Smeuh"
 
-#: templates/homepage.html:30
+#: templates/homepage.html:32
 msgid ""
 "\n"
 "    <p>This site is a platform for members and friends of <a\n"
@@ -100,52 +100,52 @@ msgstr ""
 "et      éventuellement contribuer, c'est <a        href=\"https://github.com/"
 "alex-marandon/smeuhsocial\">par ici</a>.    </p>"
 
-#: templates/homepage.html:49
+#: templates/homepage.html:51
 msgid "Latest comments"
 msgstr "Derniers commentaires"
 
-#: templates/homepage.html:54
+#: templates/homepage.html:56
 msgid " on "
 msgstr " à propos de "
 
-#: templates/homepage.html:54 templates/microblogging/_tweet.html:8
+#: templates/homepage.html:56 templates/microblogging/_tweet.html:8
 #: templates/microblogging/friends_tweets.html:25
 #, python-format
 msgid "%(tweet_age)s ago"
 msgstr "il y a %(tweet_age)s"
 
-#: templates/homepage.html:66 templates/homepage.html.py:75
-#: templates/homepage.html:91 templates/homepage.html.py:101
+#: templates/homepage.html:68 templates/homepage.html.py:77
+#: templates/homepage.html:95 templates/homepage.html.py:105
 msgid "View all"
 msgstr "Tout voir"
 
-#: templates/homepage.html:67
+#: templates/homepage.html:69
 msgid "Latest photos"
 msgstr "Dernières photos"
 
-#: templates/homepage.html:76
+#: templates/homepage.html:78
 msgid "Latest tweets"
 msgstr "Derniers touites"
 
-#: templates/homepage.html:85
+#: templates/homepage.html:87
 msgid "Bang"
 msgstr "Pan!"
 
-#: templates/homepage.html:92
+#: templates/homepage.html:96
 msgid "Latest blog posts"
 msgstr "Derniers billets de blog"
 
-#: templates/homepage.html:102 templates/audiotracks/base.html:20
+#: templates/homepage.html:106 templates/audiotracks/base.html:20
 msgid "Latest tracks"
 msgstr "Derniers sons"
 
-#: templates/homepage.html:115
+#: templates/homepage.html:119
 #, python-format
 msgid "Wondering <a href=\"%(what_next_url)s\">What Next</a>?"
 msgstr ""
 "Vous demandez-vous <a href=\"%(what_next_url)s\">Que faire maintenant</a>?"
 
-#: templates/homepage.html:120
+#: templates/homepage.html:124
 #, python-format
 msgid ""
 "You can <a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s"
@@ -154,7 +154,7 @@ msgstr ""
 "Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
 "\"%(login_url)s\">vous authentifier</a> pour essayer le site."
 
-#: templates/homepage.html:122
+#: templates/homepage.html:126
 #, python-format
 msgid "You can <a href=\"%(login_url)s\">Log in</a> to try out the site."
 msgstr ""
@@ -272,7 +272,7 @@ msgstr "Derniers Morceaux"
 msgid "uploaded by"
 msgstr "envoyé par"
 
-#: templates/audiotracks/latest.html:17 templates/blog/post.html:23
+#: templates/audiotracks/latest.html:17 templates/blog/post.html:26
 msgid "on"
 msgstr "le"
 
@@ -284,7 +284,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: templates/audiotracks/track_right_panel.html:11 templates/blog/post.html:21
+#: templates/audiotracks/track_right_panel.html:11 templates/blog/post.html:24
 #: templates/photos/latest.html:24 templates/photos/photo_right_panel.html:11
 msgid "Posted by"
 msgstr "Posté par"
@@ -303,7 +303,8 @@ msgstr ""
 msgid "Friends' Blogs"
 msgstr "Photos de vos amis"
 
-#: templates/blog/base.html:11 templates/blog/user_blog.html:13
+#: templates/blog/base.html:11 templates/blog/blogs.html:13
+#: templates/blog/blogs.html.py:22 templates/blog/user_blog.html:13
 #, fuzzy
 msgid "All Blogs"
 msgstr "Blogs"
@@ -318,22 +319,27 @@ msgstr "Vos photos"
 msgid "Write a Blog Post"
 msgstr "Billet"
 
+#: templates/blog/blogs.html:25 templates/tags/index.html:73
+msgid "These are blog posts from everyone:"
+msgstr "Tous les articles de blog:"
+
+#: templates/blog/blogs.html:36 templates/blog/user_blog.html:38
+#: templates/profiles/profile.html:207
+msgid "No blog posts yet."
+msgstr "Aucun billet pour le moment."
+
 #: templates/blog/post.html:12
 msgid "Blog Post"
 msgstr "Billet"
 
-#: templates/blog/post.html:46
+#: templates/blog/post.html:49
 msgid "Comments on this post:"
 msgstr "Commentaires sur ce billet"
 
-#: templates/blog/user_blog.html:21
+#: templates/blog/user_blog.html:22
 #, python-format
 msgid "Blog posts by %(username)s"
 msgstr "Blog de %(username)s"
-
-#: templates/blog/user_blog.html:34 templates/profiles/profile.html:207
-msgid "No blog posts yet."
-msgstr "Aucun billet pour le moment."
 
 #: templates/friends_app/contacts.html:7
 #: templates/friends_app/contacts.html:10
@@ -572,11 +578,19 @@ msgstr "Photos de vos amis"
 msgid "Upload a Photo"
 msgstr "Envoyer une photo"
 
-#: templates/photos/details.html:31
+#: templates/photos/details.html:25
+msgid "Next picture"
+msgstr "Image suivante"
+
+#: templates/photos/details.html:29
+msgid "Previous picture"
+msgstr "Image précédente"
+
+#: templates/photos/details.html:40
 msgid "Flag as inappropriate"
 msgstr "Signaler comme contenu inapproprié"
 
-#: templates/photos/details.html:37
+#: templates/photos/details.html:46
 msgid "Comments on this photo:"
 msgstr "Commentaires sur cette photo"
 
@@ -740,10 +754,6 @@ msgstr "Toutes les photos correspondantes "
 #: templates/tags/index.html:70
 msgid "All Blog Posts Matching "
 msgstr "Tout les articles de blog correspondants "
-
-#: templates/tags/index.html:73
-msgid "These are blog posts from everyone:"
-msgstr "Tous les articles de blog:"
 
 #: templates/threadedcomments/comments.html:25
 #, fuzzy

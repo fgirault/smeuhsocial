@@ -20,6 +20,14 @@
     <div class="left_panel">
       <h1 class="photo-title">{{ photo.title }}</h1>
     {% if photo %}
+        <div class="gallery-next-previous">
+          {% if previous_photo_id %}
+          <a href="{% url photo_details previous_photo_id %}">&lt;&lt; {% trans 'Previous picture' %}</a>
+          {% endif %}
+          {% if next_photo_id %}
+          <a class="gallery-previous" href="{% url photo_details next_photo_id %}">{% trans 'Next picture'  %} &gt;&gt;</a>
+          {% endif %}
+        </div>
         <div class="gallery-photo">
           <a href="{{ photo.image.url }}"><img src="{{ photo_url }}" alt="{{ photo.title }}"/></a>
         </div>

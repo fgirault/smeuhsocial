@@ -5,10 +5,13 @@ from django.db import connection
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.models import User
+from django.http import Http404, get_host
 
 from tagging.models import Tag
 from tagging.utils import calculate_cloud, LOGARITHMIC
 from pinax.apps.blog.models import Post
+from pinax.apps.photos.views import group_and_bridge, group_context
+from pinax.apps.photos.models import Image
 
 def tag_index(request, template_name="tagging_ext/index.html", min_size=0, limit=100):
     query = """
@@ -53,3 +56,57 @@ def user_blog_index(request, username, template_name="blog/user_blog.html"):
         "blogs": blogs,
         "username": username,
     }, context_instance=RequestContext(request))
+
+
+def get_first_id_or_none(objects):
+    try:
+        return objects[0].id
+    except IndexError:
+        return None
+
+
+def photo_details(request, id, template_name="photos/details.html"):
+    """
+    show the photo details
+    """
+
+    group, bridge = group_and_bridge(request)
+    
+    photos = Image.objects.all()
+    
+    if group:
+        photos = group.content_objects(photos, join="pool", gfk_field="content_object")
+    else:
+        photos = photos.filter(pool__object_id=None)
+    
+    photo = get_object_or_404(photos, id=id)
+
+    previous_photo_id = get_first_id_or_none(
+            photos.filter(id__lt=photo.id, is_public=True).order_by('-id'))
+    next_photo_id = get_first_id_or_none(photos.filter(id__gt=photo.id,
+        is_public=True).order_by('id'))
+    
+    # @@@: test
+    if not photo.is_public and request.user != photo.member:
+        raise Http404
+    
+    photo_url = photo.get_display_url()
+    
+    host = "http://%s" % get_host(request)
+    
+    if photo.member == request.user:
+        is_me = True
+    else:
+        is_me = False
+    
+    ctx = group_context(group, bridge)
+    ctx.update({
+        "host": host,
+        "photo": photo,
+        "photo_url": photo_url,
+        "is_me": is_me,
+        "previous_photo_id": previous_photo_id,
+        "next_photo_id": next_photo_id,
+    })
+    
+    return render_to_response(template_name, RequestContext(request, ctx))
