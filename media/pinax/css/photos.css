@@ -11,18 +11,18 @@
 }
 
 .gallery-next-previous {
-    margin: 10px 0px 24px 0;
+    margin: 0px 0px 24px 0;
     width: 100%;
 }
 
 .gallery-previous {
-  margin-right: 48px;
+    margin-right: 48px;
     float: right;
 }
 
 .photo-title {
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: 12px;
+  margin-bottom: 12px;;
 }
 
 .photo-right-profile, .photo-right-tools {
