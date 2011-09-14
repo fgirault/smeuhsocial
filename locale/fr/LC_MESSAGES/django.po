@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-11 16:27+0200\n"
+"POT-Creation-Date: 2011-09-14 12:14+0200\n"
 "PO-Revision-Date: 2010-03-04 09:26+0100\n"
 "Last-Translator: James Pic <http://jamespic.com>\n"
 "Language-Team: Pinax French <http://www.transifex.net/projects/p/pinax/team/"
@@ -272,7 +272,7 @@ msgstr "Derniers Morceaux"
 msgid "uploaded by"
 msgstr "envoyé par"
 
-#: templates/audiotracks/latest.html:17 templates/blog/post.html:26
+#: templates/audiotracks/latest.html:17 templates/blog/post.html:27
 msgid "on"
 msgstr "le"
 
@@ -284,7 +284,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: templates/audiotracks/track_right_panel.html:11 templates/blog/post.html:24
+#: templates/audiotracks/track_right_panel.html:11 templates/blog/post.html:25
 #: templates/photos/latest.html:24 templates/photos/photo_right_panel.html:11
 msgid "Posted by"
 msgstr "Posté par"
@@ -328,13 +328,21 @@ msgstr "Tous les articles de blog:"
 msgid "No blog posts yet."
 msgstr "Aucun billet pour le moment."
 
-#: templates/blog/post.html:12
+#: templates/blog/post.html:13
 msgid "Blog Post"
 msgstr "Billet"
 
-#: templates/blog/post.html:49
+#: templates/blog/post.html:39
+msgid "Edit Post"
+msgstr "Éditer ce billet"
+
+#: templates/blog/post.html:51
 msgid "Comments on this post:"
 msgstr "Commentaires sur ce billet"
+
+#: templates/blog/post.html:54
+msgid "View source in "
+msgstr "Voir le code source en "
 
 #: templates/blog/user_blog.html:22
 #, python-format
@@ -579,18 +587,18 @@ msgid "Upload a Photo"
 msgstr "Envoyer une photo"
 
 #: templates/photos/details.html:25
-msgid "Next picture"
-msgstr "Image suivante"
-
-#: templates/photos/details.html:29
 msgid "Previous picture"
 msgstr "Image précédente"
 
-#: templates/photos/details.html:40
+#: templates/photos/details.html:28
+msgid "Next picture"
+msgstr "Image suivante"
+
+#: templates/photos/details.html:39
 msgid "Flag as inappropriate"
 msgstr "Signaler comme contenu inapproprié"
 
-#: templates/photos/details.html:46
+#: templates/photos/details.html:45
 msgid "Comments on this photo:"
 msgstr "Commentaires sur cette photo"
 
@@ -836,9 +844,6 @@ msgstr ""
 
 #~ msgid "All Wiki Articles Matching <i>%(tag)s</i>"
 #~ msgstr "Tout les articles wiki correspondant à <i>%(tag)s</i>"
-
-#~ msgid "View more"
-#~ msgstr "En voir davantage"
 
 #~ msgid "Profile for %(other_user_display)s"
 #~ msgstr "%(other_user_display)s"

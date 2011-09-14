@@ -5,7 +5,7 @@ from django.db import connection
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.models import User
-from django.http import Http404, get_host
+from django.http import Http404, get_host, HttpResponse
 
 from tagging.models import Tag
 from tagging.utils import calculate_cloud, LOGARITHMIC
@@ -56,6 +56,17 @@ def user_blog_index(request, username, template_name="blog/user_blog.html"):
         "blogs": blogs,
         "username": username,
     }, context_instance=RequestContext(request))
+
+
+def blog_post_source(request, username, slug):
+    post = get_object_or_404(Post, slug=slug,
+        author__username=username)
+
+    if post.status == 1 and post.author != request.user:
+        raise Http404
+
+    return HttpResponse(post.body, mimetype="text/plain")
+
 
 
 def get_first_id_or_none(objects):

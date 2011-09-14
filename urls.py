@@ -69,6 +69,8 @@ urlpatterns = patterns("",
             name="user_blog_feed"),
 
     # blog post
+    url(r"^(?P<username>[-\w]+)/blog/(?P<slug>[-\w]+)/source/?$",
+        "smeuhoverride.views.blog_post_source", name="blog_post_source"),
     url(r"^(?P<username>[-\w]+)/blog/(?P<slug>[-\w]+)/?$", "pinax.apps.blog.views.post", name="blog_post"),
     
     # blog post for user

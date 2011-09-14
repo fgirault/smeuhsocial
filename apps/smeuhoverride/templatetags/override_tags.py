@@ -3,6 +3,7 @@
 
 from django import template
 from django.utils.safestring import mark_safe
+from django.conf import settings
 from microblogging.templatetags.microblogging_tags import (
         render_tweet_text as _render_tweet_text,
         user_ref_re,
@@ -10,6 +11,10 @@ from microblogging.templatetags.microblogging_tags import (
         )
 
 register = template.Library()
+
+@register.simple_tag
+def render_markup_name(post):
+    return dict(settings.MARKUP_CHOICES).get(post.markup, '')
 
 @register.simple_tag
 def render_tweet_text(tweet):
