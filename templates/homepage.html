@@ -96,7 +96,7 @@ title="Blogs" href="{% url all_blogs_feed %}" />
           <h2>{% blocktrans %}Latest blog posts{% endblocktrans %}</h2>
           {% for blog_post in latest_blogs%}
           <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a> 
-          by {% profile_link blog_post.author %}<br>
+          {% trans 'by' %} {% profile_link blog_post.author %}<br>
           {% endfor %}
         </div>
         <div class="latest-tracks">
@@ -106,7 +106,7 @@ title="Blogs" href="{% url all_blogs_feed %}" />
           <h2>{% blocktrans %}Latest tracks{% endblocktrans %}</h2>
           {% for track in latest_tracks%}
           <a href="{{ track.get_absolute_url }}">{{ track.title }}</a> 
-          by {% profile_link track.user %}<br>
+          {% trans 'by' %} {% profile_link track.user %}<br>
           {% endfor %}
         </div>
       </div>
