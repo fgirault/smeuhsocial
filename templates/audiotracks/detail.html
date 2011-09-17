@@ -6,6 +6,16 @@
 
 {% block head_title %}{{ track.title }}{% endblock %}
 
+{% block extra_head %}
+{{ block.super }}
+<script type="text/javascript" src="{{ STATIC_URL }}audiotracks/audio-player/audio-player.js"></script>  
+<script type="text/javascript">  
+    AudioPlayer.setup("{{ STATIC_URL }}audiotracks/audio-player/player.swf", {  
+        width: 290  
+    });  
+</script> 
+{% endblock %}
+
 {% block body %}
 <div class="right_panel">
     {% include "audiotracks/track_right_panel.html" %}
@@ -26,14 +36,24 @@
      Genre: {{ track.genre }} 
   </h3>
   {% endif %}
-  <div>
-    <audio src="{{ track.audio_file.url }}" controls="controls">
+  <div id="audioplayer">
+    <audio controls="controls" preload="auto">
+      <source  src="{{ track.audio_file.url }}" type="{{ track.mimetype }}">
       Your browser does not support the audio element.  Maybe you should
       consider using <a href="http://www.mozilla.com/firefox/">Firefox</a>, <a
         href="http://www.google.com/chrome">Chrome</a> or <a
         href="http://www.opera.com/browser/">Opera</a>.
     </audio>
   </div>
+  <script type="text/javascript">
+    var audioTag = document.createElement('audio');
+    if (!(audioTag.canPlayType && audioTag.canPlayType("{{ track.mimetype }}"))) {
+      AudioPlayer.embed("audioplayer", {
+        soundFile: "{{ track.audio_file.url}}",
+        animation: "no"
+      });
+    }
+  </script>
   <div class="audiotracks-description">
     {{ track.description }}
   </div>
