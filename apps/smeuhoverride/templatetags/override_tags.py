@@ -25,9 +25,15 @@ def render_tweet_text(tweet):
     text = template.defaultfilters.urlize(text)
     return text
 
+
 @register.inclusion_tag("_user_link.html")
 def profile_link(member):
     return {'member': member}
+
+
+@register.inclusion_tag("_avatar_link.html")
+def avatar_link(member, avatar_size):
+    return {'member': member, 'avatar_size': avatar_size}
 
 @register.filter
 def profilize(text):

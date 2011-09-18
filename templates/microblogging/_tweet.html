@@ -2,7 +2,7 @@
 {% load account_tags %}
 {% load i18n %}
 {% load override_tags %}
-<div class="tweet {% if forloop.last %}last{% endif %}" id="t{{ tweet.id }}">
+<div class="clearfix tweet {% if forloop.last %}last{% endif %}" id="t{{ tweet.id }}">
     {% if prefix_sender %}<a href="{% url profile_detail tweet.sender %}"><b>{% user_display tweet.sender %}</b></a>{% endif %}
     {% render_tweet_text tweet %}
     <span class="timesince">{% blocktrans with tweet.sent|timesince as tweet_age %}{{ tweet_age }} ago{% endblocktrans %}</span>

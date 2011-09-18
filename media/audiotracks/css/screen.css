@@ -16,10 +16,18 @@
 }
 
 .audiotracks-download a {
-    font-size: x-large;
+    font-size: large;
     background: #00B000;
     color: #F4C021;
     padding: 0.3em;
+    border: solid 3px #F4C021;
+    text-decoration: none;
+}
+
+.audiotracks-download a:hover {
+    background: #00b600;
+    color: #F6C223;
+    border-color: #F8C425;
 }
 
 .audiotracks-edit-current-data {
@@ -43,4 +51,15 @@
 
 .audiotracks-delete-image-label {
     display: inline;
+}
+
+ul.audiotracks-track-attributes {
+    padding-left: 0px;
+}
+
+.audiotracks-track-attributes li {
+    list-style: none;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
 }

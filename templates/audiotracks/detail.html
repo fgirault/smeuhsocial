@@ -27,15 +27,23 @@
   <h1>
     {{ track.title }}
   </h1>
-  <h2>
-    {% if track.artist %}by {{ track.artist }}{% endif %}
-    {% if track.date %}, {{ track.date }}{% endif %}
-  </h2>
-  {% if track.genre %}
-  <h3>
-     Genre: {{ track.genre }} 
-  </h3>
-  {% endif %}
+  <ul class="audiotracks-track-attributes">
+    {% if track.artist %}
+    <li>
+    {% trans 'Artist' %}: {{ track.artist }}
+    </li>
+    {% endif %}
+    {% if track.date %}
+    <li>
+    {% trans 'Date' %}: {{ track.date }}
+    </li>
+    {% endif %}
+    {% if track.genre %}
+    <li>
+    {% trans 'Genre' %}: {{ track.genre }} 
+    </li>
+    {% endif %}
+  </ul>
   <div id="audioplayer">
     <audio controls="controls" preload="auto">
       <source  src="{{ track.audio_file.url }}" type="{{ track.mimetype }}">
@@ -58,7 +66,7 @@
     {{ track.description }}
   </div>
   <div class="audiotracks-download">
-    <a href="{{ track.audio_file.url }}">{% trans 'Download Track' %}</a>
+    <a class="border-shadow round-border" href="{{ track.audio_file.url }}">{% trans 'Download Track' %}</a>
   </div>
 </div>
 <h3>{% trans 'Comments on this track:' %}</h3>

@@ -132,6 +132,10 @@ h1 {
     background-color: #F4C021;
     margin-bottom: 20px;
     padding: 8px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: black 0px 1px 2px;
+    -webkit-box-shadow: black 0px 2px 2px;
 }
 
 .toolbox h2 {
@@ -326,7 +330,7 @@ label {
 }
 
 .comment-blurb {
-    margin: 6px 0 0px 0;
+    margin: 4px 0px;
 }
 
 .comment-blurb-date {
@@ -360,7 +364,13 @@ label {
 #homepage-right-col div.tweet {
     font-size: 10pt;
     width: 375px;
-    padding: 6px 0px 6px 0px;
+    padding: 0px;
+    border-bottom: none;
+}
+
+.tweet-item {
+    padding: 6px 0px;
+    border-bottom: 1px solid #CCC;
 }
 
 #homepage-tweet-form input {
@@ -497,3 +507,23 @@ a.feed-icon {
     font-size: 40px;
 }
 
+.border-shadow {
+    -moz-box-shadow: black 0px 1px 2px;
+    -webkit-box-shadow: black 0px 2px 2px;
+}
+
+.round-border {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.inline-avatar {
+    float: left;
+    margin-right: 4px;
+    padding: 0;
+    height: 24px;
+}
+
+.homepage-item {
+    padding: 4px 0;
+}

@@ -92,3 +92,7 @@ div.embed {
   padding: 5px;
   background: #F99;
 }
+
+.delete-photo label {
+  display: inline;
+}

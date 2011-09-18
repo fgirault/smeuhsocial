@@ -1,0 +1,7 @@
+{% load avatar_tags %}
+
+              <div class="inline-avatar">
+<a href="{% url profile_detail member.username %}" 
+   title="{{ member.username }}">{% avatar member.username avatar_size %}</a>
+ </div>
+
