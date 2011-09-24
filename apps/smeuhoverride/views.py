@@ -6,6 +6,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.models import User
 from django.http import Http404, get_host, HttpResponse
+from django.contrib.auth.decorators import login_required
 
 from tagging.models import Tag
 from tagging.utils import calculate_cloud, LOGARITHMIC
@@ -68,7 +69,6 @@ def blog_post_source(request, username, slug):
     return HttpResponse(post.body, mimetype="text/plain; charset=utf-8")
 
 
-
 def get_first_id_or_none(objects):
     try:
         return objects[0].id
@@ -76,6 +76,7 @@ def get_first_id_or_none(objects):
         return None
 
 
+@login_required
 def photo_details(request, id, template_name="photos/details.html"):
     """
     show the photo details
