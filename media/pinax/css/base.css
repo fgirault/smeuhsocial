@@ -439,6 +439,7 @@ p {
 
 .blog-post .highlight pre {
     padding: 24px;
+    font-size: 14px;
 }
 
 .bare-list {
