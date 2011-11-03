@@ -442,6 +442,17 @@ p {
     font-size: 14px;
 }
 
+.blog-post .literal {
+   background-color: #F7F6F4;
+}
+
+.blog-post blockquote {
+   padding-left: 1em;
+   border-left: 3px solid #F7F6F4;
+   font-style: italic;
+}
+
+
 .bare-list {
   list-style: none;
   padding: 0;
