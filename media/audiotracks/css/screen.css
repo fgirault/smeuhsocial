@@ -63,3 +63,12 @@ ul.audiotracks-track-attributes {
     font-size: 16px;
     line-height: 24px;
 }
+
+#slug {
+    overflow: hidden;
+}
+
+#save-button {
+    clear: both;
+    margin: 16px 0;
+}
