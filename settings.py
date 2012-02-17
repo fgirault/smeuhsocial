@@ -332,6 +332,7 @@ LOCALE_PATHS = (
         os.path.join(PINAX_ROOT, "locale"),
         )
 
+AUDIOTRACKS_MODEL = 'smeuhoverride.Track'
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
@@ -339,5 +340,4 @@ try:
     from local_settings import *
 except ImportError:
     pass
-
 

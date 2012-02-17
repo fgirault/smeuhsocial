@@ -1,6 +1,10 @@
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import signals
+from django.utils.translation  import ugettext_lazy as _
+from tagging.fields import TagField
 from tagging.models import TaggedItem
+from audiotracks.models import AbstractTrack
+
 
 def taggeditem_delete(sender, **kwargs):
     """
@@ -21,3 +25,13 @@ def taggeditem_delete(sender, **kwargs):
     item_tags.delete()
 
 signals.post_delete.connect(taggeditem_delete)
+
+
+class Track(AbstractTrack):
+
+    class Meta:
+        db_table = 'audiotracks_track'
+
+    tags = TagField(_("Tags"))
+
+
