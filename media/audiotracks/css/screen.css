@@ -1,5 +1,7 @@
 .audiotracks-list {
     padding: 0;
+    font-size: 16px;
+    line-height: 24px;
 }
 
 .audiotracks-list li {
@@ -71,4 +73,17 @@ ul.audiotracks-track-attributes {
 #save-button {
     clear: both;
     margin: 16px 0;
+}
+
+.pagination ul {
+    padding: 0;
+}
+
+.pagination li {
+    display: inline;
+}
+
+.pagination li.active a {
+    background-color: #f5f5f5;
+    cursor: default;
 }
