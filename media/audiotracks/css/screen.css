@@ -4,8 +4,10 @@
     line-height: 24px;
 }
 
-.audiotracks-list li {
-    list-style: none;
+.audiotracks-list-entry {
+    border-bottom: 1px solid silver;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 .audiotracks-detail img {
