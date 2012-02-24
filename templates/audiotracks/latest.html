@@ -15,11 +15,11 @@
 {% trans 'uploaded by' %}
 <a href="{% url profile_detail username=track.user.username %}">{{ track.user.username }}</a>
 {% trans 'on' %} {{ track.created_at|date:"l d M Y" }}
-<div>
-  <audio controls="controls" preload="auto">
-    <source  src="{{ track.audio_file.url }}" type="{{ track.mimetype }}">
-  </audio>
+<div class="player-container">
+  <audio preload="none" src="{{ track.audio_file.url }}" type="{{ track.mimetype }}">
 </div>
+<span style="color: silver; font-size: 10px; font-style: italic;">Plugin type:
+<span class="audio-type"></span></span>
 {% if track.user == request.user %}
   <a href="{% url edit_track track.id %}">[{% trans 'Edit' %}]</a>
   <a href="{% url confirm_delete_track track.id %}">[{% trans 'Delete' %}]</a>
@@ -37,6 +37,39 @@
 <script src="{{ STATIC_URL }}audiotracks/mediaelement/mediaelement-and-player.js"></script>
 <link rel="stylesheet" href="{{ STATIC_URL }}audiotracks/mediaelement/mediaelementplayer.css" />
 <script>
-  $('video,audio').mediaelementplayer(/* Options */);
+$(document).ready(function() {
+  function playNext(domObj) {
+       var next_audio_elem = $(domObj).parents('.audiotracks-list-entry').next().find('audio').get(0);
+       if (next_audio_elem) {
+         var player = next_audio_elem.player;
+	 // FIXME
+	 // Only way to make play() work on Firefox is to wrap it in a
+	 // setTimeout. Weird...
+         setTimeout($.proxy(player, 'play'), 0);
+       } else {
+       	 var pagination = $('.pagination');
+	 var current = pagination.find('.active');
+	 var next = current.next();
+	 var url = next.find('a').attr('href');
+	 window.location = url + '?autoplay=true';
+       }
+  }
+  $('audio').mediaelementplayer({
+	audioWidth: 380, 
+	success: function(me, domObj) {
+	    var container = $(domObj).parents('.player-container');
+	    container.next().find('.audio-type').html( me.pluginType );
+	    $(me).bind('ended', function() { playNext(domObj); });
+	}
+  });
+  if (location.search.indexOf('autoplay=true') != -1) {
+       var me = $('audio').get(0);
+       var player = me.player;
+       // FIXME
+       // Let some time for the players to load before starting to play.
+       // I really need to find out how catch an event for that.
+       setTimeout($.proxy(player, 'play'), 1000);
+  }
+});
 </script>
 {% endblock %}
