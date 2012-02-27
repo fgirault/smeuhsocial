@@ -12,8 +12,10 @@ $(document).ready(function() {
       var pagination = $('.pagination');
       var current = pagination.find('.active');
       var next = current.next();
-      var url = next.find('a').attr('href');
-      window.location = url + '?autoplay=true';
+      if (next.size()) {
+        var url = next.find('a').attr('href');
+        window.location = url + '?autoplay=true';
+      }
     }
   }
 
