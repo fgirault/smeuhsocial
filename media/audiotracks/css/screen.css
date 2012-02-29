@@ -4,9 +4,51 @@
     line-height: 24px;
 }
 
+.audiotracks-list .debug-info {
+    color: silver; 
+    font-size: 10px; 
+    font-style: italic;
+    margin: 0 0;
+}
+
+.audiotracks-list .track-image,
+.audiotracks-list .inline-avatar {
+  float: left;
+  margin-right: 10px;
+  height: 49px;
+}
+
+.audiotracks-list p {
+  margin: 0;
+}
+
+.audiotracks-list .track-details {
+  margin: 5px 0;
+}
+
+.audiotracks-list .track-title {
+  font-size: 20px;
+}
+
+.audiotracks-list .upload-details {
+  font-size: 12px;
+  color: #ccc;
+}
+
+.audiotracks-list ul.tags {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.audiotracks-list .tags li {
+  display: inline;
+  list-style: none;
+}
+
 .audiotracks-list-entry {
-    border-bottom: 1px solid silver;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding-bottom: 10px;
 }
 

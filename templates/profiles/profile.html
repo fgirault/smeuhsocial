@@ -11,6 +11,8 @@
 {% load photo_tags %}
 {% load threadedcommentstags %}
 
+{% block extra_head %}<link rel="stylesheet" href="{{ STATIC_URL }}audiotracks/css/screen.css" />{% endblock %}
+
 {% block head_title %}{% user_display other_user as other_user_display %}{% blocktrans %}{{ other_user_display }}{% endblocktrans %}{% endblock %}
 
 {% block body %}
@@ -129,16 +131,7 @@
 
                 {% if other_user.tracks.all %}
                     <h2>{% trans "Tracks" %}</h2>
-                    <ul class="bare-list">
-                    {% for track in other_user.tracks.all %}
-                    <li>
-                      <a href="{% url track_detail track.user.username, track.slug %}">{{ track.title }}</a>
-                    </li>
-                    {% endfor %}
-                    <p>
-                      <a href="{% url audiotracks other_user.username %}">{% trans 'View all tracks' %}</a>
-                    </p>
-                    </ul>
+                    {% include "audiotracks/_track_list.html" with tracks=other_user.tracks.all %}
                 {% else %}
                     <p>{% trans "No tracks yet." %}</p>
                 {% endif %}
@@ -232,4 +225,5 @@
 
 {% block extra_body %}
     <script src="{{ STATIC_URL }}pinax/js/avatar.js" type="text/javascript"></script>
+    {% include 'audiotracks/_player_assets.html' %}
 {% endblock %}

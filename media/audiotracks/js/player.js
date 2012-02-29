@@ -19,6 +19,10 @@ $(document).ready(function() {
     }
   }
 
+  function highlight(domObj) {
+    console.log('play');
+  }
+
   $('audio').mediaelementplayer({
     audioWidth: 380, 
     success: function(me, domObj) {

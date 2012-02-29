@@ -1,40 +1,5 @@
-{% extends "audiotracks/base.html" %}
+{% extends "audiotracks/base_listing.html" %}
 {% load i18n %}
 
 {% block head_title %}{% trans 'Latest Tracks' %}{% endblock %}
-
-{% block body %}
-<h1>{% trans 'Latest Tracks' %}
-  <a title="Atom Feed" class="feed-icon" href="{% if username %}{% url tracks_feed username=username %}{% else %}{% url tracks_feed %}{% endif %}">
-  <img src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
-</h1>
-<div class="audiotracks-list">
-{% for track in tracks %}
-<div class="audiotracks-list-entry">
-<a href="{% url track_detail track.user.username,track.slug %}">{{ track.title }}</a>
-{% trans 'uploaded by' %}
-<a href="{% url profile_detail username=track.user.username %}">{{ track.user.username }}</a>
-{% trans 'on' %} {{ track.created_at|date:"l d M Y" }}
-<div class="player-container">
-  <audio preload="none" src="{{ track.audio_file.url }}" type="{{ track.mimetype }}">
-</div>
-<span style="color: silver; font-size: 10px; font-style: italic;">Plugin type:
-<span class="audio-type"></span></span>
-{% if track.user == request.user %}
-  <a href="{% url edit_track track.id %}">[{% trans 'Edit' %}]</a>
-  <a href="{% url confirm_delete_track track.id %}">[{% trans 'Delete' %}]</a>
-{% endif %}
-</div>
-{% endfor %}
-</div>
-
-{% include '_pagination.html' %}
-
-{% endblock %}
-
-{% block extra_body %}
-<script src="{{ STATIC_URL }}audiotracks/mediaelement/html5.js"></script>
-<script src="{{ STATIC_URL }}audiotracks/mediaelement/mediaelement-and-player.js"></script>
-<link rel="stylesheet" href="{{ STATIC_URL }}audiotracks/mediaelement/mediaelementplayer.css" />
-<script src="{{ STATIC_URL }}audiotracks/js/player.js"></script>
-{% endblock %}
+{% block body_title %}{% trans 'Latest Tracks' %}{% endblock %}
