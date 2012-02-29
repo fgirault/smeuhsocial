@@ -66,7 +66,7 @@
     {{ track.description }}
   </div>
   <div class="audiotracks-download">
-    <a class="border-shadow round-border" href="{{ track.audio_file.url }}">{% trans 'Download Track' %}</a>
+    <a class="border-shadow round-border" href="{{ track.audio_file.url }}">{% trans 'Download Track' %} ({{ track.audio_file.size|filesizeformat}})</a>
   </div>
 </div>
 <h3>{% trans 'Comments on this track:' %}</h3>
