@@ -47,7 +47,7 @@ urlpatterns = patterns("",
             "latest_tweets": lambda: Tweet.objects.all().order_by("-sent")[:5],
             "latest_blogs": lambda: Post.objects.filter(status=2).order_by("-publish")[:5],
             "latest_photos": lambda: Image.objects.all().order_by("-date_added")[:6],
-            "latest_tracks": lambda: Track.objects.all().order_by("-created_at")[:5],
+            "latest_tracks": lambda: Track.objects.all().order_by("-created_at")[:12],
             "prefix_sender": True,
             }
     }, name="home"),

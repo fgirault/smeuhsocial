@@ -54,22 +54,12 @@ h1 {
     clear: both;
     margin: 0 auto;
     padding: 10px;
-    width: 800px;
-}
-#footer {
-    color: #999; /* footer text colour */
-    margin: 50px auto;
-    padding: 10px;
-    clear: both;
-    width: 800px;
-}
-#footer a, #footer a:visited {
-    color: #444; /* footer link colour */
-}
-#footer a:hover {
-    color: #777; /* footer link hover colour */
 }
 
+footer {
+    padding: 10px;
+    clear: both;
+}
 
 /* CLEARS */
 
@@ -355,10 +345,9 @@ label {
 .home h2 {
     font-size: 14px;
     color: #777;
-    border-bottom: 1px solid #CCC;
     margin-top: 24px;
     margin-bottom: 4px;
-    text-shadow: 1px 0.5px 1px #BBB;
+    text-shadow: 1px 0.5px 1px #ccc;
 }
 
 #homepage-right-col div.tweet {
@@ -392,12 +381,12 @@ label {
     font-size: 10pt;
 }
 
-.latest-photos img {
+.homepage-photo {
     margin-right: 4px;
     margin-bottom: 6px;
 }
 
-.latest-photos img.row-end {
+.homepage-photo {
     margin-right: 0px;
     float: right;
 }
@@ -468,26 +457,6 @@ p {
   margin-bottom: 0px;
 }
 
-a.view-all {
-    color: #00b000;
-    float: right;
-    text-decoration: none;
-    font-size: 11px;
-    padding-top: 3px;
-    font-weight: bold;
-    text-shadow: 0.5px 0.5px 0.5px #BBB;
-}
-
-a.view-all img {
-    margin-right: 0;
-    margin-bottom: 0;
-}
-
-a.feed-icon {
-  padding-top: 0;
-  margin-left: 10px;
-}
-
 .login.uniForm .inlineLabels .textInput {
     width: auto;
 }
@@ -535,6 +504,27 @@ a.feed-icon {
     padding: 0;
     height: 24px;
 }
+
+.homepage-block {
+    float: left;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: inline-block;
+}
+
+@media screen and (max-device-width: 800px) {
+    .homepage-block {
+        width: 90%;
+    }
+}
+
+@media screen and (min-device-width: 800px) {
+    .homepage-block {
+        width: 40%;
+    }
+}
+
+
 
 .homepage-item {
     padding: 4px 0;

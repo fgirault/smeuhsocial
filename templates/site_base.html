@@ -65,18 +65,6 @@
     {% endif %}
 {% endblock %}
 
-{% block footer %}
-<div class="legal">
-    {% comment %}
-    {% trans "&copy; 2010 &lt;your company here&gt;" %}
-    - <a href="{% url about %}">{% trans "About" %}</a>
-    - <a href="{% url terms %}">{% trans "Terms of Service" %}</a>
-    - <a href="{% url privacy %}">{% trans "Privacy Policy" %}</a>
-    - <a href="{% url dmca %}">{% trans "DMCA Notice" %}</a>
-    {% endcomment %}
-</div>
-{% endblock %}
-
 {% block extra_body_base %}
     <script type="text/javascript" src="{{ STATIC_URL }}pinax/js/topics.js"></script>
     {% block extra_body %}{% endblock %}

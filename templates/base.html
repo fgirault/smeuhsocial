@@ -69,7 +69,12 @@
         </div>
         {% endblock %}
         
-        <div id="footer">{% block footer %}{% endblock %}</div>
+        <footer>
+        {% block footer %}
+        <a href="https://github.com/alex-marandon/smeuhsocial">
+          {% trans 'Site powered by SmeuhSocial' %}
+        </a>{% endblock %}
+        </footer>
         
         <script src="{% block jquery_src %}{{ STATIC_URL }}pinax/js/jquery-1.7.1.min.js{% endblock %}" type="text/javascript"></script>
         <script src="{{ STATIC_URL }}pinax/js/base.js" type="text/javascript"></script>
