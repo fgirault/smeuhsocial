@@ -332,29 +332,12 @@ label {
     clear: both;
 }
 
-#homepage-left-col {
-    float: left;
-    width: 47%;
-}
-
-#homepage-right-col {
-    float: right;
-    width: 47%;
-}
-
 .home h2 {
     font-size: 14px;
     color: #777;
     margin-top: 24px;
     margin-bottom: 4px;
     text-shadow: 1px 0.5px 1px #ccc;
-}
-
-#homepage-right-col div.tweet {
-    font-size: 10pt;
-    width: 375px;
-    padding: 0px;
-    border-bottom: none;
 }
 
 .tweet-item {
