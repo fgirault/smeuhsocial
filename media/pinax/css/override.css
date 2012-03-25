@@ -6,6 +6,19 @@
   font-size: 20px;
 }
 
+<<<<<<< HEAD
+=======
+@media screen and (min-width: 1024px) {
+    #body {
+    	max-width: 900px;
+    }
+    body.home #body {
+    	max-width: none;
+        width: 100%:
+    }
+}
+
+>>>>>>> b6bd95098f74fca846c31d3da1ebc2941a24d833
 @media screen and (max-width: 850px) {
     .logo img {
       /* original size: 272×57 */

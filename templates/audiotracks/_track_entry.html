@@ -1,0 +1,41 @@
+{% load override_tags %}
+{% load i18n %}
+{% load tagging_tags %}
+  <div class="audiotracks-list-entry">
+    {% if track.image %}
+    <img class="track-image" src="{{ track.image.url_48x48 }}" />
+    {% else %}
+    {% avatar_link track.user 48 %}
+    {% endif %}
+    <div class="track-details">
+      <p class="track-title">
+        <a href="{% url track_detail track.user.username,track.slug %}">
+          {% if track.artist %} {{ track.artist }} &#8211; {% endif %}{{ track.title|title }}
+        </a>
+      </p>
+      <p class="upload-details">
+        {% trans 'uploaded by' %}
+        <a href="{% url profile_detail username=track.user.username %}">{{ track.user.username }}</a>
+        {% blocktrans with track.created_at|timesince as track_age %}{{ track_age }} ago{% endblocktrans %}
+      </p>
+      {% if track.tags %}
+      <ul class="tags">
+          {% tags_for_object track as tags %}
+          {% for tag in tags %}
+              <li><a href="/tags/{{ tag }}">{{ tag }}</a></li>
+          {% endfor %}
+      </ul>
+      {% else %}
+      <div class="tags-placeholder"></div>
+      {% endif %}
+    </div>
+    <div class="player-container">
+      <audio preload="none" src="{{ track.audio_file.url }}" type="{{ track.mimetype }}">
+    </div>
+    <p class="debug-info">Player type: <span class="audio-type"></span></p>
+    {% if track.user == request.user %}
+    <a href="{% url edit_track track.id %}">[{% trans 'Edit' %}]</a>
+    <a href="{% url confirm_delete_track track.id %}">[{% trans 'Delete' %}]</a>
+    {% endif %}
+  </div>
+
