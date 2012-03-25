@@ -371,7 +371,6 @@ label {
 
 .homepage-photo {
     margin-right: 0px;
-    float: right;
 }
 
 #id_tease {
@@ -490,25 +489,16 @@ p {
 
 .homepage-block {
     float: left;
-    margin-left: 5%;
-    margin-right: 5%;
-    display: inline-block;
+    margin-right: 10px;
+    max-width: 400px;
+    min-width: 150px;
 }
-
-@media screen and (max-device-width: 800px) {
-    .homepage-block {
-        width: 90%;
-    }
-}
-
-@media screen and (min-device-width: 800px) {
-    .homepage-block {
-        width: 40%;
-    }
-}
-
-
 
 .homepage-item {
     padding: 4px 0;
+}
+
+.inline-avatar img {
+   width: 24px;
+   height: 24px;
 }

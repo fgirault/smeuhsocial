@@ -45,9 +45,7 @@ title="Blogs" href="{% url all_blogs_feed %}" />
 
 <div class="homepage-block latest-tweets">
   <h2>
-    <a title="RSS Feed" href="{% url all_tweets_feed %}">
-      <img src="{{ STATIC_URL }}img/feed-icon.png"/ >
-    </a>
+    <a title="Atom Feed" href="{% url all_tweets_feed %}"><img src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
     <a href="{% url all_tweets %}">{% blocktrans %}Touites{% endblocktrans %}</a>
   </h2>
   {% if user.is_authenticated %}
@@ -62,70 +60,25 @@ title="Blogs" href="{% url all_blogs_feed %}" />
   </div>
   {% endif %}
   {% for tweet in latest_tweets %}
-  <div class="tweet-item" class="clearfix">
+  <div class="tweet-item homepage-item {% cycle 'odd' '' %}" class="clearfix">
     {% avatar_link tweet.sender 24 %}
     {% include "microblogging/_tweet.html" %}
   </div>
   {% endfor %}
 </div>
 
-
-
+{% get_latest_comments 10 as latest_comments %}
 <div class="homepage-block">
   <h2>
-    <a title="RSS Feed" href="{% url all_photos_feed %}"><img 
-      src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
-    <a href="{% url photos %}">{% blocktrans %}Photos{% endblocktrans %}</a>
-  </h2>
-  {% for photo in latest_photos%}
-  <a href="{% groupurl photo_details group id=photo.id %}"><img
-    class="homepage-photo border-shadow{% cycle '' ''  ' row-end' %}" src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
-  {% endfor %}
-</div>
-<div class="homepage-block latest-blogs">
-  <h2>
-    <a title="RSS Feed" href="{% url all_blogs_feed %}"><img 
-      src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
-    <a href="{% url blog_list_all %}">
-      {% blocktrans %}Blogs{% endblocktrans %}
-    </a>
-  </h2>
-  {% for blog_post in latest_blogs%}
-  <div class="clearfix homepage-item">
-    {% avatar_link blog_post.author 24 %}
-    <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a> 
-    {% trans 'by' %} {% profile_link blog_post.author %}<br>
-  </div>
-  {% endfor %}
-</div>
-<div class="homepage-block latest-tracks">
-  <h2>
-    <a title="RSS Feed" href="{% url tracks_feed %}"><img 
-      src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
-    <a href="{% url audiotracks %}">
-      {% blocktrans %}Tunes{% endblocktrans %}
-    </a>
-  </h2>
-  {% for track in latest_tracks%}
-  <div class="clearfix homepage-item">
-    {% avatar_link track.user 24 %}
-    <a href="{{ track.get_absolute_url }}">{{ track.title }}</a> 
-    {% trans 'by' %} {% profile_link track.user %}<br>
-  </div>
-  {% endfor %}
-</div>
-{% get_latest_comments 12 as latest_comments %}
-<div class="homepage-block">
-  <h2>
-    <a title="RSS Feed" href="{% url all_comments_feed %}"><img 
+    <a title="Atom Feed" href="{% url all_comments_feed %}"><img 
       src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
     {% blocktrans %}Comments{% endblocktrans %}
   </h2>
 {% for comment in latest_comments %}
 {% if comment.content_object %}
-<div class="latest-comment-entry {% if forloop.last %}last{% endif %}">
+<div class="latest-comment-entry homepage-item {% if forloop.last %}last{% endif %} {% cycle 'odd' '' %}">
   <div >
-    {% avatar_link comment.user 10 %}
+    {% avatar_link comment.user 24 %}
     {% profile_link comment.user %} {% trans ' on ' %} <a href="{{ comment.content_object.get_absolute_url }}">{{ comment.content_object.title }}</a> 
     <span class="comment-blurb-date">{% blocktrans with comment.date_modified|timesince as tweet_age %}{{ tweet_age }} ago{% endblocktrans %}</span>
   </div>
@@ -134,6 +87,50 @@ title="Blogs" href="{% url all_blogs_feed %}" />
 </div>
 {% endif %}
 {% endfor %}
+</div>
+
+<div class="homepage-block">
+  <h2>
+    <a title="Atom Feed" href="{% url all_photos_feed %}"><img 
+      src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
+    <a href="{% url photos %}">{% blocktrans %}Photos{% endblocktrans %}</a>
+  </h2>
+  {% for photo in latest_photos%}
+  <a href="{% groupurl photo_details group id=photo.id %}"><img
+    class="homepage-photo border-shadow{% cycle '' ''  ' row-end' %}" src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
+  {% endfor %}
+</div>
+<div class="homepage-block latest-tracks">
+  <h2>
+    <a title="Atom Feed" href="{% url tracks_feed %}"><img 
+      src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
+    <a href="{% url audiotracks %}">
+      {% blocktrans %}Tunes{% endblocktrans %}
+    </a>
+  </h2>
+  {% for track in latest_tracks%}
+  <div class="clearfix homepage-item {% cycle 'odd' '' %}">
+    {% avatar_link track.user 24 %}
+    <a href="{{ track.get_absolute_url }}">{{ track.title }}</a> 
+    {% trans 'by' %} {% profile_link track.user %}<br>
+  </div>
+  {% endfor %}
+</div>
+<div class="homepage-block latest-blogs">
+  <h2>
+    <a title="Atom Feed" href="{% url all_blogs_feed %}"><img 
+      src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
+    <a href="{% url blog_list_all %}">
+      {% blocktrans %}Blogs{% endblocktrans %}
+    </a>
+  </h2>
+  {% for blog_post in latest_blogs%}
+  <div class="clearfix homepage-item {% cycle 'odd' '' %}">
+    {% avatar_link blog_post.author 24 %}
+    <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a> 
+    {% trans 'by' %} {% profile_link blog_post.author %}<br>
+  </div>
+  {% endfor %}
 </div>
 <div class="clear"></div>
 
