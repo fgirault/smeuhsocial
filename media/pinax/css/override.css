@@ -6,6 +6,16 @@
   font-size: 20px;
 }
 
+@media screen and (min-width: 1024px) {
+    #body {
+    	max-width: 900px;
+    }
+    body.home #body {
+    	max-width: none;
+        width: 100%:
+    }
+}
+
 @media screen and (max-width: 850px) {
     .logo img {
       /* original size: 272×57 */
