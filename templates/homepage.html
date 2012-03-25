@@ -45,7 +45,7 @@ title="Blogs" href="{% url all_blogs_feed %}" />
 
 <div class="homepage-block latest-tweets">
   <h2>
-    <a title="Atom Feed" href="{% url all_tweets_feed %}"><img src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
+    <a title="Atom Feed" href="{% url all_tweets_feed %}"><img alt="Feed Icon" src="{{ STATIC_URL }}img/feed-icon.png"></a>
     <a href="{% url all_tweets %}">{% blocktrans %}Touites{% endblocktrans %}</a>
   </h2>
   {% if user.is_authenticated %}
@@ -60,7 +60,7 @@ title="Blogs" href="{% url all_blogs_feed %}" />
   </div>
   {% endif %}
   {% for tweet in latest_tweets %}
-  <div class="tweet-item homepage-item {% cycle 'odd' '' %}" class="clearfix">
+  <div class="tweet-item homepage-item {% cycle 'odd' '' %} clearfix">
     {% avatar_link tweet.sender 24 %}
     {% include "microblogging/_tweet.html" %}
   </div>
@@ -70,8 +70,8 @@ title="Blogs" href="{% url all_blogs_feed %}" />
 {% get_latest_comments 10 as latest_comments %}
 <div class="homepage-block">
   <h2>
-    <a title="Atom Feed" href="{% url all_comments_feed %}"><img 
-      src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
+    <a title="Atom Feed" href="{% url all_comments_feed %}"><img  alt="Feed Icon"
+      src="{{ STATIC_URL }}img/feed-icon.png"></a>
     {% blocktrans %}Comments{% endblocktrans %}
   </h2>
 {% for comment in latest_comments %}
@@ -91,19 +91,19 @@ title="Blogs" href="{% url all_blogs_feed %}" />
 
 <div class="homepage-block">
   <h2>
-    <a title="Atom Feed" href="{% url all_photos_feed %}"><img 
-      src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
+    <a title="Atom Feed" href="{% url all_photos_feed %}"><img alt="Feed Icon"
+      src="{{ STATIC_URL }}img/feed-icon.png"></a>
     <a href="{% url photos %}">{% blocktrans %}Photos{% endblocktrans %}</a>
   </h2>
   {% for photo in latest_photos%}
   <a href="{% groupurl photo_details group id=photo.id %}"><img
-    class="homepage-photo border-shadow{% cycle '' ''  ' row-end' %}" src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
+    class="homepage-photo border-shadow{% cycle '' ''  ' row-end' %}" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}"></a>
   {% endfor %}
 </div>
 <div class="homepage-block latest-tracks">
   <h2>
-    <a title="Atom Feed" href="{% url tracks_feed %}"><img 
-      src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
+    <a title="Atom Feed" href="{% url tracks_feed %}"><img alt="Feed Icon"
+      src="{{ STATIC_URL }}img/feed-icon.png"></a>
     <a href="{% url audiotracks %}">
       {% blocktrans %}Tunes{% endblocktrans %}
     </a>
@@ -118,8 +118,8 @@ title="Blogs" href="{% url all_blogs_feed %}" />
 </div>
 <div class="homepage-block latest-blogs">
   <h2>
-    <a title="Atom Feed" href="{% url all_blogs_feed %}"><img 
-      src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
+    <a title="Atom Feed" href="{% url all_blogs_feed %}"><img alt="Feed Icon"
+      src="{{ STATIC_URL }}img/feed-icon.png"></a>
     <a href="{% url blog_list_all %}">
       {% blocktrans %}Blogs{% endblocktrans %}
     </a>
