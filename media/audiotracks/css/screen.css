@@ -1,53 +1,63 @@
-.audiotracks-list {
+.audiotracks-list-entry {
     padding: 0;
     font-size: 16px;
     line-height: 24px;
 }
 
-.audiotracks-list .debug-info {
+.audiotracks-list-entry .debug-info {
     color: silver; 
     font-size: 10px; 
     font-style: italic;
     margin: 0 0;
 }
 
-.audiotracks-list .track-image,
-.audiotracks-list .inline-avatar {
+.audiotracks-list-entry .track-image,
+.audiotracks-list-entry .inline-avatar {
   float: left;
   margin-right: 10px;
   height: 49px;
 }
 
-.audiotracks-list p {
+.audiotracks-list-entry .inline-avatar img {
+  width: 48px;
+  height: 48px;
+}
+
+.audiotracks-list-entry p {
   margin: 0;
 }
 
-.audiotracks-list .track-details {
+.audiotracks-list-entry .track-details {
   margin: 5px 0;
 }
 
-.audiotracks-list .track-title {
+.audiotracks-list-entry .track-title {
   font-size: 20px;
+  line-height: 18px;
 }
 
-.audiotracks-list .upload-details {
+.audiotracks-list-entry .upload-details {
   font-size: 12px;
   color: #ccc;
 }
 
-.audiotracks-list ul.tags {
+.audiotracks-list-entry ul.tags {
   margin: 0;
   padding: 0;
   font-size: 12px;
   line-height: 12px;
 }
 
-.audiotracks-list .tags li {
+.audiotracks-list-entry .tags li {
   display: inline;
   list-style: none;
 }
 
-.audiotracks-list-entry {
+.tags-placeholder {
+   height: 12px;
+}
+
+.audiotracks-list-entry-entry {
     margin-bottom: 20px;
     padding-bottom: 10px;
 }
