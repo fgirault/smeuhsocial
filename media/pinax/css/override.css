@@ -5,3 +5,37 @@
 #intro-text {
   font-size: 20px;
 }
+
+@media screen and (max-width: 850px) {
+    .logo img {
+      /* original size: 272×57 */
+        width: 163px;
+	height: 34px;
+    }
+    .homepage-block {
+        min-width: 100%;
+    }
+    .homepage-item.odd {
+        background-color: #F7FcFc;
+    }
+    ul.tabs {
+    	margin-bottom: 0px;
+    }
+    ul.tabs li {
+    	font-size: 11px;
+	padding: 4px 1px;
+	display: inline-block;
+    }
+    ul.tabs li a {
+	padding: 1px 2px;
+    }
+    #tabhead .logo {
+        height: 35px;
+    }
+    #tabhead .login, #right_tabs {
+        position: static;
+    }
+    #tabhead .login {
+        margin-bottom: 5px;
+    }
+}
