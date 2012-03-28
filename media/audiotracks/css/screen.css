@@ -1,7 +1,14 @@
+.audiotracks-list {
+    overflow: hidden;
+}
+
 .audiotracks-list-entry {
     padding: 0;
     font-size: 16px;
     line-height: 24px;
+    width: 380px;
+    float: left;
+    margin: 24px 48px 24px 0;
 }
 
 .audiotracks-list-entry .debug-info {
@@ -32,8 +39,11 @@
 }
 
 .audiotracks-list-entry .track-title {
-  font-size: 20px;
-  line-height: 18px;
+  font-size: 18px;
+  line-height: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; 
 }
 
 .audiotracks-list-entry .upload-details {

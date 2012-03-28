@@ -8,11 +8,11 @@
     {% avatar_link track.user 48 %}
     {% endif %}
     <div class="track-details">
-      <p class="track-title">
-        <a href="{% url track_detail track.user.username,track.slug %}">
-          {% if track.artist %} {{ track.artist }} &#8211; {% endif %}{{ track.title|title }}
-        </a>
-      </p>
+      <a href="{% url track_detail track.user.username,track.slug %}">
+        <p class="track-title">
+        {% if track.artist %} {{ track.artist }} &#8211; {% endif %}{{ track.title|title }}
+        </p>
+      </a>
       <p class="upload-details">
         {% trans 'uploaded by' %}
         <a href="{% url profile_detail username=track.user.username %}">{{ track.user.username }}</a>
