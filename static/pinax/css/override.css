@@ -50,6 +50,9 @@
   .homepage-block.latest-tweets {
     margin-left: 3.332%;
   }
+  .photo-block {
+      clear: left;
+  }
   ul.tabs li {
       font-size: 11px;
     }
@@ -76,7 +79,7 @@
         padding: 1%;
     }
     .homepage-item.odd {
-        background-color: #f0fff0;
+        background-color: #F4FFE8;
     }
     ul.tabs {
     	margin-bottom: 0px;
