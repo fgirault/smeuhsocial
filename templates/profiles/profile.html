@@ -11,8 +11,6 @@
 {% load photo_tags %}
 {% load threadedcommentstags %}
 
-{% block extra_head %}<link rel="stylesheet" href="{{ STATIC_URL }}audiotracks/css/screen.css" />{% endblock %}
-
 {% block head_title %}{% user_display other_user as other_user_display %}{% blocktrans %}{{ other_user_display }}{% endblocktrans %}{% endblock %}
 
 {% block body %}
@@ -225,5 +223,4 @@
 
 {% block extra_body %}
     <script src="{{ STATIC_URL }}pinax/js/avatar.js" type="text/javascript"></script>
-    {% include 'audiotracks/_player_assets.html' %}
 {% endblock %}

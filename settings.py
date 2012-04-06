@@ -79,9 +79,17 @@ STATIC_URL = "/media/static/"
 
 # Additional directories which hold static files
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT, "media"),
+    os.path.join(PROJECT_ROOT, "static"),
     os.path.join(PINAX_ROOT, "media", PINAX_THEME),
 ]
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'compressor.finders.CompressorFinder',
+)
+
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -160,8 +168,9 @@ INSTALLED_APPS = [
     "pinax.templatetags",
     
     # external
+    "compressor",
     "notification", # must be first
-    "staticfiles",
+    "django.contrib.staticfiles",
 #    "debug_toolbar",
     "mailer",
     "uni_form",
@@ -261,7 +270,18 @@ LANGUAGES = [
     ("en", u"English"),
 ]
 
-# URCHIN_ID = "ua-..."
+LOCALE_PATHS = (
+        os.path.join(PINAX_ROOT, "locale"),
+        )
+
+
+#######################################################################
+# Apps settings
+#######################################################################
+
+LOCALE_PATHS = (
+                os.path.join(PINAX_ROOT, "locale"),
+                        )
 
 YAHOO_MAPS_API_KEY = "..."
 
@@ -327,10 +347,6 @@ ldap_log = logging.getLogger('django_auth_ldap')
 ldap_log_handler = logging.StreamHandler()
 ldap_log_handler.setLevel(logging.DEBUG)
 ldap_log.addHandler(ldap_log_handler)
-
-LOCALE_PATHS = (
-        os.path.join(PINAX_ROOT, "locale"),
-        )
 
 AUDIOTRACKS_MODEL = 'smeuhoverride.Track'
 AUDIOTRACKS_PER_PAGE = 6

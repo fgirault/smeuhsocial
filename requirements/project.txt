@@ -14,3 +14,5 @@
 PIL
 python-ldap
 django-auth-ldap
+versiontools
+django_compressor

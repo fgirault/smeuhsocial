@@ -25,6 +25,7 @@ $(document).ready(function() {
 
   $('audio').mediaelementplayer({
     audioWidth: 380, 
+    pluginPath: '/media/static/audiotracks/mediaelement/',
     success: function(me, domObj) {
       var container = $(domObj).parents('.player-container');
       container.next().find('.audio-type').html( me.pluginType );
