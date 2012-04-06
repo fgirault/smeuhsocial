@@ -10,7 +10,15 @@
   font-size: 20px;
 }
 
-@media screen and (min-width: 1024px) {
+.homepage-item {
+    border-bottom: 1px solid #CCC;
+}
+
+.homepage-item.first {
+    border-top: 1px solid #CCC;
+}
+
+@media screen and (min-width: 1200px) {
     #body {
     	max-width: 900px;
     }
@@ -18,30 +26,68 @@
     	max-width: none;
         width: 100%:
     }
+    .homepage-block  {
+      width: 18%;
+      margin: 0 1.65% 0 0;
+    }
+    .homepage-block.latest-tweets {
+      margin-left: 1.65%;
+    }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 1200px) {
+  .homepage-photo {
+    width: 31%;
+    margin: 0 1% 6px 0;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1200px) {
+  .homepage-block {
+    width: 45%;
+    margin: 0 0 2% 3.332%;
+  }
+  .homepage-block.latest-tweets {
+    margin-left: 3.332%;
+  }
+  ul.tabs li {
+      font-size: 11px;
+    }
+    ul.tabs li a {
+      padding: 1px 4px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+   #homepage-tweet-form {
+     width: 98%;
+     margin: auto;
+   }
     .logo img {
       /* original size: 272×57 */
         width: 163px;
-	height: 34px;
+        height: 34px;
     }
     .homepage-block {
-        min-width: 100%;
+        margin-bottom: 24px;
+        width: 100%;
+    }
+    .homepage-item {
+        padding: 1%;
     }
     .homepage-item.odd {
-        background-color: #F7FcFc;
+        background-color: #f0fff0;
     }
     ul.tabs {
     	margin-bottom: 0px;
     }
     ul.tabs li {
     	font-size: 11px;
-	padding: 4px 1px;
-	display: inline-block;
+        padding: 4px 1px;
+        display: inline-block;
     }
     ul.tabs li a {
-	padding: 1px 2px;
+      padding: 1px 2px;
     }
     #tabhead .logo {
         height: 35px;

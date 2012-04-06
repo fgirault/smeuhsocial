@@ -335,14 +335,21 @@ label {
 .home h2 {
     font-size: 14px;
     color: #777;
-    margin-top: 24px;
+    margin-top: 0;
     margin-bottom: 4px;
     text-shadow: 1px 0.5px 1px #ccc;
 }
 
+.home #body {
+  padding: 10px 0;
+}
+
 .tweet-item {
     padding: 6px 0px;
-    border-bottom: 1px solid #CCC;
+}
+
+#homepage-tweet-form {
+/*  background-color: #ccc;*/
 }
 
 #homepage-tweet-form input {
@@ -352,25 +359,27 @@ label {
 }
 
 #homepage-tweet-form #new_tweet {
-    width: 82%;
+  width: 70%;
+  margin-right: 1%;
 }
 
 #homepage-tweet-form input[type=submit] {
-    width: 14%;
-    float: right;
+  width: 22%;
 }
 
-#homepage-tweet-form #chars_left {
+#homepage-tweet-form #chars_hint {
     font-size: 10pt;
+    display: block;
 }
 
 .homepage-photo {
-    margin-right: 4px;
-    margin-bottom: 6px;
+  width: 48%;
+  margin-bottom: 6px;
+  margin-right: 1%;
 }
 
-.homepage-photo {
-    margin-right: 0px;
+.homepage-photo.even {
+  margin-right: 0;
 }
 
 #id_tease {
@@ -489,9 +498,9 @@ p {
 
 .homepage-block {
     float: left;
-    margin-right: 10px;
-    max-width: 400px;
-    min-width: 150px;
+    margin: 0;
+    border-width: 0;
+    width: 400px;
 }
 
 .homepage-item {

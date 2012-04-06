@@ -49,18 +49,20 @@ title="Blogs" href="{% url all_blogs_feed %}" />
     <a href="{% url all_tweets %}">{% blocktrans %}Touites{% endblocktrans %}</a>
   </h2>
   {% if user.is_authenticated %}
-  <div>
-    <form id="homepage-tweet-form" action="{% url tweets_you_follow %}" method="POST">
+  <div id="homepage-tweet-form">
+    <form action="{% url tweets_you_follow %}" method="POST">
       {% csrf_token %}
       <input type="text" autocomplete="off" id="new_tweet" name="text" cols="30" rows="4"/>
 
       <input type="submit" value="{% trans 'Bang' %}">
-      <span id="chars_left">140</span> caractères restant.
+      <span id="chars_hint">
+        <span id="chars_left">140</span> caractères restant.
+      </span>
     </form>
   </div>
   {% endif %}
   {% for tweet in latest_tweets %}
-  <div class="tweet-item homepage-item {% cycle 'odd' '' %} clearfix">
+  <div class="tweet-item homepage-item {% if forloop.first %} first{% endif %}{% cycle ' odd' '' %} clearfix">
     {% avatar_link tweet.sender 24 %}
     {% include "microblogging/_tweet.html" %}
   </div>
@@ -76,7 +78,7 @@ title="Blogs" href="{% url all_blogs_feed %}" />
   </h2>
 {% for comment in latest_comments %}
 {% if comment.content_object %}
-<div class="latest-comment-entry homepage-item {% if forloop.last %}last{% endif %} {% cycle 'odd' '' %}">
+<div class="latest-comment-entry homepage-item{% if forloop.first %} first{% endif %} {% cycle 'odd' '' %}">
   <div >
     {% avatar_link comment.user 24 %}
     {% profile_link comment.user %} {% trans ' on ' %} <a href="{{ comment.content_object.get_absolute_url }}">{{ comment.content_object.title }}</a> 
@@ -97,7 +99,7 @@ title="Blogs" href="{% url all_blogs_feed %}" />
   </h2>
   {% for photo in latest_photos%}
   <a href="{% groupurl photo_details group id=photo.id %}"><img
-    class="homepage-photo border-shadow{% cycle '' ''  ' row-end' %}" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}"></a>
+    class="homepage-photo border-shadow{% cycle '' ' even' %}" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}"></a>
   {% endfor %}
 </div>
 <div class="homepage-block latest-tracks">
@@ -109,7 +111,7 @@ title="Blogs" href="{% url all_blogs_feed %}" />
     </a>
   </h2>
   {% for track in latest_tracks%}
-  <div class="clearfix homepage-item {% cycle 'odd' '' %}">
+  <div class="clearfix homepage-item{% if forloop.first %} first{% endif %}{% cycle ' odd' '' %}">
     {% avatar_link track.user 24 %}
     <a href="{{ track.get_absolute_url }}">{{ track.title }}</a> 
     {% trans 'by' %} {% profile_link track.user %}<br>
@@ -125,7 +127,7 @@ title="Blogs" href="{% url all_blogs_feed %}" />
     </a>
   </h2>
   {% for blog_post in latest_blogs%}
-  <div class="clearfix homepage-item {% cycle 'odd' '' %}">
+  <div class="clearfix homepage-item{% if forloop.first %} first{% endif %}{% cycle ' odd' '' %}">
     {% avatar_link blog_post.author 24 %}
     <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a> 
     {% trans 'by' %} {% profile_link blog_post.author %}<br>
