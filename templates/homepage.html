@@ -74,10 +74,7 @@ title="Blogs" href="{% url all_blogs_feed %}" />
   </div>
   {% endif %}
   {% for tweet in latest_tweets %}
-  <div class="tweet-item homepage-item {% if forloop.first %} first{% endif %}{% cycle ' odd' '' %} clearfix">
-    {% avatar_link tweet.sender 24 %}
     {% include "microblogging/_tweet.html" %}
-  </div>
   {% endfor %}
 </div>
 

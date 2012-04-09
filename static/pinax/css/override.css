@@ -46,6 +46,10 @@ h1 {
   border-top: 1px solid #CCC;
 }
 
+.pagination {
+  margin-top: 24px;
+}
+
 .pagination a,
 .pagination span,
 .pagination span.disabled,
@@ -55,18 +59,28 @@ h1 {
   font-weight: bold;
   font-size: 16px;
   color: #F4C021;
-  border: 2px solid #00B000;
+  border: 1px solid #00B000;
   padding: 0.2em 0.5em;
 }
 
 .pagination li:not(.active) a:hover,
-.photos .pagination a:hover
+.photos .pagination a:hover,
+.tweets .pagination a:hover
 {
   background-color: #00B000;
 }
 
-.pagination span.disabled, .pagination span.current {
+.pagination span.current {
   background-color: #F4FFE8;
+}
+
+.pagination span.disabled {
+  display: none;
+}
+
+#new_tweet {
+  width: 100%;
+  height: 2.5em;
 }
 
 footer {
