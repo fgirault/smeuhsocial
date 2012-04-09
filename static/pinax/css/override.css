@@ -46,6 +46,118 @@ h1 {
   border-top: 1px solid #CCC;
 }
 
+.pagination a,
+.pagination span,
+.pagination span.disabled,
+.pagination span.current
+{
+  background-color: #000;
+  font-weight: bold;
+  font-size: 16px;
+  color: #F4C021;
+  border: 2px solid #00B000;
+  padding: 0.2em 0.5em;
+}
+
+.pagination li:not(.active) a:hover,
+.photos .pagination a:hover
+{
+  background-color: #00B000;
+}
+
+.pagination span.disabled, .pagination span.current {
+  background-color: #F4FFE8;
+}
+
+footer {
+  border-top: 5px solid #00B000;
+  padding: 12px 1.66%;
+  background-color: black;
+  color: #ccc;
+}
+
+footer a,
+footer a:visited {
+  color: #F4C021
+}
+
+@media screen and (min-width: 1200px) {
+  #body {
+    margin: 0 1.66%;
+  }
+  .homepage-block  {
+    width: 18.61%;
+    margin: 0 1.73% 0 0;
+  }
+  .homepage-block.latest-blogs {
+    margin-right: 0;
+  }
+  .homepage-photo.even {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .homepage-photo {
+    width: 31%;
+    margin: 0 1% 6px 0;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1200px) {
+  .homepage-block {
+    width: 45%;
+    margin: 0 0 2% 3.332%;
+  }
+  .homepage-block.latest-tweets {
+    margin-left: 3.332%;
+  }
+  .photo-block {
+    clear: left;
+  }
+  ul.tabs li {
+    font-size: 11px;
+  }
+  ul.tabs li a {
+    padding: 1px 4px;
+  }
+  footer {
+    padding: 12px 3.332%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home h2,
+  .home h2 a {
+    color: #F4FFE8;
+    padding: 1%;
+    background-color: #00B000;
+    border-top: 1px solid #36d836;
+    border-bottom: 1px solid #218421;
+  }
+  #homepage-tweet-form {
+    width: 98%;
+    margin: auto;
+  }
+  .logo img {
+    /* original size: 272×57 */
+    width: 163px;
+    height: 34px;
+  }
+  .photo-block .photos {
+    padding-left: 1%;
+  }
+  .homepage-block {
+    margin-bottom: 24px;
+    width: 100%;
+  }
+  .homepage-item {
+    padding: 1%;
+  }
+  .homepage-item.odd {
+    background-color: #F4FFE8;
+}
+
 footer {
   border-top: 5px solid #00B000;
   padding: 12px 1.66%;
