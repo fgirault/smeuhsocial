@@ -4,7 +4,7 @@
 <html dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}" lang="{{ LANGUAGE_CODE }}">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block head_title_base %}{% if SITE_NAME %}{{ SITE_NAME }} : {% endif %}{% block head_title %}{% endblock %}{% endblock %}</title>
         <!--[if IE]><style>
             div {
@@ -62,33 +62,35 @@
         <div id="subnav" class="clearfix">{% block subnav_base %}<div class="clearfix">{% block subnav %}&nbsp;{% endblock %}</div>{% endblock %}</div>
         
         {% block body_outer %}
-        <div id="body">
-            {% if messages %}
-                <ul id="messages">
-                    {% for message in messages %}
-                    <li id="message_{{ forloop.counter }}"{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-                        <a href="#"><small>{% trans "clear" %}</small></a>
-                        {{ message }}
-                    </li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-            
-            {% block body %}
-            {% endblock %}
-            
+        <div id="body-wrapper">
+          <div id="body">
+              {% if messages %}
+                  <ul id="messages">
+                      {% for message in messages %}
+                      <li id="message_{{ forloop.counter }}"{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                          <a href="#"><small>{% trans "clear" %}</small></a>
+                          {{ message }}
+                      </li>
+                      {% endfor %}
+                  </ul>
+              {% endif %}
+              
+              {% block body %}
+              {% endblock %}
+          </div>
         </div>
-        {% endblock %}
-        
         <footer>
         {% block footer %}
-        <a href="/al/blog/manifeste-mysmeuh">{% trans 'About' %}</a>
-        |
-        <a href="https://github.com/alex-marandon/smeuhsocial">
-          {% trans 'Site powered by SmeuhSocial' %}
-        </a>
+          <a href="/al/blog/manifeste-mysmeuh">{% trans 'About' %}</a>
+          |
+          {% blocktrans %}
+          Site powered by 
+          <a href="https://github.com/alex-marandon/smeuhsocial">SmeuhSocial</a>
+          {% endblocktrans %}
         {% endblock %}
         </footer>
+        {% endblock %}
+        
         
         {% compress js %}
         <script src="{% block jquery_src %}{{ STATIC_URL }}pinax/js/jquery-1.7.1.min.js{% endblock %}" type="text/javascript"></script>

@@ -42,23 +42,20 @@ td {
     padding: 0;
 }
 
-h1 {
-    margin: 0;
-    color: #ccc;
-    font-size: 40px;
-}
-
-
-
 #body {
     clear: both;
-    margin: 0 auto;
+    margin: 0 3.332;
     padding: 10px;
 }
 
-footer {
-    padding: 10px;
-    clear: both;
+.auth-prompt, footer {
+  border-top: 1px solid #ccc;
+  clear: both;
+  padding: 12px 0;
+}
+
+.home .homepage-block h2 img {
+  vertical-align: top;
 }
 
 /* CLEARS */
@@ -337,7 +334,6 @@ label {
     color: #777;
     margin-top: 0;
     margin-bottom: 4px;
-    text-shadow: 1px 0.5px 1px #ccc;
 }
 
 .home #body {
@@ -376,10 +372,6 @@ label {
   width: 48%;
   margin-bottom: 6px;
   margin-right: 1%;
-}
-
-.homepage-photo.even {
-  margin-right: 0;
 }
 
 #id_tease {
@@ -454,6 +446,10 @@ p {
 
 .audiotracks-detail {
     margin-bottom: 48px;
+}
+
+#tag-cloud {
+  padding: 0;
 }
 
 #tag-cloud li {

@@ -28,18 +28,30 @@ title="Blogs" href="{% url all_blogs_feed %}" />
 {% block body %}
 
 {% if not user.is_authenticated %}
-<h1>{% trans 'This is your Smeuh' %}</h1>
 <div id="intro-text">
-  {% blocktrans %}
-  <p>This site is a platform for members and friends of <a
-    href="http://smeuh.org/">Smeuh.org</a> to share pictures, sound and ideas.</p>
+  <h1>{% trans 'This is your Smeuh' %}</h1>
   <p>
+  {% blocktrans %}
+  This site is a platform for members and friends of <a
+    href="http://smeuh.org/">Smeuh.org</a> to share pictures, sound and ideas.
+  {% endblocktrans %}
+    {% if not user.is_authenticated %}
+      {% url acct_login as login_url %}
+      {% ifsetting ACCOUNT_OPEN_SIGNUP %}
+      {% url acct_signup as signup_url %}
+      {% blocktrans %}You can <a href="{{ signup_url }}">Sign up</a> and <a href="{{ login_url }}">Log in</a> to try out the site.{% endblocktrans %}
+      {% else %}
+      {% blocktrans %}You can <a href="{{ login_url }}">Log in</a> to try out the site.{% endblocktrans %}
+      {% endifsetting %}
+    {% endif %}
+  {% blocktrans %}
   To know more about the code that runs this site, report bugs and maybe
   contribute, please check <a
     href="https://github.com/alex-marandon/smeuhsocial">the GitHub
     repository</a>.
-  </p>
   {% endblocktrans %}
+  </p>
+
 </div>
 {% endif %}
 
@@ -97,10 +109,12 @@ title="Blogs" href="{% url all_blogs_feed %}" />
       src="{{ STATIC_URL }}img/feed-icon.png"></a>
     <a href="{% url photos %}">{% blocktrans %}Photos{% endblocktrans %}</a>
   </h2>
-  {% for photo in latest_photos%}
-  <a href="{% groupurl photo_details group id=photo.id %}"><img
-    class="homepage-photo border-shadow{% cycle '' ' even' %}" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}"></a>
-  {% endfor %}
+  <div class="photos">
+    {% for photo in latest_photos%}
+    <a href="{% groupurl photo_details group id=photo.id %}"><img
+      class="homepage-photo border-shadow{% cycle '' ' even' %}" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}"></a>
+    {% endfor %}
+  </div>
 </div>
 <div class="homepage-block latest-tracks">
   <h2>
@@ -134,19 +148,6 @@ title="Blogs" href="{% url all_blogs_feed %}" />
   </div>
   {% endfor %}
 </div>
-<div class="clear"></div>
-
-
-<hr />
-{% if not user.is_authenticated %}
-{% url acct_login as login_url %}
-{% ifsetting ACCOUNT_OPEN_SIGNUP %}
-{% url acct_signup as signup_url %}
-<p>{% blocktrans %}You can <a href="{{ signup_url }}">Sign up</a> and <a href="{{ login_url }}">Log in</a> to try out the site.{% endblocktrans %}</p>
-{% else %}
-<p>{% blocktrans %}You can <a href="{{ login_url }}">Log in</a> to try out the site.{% endblocktrans %}</p>
-{% endifsetting %}
-{% endif %}
 
 {% endblock %}
 {% block extra_body %}

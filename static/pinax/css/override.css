@@ -1,38 +1,77 @@
 /*****************************
  * SmeuhSocial custom styles *
+ *
+ * Yellow: #F4C021
+ * Dark green: #00B000
+ * Fluorescent green: #00FF00
+ * Text light background: #333
+ * Text dark background: #ccc
+ *
  *****************************/
 
+body {
+  background-color: #000;
+}
+
+#body-wrapper {
+  background-color: #fff;
+  overflow: hidden;
+}
+
+body:not(.home) #body {
+  max-width: 900px;
+  margin: auto;
+}
+
+h1 {
+  color: #00B000;
+  font-size: 24px;
+}
+
 #id_comment {
-    width: 98%;
+  width: 98%;
 }
 
 #intro-text {
-  font-size: 20px;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 24px;
 }
 
 .homepage-item {
-    border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
 }
 
 .homepage-item.first {
-    border-top: 1px solid #CCC;
+  border-top: 1px solid #CCC;
+}
+
+footer {
+  border-top: 5px solid #00B000;
+  padding: 12px 1.66%;
+  background-color: black;
+  color: #ccc;
+}
+
+footer a,
+footer a:visited {
+  color: #F4C021
 }
 
 @media screen and (min-width: 1200px) {
-    #body {
-    	max-width: 900px;
-    }
-    body.home #body {
-    	max-width: none;
-        width: 100%:
-    }
-    .homepage-block  {
-      width: 18%;
-      margin: 0 1.65% 0 0;
-    }
-    .homepage-block.latest-tweets {
-      margin-left: 1.65%;
-    }
+  #body {
+    margin: 0 1.66%;
+  }
+  .homepage-block  {
+    width: 18.61%;
+    margin: 0 1.73% 0 0;
+  }
+  .homepage-block.latest-blogs {
+    margin-right: 0;
+  }
+  .homepage-photo.even {
+    margin-right: 0;
+  }
 }
 
 @media screen and (max-width: 1200px) {
@@ -51,54 +90,76 @@
     margin-left: 3.332%;
   }
   .photo-block {
-      clear: left;
+    clear: left;
   }
   ul.tabs li {
-      font-size: 11px;
-    }
-    ul.tabs li a {
-      padding: 1px 4px;
-    }
+    font-size: 11px;
+  }
+  ul.tabs li a {
+    padding: 1px 4px;
+  }
+  footer {
+    padding: 12px 3.332%;
+  }
 }
 
 @media screen and (max-width: 480px) {
-   #homepage-tweet-form {
-     width: 98%;
-     margin: auto;
-   }
-    .logo img {
-      /* original size: 272×57 */
-        width: 163px;
-        height: 34px;
-    }
-    .homepage-block {
-        margin-bottom: 24px;
-        width: 100%;
-    }
-    .homepage-item {
-        padding: 1%;
-    }
-    .homepage-item.odd {
-        background-color: #F4FFE8;
-    }
-    ul.tabs {
-    	margin-bottom: 0px;
-    }
-    ul.tabs li {
-    	font-size: 11px;
-        padding: 4px 1px;
-        display: inline-block;
-    }
-    ul.tabs li a {
-      padding: 1px 2px;
-    }
-    #tabhead .logo {
-        height: 35px;
-    }
-    #tabhead .login, #right_tabs {
-        position: static;
-    }
-    #tabhead .login {
-        margin-bottom: 5px;
-    }
+  .home h2,
+  .home h2 a {
+    color: #F4FFE8;
+    padding: 1%;
+    background-color: #00B000;
+    border-top: 1px solid #36d836;
+    border-bottom: 1px solid #218421;
+  }
+  #homepage-tweet-form {
+    width: 98%;
+    margin: auto;
+  }
+  .logo img {
+    /* original size: 272×57 */
+    width: 163px;
+    height: 34px;
+  }
+  .photo-block .photos {
+    padding-left: 1%;
+  }
+  .homepage-block {
+    margin-bottom: 24px;
+    width: 100%;
+  }
+  .homepage-item {
+    padding: 1%;
+  }
+  .homepage-item.odd {
+    background-color: #F4FFE8;
+  }
+  ul.tabs {
+    margin-bottom: -1px;
+  }
+  ul.tabs li {
+    font-size: 11px;
+    padding: 4px 1px;
+    display: inline-block;
+  }
+  ul.tabs li a {
+    padding: 1px 2px;
+  }
+  #tabhead .logo {
+    height: 35px;
+  }
+  #tabhead .login, #right_tabs {
+    position: static;
+  }
+  #tabhead .login {
+    padding-left: 1%;
+    margin-bottom: 5px;
+  }
+  #subnav ul {
+    margin: 0;
+    float: left;
+  }
+  #subnav ul li {
+    display: block;
+  }
 }
