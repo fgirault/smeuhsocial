@@ -40,6 +40,7 @@ h1 {
 
 .homepage-item {
   border-bottom: 1px solid #CCC;
+  word-wrap: break-word;
 }
 
 .homepage-item.first {
@@ -118,174 +119,114 @@ footer a:visited {
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 1200px) {
-  .homepage-block {
-    width: 45%;
-    margin: 0 0 2% 3.332%;
-  }
-  .homepage-block.latest-tweets {
-    margin-left: 3.332%;
-  }
-  .photo-block {
-    clear: left;
-  }
-  ul.tabs li {
-    font-size: 11px;
-  }
-  ul.tabs li a {
-    padding: 1px 4px;
-  }
-  footer {
-    padding: 12px 3.332%;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .home h2,
-  .home h2 a {
-    color: #F4FFE8;
-    padding: 1%;
-    background-color: #00B000;
-    border-top: 1px solid #36d836;
-    border-bottom: 1px solid #218421;
-  }
-  #homepage-tweet-form {
-    width: 98%;
-    margin: auto;
-  }
-  .logo img {
-    /* original size: 272×57 */
-    width: 163px;
-    height: 34px;
-  }
-  .photo-block .photos {
-    padding-left: 1%;
-  }
-  .homepage-block {
-    margin-bottom: 24px;
-    width: 100%;
-  }
-  .homepage-item {
-    padding: 1%;
-  }
-  .homepage-item.odd {
-    background-color: #F4FFE8;
-}
-
-footer {
-  border-top: 5px solid #00B000;
-  padding: 12px 1.66%;
-  background-color: black;
-  color: #ccc;
-}
-
-footer a,
-footer a:visited {
-  color: #F4C021
-}
-
-@media screen and (min-width: 1200px) {
-  #body {
-    margin: 0 1.66%;
-  }
-  .homepage-block  {
-    width: 18.61%;
-    margin: 0 1.73% 0 0;
-  }
-  .homepage-block.latest-blogs {
-    margin-right: 0;
-  }
-  .homepage-photo.even {
-    margin-right: 0;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .homepage-photo {
-    width: 31%;
-    margin: 0 1% 6px 0;
-  }
-}
-
-@media screen and (min-width: 481px) and (max-width: 1200px) {
-  .homepage-block {
-    width: 45%;
-    margin: 0 0 2% 3.332%;
-  }
-  .homepage-block.latest-tweets {
-    margin-left: 3.332%;
-  }
-  .photo-block {
-    clear: left;
-  }
-  ul.tabs li {
-    font-size: 11px;
-  }
-  ul.tabs li a {
-    padding: 1px 4px;
-  }
-  footer {
-    padding: 12px 3.332%;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .home h2,
-  .home h2 a {
-    color: #F4FFE8;
-    padding: 1%;
-    background-color: #00B000;
-    border-top: 1px solid #36d836;
-    border-bottom: 1px solid #218421;
-  }
-  #homepage-tweet-form {
-    width: 98%;
-    margin: auto;
-  }
-  .logo img {
-    /* original size: 272×57 */
-    width: 163px;
-    height: 34px;
-  }
-  .photo-block .photos {
-    padding-left: 1%;
-  }
-  .homepage-block {
-    margin-bottom: 24px;
-    width: 100%;
-  }
-  .homepage-item {
-    padding: 1%;
-  }
-  .homepage-item.odd {
-    background-color: #F4FFE8;
-  }
-  ul.tabs {
-    margin-bottom: -1px;
-  }
-  ul.tabs li {
-    font-size: 11px;
-    padding: 4px 1px;
-    display: inline-block;
-  }
-  ul.tabs li a {
-    padding: 1px 2px;
-  }
+/* When window gets narrower, navigation must go underneath the logo */
+@media screen and (max-width: 840px) {
   #tabhead .logo {
-    height: 35px;
+    height: 80px;
   }
-  #tabhead .login, #right_tabs {
-    position: static;
+  #right_tabs {
+    top: 60px;
+    right: 0;
+  }  
+}
+
+/* Again, laying out header at a lower resolution to avoid clashing elements */
+@media screen and (max-width: 555px) {
+  #tabhead .logo {
+    height: 75px;
   }
-  #tabhead .login {
-    padding-left: 1%;
-    margin-bottom: 5px;
+  #right_tabs {
+    top: 55px;
+    right: 0;
+  }
+  .logo img {
+    /* original size: 272×57 */
+    width: 163px;
+    height: 34px;
+  }
+  ul.tabs li {
+    font-size: 11px;
+  }
+  ul.tabs li a {
+    padding: 1px 10px;
   }
   #subnav ul {
-    margin: 0;
-    float: left;
+    margin: 0 0;
   }
-  #subnav ul li {
-    display: block;
+  #subnav ul a:link, #subnav ul a:visited {
+    padding: 2px 10px 2px 4px;
+  }
+}
+
+/* Intermediate width: 2 columns */
+@media screen and (min-width: 481px) and (max-width: 1200px) {
+  .homepage-block {
+    width: 45%;
+    margin: 0 0 2% 3.332%;
+  }
+  .homepage-block.latest-tweets {
+    margin-left: 3.332%;
+  }
+  .photo-block {
+    clear: left;
+  }
+  footer {
+    padding: 12px 3.332%;
+  }
+}
+
+/* Smart phones */
+@media screen and (max-width: 480px) {
+  .home h2,
+  .home h2 a {
+    color: #F4FFE8;
+    padding: 1%;
+    background-color: #00B000;
+    border-top: 1px solid #36d836;
+    border-bottom: 1px solid #218421;
+  }
+  #homepage-tweet-form {
+    width: 98%;
+    margin: auto;
+  }
+  .photo-block .photos {
+    padding-left: 1%;
+  }
+  .homepage-block {
+    margin-bottom: 24px;
+    width: 100%;
+  }
+  .homepage-item {
+    padding: 1%;
+  }
+  .homepage-item.odd {
+    background-color: #F4FFE8;
+  }
+  #tabhead .logo {
+    height: 60px;
+  }
+  #tabhead .login {
+    top: 26px;
+  }
+  #tabhead {
+    border-bottom-width: 0px;
+  }
+  #right_tabs {
+    position: static;
+    top: auto;
+  }
+  #right_tabs ul {
+    white-space: nowrap;
+    top: 60px;
+    left: 0;
+  }
+  #right_tabs li {
+    display: inline-block;
+  }  
+  #right_tabs li a {
+    padding: 0 4px;
+  }
+  ul.tabs {
+    margin-bottom: 0;
   }
 }
