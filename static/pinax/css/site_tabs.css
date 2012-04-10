@@ -27,6 +27,11 @@ body.inbox #tab_inbox
     margin: 0; /* to compensate for border */
     padding: 5px 0 5px;
     background-color: #00B000; /* selected tab colour */
+    background-image: linear-gradient(top, rgb(0,196,0) 30%, rgb(0,176,0) 51%);
+    background-image: -o-linear-gradient(top, rgb(0,196,0) 30%, rgb(0,176,0) 51%);
+    background-image: -moz-linear-gradient(top, rgb(0,196,0) 30%, rgb(0,176,0) 51%);
+    background-image: -webkit-linear-gradient(top, rgb(0,196,0) 30%, rgb(0,176,0) 51%);
+    background-image: -ms-linear-gradient(top, rgb(0,196,0) 30%, rgb(0,176,0) 51%);
     border-left: 1px solid #000; /* tab border */
     border-top: 1px solid #000; /* tab border */
     border-right: 1px solid #000; /* tab border */

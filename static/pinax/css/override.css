@@ -15,6 +15,7 @@ body {
 
 #body-wrapper {
   background-color: #fff;
+  background-image: url(/media/static/img/white-texture.jpg);
   overflow: hidden;
 }
 
@@ -23,9 +24,21 @@ body:not(.home) #body {
   margin: auto;
 }
 
+#subnav {
+  border-bottom: 1px solid #333;
+}
+
 h1 {
   color: #00B000;
   font-size: 24px;
+}
+
+h1 {
+  text-shadow: 0.5px 0.5px 0px #aaa;
+}
+
+.home h2 a:visited {
+  color: #00B000;
 }
 
 #id_comment {
@@ -56,12 +69,15 @@ h1 {
 .pagination span.disabled,
 .pagination span.current
 {
-  background-color: #000;
+  background-color: #111;
   font-weight: bold;
   font-size: 16px;
   color: #F4C021;
-  border: 1px solid #00B000;
+  border: 4px solid #00B000;
   padding: 0.2em 0.5em;
+  border-radius: 6px; 
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
 }
 
 .pagination li:not(.active) a:hover,
@@ -69,6 +85,7 @@ h1 {
 .tweets .pagination a:hover
 {
   background-color: #00B000;
+  color: #111;
 }
 
 .pagination span.current {
