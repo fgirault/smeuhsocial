@@ -246,4 +246,7 @@ footer a:visited {
   ul.tabs {
     margin-bottom: 0;
   }
+  .home h2 a:visited {
+    color: #ddd;
+  }
 }
