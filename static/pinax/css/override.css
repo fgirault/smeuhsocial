@@ -76,13 +76,18 @@ h1 {
   border-top: 1px solid #CCC;
 }
 
-.home .audiotracks-list-entry .track-title {
-  font-size: 12px;
+.home .audiotracks-list-entry .track-title,
+.home .audiotracks-list-entry {
+  font-size: 10pt;
 }
 
 
-.audiotracks-list-entry .audiotracks-action {
+.home .audiotracks-list-entry .audiotracks-action {
   font-size: 10px;
+}
+
+.audiotracks-list-entry:nth-child(odd) {
+  clear: left;
 }
 
 /* Homepage blog posts */
