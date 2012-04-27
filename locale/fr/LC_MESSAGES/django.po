@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-17 20:37+0200\n"
+"POT-Creation-Date: 2012-04-27 21:17+0200\n"
 "PO-Revision-Date: 2010-03-04 09:26+0100\n"
 "Last-Translator: James Pic <http://jamespic.com>\n"
 "Language-Team: Pinax French <http://www.transifex.net/projects/p/pinax/team/"
@@ -161,17 +161,17 @@ msgstr "il y a %(tweet_age)s"
 msgid "Photos"
 msgstr "Photos"
 
-#: templates/homepage.html:121
-msgid "Tunes"
-msgstr ""
+#: templates/homepage.html:121 templates/profiles/profile.html:131
+msgid "Tracks"
+msgstr "Morceaux"
 
-#: templates/homepage.html:128 templates/homepage.html.py:144
-msgid "by"
-msgstr "posté par"
-
-#: templates/homepage.html:137 templates/site_base.html:34
+#: templates/homepage.html:131 templates/site_base.html:34
 msgid "Blogs"
 msgstr "Blogs"
+
+#: templates/homepage.html:138
+msgid "by"
+msgstr "posté par"
 
 #: templates/profile_item.html:11 templates/profiles/profile.html:38
 msgid "Name"
@@ -250,11 +250,11 @@ msgstr "envoyé par"
 msgid "%(track_age)s ago"
 msgstr "il y a %(track_age)s"
 
-#: templates/audiotracks/_track_entry.html:37
+#: templates/audiotracks/_track_entry.html:38
 msgid "Edit"
 msgstr ""
 
-#: templates/audiotracks/_track_entry.html:38
+#: templates/audiotracks/_track_entry.html:39
 msgid "Delete"
 msgstr ""
 
@@ -276,23 +276,31 @@ msgstr "Uploader un morceau"
 msgid "Latest Tracks"
 msgstr "Derniers Morceaux"
 
-#: templates/audiotracks/detail.html:33
-msgid "Artist"
-msgstr ""
+#: templates/audiotracks/detail.html:16
+msgid "Previous track"
+msgstr "Morceau précédent"
 
-#: templates/audiotracks/detail.html:38
+#: templates/audiotracks/detail.html:19
+msgid "Next track"
+msgstr "Morceau suivant"
+
+#: templates/audiotracks/detail.html:32
+msgid "Artist"
+msgstr "Artiste"
+
+#: templates/audiotracks/detail.html:37
 msgid "Date"
 msgstr ""
 
-#: templates/audiotracks/detail.html:43
+#: templates/audiotracks/detail.html:42
 msgid "Genre"
 msgstr ""
 
-#: templates/audiotracks/detail.html:69
+#: templates/audiotracks/detail.html:71
 msgid "Download Track"
 msgstr ""
 
-#: templates/audiotracks/detail.html:72
+#: templates/audiotracks/detail.html:75
 msgid "Comments on this track:"
 msgstr "Commentaires sur ce morceau"
 
@@ -705,10 +713,6 @@ msgstr "inviter"
 #, python-format
 msgid "%(other_user_display)s to be a friend."
 msgstr "%(other_user_display)s comme « ami »"
-
-#: templates/profiles/profile.html:131
-msgid "Tracks"
-msgstr "Morceaux"
 
 #: templates/profiles/profile.html:134
 msgid "No tracks yet."
