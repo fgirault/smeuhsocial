@@ -81,8 +81,12 @@ h1 {
 }
 
 
-.audiotracks-list-entry .audiotracks-action {
+.home .audiotracks-list-entry .audiotracks-action {
   font-size: 10px;
+}
+
+.audiotracks-list-entry:nth-child(odd) {
+  clear: left;
 }
 
 /* Homepage blog posts */
