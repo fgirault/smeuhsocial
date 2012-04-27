@@ -34,8 +34,8 @@ body.inbox #tab_inbox
       linear,
       left bottom,
       left top,
-      color-stop(0.3, rgb(0,196,0)),
-      color-stop(0.51, rgb(0,176,0))
+      from(rgb(0,176,0)),
+      to(rgb(0,196,0))
     );
     background-image: -webkit-linear-gradient(top, rgb(0,196,0) 30%, rgb(0,176,0) 51%);
     background-image: -ms-linear-gradient(top, rgb(0,196,0) 30%, rgb(0,176,0) 51%);
