@@ -77,6 +77,10 @@
     margin-left: 20px;
 }
 
+.audiotracks-detail #audioplayer {
+  clear: both;
+}
+
 .audiotracks-description {
     margin: 1em 1em 2em 0;
 }

@@ -6,16 +6,6 @@
 
 {% block head_title %}{{ track.title }}{% endblock %}
 
-{% block extra_head %}
-{{ block.super }}
-<script type="text/javascript" src="{{ STATIC_URL }}audiotracks/audio-player/audio-player.js"></script>  
-<script type="text/javascript">  
-    AudioPlayer.setup("{{ STATIC_URL }}audiotracks/audio-player/player.swf", {  
-        width: 290  
-    });  
-</script> 
-{% endblock %}
-
 {% block body %}
 <div class="right_panel">
     {% include "audiotracks/track_right_panel.html" %}
