@@ -67,13 +67,19 @@ h1 {
 }
 
 .home .audiotracks-list-entry {
-  padding-top: 5px;
+  padding-top: 6px;
+  padding-bottom: 6px;
   border-bottom: 1px solid #CCC;
 }
 
 .home .audiotracks-list-entry:nth-child(1) {
   border-top: 1px solid #CCC;
 }
+
+.home .audiotracks-list-entry .track-title {
+  font-size: 12px;
+}
+
 
 .audiotracks-list-entry .audiotracks-action {
   font-size: 10px;
@@ -217,6 +223,9 @@ footer a:visited {
 
 /* Intermediate width: 2 columns */
 @media screen and (min-width: 481px) and (max-width: 1200px) {
+  #intro-text {
+    padding: 0 3.332%;
+  }
   .homepage-block {
     width: 45%;
     margin: 0 0 2% 3.332%;
@@ -234,6 +243,9 @@ footer a:visited {
 
 /* Smart phones */
 @media screen and (max-width: 480px) {
+  #intro-text {
+    padding: 0 1%;
+  }
   .home h2,
   .home h2 a {
     color: #F4FFE8;
