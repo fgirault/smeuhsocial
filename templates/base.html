@@ -55,7 +55,7 @@
         
         <div id="tabhead">
           <div class="logo" dir="ltr">{% block logo_link_image %}{% endblock %}</div>
-            <div class="login">{% block login %}{% endblock %}{% block locale_switcher %}{% endblock %}<div style="text-align: right;"></div></div>
+            <div class="login">{% block login %}{% endblock %}<div style="text-align: right;"></div></div>
             <div id="left_tabs" >{% block left_tabs %}{% endblock %}</div>
             <div id="right_tabs" >{% block right_tabs %}{% endblock %}</div>
         </div>
@@ -88,6 +88,7 @@
           <a href="https://github.com/alex-marandon/smeuhsocial">SmeuhSocial</a>
           {% endblocktrans %}
         {% endblock %}
+        {% block locale_switcher %}{% endblock %}
         </footer>
         {% endblock %}
         

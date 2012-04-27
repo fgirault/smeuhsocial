@@ -152,11 +152,16 @@ footer {
   padding: 12px 1.66%;
   background-color: black;
   color: #ccc;
+  line-height: 24px;
 }
 
 footer a,
 footer a:visited {
   color: #F4C021
+}
+
+footer #locale_switcher {
+  float: right;
 }
 
 @media screen and (min-width: 1200px) {
@@ -202,11 +207,6 @@ footer a:visited {
     top: 55px;
     right: 0;
   }
-  .logo img {
-    /* original size: 272×57 */
-    width: 163px;
-    height: 34px;
-  }
   ul.tabs li {
     font-size: 11px;
   }
@@ -243,6 +243,11 @@ footer a:visited {
 
 /* Smart phones */
 @media screen and (max-width: 480px) {
+  .logo img {
+    /* original size: 272×57 */
+    width: 163px;
+    height: 34px;
+  }
   #intro-text {
     padding: 0 1%;
   }
@@ -275,7 +280,8 @@ footer a:visited {
     height: 60px;
   }
   #tabhead .login {
-    top: 26px;
+    top: 32px;
+    left: 6px;
   }
   #tabhead {
     border-bottom-width: 0px;
