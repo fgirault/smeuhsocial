@@ -78,6 +78,7 @@
 }
 
 .audiotracks-detail #audioplayer {
+  margin-top: 24px;
   clear: both;
 }
 
@@ -85,6 +86,34 @@
     margin: 1em 1em 2em 0;
 }
 
+.audiotracks-details-container {
+  clear: both;
+  overflow: hidden;
+}
+
+.audiotracks-details-container h1,
+.audiotracks-details-container img {
+  margin-top: 24px;
+}
+
+.audiotracks .left_panel {
+  float: left;
+  width: 650px;
+}
+
+.audiotracks audio {
+  visibility: hidden;
+}
+
+.audiotracks-download {
+  margin-top: 36px;
+}
+
+.audiotracks-download a {
+  text-decoration: none;
+}
+
+/*
 .audiotracks-download a {
     font-size: large;
     background: #00B000;
@@ -99,6 +128,7 @@
     color: #F6C223;
     border-color: #F8C425;
 }
+*/
 
 .audiotracks-edit-current-data {
     font-size: 16px;

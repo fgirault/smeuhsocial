@@ -10,11 +10,6 @@
     text-align: center;
 }
 
-.gallery-next-previous {
-    margin: 0px 0px 24px 0;
-    width: 100%;
-}
-
 .gallery-previous {
     margin-right: 48px;
     float: right;

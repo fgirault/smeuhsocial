@@ -85,6 +85,17 @@ h1 {
 }
 
 
+/* Detail page generic styles */
+
+.next-previous {
+  margin: 0px 0px 24px 0;
+  width: 100%;
+}
+
+.previous {
+  float: right;
+}
+
 /* Pagination */
 
 .pagination {
@@ -94,7 +105,8 @@ h1 {
 .pagination a,
 .pagination span,
 .pagination span.disabled,
-.pagination span.current
+.pagination span.current,
+.audiotracks-download a
 {
   background-color: #111;
   font-weight: bold;
@@ -109,7 +121,8 @@ h1 {
 
 .pagination li:not(.active) a:hover,
 .photos .pagination a:hover,
-.tweets .pagination a:hover
+.tweets .pagination a:hover,
+.audiotracks-download a:hover
 {
   background-color: #00B000;
   color: #111;

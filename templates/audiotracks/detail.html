@@ -11,29 +11,39 @@
     {% include "audiotracks/track_right_panel.html" %}
 </div>
 <div class="left_panel audiotracks-detail">
-  {% if track.image %}
-  <img src="{{ track.image.url_200x200 }}" />
-  {% endif %}
-  <h1>
-    {{ track.title }}
-  </h1>
-  <ul class="audiotracks-track-attributes">
-    {% if track.artist %}
-    <li>
-    {% trans 'Artist' %}: {{ track.artist }}
-    </li>
+  <div class="next-previous">
+    {% if track.get_previous_by_created_at %}
+    <a href="{{ track.get_previous_by_created_at.get_absolute_url }}">&lt;&lt; {% trans 'Previous track' %}</a>
     {% endif %}
-    {% if track.date %}
-    <li>
-    {% trans 'Date' %}: {{ track.date }}
-    </li>
+    {% if track.get_next_by_created_at %}
+    <a class="previous" href="{{ track.get_next_by_created_at.get_absolute_url }}">{% trans 'Next track'  %} &gt;&gt;</a>
     {% endif %}
-    {% if track.genre %}
-    <li>
-    {% trans 'Genre' %}: {{ track.genre }} 
-    </li>
+  </div>
+  <div class="audiotracks-details-container">
+    {% if track.image %}
+    <img src="{{ track.image.url_200x200 }}" />
     {% endif %}
-  </ul>
+    <h1>
+      {{ track.title }}
+    </h1>
+    <ul class="audiotracks-track-attributes">
+      {% if track.artist %}
+      <li>
+      {% trans 'Artist' %}: {{ track.artist }}
+      </li>
+      {% endif %}
+      {% if track.date %}
+      <li>
+      {% trans 'Date' %}: {{ track.date }}
+      </li>
+      {% endif %}
+      {% if track.genre %}
+      <li>
+      {% trans 'Genre' %}: {{ track.genre }} 
+      </li>
+      {% endif %}
+    </ul>
+  </div>
   <div id="audioplayer">
     <audio controls="controls" preload="auto">
       <source  src="{{ track.audio_file.url }}" type="{{ track.mimetype }}">
@@ -52,13 +62,17 @@
       });
     }
   </script>
+  {% if track.description %}
   <div class="audiotracks-description">
     {{ track.description }}
   </div>
+  {% endif %}
   <div class="audiotracks-download">
     <a class="border-shadow round-border" href="{{ track.audio_file.url }}">{% trans 'Download Track' %} ({{ track.audio_file.size|filesizeformat}})</a>
   </div>
 </div>
+<div class="clear">
 <h3>{% trans 'Comments on this track:' %}</h3>
 {% comments track %}
 {% endblock %}
+</div>
