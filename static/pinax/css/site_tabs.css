@@ -30,6 +30,13 @@ body.inbox #tab_inbox
     background-image: linear-gradient(top, rgb(0,196,0) 30%, rgb(0,176,0) 51%);
     background-image: -o-linear-gradient(top, rgb(0,196,0) 30%, rgb(0,176,0) 51%);
     background-image: -moz-linear-gradient(top, rgb(0,196,0) 30%, rgb(0,176,0) 51%);
+    background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0.3, rgb(0,196,0)),
+      color-stop(0.51, rgb(0,176,0))
+    );
     background-image: -webkit-linear-gradient(top, rgb(0,196,0) 30%, rgb(0,176,0) 51%);
     background-image: -ms-linear-gradient(top, rgb(0,196,0) 30%, rgb(0,176,0) 51%);
     border-left: 1px solid #000; /* tab border */

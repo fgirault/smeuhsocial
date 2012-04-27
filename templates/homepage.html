@@ -87,7 +87,7 @@ title="Blogs" href="{% url all_blogs_feed %}" />
   </h2>
 {% for comment in latest_comments %}
 {% if comment.content_object %}
-<div class="latest-comment-entry homepage-item{% if forloop.first %} first{% endif %} {% cycle 'odd' '' %}">
+<div class="latest-comment-entry homepage-item{% if forloop.first %} first{% endif %}">
   <div >
     {% avatar_link comment.user 24 %}
     {% profile_link comment.user %} {% trans ' on ' %} <a href="{{ comment.content_object.get_absolute_url }}">{{ comment.content_object.title }}</a> 
@@ -109,7 +109,7 @@ title="Blogs" href="{% url all_blogs_feed %}" />
   <div class="photos">
     {% for photo in latest_photos%}
     <a href="{% groupurl photo_details group id=photo.id %}"><img
-      class="homepage-photo border-shadow{% cycle '' ' even' %}" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}"></a>
+      class="homepage-photo border-shadow" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}"></a>
     {% endfor %}
   </div>
 </div>
@@ -132,7 +132,7 @@ title="Blogs" href="{% url all_blogs_feed %}" />
     </a>
   </h2>
   {% for blog_post in latest_blogs%}
-  <div class="clearfix homepage-item{% if forloop.first %} first{% endif %}{% cycle ' odd' '' %}">
+  <div class="clearfix homepage-item{% if forloop.first %} first{% endif %}">
     {% avatar_link blog_post.author 24 %}
     <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a> 
     {% trans 'by' %} {% profile_link blog_post.author %}

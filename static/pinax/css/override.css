@@ -147,6 +147,10 @@ textarea#new_tweet {
   height: 2.5em;
 }
 
+.tweet-item:nth-child(even) {
+  background-color: transparent;
+}
+
 footer {
   border-top: 5px solid #00B000;
   padding: 12px 1.66%;
@@ -273,7 +277,8 @@ footer #locale_switcher {
   .homepage-item {
     padding: 1%;
   }
-  .homepage-item.odd {
+  .homepage-item:nth-child(odd),
+  .home .audiotracks-list-entry:nth-child(odd) {
     background-color: #F4FFE8;
   }
   #tabhead .logo {

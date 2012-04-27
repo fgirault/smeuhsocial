@@ -31,9 +31,6 @@ ul.tabs li {
     background-image: linear-gradient(bottom, rgb(230,180,68) 24%, rgb(244,191,33) 60%);
     background-image: -o-linear-gradient(bottom, rgb(230,180,68) 24%, rgb(244,191,33) 60%);
     background-image: -moz-linear-gradient(bottom, rgb(230,180,68) 24%, rgb(244,191,33) 60%);
-    background-image: -webkit-linear-gradient(bottom, rgb(230,180,68) 24%, rgb(244,191,33) 60%);
-    background-image: -ms-linear-gradient(bottom, rgb(230,180,68) 24%, rgb(244,191,33) 60%);
-
     background-image: -webkit-gradient(
       linear,
       left bottom,
@@ -41,6 +38,9 @@ ul.tabs li {
       color-stop(0.24, rgb(230,180,68)),
       color-stop(0.6, rgb(244,191,33))
     );
+    background-image: -webkit-linear-gradient(bottom, rgb(230,180,68) 24%, rgb(244,191,33) 60%);
+    background-image: -ms-linear-gradient(bottom, rgb(230,180,68) 24%, rgb(244,191,33) 60%);
+
 }
 ul.tabs li a {
     padding: 5px 12px;
