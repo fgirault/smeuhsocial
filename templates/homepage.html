@@ -118,16 +118,10 @@ title="Blogs" href="{% url all_blogs_feed %}" />
     <a title="Atom Feed" href="{% url tracks_feed %}"><img alt="Feed Icon"
       src="{{ STATIC_URL }}img/feed-icon.png"></a>
     <a href="{% url audiotracks %}">
-      {% blocktrans %}Tunes{% endblocktrans %}
+      {% blocktrans %}Tracks{% endblocktrans %}
     </a>
   </h2>
-  {% for track in latest_tracks%}
-  <div class="clearfix homepage-item{% if forloop.first %} first{% endif %}{% cycle ' odd' '' %}">
-    {% avatar_link track.user 24 %}
-    <a href="{{ track.get_absolute_url }}">{{ track.title }}</a> 
-    {% trans 'by' %} {% profile_link track.user %}<br>
-  </div>
-  {% endfor %}
+  {% include 'audiotracks/_track_list.html' with tracks=latest_tracks %}
 </div>
 <div class="homepage-block latest-blogs">
   <h2>

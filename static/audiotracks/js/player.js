@@ -24,7 +24,7 @@ $(document).ready(function() {
   }
 
   $('audio').mediaelementplayer({
-    audioWidth: 380, 
+    audioWidth: '100%', 
     pluginPath: '/media/static/audiotracks/mediaelement/',
     success: function(me, domObj) {
       var container = $(domObj).parents('.player-container');
