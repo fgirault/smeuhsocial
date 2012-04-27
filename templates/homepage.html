@@ -135,7 +135,10 @@ title="Blogs" href="{% url all_blogs_feed %}" />
   <div class="clearfix homepage-item{% if forloop.first %} first{% endif %}{% cycle ' odd' '' %}">
     {% avatar_link blog_post.author 24 %}
     <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a> 
-    {% trans 'by' %} {% profile_link blog_post.author %}<br>
+    {% trans 'by' %} {% profile_link blog_post.author %}
+    <div class="blog-tease">
+    {{ blog_post.tease|truncatewords:25 }}
+    </div>
   </div>
   {% endfor %}
 </div>

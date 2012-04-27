@@ -79,6 +79,11 @@ h1 {
   font-size: 10px;
 }
 
+/* Homepage blog posts */
+.blog-tease {
+  clear: left;
+}
+
 
 /* Pagination */
 
