@@ -76,8 +76,9 @@ h1 {
   border-top: 1px solid #CCC;
 }
 
-.home .audiotracks-list-entry .track-title {
-  font-size: 12px;
+.home .audiotracks-list-entry .track-title,
+.home .audiotracks-list-entry {
+  font-size: 10pt;
 }
 
 
