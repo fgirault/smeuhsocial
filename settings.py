@@ -315,7 +315,7 @@ FORCE_LOWERCASE_TAGS = True
 #}
 
 
-AVATAR_DEFAULT_URL = "http://la.buvette.org/vrac/avatar-defaut.png"
+AVATAR_DEFAULT_URL = "/media/static/pinax/img/avatar-defaut.png"
 AVATAR_GRAVATAR_BACKUP = False
 
 import ldap
