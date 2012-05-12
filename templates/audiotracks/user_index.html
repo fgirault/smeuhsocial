@@ -1,5 +1,9 @@
 {% extends "audiotracks/base_listing.html" %}
 {% load i18n %}
 
-{% block head_title %}{% trans 'Your Tracks' %}{% endblock %}
-{% block body_title %}{% trans 'Your Tracks' %}{% endblock %}
+{% block head_title %}
+  {% blocktrans %}Tracks from {{ username }}{% endblocktrans %}
+{% endblock %}
+{% block body_title %}
+  {% blocktrans %}Tracks from {{ username }}{% endblocktrans %}
+{% endblock %}
