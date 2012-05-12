@@ -10,9 +10,10 @@
 
 # We pull django-pagination from github because Pypi distribution doesn't
 # include locales
--e git+https://github.com/ericflo/django-pagination.git#egg=django_pagination
+-e git://github.com/ericflo/django-pagination.git#egg=django_pagination
 PIL
 python-ldap
 django-auth-ldap
 versiontools
 django_compressor
+fabric
