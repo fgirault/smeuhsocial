@@ -42,7 +42,7 @@ Requirements
 Installation
 ------------
 
-Fork the git repository https://github.com/alex-marandon/smeuhsocial and clone
+Fork the git repository https://github.com/amarandon/smeuhsocial and clone
 it with:
 
     $ git clone git@github.com:<USERNAME>/smeuhsocial.git
@@ -154,6 +154,6 @@ potentially send patches or you could fork Pinax code and change
 requirements/project.txt to point to your own Pinax repository by changing this
 line:
 
-    -e git+ssh://git@github.com/alex-marandon/pinax.git#egg=Pinax
+    -e git+ssh://git@github.com/amarandon/pinax.git#egg=Pinax
 
 to point to your own fork of Pinax.
