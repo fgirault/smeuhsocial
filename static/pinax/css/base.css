@@ -426,6 +426,9 @@ p {
    font-style: italic;
 }
 
+.blog-post img {
+   border: 1px solid #ddd;
+}
 
 .bare-list {
   list-style: none;
