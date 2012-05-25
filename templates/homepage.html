@@ -1,4 +1,4 @@
-{% extends "site_base.html" %}
+{% extends "audiotracks/mediaelement_base.html" %}
 
 {% load i18n %}
 {% load ifsetting_tag %}
@@ -145,5 +145,6 @@ title="Blogs" href="{% url all_blogs_feed %}" />
 
 {% endblock %}
 {% block extra_body %}
+{{ block.super }}
 <script type="text/javascript" src="{{ STATIC_URL }}js/microblogging.js"></script>
 {% endblock %}
