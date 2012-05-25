@@ -191,3 +191,23 @@ ul.audiotracks-track-attributes {
     line-height: 2px;
 }
 
+.podcast-feed-icon {
+  font-size: 14px;
+  margin-right: 20px; 
+}
+
+.podcast-feed-icon img {
+  vertical-align: middle;
+  margin-right: 3px;
+}
+
+.m3u-icon {
+  font-size: 20px;
+  position: relative;
+  top: 2px;
+  left: 0;
+}
+
+.m3u-link {
+  font-size: 14px;
+}
