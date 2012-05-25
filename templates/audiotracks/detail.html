@@ -1,4 +1,4 @@
-{% extends "audiotracks/base.html" %}
+{% extends "audiotracks/mediaelement_base.html" %}
 {% load account_tags %}
 {% load tagging_tags %}
 {% load comments_tag %}
@@ -53,15 +53,6 @@
         href="http://www.opera.com/browser/">Opera</a>.
     </audio>
   </div>
-  <script type="text/javascript">
-    var audioTag = document.createElement('audio');
-    if (!(audioTag.canPlayType && audioTag.canPlayType("{{ track.mimetype }}"))) {
-      AudioPlayer.embed("audioplayer", {
-        soundFile: "{{ track.audio_file.url}}",
-        animation: "no"
-      });
-    }
-  </script>
   {% if track.description %}
   <div class="audiotracks-description">
     {{ track.description }}

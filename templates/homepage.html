@@ -1,4 +1,4 @@
-{% extends "site_base.html" %}
+{% extends "audiotracks/mediaelement_base.html" %}
 
 {% load i18n %}
 {% load ifsetting_tag %}
@@ -13,6 +13,7 @@
 {% block body_class %}home{% endblock %}
 
 {% block extra_head %}
+{{ block.super }}
 <link rel="alternate" type="application/rss+xml" 
 title="Touites" href="{% url all_tweets_feed %}" />
 <link rel="alternate" type="application/rss+xml" 
@@ -145,5 +146,6 @@ title="Blogs" href="{% url all_blogs_feed %}" />
 
 {% endblock %}
 {% block extra_body %}
+{{ block.super }}
 <script type="text/javascript" src="{{ STATIC_URL }}js/microblogging.js"></script>
 {% endblock %}
