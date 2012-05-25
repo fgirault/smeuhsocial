@@ -80,6 +80,7 @@
 .audiotracks-detail #audioplayer {
   margin-top: 24px;
   clear: both;
+  max-width: 450px;
 }
 
 .audiotracks-description {
