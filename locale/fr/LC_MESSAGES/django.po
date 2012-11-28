@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-27 21:17+0200\n"
+"POT-Creation-Date: 2012-11-28 20:47+0100\n"
 "PO-Revision-Date: 2010-03-04 09:26+0100\n"
 "Last-Translator: James Pic <http://jamespic.com>\n"
 "Language-Team: Pinax French <http://www.transifex.net/projects/p/pinax/team/"
@@ -37,7 +37,7 @@ msgstr ""
 msgid "%(total)s people with email found, %(imported)s contacts imported."
 msgstr ""
 
-#: apps/smeuhoverride/models.py:35 templates/site_base.html:45
+#: apps/smeuhoverride/models.py:35 templates/site_base.html:35
 #: templates/tags/index.html:16
 msgid "Tags"
 msgstr "Tags"
@@ -66,25 +66,25 @@ msgstr "ou"
 msgid "Sign Up"
 msgstr "Inscription"
 
-#: templates/base.html:49
+#: templates/base.html:48
 msgid "Hide announcement"
 msgstr ""
 
-#: templates/base.html:71
+#: templates/base.html:70
 msgid "clear"
 msgstr "Cacher"
 
-#: templates/base.html:84 templates/profile_item.html:12
+#: templates/base.html:83 templates/profile_item.html:12
 #: templates/profiles/profile.html:39
 msgid "About"
 msgstr "A propos"
 
-#: templates/base.html:86
+#: templates/base.html:85
 msgid ""
 "\n"
 "          Site powered by \n"
-"          <a href=\"https://github.com/amarandon/smeuhsocial"
-"\">SmeuhSocial</a>\n"
+"          <a href=\"https://github.com/amarandon/smeuhsocial\">SmeuhSocial</"
+"a>\n"
 "          "
 msgstr ""
 
@@ -92,11 +92,11 @@ msgstr ""
 msgid "Welcome"
 msgstr "Bienvenue"
 
-#: templates/homepage.html:32
+#: templates/homepage.html:34
 msgid "This is your Smeuh"
 msgstr "Bienvenue dans votre Smeuh"
 
-#: templates/homepage.html:34
+#: templates/homepage.html:36
 msgid ""
 "\n"
 "  This site is a platform for members and friends of <a\n"
@@ -105,7 +105,7 @@ msgid ""
 "  "
 msgstr ""
 
-#: templates/homepage.html:42
+#: templates/homepage.html:44
 #, python-format
 msgid ""
 "You can <a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s"
@@ -114,14 +114,14 @@ msgstr ""
 "Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
 "\"%(login_url)s\">vous authentifier</a> pour essayer le site."
 
-#: templates/homepage.html:44
+#: templates/homepage.html:46
 #, python-format
 msgid "You can <a href=\"%(login_url)s\">Log in</a> to try out the site."
 msgstr ""
 "Vous pouvez <a href=\"%(login_url)s\">vous authentifier</a> pour essayer le "
 "site."
 
-#: templates/homepage.html:47
+#: templates/homepage.html:49
 msgid ""
 "\n"
 "  To know more about the code that runs this site, report bugs and maybe\n"
@@ -135,41 +135,41 @@ msgstr ""
 "bugs et      éventuellement contribuer, c'est <a        href=\"https://"
 "github.com/amarandon/smeuhsocial\">par ici</a>."
 
-#: templates/homepage.html:61 templates/microblogging/personal.html:22
+#: templates/homepage.html:63 templates/microblogging/personal.html:22
 msgid "Touites"
 msgstr ""
 
-#: templates/homepage.html:69 templates/microblogging/personal.html:36
+#: templates/homepage.html:71 templates/microblogging/personal.html:36
 msgid "Bang"
 msgstr "Pan!"
 
-#: templates/homepage.html:86
+#: templates/homepage.html:88
 msgid "Comments"
 msgstr "Commentaires"
 
-#: templates/homepage.html:93
+#: templates/homepage.html:95
 msgid " on "
 msgstr " à propos de "
 
-#: templates/homepage.html:94 templates/microblogging/_tweet.html:12
+#: templates/homepage.html:96 templates/microblogging/_tweet.html:12
 #, python-format
 msgid "%(tweet_age)s ago"
 msgstr "il y a %(tweet_age)s"
 
-#: templates/homepage.html:107 templates/site_base.html:31
+#: templates/homepage.html:109 templates/site_base.html:31
 #: templates/profiles/profile.html:205
 msgid "Photos"
 msgstr "Photos"
 
-#: templates/homepage.html:121 templates/profiles/profile.html:131
+#: templates/homepage.html:123 templates/profiles/profile.html:131
 msgid "Tracks"
 msgstr "Morceaux"
 
-#: templates/homepage.html:131 templates/site_base.html:34
+#: templates/homepage.html:133 templates/site_base.html:34
 msgid "Blogs"
 msgstr "Blogs"
 
-#: templates/homepage.html:138
+#: templates/homepage.html:140
 msgid "by"
 msgstr "posté par"
 
@@ -198,7 +198,7 @@ msgstr "Musique"
 msgid "Tweets"
 msgstr "Touites"
 
-#: templates/site_base.html:50
+#: templates/site_base.html:36
 msgid "Inbox"
 msgstr "Boite de réception"
 
@@ -241,6 +241,10 @@ msgstr "Changez votre compte avec ce formulaire"
 msgid "save"
 msgstr "sauvegarder"
 
+#: templates/audiotracks/_track_entry.html:6
+msgid "Track Image"
+msgstr ""
+
 #: templates/audiotracks/_track_entry.html:17
 msgid "uploaded by"
 msgstr "envoyé par"
@@ -250,11 +254,11 @@ msgstr "envoyé par"
 msgid "%(track_age)s ago"
 msgstr "il y a %(track_age)s"
 
-#: templates/audiotracks/_track_entry.html:38
+#: templates/audiotracks/_track_entry.html:40
 msgid "Edit"
 msgstr ""
 
-#: templates/audiotracks/_track_entry.html:39
+#: templates/audiotracks/_track_entry.html:41
 msgid "Delete"
 msgstr ""
 
@@ -276,6 +280,15 @@ msgstr "Uploader un morceau"
 msgid "Latest Tracks"
 msgstr "Derniers Morceaux"
 
+#: templates/audiotracks/base_listing.html:10
+msgid "Podcast feed"
+msgstr ""
+
+#: templates/audiotracks/base_listing.html:11
+#: templates/audiotracks/base_listing.html:12
+msgid "M3U playlist"
+msgstr ""
+
 #: templates/audiotracks/detail.html:16
 msgid "Previous track"
 msgstr "Morceau précédent"
@@ -296,11 +309,11 @@ msgstr ""
 msgid "Genre"
 msgstr ""
 
-#: templates/audiotracks/detail.html:71
+#: templates/audiotracks/detail.html:62
 msgid "Download Track"
 msgstr ""
 
-#: templates/audiotracks/detail.html:75
+#: templates/audiotracks/detail.html:66
 msgid "Comments on this track:"
 msgstr "Commentaires sur ce morceau"
 
@@ -317,10 +330,11 @@ msgstr "Editer"
 msgid "Delete Track"
 msgstr "Supprimer"
 
-#: templates/audiotracks/user_index.html:4
 #: templates/audiotracks/user_index.html:5
-msgid "Your Tracks"
-msgstr "Vos morceaux"
+#: templates/audiotracks/user_index.html:8
+#, fuzzy, python-format
+msgid "Tracks from %(username)s"
+msgstr "Blog de %(username)s"
 
 #: templates/blog/base.html:10
 msgid "Friends' Blogs"
@@ -632,13 +646,35 @@ msgstr ""
 msgid "Get Embed Code"
 msgstr ""
 
-#: templates/photos/photo_right_panel.html:43
+#: templates/photos/photo_right_panel.html:38
+msgid ""
+"\n"
+"        The person who posted this picture is a huge Sarah Palin fan who "
+"hasn't\n"
+"        added any tag.\n"
+"        "
+msgstr ""
+"\n"
+"La personne qui a posté cette image est une grosse buse copéiste qui n'a pas "
+"mis de tags."
+
+#: templates/photos/photo_right_panel.html:48
 msgid "Delete Photo"
 msgstr "Supprimer cette photo"
 
-#: templates/photos/photo_right_panel.html:48
+#: templates/photos/photo_right_panel.html:53
 msgid "Edit Photo"
 msgstr "Éditer cette photo"
+
+#: templates/profiles/base.html:10
+#, fuzzy
+msgid "Your Profile"
+msgstr "Profil"
+
+#: templates/profiles/base.html:11
+#, fuzzy
+msgid "All Profiles"
+msgstr "Profil"
 
 #: templates/profiles/profile.html:14
 #, fuzzy, python-format
@@ -788,6 +824,9 @@ msgid ""
 "\"%(acct_signup_url)s\">Sign Up</a>) to leave a comment</h3>\n"
 "    "
 msgstr ""
+
+#~ msgid "Your Tracks"
+#~ msgstr "Vos morceaux"
 
 #~ msgid "Latest comments"
 #~ msgstr "Derniers commentaires"

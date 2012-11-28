@@ -34,6 +34,11 @@
             </div>
         </div>
         
+    {% else %}
+        {% blocktrans %}
+        The person who posted this picture is a huge Sarah Palin fan who hasn't
+        added any tag.
+        {% endblocktrans %}
     {% endif %}
     
     {% if is_me %}
