@@ -98,8 +98,8 @@ ADMIN_MEDIA_PREFIX = posixpath.join(STATIC_URL, "admin/")
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = [
-    "django.template.loaders.filesystem.load_template_source",
-    "django.template.loaders.app_directories.load_template_source",
+    "django.template.loaders.filesystem.Loader",
+    "django.template.loaders.app_directories.Loader",
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -127,7 +127,7 @@ TEMPLATE_DIRS = [
 ]
 
 TEMPLATE_CONTEXT_PROCESSORS = [
-    "django.core.context_processors.auth",
+    "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
@@ -140,7 +140,6 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     
     "pinax.apps.account.context_processors.account",
     
-    "notification.context_processors.notification",
     "announcements.context_processors.site_wide_announcements",
     "messages.context_processors.inbox",
     "friends_app.context_processors.invitations",
@@ -151,7 +150,6 @@ TEMPLATE_CONTEXT_PROCESSORS = [
 COMBINED_INBOX_COUNT_SOURCES = [
     "messages.context_processors.inbox",
     "friends_app.context_processors.invitations",
-    "notification.context_processors.notification",
 ]
 
 INSTALLED_APPS = [
