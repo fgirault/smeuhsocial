@@ -341,6 +341,8 @@ AUTH_LDAP_USER_FLAGS_BY_GROUP = {
     "is_superuser": "cn=admin,ou=groups,o=loc"
 }
 
+ALLOWED_HOSTS = ['my.smeuh.org']
+
 ldap_log = logging.getLogger('django_auth_ldap')
 ldap_log_handler = logging.StreamHandler()
 ldap_log_handler.setLevel(logging.DEBUG)
