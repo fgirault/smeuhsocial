@@ -74,6 +74,8 @@ def invite(request, form_class=JoinRequestForm, **kwargs):
         join_request_form = form_class(request.POST)
         if join_request_form.is_valid():
             join_request_form.save(request.user)
+            messages.success(request, _("Invitation to join sent to %s" %
+                join_request_form.cleaned_data['email']))
             return HttpResponseRedirect(reverse("invitations"))
     return render_to_response(template_name, {
         "join_request_form": join_request_form,
