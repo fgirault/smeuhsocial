@@ -4,6 +4,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
+from django.contrib import messages
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
@@ -108,10 +109,10 @@ def toggle_follow(request, username):
     if request.user.is_authenticated() and request.method == "POST" and not is_me:
         if request.POST["action"] == "follow":
             Following.objects.follow(request.user, other_user)
-            request.user.message_set.create(message=_("You are now following %(other_user)s") % {'other_user': other_user})
+            messages.success(request, _("You are now following %(other_user)s") % {'other_user': other_user})
             if notification:
                 notification.send([other_user], "tweet_follow", {"user": request.user})
         elif request.POST["action"] == "unfollow":
             Following.objects.unfollow(request.user, other_user)
-            request.user.message_set.create(message=_("You have stopped following %(other_user)s") % {'other_user': other_user})
+            messages.success(request, _("You have stopped following %(other_user)s") % {'other_user': other_user})
     return HttpResponseRedirect(reverse("profile_detail", args=[other_user]))
