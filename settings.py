@@ -189,7 +189,6 @@ INSTALLED_APPS = [
     "tagging",
     "photologue",
     "avatar",
-    "flag",
     "microblogging",
 #    "locations",
     "django_sorting",

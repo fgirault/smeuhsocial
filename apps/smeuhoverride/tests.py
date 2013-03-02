@@ -106,9 +106,12 @@ class TestInvite(BaseTestCase):
         self.assertContains(resp, 'Invitation to join sent to somebody@example.com')
 
 
-class TestAvatar(BaseTestCase):
+class BaseImageTest(BaseTestCase):
     from os.path import join, dirname
     testfile = join(dirname(dirname(dirname(__file__))), 'tests', '1px.gif')
+
+
+class TestAvatar(BaseImageTest):
 
     def upload_avatar(self):
         return self.client.post('/avatar/change/', {
@@ -132,3 +135,17 @@ class TestAvatar(BaseTestCase):
             'choices': [1],
         }, follow=True)
         self.assertContains(resp, 'Successfully deleted')
+
+
+class TestPhoto(BaseImageTest):
+
+    def test_photo_details(self):
+        title = "A cool photo"
+        resp = self.client.post('/photos/upload/', {
+            'image': open(self.testfile),
+            'title': title,
+            'safetylevel': 1,
+            'action': 'upload',
+        }, follow=True)
+
+        self.assertContains(resp, title)
