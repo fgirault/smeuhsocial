@@ -5,12 +5,9 @@ from django.views.generic.simple import direct_to_template, redirect_to
 from django.contrib import admin
 admin.autodiscover()
 
-from bookmarks.feeds import BookmarkFeed
 from microblogging.feeds import TweetFeedAll, TweetFeedUser, TweetFeedUserWithFriends
 from microblogging.models import Tweet
-#from swaps.models import Offer
 from tagging.models import TaggedItem
-#from wakawaka.models import WikiPage
 
 from pinax.apps.account.openid_consumer import PinaxConsumer
 from pinax.apps.blog.feeds import BlogFeedAll, BlogFeedUser
@@ -18,7 +15,6 @@ from pinax.apps.blog.models import Post
 from pinax.apps.photos.models import Image
 from pinax.apps.topics.models import Topic
 from pinax.apps.blog.forms import BlogForm
-#from pinax.apps.tribes.models import Tribe
 from audiotracks.models import Track
 from smeuhoverride import feeds
 
@@ -36,8 +32,6 @@ blogs_feed_dict = {"feed_dict": {
     "all": BlogFeedAll,
     "only": BlogFeedUser,
 }}
-
-bookmarks_feed_dict = {"feed_dict": {"": BookmarkFeed }}
 
 urlpatterns = patterns("",
     url(r"^favicon.ico/?$", redirect_to, {'url': settings.STATIC_URL + 'img/favicon.ico' }),
@@ -101,14 +95,11 @@ urlpatterns = patterns("",
     url(r"^messages/", include("messages.urls")),
     url(r"^announcements/", include("announcements.urls")),
     url(r"^touites/", include("microblogging.urls")),
-#    url(r"^tribes/", include("pinax.apps.tribes.urls")),
     url(r"^comments/", include("threadedcomments.urls")),
     url(r"^i18n/", include("django.conf.urls.i18n")),
-#    url(r"^bookmarks/", include("bookmarks.urls")),
     url(r"^photos/details/(?P<id>\d+)/$", "smeuhoverride.views.photo_details", name="photo_details"),
     url(r"^photos/", include("pinax.apps.photos.urls")),
     url(r"^avatar/", include("avatar.urls")),
-#    url(r"^swaps/", include("swaps.urls")),
     url(r"^flag/", include("flag.urls")),
     url(r"^feeds/touites/(?P<username>[\w\._-]+)/with_friends/?$",
             feeds.UserTweetWithFriends(), name="user_friends_tweets"),
@@ -137,19 +128,10 @@ friends_tweets_kwargs = {
     "friends_objects_function": lambda users: Tweet.objects.filter(sender_id__in=[user.id for user in users], sender_type__name="user"),
 }
 
-friends_bookmarks_kwargs = {
-    "template_name": "bookmarks/friends_bookmarks.html",
-    "friends_objects_function": lambda users: Bookmark.objects.filter(saved_instances__user__in=users),
-    "extra_context": {
-        "user_bookmarks": lambda request: Bookmark.objects.filter(saved_instances__user=request.user),
-    },
-}
-
 urlpatterns += patterns("",
     url(r"^photos/friends_photos/$", "friends_app.views.friends_objects", kwargs=friends_photos_kwargs, name="friends_photos"),
     url(r"^blog/friends_blogs/$", "friends_app.views.friends_objects", kwargs=friends_blogs_kwargs, name="friends_blogs"),
     url(r"^touites/friends_tweets/$", "friends_app.views.friends_objects", kwargs=friends_tweets_kwargs, name="friends_tweets"),
-    url(r"^bookmarks/friends_bookmarks/$", "friends_app.views.friends_objects", kwargs=friends_bookmarks_kwargs, name="friends_bookmarks"),
 )
 
 tagged_models = (
@@ -157,10 +139,6 @@ tagged_models = (
         query=lambda tag : TaggedItem.objects.get_by_model(Post, tag).filter(status=2),
         content_template="pinax_tagging_ext/blogs.html",
     ),
-#    dict(title="Bookmarks",
-#        query=lambda tag : TaggedItem.objects.get_by_model(BookmarkInstance, tag),
-#        content_template="pinax_tagging_ext/bookmarks.html",
-#    ),
     dict(title="Photos",
         query=lambda tag: TaggedItem.objects.get_by_model(Image, tag).filter(safetylevel=1),
         content_template="pinax_tagging_ext/photos.html",
@@ -169,18 +147,9 @@ tagged_models = (
         query=lambda tag: TaggedItem.objects.get_by_model(Track, tag),
         content_template="pinax_tagging_ext/audiotracks.html",
     ),
-#    dict(title="Swap Offers",
-#        query=lambda tag : TaggedItem.objects.get_by_model(Offer, tag),
-#    ),
     dict(title="Topics",
         query=lambda tag: TaggedItem.objects.get_by_model(Topic, tag),
     ),
-#    dict(title="Tribes",
-#        query=lambda tag: TaggedItem.objects.get_by_model(Tribe, tag),
-#    ),
-#    dict(title="Wiki Articles",
-#        query=lambda tag: TaggedItem.objects.get_by_model(WikiPage, tag),
-#    ),
 )
 tagging_ext_kwargs = {
     "tagged_models": tagged_models,

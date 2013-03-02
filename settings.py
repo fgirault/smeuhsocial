@@ -187,7 +187,6 @@ INSTALLED_APPS = [
 #    "swaps",
 #    "voting",
     "tagging",
-    "bookmarks",
     "photologue",
     "avatar",
     "flag",
