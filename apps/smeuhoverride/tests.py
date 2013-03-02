@@ -94,6 +94,7 @@ class TestFriends(BaseTestCase):
         self.assertContains(resp, "Friendship requested with %s" %
                 self.her.username)
 
+
 class TestInvite(BaseTestCase):
 
     def test_invite_new_user(self):
@@ -103,3 +104,31 @@ class TestInvite(BaseTestCase):
         }, follow=True)
 
         self.assertContains(resp, 'Invitation to join sent to somebody@example.com')
+
+
+class TestAvatar(BaseTestCase):
+    from os.path import join, dirname
+    testfile = join(dirname(dirname(dirname(__file__))), 'tests', '1px.gif')
+
+    def upload_avatar(self):
+        return self.client.post('/avatar/change/', {
+            'avatar': open(self.testfile),
+        }, follow=True)
+
+    def test_upload_avatar(self):
+        resp = self.upload_avatar()
+        self.assertContains(resp, 'Successfully uploaded a new avatar')
+
+    def test_change_avatar(self):
+        self.upload_avatar()
+        resp = self.client.post('/avatar/change/', {
+            'choice': 1,
+        }, follow=True)
+        self.assertContains(resp, 'Successfully updated')
+
+    def test_delete_avatar(self):
+        self.upload_avatar()
+        resp = self.client.post('/avatar/delete/', {
+            'choices': [1],
+        }, follow=True)
+        self.assertContains(resp, 'Successfully deleted')

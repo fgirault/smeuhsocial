@@ -36,7 +36,6 @@ diff-match-patch==20090804
 geopy==0.94
 creole==1.1
 django-atomformat==0.1.1.dev1
-django-avatar==1.0.4
 django-flag==0.2.dev9
 django-oembed==0.1.1
 # django-swaps==0.5.3
