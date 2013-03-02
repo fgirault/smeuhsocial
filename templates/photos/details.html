@@ -6,7 +6,6 @@
 {% load tagging_tags %}
 {% load comments_tag %}
 {% load photo_tags %}
-{% load flag_tags %}
 {% load theme_tags %}
 
 {% block head_title %}{{ photo.title }}{% endblock %}
@@ -35,13 +34,6 @@
             <p>{{ photo.caption|urlize }}</p>
         </div>
         
-        <div class="form-toggle">
-            <p><span id="flag-toggle">{% silk "flag_red" %}{% trans "Flag as inappropriate" %}</span></p>
-             <div id="flag-form" style="display: none;">
-                {% flag photo "member" %}
-             </div>
-        </div>
-        
         <h3>{% blocktrans %}Comments on this photo:{% endblocktrans %}</h3>
         {% comments photo %}
     {% else %}
@@ -54,20 +46,6 @@
 
 {% block extra_body %}
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('#flag-form').hide();
-            $('#flag-toggle').click(function() {
-                $('#flag-form').slideToggle();
-                $('#flag-form').autoscroll();
-                return false;
-            });
-            if ($('#flag-form ul.errorlist').length) {
-                $('#flag-form').show();
-                $('#flag-form ul.errorlist').autoscroll();
-            }
-            
-        });
-        
         $(document).ready(function() {
             $('#embed-code').hide();
             $('#embed-code-toggle').click(function() {

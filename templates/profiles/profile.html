@@ -134,56 +134,6 @@
                     <p>{% trans "No tracks yet." %}</p>
                 {% endif %}
 
-                
-                {% comment %}
-                <h2>{% trans "Wiki Articles" %}</h2>
-                
-                {% if other_user.article_set.all %}
-                    <table class="bookmarks">
-                        {% for article in other_user.article_set.all %}
-                        <tr class="{% cycle odd,even %}">
-                            <td class="meta">
-                                {{ article.created_at|date }}
-                            </td>
-                            <td>
-                                <h2><a href="{% groupurl wiki_article article.group title=article.title %}">{{ article.title }}</a></h2>
-                                <div class="body">{{ article.content|truncatewords:25 }}</div>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </table>
-                {% else %}
-                    <p>{% trans "No wiki articles yet." %}</p>
-                {% endif %}
-                {% endcomment %}
-                
-		{% comment %}
-                <h2>{% trans "Bookmarks" %}</h2>
-                
-                {% if other_user.saved_bookmarks.all %}
-                    <table class="bookmarks narrow">
-                        {% for bookmark_instance in other_user.saved_bookmarks.all.select_related %}
-                            <tr class="{% cycle odd,even %} xfolkentry">
-                                <td class="meta">
-                                    {{ bookmark_instance.saved|date }}
-                                    {# add who originally added it and when #}
-                                </td>
-                                <td>
-                                    <h2><a class="taggedlink" href="{{ bookmark_instance.bookmark.url }}">{{ bookmark_instance.description }}</a></h2>
-                                    <div class="url">{% if bookmark_instance.bookmark.get_favicon_url %}<img src="{{ bookmark_instance.bookmark.get_favicon_url }}" height="16" width="16"/> {% endif %}{{ bookmark_instance.bookmark.url }}</div>
-                                    <div class="body description">{{ bookmark_instance.note|linebreaks }}</div>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                {% else %}
-                    {% url add_bookmark as add_bookmark_url %}
-                    <p>{% blocktrans %}You haven't added any <a href="{{ add_bookmark_url }}">bookmarks</a> yet.{% endblocktrans %}</p>
-                {% endif %}
-		{% endcomment %}
-                
-                
-                
                 {% if other_user.added_posts.all %}
                     <h2>{% trans "Blog Posts" %}</h2>
                     {% for blog_post in other_user.added_posts.all %}

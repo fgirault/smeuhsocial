@@ -8,7 +8,6 @@ body.photos #tab_photos a,
 body.audiotracks #tab_audiotracks a,
 body.tribes #tab_tribes a,
 body.tweets #tab_tweets a,
-body.bookmarks #tab_bookmarks a,
 body.locations #tab_locations a,
 body.inbox #tab_inbox a
 {
@@ -22,7 +21,6 @@ body.photos #tab_photos,
 body.audiotracks #tab_audiotracks,
 body.tribes #tab_tribes,
 body.tweets #tab_tweets,
-body.bookmarks #tab_bookmarks,
 body.locations #tab_locations,
 body.inbox #tab_inbox
 {
