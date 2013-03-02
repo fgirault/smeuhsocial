@@ -39,7 +39,6 @@ django-atomformat==0.1.1.dev1
 django-avatar==1.0.4
 django-bookmarks==0.1.0
 django-flag==0.2.dev9
-django-friends==0.1.5
 django-messages==0.4.2
 django-microblogging==0.2.dev1
 django-oembed==0.1.1
