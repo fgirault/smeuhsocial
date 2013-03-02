@@ -46,6 +46,5 @@ django-threadedcomments==0.5.2
 # django-voting==0.1
 # django-wakawaka==0.4.dev5
 django-photologue==2.3
-django-attachments==0.3.1
 django-markup==0.3
 django-groups==0.1.dev10
