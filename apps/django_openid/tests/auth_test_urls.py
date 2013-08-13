@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import *
 from django.http import HttpResponse
 from django_openid.registration import RegistrationConsumer
 

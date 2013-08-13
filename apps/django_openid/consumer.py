@@ -128,7 +128,7 @@ Fzk0lpcjIQA7""".strip()
     
     def get_urlpatterns(self):
         # Default behaviour is to introspect self for do_* methods
-        from django.conf.urls.defaults import url 
+        from django.conf.urls import url 
         urlpatterns = []
         for method in dir(self):
             if method.startswith('do_'):
@@ -143,7 +143,7 @@ Fzk0lpcjIQA7""".strip()
     
     def get_urls(self):
         # In Django 1.1 and later you can hook this in to your urlconf
-        from django.conf.urls.defaults import patterns
+        from django.conf.urls import patterns
         return patterns('', *self.get_urlpatterns())
     
     def urls(self):

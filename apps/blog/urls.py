@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import *
 
 from pinax.apps.blog import views, models
 from pinax.apps.blog.forms import *

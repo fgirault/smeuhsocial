@@ -34,7 +34,7 @@ from normal application code.
 
 from django.http import HttpResponse
 from django_openid.request_factory import RequestFactory
-from django.conf.urls.defaults import url
+from django.conf.urls import url
 router = Router(
     url('^foo/$', lambda r: HttpResponse('foo'), name='foo'),
     url('^bar/$', lambda r: HttpResponse('bar'), name='bar')
@@ -43,7 +43,7 @@ rf = RequestFactory()
 print router(rf.get('/bar/'))
 """
 
-from django.conf.urls.defaults import patterns
+from django.conf.urls import patterns
 from django.core import urlresolvers
 
 class Router(object):
