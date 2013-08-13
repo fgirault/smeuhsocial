@@ -8,7 +8,7 @@
 
 <ul id="tag-cloud">
     {% for tag in tags %}
-        <li><a title="{{ tag.name }} ({{tag.count}})" class="tag-size-{{ tag.font_size }}" href="{% url tagging_ext_tag tag.name %}">{{ tag.name }}</a></li>
+        <li><a title="{{ tag.name }} ({{tag.count}})" class="tag-size-{{ tag.font_size }}" href="{% url 'tagging_ext_tag' tag.name %}">{{ tag.name }}</a></li>
     {% endfor %}
 
 </ul>

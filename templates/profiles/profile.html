@@ -4,7 +4,6 @@
 {% load account_tags %}
 {% load avatar_tags %}
 {% load uni_form_tags %}
-{% load group_tags %}
 {% load microblogging_tags %}
 {% load blog_tags %}
 {% load tagging_tags %}
@@ -24,7 +23,7 @@
             <div id="profile_avatar">
                 <div><img src="{% avatar_url other_user 80 %}" alt="Photo of {{ other_user }}" class="photo" /></div>
                 {% if is_me %}
-                <a href="{% url avatar_change %}" id="avatar_replace">({% trans "replace" %})</a>
+                <a href="{% url 'avatar_change' %}" id="avatar_replace">({% trans "replace" %})</a>
                 {% endif %}
             </div>
             
@@ -42,20 +41,20 @@
             </div>
             
             {% if is_me %}
-                <p><a href="{% url profile_edit %}" rel="facebox">{% trans "Edit profile" %}</a></p>
+                <p><a href="{% url 'profile_edit' %}" rel="facebox">{% trans "Edit profile" %}</a></p>
             {% endif %}
             
             {% if 1 %}
                 <p>
-                    <a href="{% url tweet_followers other_user %}">{% trans "Followers" %}</a>: {% follower_count other_user %}
-                    <a href="{% url tweet_following other_user %}">{% trans "Following" %}</a>: {% following_count other_user %}
+                    <a href="{% url 'tweet_followers' other_user %}">{% trans "Followers" %}</a>: {% follower_count other_user %}
+                    <a href="{% url 'tweet_following' other_user %}">{% trans "Following" %}</a>: {% following_count other_user %}
                 </p>
                 
                 {% if is_me %}
                 {% else %}
                     {# @@@ this could be done with ajax, or at the very least turned into an inclusion tag #}
                     <div>
-                        <form method="POST" action="{% url toggle_follow other_user %}">
+                        <form method="POST" action="{% url 'toggle_follow' other_user %}">
                             {% csrf_token %}
                             {% if is_following %}
                                 <input type="hidden" name="action" value="unfollow" /><input type="submit" value="{% trans "unfollow" %}"/>
@@ -67,7 +66,7 @@
                     
                     {# @@@ this should be an inclusion tag #}
                     {% if is_friend %}
-                        <p>{% blocktrans %}You are friends with {{ other_user_display }}.{% endblocktrans %} <a href="{% url messages_compose %}{{ other_user }}/">{% trans "Send a message" %}</a>.</p>
+                        <p>{% blocktrans %}You are friends with {{ other_user_display }}.{% endblocktrans %} <a href="{% url 'messages_compose' %}{{ other_user }}/">{% trans "Send a message" %}</a>.</p>
                         <div>
                             <form method="POST" action="">
                                 {% csrf_token %}
@@ -79,7 +78,7 @@
                             <p>{% blocktrans %}{{ other_user_display }} has requested friendship.{% endblocktrans %}</p>
                             {% for invitation in previous_invitations_from %}
                                 <div class="friendship_request">
-                                    <p>From <a href="{% url profile_detail invitation.from_user.username %}">{% user_display invitation.from_user %}</a> ({{ invitation.sent }}):</p>
+                                    <p>From <a href="{% url 'profile_detail' invitation.from_user.username %}">{% user_display invitation.from_user %}</a> ({{ invitation.sent }}):</p>
                                     <p class="invitation_message">{{ invitation.message }}</p>
                                     <form method="post" action="">
                                         <input type="hidden" name="invitation" value="{{ invitation.id }}"/>
@@ -141,7 +140,7 @@
                           {% show_blog_post blog_post %}
                         {% endif %}
                     {% endfor %}
-                    <a href="{% url blog_list_user other_user %}">{% trans "View all posts" %}</a>
+                    <a href="{% url 'blog_list_user' other_user %}">{% trans "View all posts" %}</a>
                 {% else %}
                     {% trans "No blog posts yet." %}
                 {% endif %}
@@ -154,7 +153,7 @@
                     <div class="clearfix">
                     {% for photo in photos %}
                         <div class="gallery-photo-thumb">
-                            <a href="{% groupurl photo_details group id=photo.id %}"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
+                            <a href="{% url 'photo_details' id=photo.id %}"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
                         </div>
                     {% endfor %}
                     </div>
@@ -163,8 +162,8 @@
                 {% endif %}
                 
             {% else %} {# not user.is_authenticated #}
-                {% url acct_signup as signup_url %}
-                {% url acct_login as login_url %}
+                {% url 'acct_signup' as signup_url %}
+                {% url 'acct_login' as login_url %}
                 <p>{% blocktrans %}<a href="{{ signup_url }}">Sign up</a> and <a href="{{ login_url }}">log in </a> to add this person as a friend and see their tweets and blog posts.{% endblocktrans %}</p>
             {% endif %}
         </div><!--/vcard-->

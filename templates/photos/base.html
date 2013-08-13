@@ -8,18 +8,17 @@ crash.
 {% endcomment %}
 
 {% load i18n %}
-{% load group_tags %}
 
 {% block body_class %}photos{% endblock %}
 
 {% block subnav %}
     {% if user.is_authenticated %}
         <ul>
-            <li><a href="{% groupurl photos group %} ">{% trans "Latest Photos" %}</a></li>
-            <li><a href="{% groupurl photo_most_viewed group %} ">{% trans "Most Viewed" %}</a></li>
-            <li><a href="{% groupurl photos_yours group %}">{% trans "Your Photos" %}</a></li>
-            <li><a href="{% url friends_photos %}">{% trans "Friends' Photos" %}</a></li>
-            <li><a href="{% groupurl photo_upload group %}">{% trans "Upload a Photo" %}</a></li>
+            <li><a href="{% url 'photos' %}">{% trans "Latest Photos" %}</a></li>
+            <li><a href="{% url 'photo_most_viewed' %}">{% trans "Most Viewed" %}</a></li>
+            <li><a href="{% url 'photos_yours' %}">{% trans "Your Photos" %}</a></li>
+            <li><a href="{% url 'friends_photos' %}">{% trans "Friends' Photos" %}</a></li>
+            <li><a href="{% url 'photo_upload' %}">{% trans "Upload a Photo" %}</a></li>
         </ul>
     {% else %}
         &nbsp;

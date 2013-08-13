@@ -2,14 +2,13 @@
 {% load account_tags %}
 {% load avatar_tags %}
 {% load tagging_tags %}
-{% load group_tags %}
 {% load theme_tags %}
 
 <div class="toolbox clearfix">
-    <div class="photo-avatar"><a href="{% url profile_detail photo.member.username %}" title="{% user_display photo.member %}">{% avatar photo.member.username 50 %}</a></div>
+    <div class="photo-avatar"><a href="{% url 'profile_detail' photo.member.username %}" title="{% user_display photo.member %}">{% avatar photo.member.username 50 %}</a></div>
     <div class="photo-profile-details">
       <h2>{% trans "Posted by" %}</h2>
-        <a href="{% url profile_detail photo.member.username %}" title="{% user_display photo.member %}">{% user_display photo.member %}</a><br />
+        <a href="{% url 'profile_detail' photo.member.username %}" title="{% user_display photo.member %}">{% user_display photo.member %}</a><br />
         {{ photo.date_taken|date:"DATE_FORMAT" }}<br />
         {% blocktrans with photo.view_count as view_count %}Viewed {{ view_count }} times{% endblocktrans %}
     </div>
@@ -43,14 +42,14 @@
     
     {% if is_me %}
       <div class="delete-photo">
-          <form action="{% groupurl photo_destroy group id=photo.id %}" method="POST">
+          <form action="{% url 'photo_destroy' id=photo.id %}" method="POST">
               {% csrf_token %}
               <input type="image" src="{{ STATIC_URL }}pinax/img/silk/icons/delete.png" border="0" title="{% trans "Delete Photo" %}" /><label>{% trans 'Delete Photo' %}</label>
                           <input type="hidden" name="action" value="delete"/>
           </form>
       </div>
         
-        <a href="{% groupurl photo_edit group id=photo.id %}">{% trans 'Edit Photo' %}</a>
+        <a href="{% url 'photo_edit' id=photo.id %}">{% trans 'Edit Photo' %}</a>
         
     {% endif %}
     

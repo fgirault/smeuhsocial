@@ -110,8 +110,7 @@ MIDDLEWARE_CLASSES = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django_openid.consumer.SessionConsumer",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "groups.middleware.GroupAwareMiddleware",
-    "pinax.apps.account.middleware.LocaleMiddleware",
+    "account.middleware.LocaleMiddleware",
     "django.middleware.doc.XViewMiddleware",
     "pagination.middleware.PaginationMiddleware",
     "django_sorting.middleware.SortingMiddleware",
@@ -134,17 +133,12 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.media",
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
-    
     "staticfiles.context_processors.static_url",
-    
     "pinax.core.context_processors.pinax_settings",
-    
     "pinax.apps.account.context_processors.account",
-    
     "announcements.context_processors.site_wide_announcements",
     "messages.context_processors.inbox",
     "friends_app.context_processors.invitations",
-    
     "smeuhsocial.context_processors.combined_inbox_count",
 ]
 
@@ -163,14 +157,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.humanize",
     "django.contrib.markup",
-    
     "pinax.templatetags",
     
     # external
     "compressor",
     "notification", # must be first
     "django.contrib.staticfiles",
-#    "debug_toolbar",
     "mailer",
     "uni_form",
     "django_openid",
@@ -181,17 +173,11 @@ INSTALLED_APPS = [
     "pagination",
     "friends",
     "messages",
-#    "oembed",
-    "groups",
     "threadedcomments",
-#    "wakawaka",
-#    "swaps",
-#    "voting",
     "tagging",
     "photologue",
     "avatar",
     "microblogging",
-#    "locations",
     "django_sorting",
     "django_markup",
     "tagging_ext",
@@ -202,11 +188,9 @@ INSTALLED_APPS = [
     "pinax.apps.analytics",
     "pinax.apps.profiles",
     "pinax.apps.blog",
-#    "pinax.apps.tribes",
-    "pinax.apps.photos",
+    "photos",
     "pinax.apps.topics",
     "pinax.apps.threadedcomments_extras",
-#    "pinax.apps.voting_extras",
     
     # project
     "about",
@@ -354,6 +338,8 @@ ldap_log.addHandler(ldap_log_handler)
 
 AUDIOTRACKS_MODEL = 'smeuhoverride.Track'
 AUDIOTRACKS_PER_PAGE = 6
+
+SECRET_KEY = 'coin'
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
