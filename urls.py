@@ -64,7 +64,7 @@ urlpatterns = patterns(
     url(r"^about/", include("about.urls")),
     url(r"^account/", include("account.urls")),
     url(r"^openid/(.*)", PinaxConsumer()),
-    url(r"^profiles/", include("pinax.apps.profiles.urls")),
+    url(r"^profiles/", include("profiles.urls")),
 
     # Blog URLs ############################################
 
@@ -203,7 +203,7 @@ urlpatterns += patterns(
 urlpatterns += patterns(
     "",
     url(r"^(?P<username>[\w\._-]+)/$",
-        "pinax.apps.profiles.views.profile", name="profile_detail"),
+        "profiles.views.profile", name="profile_detail"),
 )
 
 if settings.SERVE_MEDIA:
