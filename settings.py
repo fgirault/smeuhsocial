@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Django settings for social pinax project.
 
+import sys
 import os.path
 import posixpath
 import pinax
@@ -249,10 +250,15 @@ ACCOUNT_EMAIL_VERIFICATION = False
 ACCOUNT_EMAIL_AUTHENTICATION = False
 ACCOUNT_UNIQUE_EMAIL = EMAIL_CONFIRMATION_UNIQUE_EMAIL = False
 
-AUTHENTICATION_BACKENDS = [
-    "django_auth_ldap.backend.LDAPBackend",
-    "pinax.apps.account.auth_backends.AuthenticationBackend",
-]
+if 'test' in sys.argv:
+    AUTHENTICATION_BACKENDS = [
+        "pinax.apps.account.auth_backends.AuthenticationBackend",
+    ]
+else:
+    AUTHENTICATION_BACKENDS = [
+        "django_auth_ldap.backend.LDAPBackend",
+        "pinax.apps.account.auth_backends.AuthenticationBackend",
+    ]
 
 LOGIN_URL = "/account/login/" # @@@ any way this can be a url name?
 LOGIN_REDIRECT_URLNAME = "home"

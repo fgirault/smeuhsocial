@@ -10,67 +10,44 @@ community platform of [Smeuh.Org](http://smeuh.org).  It's based on
 Instructions presented here are incomplete and poorly tested so don't hesitate to
 ask for help if you run into trouble.
 
-Developement Setup
-==================
+Development Setup
+=================
 
 
 Requirements
 ------------
 
- - Python version 2.5.x, because this is the version we have on smeuh's server.
-   Using the same version for development will prevent you from writing
-   incompatible code. If you don't have this version currently installed on
-   your system, the easiest and safest way to get version 2.5 is probably to
-   install it from source in your home directory.
- - [virtualenv](http://pypi.python.org/pypi/virtualenv). This is used to create
-   an isolated Python environement containing the dependencies necessary to run
-   the project, without affecting your global Python installation. Make sure you
-   have a version of virtualenv working against your version of Python 2.5.x
+ - Python version 2.7
  - Development packages for Python, LDAP, SASL and SSL. For Debian-like systems:
 
     $ sudo apt-get install python-dev libldap-dev libsasl2-dev libssl-dev
 
  - [OpenLDAP](http://www.openldap.org/) server. OpenLDAP server is necessary
-   only if you want to work on OpenLDAP authentication. You might get into
+   *only if you want to work on OpenLDAP authentication*. You might get into
    trouble with a pre-packaged version so just grab the official source tarball
    and install it following instructions at
-   <http://www.openldap.org/doc/admin24/quickstart.html>. See section "Setup
-   LDAP directory" below for more info on this.
-
+   <http://www.openldap.org/doc/admin24/quickstart.html>. See section "Setup LDAP
+   directory" below for more info on this.
 
 
 Installation
 ------------
 
-Fork the git repository https://github.com/amarandon/smeuhsocial and clone
-it with:
+I recommend you use a Python environment isolation tool such as virtualenv. If
+you go for virtualenv you should also use virtualenvwrapper which makes it
+really convenient to work with virtual environments. I suppose you can also use
+buildout.
+
+Once you've got your environment setup you can do:
 
     $ git clone git@github.com:<USERNAME>/smeuhsocial.git
-
-Create your virtual environment:
-
-    $ virtualenv-2.5 smeuhsocial_env
-
-(Note that the virtual environement can be located anywhere on your filesystem.
-It does not need to contain the source code of the app.)
-
-Activate your virtual environement:
-
-    $ . ./smeuhsocial_env/bin/activate
-
-Switch to the directory containing the source code:
-
     $ cd smeuhsocial
 
-Install required Python packages dependancies:
+
+And install dependencies (it will take a moment to complete):
 
     $ pip install -r requirements/project.txt
 
-Create a file local_settings.py with this content:
-
-    MEDIA_URL = "/site_media/"
-
-(This is because static media location is a bit odd on the live server right now)
 
 
 Initialize the database
@@ -82,7 +59,7 @@ If the "db" sub directory does not exist, create it:
 
     $ mkdir db
 
-Then load the schema:
+Then create the database schema:
 
     $ python manage.py syncdb
 
@@ -103,7 +80,7 @@ pre-packaged OpenLDAP from Ubuntu, so I ended up installing from source.  This
 procedure worked for me:
 
 * ask smeuh admins for a dump of smeuh ldap db (or al for another version)
-* install openldap from source
+* install OpenLDAP from source
 * edit slapd.conf
   - make sure these schema are included:
         include     /usr/local/etc/openldap/schema/core.schema
