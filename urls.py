@@ -1,21 +1,20 @@
 from django.conf import settings
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template, redirect_to
-
 from django.contrib import admin
 admin.autodiscover()
 
+from audiotracks.models import Track
 from microblogging.feeds import TweetFeedAll, TweetFeedUser, TweetFeedUserWithFriends
 from microblogging.models import Tweet
-from tagging.models import TaggedItem
-
 from pinax.apps.account.openid_consumer import PinaxConsumer
-from pinax.apps.blog.feeds import BlogFeedAll, BlogFeedUser
-from pinax.apps.blog.models import Post
 from pinax.apps.photos.models import Image
 from pinax.apps.topics.models import Topic
-from pinax.apps.blog.forms import BlogForm
-from audiotracks.models import Track
+from tagging.models import TaggedItem
+
+from blog.feeds import BlogFeedAll, BlogFeedUser
+from blog.models import Post
+from blog.forms import BlogForm
 from smeuhoverride import feeds
 
 
@@ -57,7 +56,7 @@ urlpatterns = patterns("",
     # Blog URLs ####################################################
 
     # all blog posts
-    url(r"^blogs/?$", "pinax.apps.blog.views.blogs", name="blog_list_all"),
+    url(r"^blogs/?$", "blog.views.blogs", name="blog_list_all"),
  
     url(r"^(?P<username>[\w\._-]+)/blog/feed/?$", feeds.UserBlogPosts(),
             name="user_blog_feed"),
@@ -65,22 +64,22 @@ urlpatterns = patterns("",
     # blog post
     url(r"^(?P<username>[-\w]+)/blog/(?P<slug>[-\w]+)/source/?$",
         "smeuhoverride.views.blog_post_source", name="blog_post_source"),
-    url(r"^(?P<username>[-\w]+)/blog/(?P<slug>[-\w]+)/?$", "pinax.apps.blog.views.post", name="blog_post"),
+    url(r"^(?P<username>[-\w]+)/blog/(?P<slug>[-\w]+)/?$", "blog.views.post", name="blog_post"),
     
     # blog post for user
     url(r"^(?P<username>\w+)/blog/?$", "smeuhoverride.views.user_blog_index", name="blog_list_user"),
     
     # your posts
-    url(r"^blogs/your_posts/?$", "pinax.apps.blog.views.your_posts", name="blog_list_yours"),
+    url(r"^blogs/your_posts/?$", "blog.views.your_posts", name="blog_list_yours"),
     
     # new blog post
-    url(r"^blogs/new/$", "pinax.apps.blog.views.new", name="blog_new"),
+    url(r"^blogs/new/$", "blog.views.new", name="blog_new"),
     
     # edit blog post
-    url(r"^blogs/edit/(\d+)/$", "pinax.apps.blog.views.edit", name="blog_edit"),
+    url(r"^blogs/edit/(\d+)/$", "blog.views.edit", name="blog_edit"),
     
     #destory blog post
-    url(r"^blogs/destroy/(\d+)/$", "pinax.apps.blog.views.destroy", name="blog_destroy"),
+    url(r"^blogs/destroy/(\d+)/$", "blog.views.destroy", name="blog_destroy"),
     
     # ajax validation
     (r"^blogs/validate/$", "ajax_validation.views.validate", {
