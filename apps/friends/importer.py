@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.utils import simplejson as json
 
-import gdata.contacts.service
 import vobject
 
 from friends.models import Contact

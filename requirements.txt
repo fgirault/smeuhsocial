@@ -1,8 +1,3 @@
-# base.txt is a pip requirements file which describes the necessary
-# distributions required to run this project. If you need something that is
-# project specific not listed here use project.txt. You can, of course, update
-# versions of distributions here if needed.
-
 --extra-index-url=http://dist.pinaxproject.com/dev/
 
 Django==1.5.1
@@ -12,12 +7,10 @@ django-email-confirmation==0.2.dev4
 django-timezones==0.2.dev1
 django-ajax-validation==0.1.3
 pytz==2010h
-django-openid==0.2.3.dev1
 python-openid==2.2.5
 django-uni-form==0.7.0
 python-dateutil==1.4.1
 docutils==0.6
-gdata==1.3.3
 Pygments==1.3.1
 python-twitter==0.5
 simplejson==2.0.9
@@ -35,3 +28,16 @@ django-tagging-ext==0.3.5
 django-threadedcomments==0.5.2
 django-photologue==2.3
 django-markup==0.3
+PIL
+python-ldap
+django-auth-ldap
+versiontools
+django_compressor
+fabric
+
+-e git+ssh://git@github.com/amarandon/pinax.git#egg=Pinax
+-e git+ssh://git@github.com/amarandon/django-audiotracks.git#egg=django_audiotracks
+
+# We pull django-pagination from github because Pypi distribution doesn't
+# include locales
+-e git://github.com/ericflo/django-pagination.git#egg=django_pagination
