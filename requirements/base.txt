@@ -23,7 +23,6 @@ python-twitter==0.5
 simplejson==2.0.9
 textile==2.1.4
 vobject==0.8.1c
-ybrowserauth==1.2
 Markdown==2.0.3
 diff-match-patch==20090804
 geopy==0.94

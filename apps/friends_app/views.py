@@ -9,10 +9,9 @@ from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 from friends.forms import JoinRequestForm
-from friends.importer import import_yahoo, import_google
 from friends.models import *
 
-from pinax.apps.account.forms import SignupForm
+from account.forms import SignupForm
 
 from friends_app.forms import ImportVCardForm
 
@@ -113,37 +112,11 @@ def contacts(request, form_class=ImportVCardForm,
                     }
                 )
                 import_vcard_form = ImportVCardForm()
-        else:
-            import_vcard_form = form_class()
-            if request.POST["action"] == "import_yahoo":
-                bbauth_token = request.session.get("bbauth_token")
-                del request.session["bbauth_token"]
-                if bbauth_token:
-                    imported, total = import_yahoo(bbauth_token, request.user)
-                    messages.add_message(request, message.SUCCESS,
-                        ugettext("%(total)s people with email found, %(imported)s contacts imported.") % {
-                            "imported": imported,
-                            "total": total
-                        }
-                    )
-            if request.POST["action"] == "import_google":
-                authsub_token = request.session.get("authsub_token")
-                del request.session["authsub_token"]
-                if authsub_token:
-                    imported, total = import_google(authsub_token, request.user)
-                    messages.add_message(request, messages.SUCCESS,
-                        ugettext("%(total)s people with email found, %(imported)s contacts imported.") % {
-                            "imported": imported,
-                            "total": total
-                        }
-                    )
     else:
         import_vcard_form = form_class()
     
     return render_to_response(template_name, {
         "import_vcard_form": import_vcard_form,
-        "bbauth_token": request.session.get("bbauth_token"),
-        "authsub_token": request.session.get("authsub_token"),
     }, context_instance=RequestContext(request))
 
 

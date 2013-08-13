@@ -65,7 +65,6 @@ urlpatterns = patterns(
     url(r"^account/", include("account.urls")),
     url(r"^openid/(.*)", PinaxConsumer()),
     url(r"^profiles/", include("pinax.apps.profiles.urls")),
-    url(r"^bbauth/", include("pinax.apps.bbauth.urls")),
 
     # Blog URLs ############################################
 
