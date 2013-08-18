@@ -2,7 +2,7 @@ import re
 
 from django import template
 
-from pinax.apps.account.models import other_service
+from account.models import other_service
 
 
 

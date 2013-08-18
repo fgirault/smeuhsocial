@@ -1,6 +1,6 @@
 from django.conf import settings
 
-from pinax.apps.account.models import Account, AnonymousAccount
+from account.models import Account, AnonymousAccount
 
 
 def account(request):

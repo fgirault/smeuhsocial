@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from pinax.apps.account.models import Account, OtherServiceInfo, PasswordReset
+from account.models import Account, OtherServiceInfo, PasswordReset
 
 
 

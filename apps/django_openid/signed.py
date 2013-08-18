@@ -35,8 +35,8 @@ These functions make use of all of them.
 """
 
 import pickle, base64
+import hashlib
 from django.conf import settings
-from django.utils.hashcompat import sha_constructor
 import hmac
 
 def dumps(obj, key = None, compress = False, extra_key = ''):
@@ -116,4 +116,4 @@ def unsign(signed_value, key = None):
         raise BadSignature, 'Signature failed: %s' % sig
 
 def base64_hmac(value, key):
-    return encode(hmac.new(key, value, sha_constructor).digest())
+    return encode(hmac.new(key, value, hashlib.sha1).digest())

@@ -1,3 +1,4 @@
+import hashlib
 import datetime
 
 from random import random
@@ -7,7 +8,6 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models import signals
 from django.template.loader import render_to_string
-from django.utils.hashcompat import sha_constructor
 
 from django.contrib.sites.models import Site
 from django.contrib.auth.models import User
@@ -111,8 +111,8 @@ class JoinInvitationManager(models.Manager):
     
     def send_invitation(self, from_user, to_email, message):
         contact, created = Contact.objects.get_or_create(email=to_email, user=from_user)
-        salt = sha_constructor(str(random())).hexdigest()[:5]
-        confirmation_key = sha_constructor(salt + to_email).hexdigest()
+        salt = hashlib.sha1(str(random())).hexdigest()[:5]
+        confirmation_key = hashlib.sha1(salt + to_email).hexdigest()
         
         accept_url = u"http://%s%s" % (
             unicode(Site.objects.get_current()),

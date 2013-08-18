@@ -135,7 +135,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.contrib.messages.context_processors.messages",
     "staticfiles.context_processors.static_url",
     "pinax.core.context_processors.pinax_settings",
-    "pinax.apps.account.context_processors.account",
+    "account.context_processors.account",
     "messages.context_processors.inbox",
     "friends_app.context_processors.invitations",
     "smeuhsocial.context_processors.combined_inbox_count",
@@ -181,8 +181,7 @@ INSTALLED_APPS = [
     "tagging_ext",
     
     # Pinax
-    "pinax.apps.account",
-    "pinax.apps.signup_codes",
+    "account",
     "pinax.apps.analytics",
     "profiles",
     "pinax.apps.blog",
@@ -234,12 +233,12 @@ ACCOUNT_UNIQUE_EMAIL = EMAIL_CONFIRMATION_UNIQUE_EMAIL = False
 
 if 'test' in sys.argv:
     AUTHENTICATION_BACKENDS = [
-        "pinax.apps.account.auth_backends.AuthenticationBackend",
+        "account.auth_backends.AuthenticationBackend",
     ]
 else:
     AUTHENTICATION_BACKENDS = [
         "django_auth_ldap.backend.LDAPBackend",
-        "pinax.apps.account.auth_backends.AuthenticationBackend",
+        "account.auth_backends.AuthenticationBackend",
     ]
 
 LOGIN_URL = "/account/login/" # @@@ any way this can be a url name?

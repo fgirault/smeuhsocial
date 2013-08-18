@@ -8,7 +8,7 @@ from django.utils.http import urlquote
 
 from django.contrib.auth import REDIRECT_FIELD_NAME
 
-from pinax.apps.account.models import Account
+from account.models import Account
 
 
 

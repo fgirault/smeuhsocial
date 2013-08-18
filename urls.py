@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.conf.urls.defaults import url, patterns, include
+from django.conf.urls import url, patterns, include
 from django.views.generic import TemplateView, RedirectView
 from django.contrib import admin
 admin.autodiscover()
@@ -57,9 +57,6 @@ urlpatterns = patterns(
     url(r"^favicon.ico/?$", RedirectView.as_view(
         url=settings.STATIC_URL + 'img/favicon.ico')),
     url(r"^$", HomePageView.as_view(), name="home"),
-    url(r"^admin/invite_user/$",
-        "pinax.apps.signup_codes.views.admin_invite_user",
-        name="admin_invite_user"),
     url(r"^admin/", include(admin.site.urls)),
     url(r"^about/", include("about.urls")),
     url(r"^account/", include("account.urls")),

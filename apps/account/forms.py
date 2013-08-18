@@ -6,7 +6,6 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _, ugettext
 from django.utils.encoding import smart_unicode
-from django.utils.hashcompat import sha_constructor
 from django.utils.http import int_to_base36
 
 from django.contrib import messages
@@ -18,9 +17,9 @@ from django.contrib.sites.models import Site
 from emailconfirmation.models import EmailAddress
 from timezones.forms import TimeZoneField
 
-from pinax.apps.account.models import Account, PasswordReset
-from pinax.apps.account.models import OtherServiceInfo, other_service, update_other_services
-from pinax.apps.account.utils import user_display, perform_login
+from account.models import Account, PasswordReset
+from account.models import OtherServiceInfo, other_service, update_other_services
+from account.utils import user_display, perform_login
 
 
 

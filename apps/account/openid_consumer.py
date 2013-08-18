@@ -13,9 +13,9 @@ from django.contrib import messages
 
 from django_openid.registration import RegistrationConsumer
 
-from pinax.apps.account.forms import OpenIDSignupForm
-from pinax.apps.account.utils import get_default_redirect, user_display
-from pinax.apps.account.views import login as account_login
+from account.forms import OpenIDSignupForm
+from account.utils import get_default_redirect, user_display
+from account.views import login as account_login
 
 
 
