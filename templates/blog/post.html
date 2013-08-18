@@ -14,16 +14,16 @@
 
 {% block extra_head %}
 <link rel="alternate" type="application/atom+xml" title="Blog Post Feed for All Users" 
-href="{% url all_blogs_feed %}" />
+href="{% url 'all_blogs_feed' %}" />
 <link rel="alternate" type="application/atom+xml" 
     title="Blog Post Feed for User {{ post.author.username }}" 
-    href="{% url user_blog_feed post.author.username %}/" />
+    href="{% url 'user_blog_feed' post.author.username %}/" />
     <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/pygments.css" />
 {% endblock %}
 
 {% block body %}
 <div class="blog-meta"><p>{% trans 'Posted by' %} 
-<a href="{% url profile_detail post.author.username %}">{% user_display post.author %}</a> 
+<a href="{% url 'profile_detail' post.author.username %}">{% user_display post.author %}</a> 
 {% trans 'on' %}
   {{ post.publish|date:"DATE_FORMAT" }}
       {% silk "tag_blue" %}
@@ -36,7 +36,7 @@ href="{% url all_blogs_feed %}" />
 
       {% ifequal post.author request.user %}
       <p>
-        <a href="{% url blog_edit post.id %}">{% trans 'Edit Post' %}</a>
+        <a href="{% url 'blog_edit' post.id %}">{% trans 'Edit Post' %}</a>
       </p>
       {% endifequal %} 
       
@@ -51,6 +51,6 @@ href="{% url all_blogs_feed %}" />
     <h3>{% trans 'Comments on this post:' %}</h3>
     {% comments post %}
       <p>
-        <a href="{% url blog_post_source post.author.username, post.slug %}">{% blocktrans %}View source in {% endblocktrans %}{% render_markup_name post %}</a>
+        <a href="{% url 'blog_post_source' post.author.username post.slug %}">{% blocktrans %}View source in {% endblocktrans %}{% render_markup_name post %}</a>
       </p>
 {% endblock %}

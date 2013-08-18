@@ -5,7 +5,6 @@
 {% load threadedcommentstags %}
 {% load override_tags %}
 {% load avatar_tags %}
-{% load group_tags %}
 {% load blog_tags %}
 
 {% block head_title %}{% trans "Welcome" %}{% endblock %}
@@ -16,15 +15,15 @@
 {% block extra_head %}
 {{ block.super }}
 <link rel="alternate" type="application/rss+xml" 
-title="Touites" href="{% url all_tweets_feed %}" />
+title="Touites" href="{% url 'all_tweets_feed' %}" />
 <link rel="alternate" type="application/rss+xml" 
-title="Photos" href="{% url all_photos_feed %}" />
+title="Photos" href="{% url 'all_photos_feed' %}" />
 <link rel="alternate" type="application/rss+xml" 
-title="Commentaires" href="{% url all_comments_feed %}" />
+title="Commentaires" href="{% url 'all_comments_feed' %}" />
 <link rel="alternate" type="application/rss+xml" 
-title="Tracks" href="{% url tracks_feed %}" />
+title="Tracks" href="{% url 'tracks_feed' %}" />
 <link rel="alternate" type="application/rss+xml" 
-title="Blogs" href="{% url all_blogs_feed %}" />
+title="Blogs" href="{% url 'all_blogs_feed' %}" />
 {% endblock %}
 
 {% block body %}
@@ -38,9 +37,9 @@ title="Blogs" href="{% url all_blogs_feed %}" />
     href="http://smeuh.org/">Smeuh.org</a> to share pictures, sound and ideas.
   {% endblocktrans %}
     {% if not user.is_authenticated %}
-      {% url acct_login as login_url %}
+      {% url 'acct_login' as login_url %}
       {% ifsetting ACCOUNT_OPEN_SIGNUP %}
-      {% url acct_signup as signup_url %}
+      {% url 'acct_signup' as signup_url %}
       {% blocktrans %}You can <a href="{{ signup_url }}">Sign up</a> and <a href="{{ login_url }}">Log in</a> to try out the site.{% endblocktrans %}
       {% else %}
       {% blocktrans %}You can <a href="{{ login_url }}">Log in</a> to try out the site.{% endblocktrans %}
@@ -59,12 +58,12 @@ title="Blogs" href="{% url all_blogs_feed %}" />
 
 <div class="homepage-block latest-tweets">
   <h2>
-    <a title="Atom Feed" href="{% url all_tweets_feed %}"><img alt="Feed Icon" src="{{ STATIC_URL }}img/feed-icon.png"></a>
-    <a href="{% url all_tweets %}">{% blocktrans %}Touites{% endblocktrans %}</a>
+    <a title="Atom Feed" href="{% url 'all_tweets_feed' %}"><img alt="Feed Icon" src="{{ STATIC_URL }}img/feed-icon.png"></a>
+    <a href="{% url 'all_tweets' %}">{% blocktrans %}Touites{% endblocktrans %}</a>
   </h2>
   {% if user.is_authenticated %}
   <div id="homepage-tweet-form">
-    <form action="{% url tweets_you_follow %}" method="POST">
+    <form action="{% url 'tweets_you_follow' %}" method="POST">
       {% csrf_token %}
       <input type="text" autocomplete="off" id="new_tweet" name="text" cols="30" rows="4"/>
 
@@ -83,7 +82,7 @@ title="Blogs" href="{% url all_blogs_feed %}" />
 {% get_latest_comments 10 as latest_comments %}
 <div class="homepage-block">
   <h2>
-    <a title="Atom Feed" href="{% url all_comments_feed %}"><img  alt="Feed Icon"
+    <a title="Atom Feed" href="{% url 'all_comments_feed' %}"><img  alt="Feed Icon"
       src="{{ STATIC_URL }}img/feed-icon.png"></a>
     {% blocktrans %}Comments{% endblocktrans %}
   </h2>
@@ -104,22 +103,22 @@ title="Blogs" href="{% url all_blogs_feed %}" />
 
 <div class="homepage-block photo-block">
   <h2>
-    <a title="Atom Feed" href="{% url all_photos_feed %}"><img alt="Feed Icon"
+    <a title="Atom Feed" href="{% url 'all_photos_feed' %}"><img alt="Feed Icon"
       src="{{ STATIC_URL }}img/feed-icon.png"></a>
-    <a href="{% url photos %}">{% blocktrans %}Photos{% endblocktrans %}</a>
+    <a href="{% url 'photos' %}">{% blocktrans %}Photos{% endblocktrans %}</a>
   </h2>
   <div class="photos">
     {% for photo in latest_photos%}
-    <a href="{% groupurl photo_details group id=photo.id %}"><img
+    <a href="{% url 'photo_details' id=photo.id %}"><img
       class="homepage-photo border-shadow" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}"></a>
     {% endfor %}
   </div>
 </div>
 <div class="homepage-block latest-tracks">
   <h2>
-    <a title="Atom Feed" href="{% url tracks_feed %}"><img alt="Feed Icon"
+    <a title="Atom Feed" href="{% url 'tracks_feed' %}"><img alt="Feed Icon"
       src="{{ STATIC_URL }}img/feed-icon.png"></a>
-    <a href="{% url audiotracks %}">
+    <a href="{% url 'audiotracks' %}">
       {% blocktrans %}Tracks{% endblocktrans %}
     </a>
   </h2>
@@ -127,9 +126,9 @@ title="Blogs" href="{% url all_blogs_feed %}" />
 </div>
 <div class="homepage-block latest-blogs">
   <h2>
-    <a title="Atom Feed" href="{% url all_blogs_feed %}"><img alt="Feed Icon"
+    <a title="Atom Feed" href="{% url 'all_blogs_feed' %}"><img alt="Feed Icon"
       src="{{ STATIC_URL }}img/feed-icon.png"></a>
-    <a href="{% url blog_list_all %}">
+    <a href="{% url 'blog_list_all' %}">
       {% blocktrans %}Blogs{% endblocktrans %}
     </a>
   </h2>

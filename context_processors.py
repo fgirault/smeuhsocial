@@ -3,7 +3,6 @@ from django.core.exceptions import ImproperlyConfigured
 from django.contrib.auth.models import User
 
 from microblogging.models import Tweet
-from pinax.apps.tribes.models import Tribe
 from pinax.apps.blog.models import Post
 
 
@@ -53,7 +52,6 @@ def combined_inbox_count(request):
 def footer(request):
     return {
         "latest_tweets": Tweet.objects.all().order_by("-sent")[:5],
-        "latest_tribes": Tribe.objects.all().order_by("-created")[:5],
         "latest_users": User.objects.all().order_by("-date_joined")[:9],
         "latest_blogs": Post.objects.filter(status=2).order_by("-publish")[:5],
     }

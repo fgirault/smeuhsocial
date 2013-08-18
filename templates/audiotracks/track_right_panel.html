@@ -2,14 +2,13 @@
 {% load account_tags %}
 {% load avatar_tags %}
 {% load tagging_tags %}
-{% load group_tags %}
 {% load theme_tags %}
 
 <div class="toolbox clearfix">
-    <div class="photo-avatar"><a href="{% url profile_detail track.user.username %}" title="{% user_display track.user %}">{% avatar track.user.username 50 %}</a></div>
+    <div class="photo-avatar"><a href="{% url 'profile_detail' track.user.username %}" title="{% user_display track.user %}">{% avatar track.user.username 50 %}</a></div>
     <div class="photo-profile-details">
       <h2>{% trans "Posted by" %}</h2>
-        <a href="{% url profile_detail track.user.username %}" title="{% user_display track.user %}">{% user_display track.user %}</a><br />
+        <a href="{% url 'profile_detail' track.user.username %}" title="{% user_display track.user %}">{% user_display track.user %}</a><br />
         {{ track.created_at|date:"DATE_FORMAT" }}<br />
     </div>
 </div>
@@ -28,8 +27,8 @@
     
     {% if track.user == request.user %}
     <div style="margin-top:1em;">
-        <a href="{% url edit_track track.id %}">{% trans 'Edit Track' %}</a><br>
-        <a href="{% url confirm_delete_track track.id %}">{% trans 'Delete Track' %}</a>
+        <a href="{% url 'edit_track' track.id %}">{% trans 'Edit Track' %}</a><br>
+        <a href="{% url 'confirm_delete_track' track.id %}">{% trans 'Delete Track' %}</a>
     </div>
     {% endif %}
     

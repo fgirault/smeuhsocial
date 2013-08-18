@@ -8,7 +8,7 @@
 {% block body %}
     <h1>{% trans "Invitations" %}</h1>
     
-    <p><a href="{% url invite_to_join %}" rel="facebox">{% trans "Invite someone new to join" %}</a></p>
+    <p><a href="{% url 'invite_to_join' %}" rel="facebox">{% trans "Invite someone new to join" %}</a></p>
     
     <h2>{% trans "Friendship Requests Received" %}</h2>
     
@@ -18,7 +18,7 @@
                 {% ifequal invitation.status "2" %}
                     <tr>
                         <td colspan="3" class="friendship_request">
-                            <p>From <a href="{% url profile_detail invitation.from_user.username %}">{% user_display invitation.from_user %}</a>
+                            <p>From <a href="{% url 'profile_detail' invitation.from_user.username %}">{% user_display invitation.from_user %}</a>
                                 ({{ invitation.sent }}):</p>
                             <p class="invitation_message">{{ invitation.message }}</p>
                             <form method="post" action="">
@@ -37,7 +37,7 @@
                     </tr>
                 {% else %}
                     <tr>
-                        <td><a href="{% url profile_detail invitation.from_user.username %}">{% user_display invitation.from_user %}</a></td>
+                        <td><a href="{% url 'profile_detail' invitation.from_user.username %}">{% user_display invitation.from_user %}</a></td>
                         <td>{{ invitation.sent }}</td>
                         <td class="invitation_{{ invitation.status }}">{{ invitation.get_status_display }}</td>
                     </tr>
@@ -55,7 +55,7 @@
         <table class="invitation_list">
             {% for invitation in invites_sent %}
                 <tr>
-                    <td><a href="{% url profile_detail invitation.to_user.username %}">{% user_display invitation.to_user %}</a></td>
+                    <td><a href="{% url 'profile_detail' invitation.to_user.username %}">{% user_display invitation.to_user %}</a></td>
                     <td>{{ invitation.sent }}</td>
                     <td class="invitation_{{ invitation.status }}">{{ invitation.get_status_display }}</td>
                 </tr>
@@ -77,7 +77,7 @@
                     <td class="invitation_{{ invitation.status }}">{{ invitation.get_status_display }}</td>
                     <td>
                         {% for other_user in invitation.contact.users.all %}
-                            <a href="{% url profile_detail other_user.username %}">{% user_display other_user %}</a>
+                            <a href="{% url 'profile_detail' other_user.username %}">{% user_display other_user %}</a>
                         {% endfor %}
                     </td>
                 </tr>

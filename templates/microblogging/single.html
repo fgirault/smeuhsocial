@@ -11,10 +11,10 @@
     <p>Here is a single tweet from {% user_display tweet.sender %}:</p>
     
         <div class="tweet" id="t{{ tweet.id }}">
-        <a href="{% url profile_detail tweet.sender %}"><b>{% user_display tweet.sender %}</b></a>
+        <a href="{% url 'profile_detail' tweet.sender %}"><b>{% user_display tweet.sender %}</b></a>
         {{ tweet.text|safe|urlize }}
         <span class="timesince">{{ tweet.sent|timesince }} ago</span>
-        <a class="reply" href="{% url tweets_you_follow %}?reply={{ tweet.sender }}">reply</a>
+        <a class="reply" href="{% url 'tweets_you_follow' %}?reply={{ tweet.sender }}">reply</a>
     </div>
     
 {% endblock %}

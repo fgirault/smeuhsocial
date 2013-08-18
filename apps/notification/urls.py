@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import *
 
 from notification.views import notices, mark_all_seen, single, notice_settings
 

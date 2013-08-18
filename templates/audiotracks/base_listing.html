@@ -6,9 +6,9 @@
 {% block body %}
 <h1>{% block body_title %}{% trans 'Latest Tracks' %}{% endblock %}
 </h1>
-  <a title="Atom Feed" class="podcast-feed-icon" href="{% if username %}{% url tracks_feed username=username %}{% else %}{% url tracks_feed %}{% endif %}">
+  <a title="Atom Feed" class="podcast-feed-icon" href="{% if username %}{% url 'tracks_feed' username=username %}{% else %}{% url 'tracks_feed' %}{% endif %}">
   <img src="{{ STATIC_URL }}img/feed-icon.png"/ >{% trans 'Podcast feed' %}</a>
-<span class="m3u-icon">♫</span><a class="m3u-link" title="{% trans 'M3U playlist' %}" href="{% if username %}{% url m3u username=username %}{% else %}{% url m3u %}{% endif %}">
+<span class="m3u-icon">♫</span><a class="m3u-link" title="{% trans 'M3U playlist' %}" href="{% if username %}{% url 'm3u' username=username %}{% else %}{% url 'm3u' %}{% endif %}">
   {% trans 'M3U playlist' %}
 </a>
 {% include 'audiotracks/_track_list.html' %}

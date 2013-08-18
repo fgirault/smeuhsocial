@@ -1,4 +1,5 @@
 *.pyc
+*.pye
 *.swp
 /db
 /site_media

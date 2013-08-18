@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load account_tags %}
 
-<form class="uniForm" method="POST" action="{% url invite_to_join %}">
+<form class="uniForm" method="POST" action="{% url 'invite_to_join' %}">
     {% csrf_token %}
     <fieldset>
         {% if join_request_form.existing_users %}
@@ -10,7 +10,7 @@
             <ul class="errorlist">
                 <li>{% trans "Someone with this email address has already joined:" %}
                     {% for other_user in join_request_form.existing_users %}
-                    <a href="{% url profile_detail other_user %}">{% user_display other_user %}</a>{% endfor %}
+                    <a href="{% url 'profile_detail' other_user %}">{% user_display other_user %}</a>{% endfor %}
                 </li>
             </ul>
         </div>
@@ -18,7 +18,7 @@
         {{ join_request_form|as_uni_form }}
         <div class="form_block">
             <input type="submit" value="invite" />
-            or <a href="{% url invitations %}">cancel</a>
+            or <a href="{% url 'invitations' %}">cancel</a>
         </div>
     </fieldset>
 </form>

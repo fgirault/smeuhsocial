@@ -5,7 +5,6 @@
 {% load account_tags %}
 {% load pagination_tags %}
 {% load tagging_tags %}
-{% load group_tags %}
 {% load threadedcommentstags %}
 {% load theme_tags %}
 
@@ -20,10 +19,10 @@
         <div class="thumb-row clearfix">
         {% for photo in photos %}
         <div class="gallery-photo-thumb">
-            <a href="{% groupurl photo_details group id=photo.id %}"><img
+            <a href="{% url 'photo_details' id=photo.id %}"><img
               class="border-shadow" src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a><br />
-            {% trans 'Posted by' %} <a href="{% url profile_detail photo.member.username %}">{% user_display photo.member %}</a><br />
-            {% silk "comment" %}<a href="{% groupurl photo_details group id=photo.id %}#photocomments">{% get_comment_count for photo as commentcount %} {{ commentcount }} {% trans 'comments' %}</a><br />
+            {% trans 'Posted by' %} <a href="{% url 'profile_detail' photo.member.username %}">{% user_display photo.member %}</a><br />
+            {% silk "comment" %}<a href="{% url 'photo_details' id=photo.id %}#photocomments">{% get_comment_count for photo as commentcount %} {{ commentcount }} {% trans 'comments' %}</a><br />
             {% blocktrans with photo.view_count as view_count %}Viewed {{ view_count }} times{% endblocktrans %}
         </div>
         {% endfor %}

@@ -14,13 +14,13 @@
         <li class="{% cycle even,odd %} thread-{{ response.depth }} clearfix">
             <div class="meta">
                 <div class="avatar">{% avatar response.user 40 %}</div>
-                <div class="details"><a href="{% url profile_detail response.user.username %}">{% user_display response.user %}</a></div>
+                <div class="details"><a href="{% url 'profile_detail' response.user.username %}">{% user_display response.user %}</a></div>
                 {{ response.date_submitted|date }}
             </div>
             <div class="bulk">
                 <div class="body">{{ response.comment|urlize|profilize|linebreaks }}</div>
                 {% ifequal user response.user %}
-                <form method="POST" action="{% url tc_comment_delete response.id %}">
+                <form method="POST" action="{% url 'tc_comment_delete' response.id %}">
                     {% csrf_token %}
                     <input type="submit" value="{% trans "Delete Post" %}" />
                     <input type="hidden" name="next" value="{{ request.path }}" />
@@ -55,8 +55,8 @@
         </form>
     </fieldset>
 {% else %}
-    {% url acct_login as acct_login_url %}
-    {% url acct_signup as acct_signup_url %}
+    {% url 'acct_login' as acct_login_url %}
+    {% url 'acct_signup' as acct_signup_url %}
     {% blocktrans %}
         <h3>Please <a href="{{ acct_login_url }}">Login</a> (or <a href="{{ acct_signup_url }}">Sign Up</a>) to leave a comment</h3>
     {% endblocktrans %}
