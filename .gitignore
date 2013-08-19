@@ -1,5 +1,5 @@
 *.pyc
 *.pye
 *.swp
-/db
+dev.sqlite3
 /site_media

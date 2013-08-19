@@ -7,7 +7,7 @@ community platform of [Smeuh.Org](http://smeuh.org).  It's based on
 [Django](http://djangoproject.com).  This document is written in
 [Markdown](http://daringfireball.net/projects/markdown/syntax).
 
-Instructions presented here are incomplete and poorly tested so don't hesitate to
+Instructions presented here are not very well tested so don't hesitate to
 ask for help if you run into trouble.
 
 Development Setup
@@ -17,7 +17,7 @@ Development Setup
 Requirements
 ------------
 
- - Python version 2.7
+ - Python version 2.6
  - Development packages for Python, LDAP, SASL and SSL. For Debian-like systems:
 
     $ sudo apt-get install python-dev libldap-dev libsasl2-dev libssl-dev
@@ -44,22 +44,13 @@ Once you've got your environment setup you can do:
     $ cd smeuhsocial
 
 
-And install dependencies (it will take a moment to complete):
+And install dependencies (this will take a while):
 
-    $ pip install -r requirements/project.txt
-
+    $ pip install -r requirements.txt
 
 
 Initialize the database
 -----------------------
-
-Default database backend is sqlite that will store data in db/dev.db
-
-If the "db" sub directory does not exist, create it:
-
-    $ mkdir db
-
-Then create the database schema:
 
     $ python manage.py syncdb
 
@@ -74,6 +65,9 @@ and point your browser at <http://127.0.0.1:8000/>
 
 Setup LDAP directory
 --------------------
+
+Again this is only required if you plan to work on LDAP authentication. You do
+not need this if you want to work on any other feature.
 
 I had a lot of trouble trying to get smeuh's directory working with the
 pre-packaged OpenLDAP from Ubuntu, so I ended up installing from source.  This
