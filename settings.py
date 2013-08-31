@@ -254,17 +254,9 @@ LANGUAGES = [
 ]
 
 LOCALE_PATHS = (
-        os.path.join(PINAX_ROOT, "locale"),
-        )
-
-
-#######################################################################
-# Apps settings
-#######################################################################
-
-LOCALE_PATHS = (
-                os.path.join(PINAX_ROOT, "locale"),
-                        )
+    os.path.join(PROJECT_ROOT, "locale"),
+    os.path.join(PINAX_ROOT, "locale"),
+)
 
 YAHOO_MAPS_API_KEY = "..."
 

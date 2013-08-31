@@ -19,9 +19,40 @@ body {
   overflow: hidden;
 }
 
-body:not(.home) #body {
+body:not(.home) #body,
+body:not(.signup) #body
+{
   max-width: 900px;
   margin: auto;
+}
+
+.signup form li {
+    list-style: none;
+}
+
+#signup-info {
+    float: left;
+    max-width: 300px;
+    font-size: 16px;
+    line-height: 24px;
+    margin-right: 24px;
+}
+
+#signup-forms {
+    float: left;
+}
+
+#signup-forms legend {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#signup-forms fieldset {
+    padding-top: 24px;
+}
+
+#signup-forms form {
+    margin-bottom: 24px;
 }
 
 #subnav {

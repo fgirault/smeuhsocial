@@ -1,9 +1,9 @@
 {% extends "site_base.html" %}
 
 {% load i18n %}
-{% load uni_form_tags %}
-
 {% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block body_class %}signup{% endblock %}
 
 {% block body %}
     <h1>{% trans "Sign Up" %}</h1>
@@ -11,12 +11,23 @@
     {% if user.is_authenticated %}
         <p>{% trans "You are already logged in." %}</p>
     {% else %}
-        <p>{% trans "Already have an account?" %} <a href="{% url 'acct_login' %}">{% trans "Log In" %}</a>!</p>
+        <div id="signup-info">
+            {% blocktrans with smeuhorg='<a href="http://smeuh.org">Smeuh.Org</a>' %}
+            {{ smeuhorg }} members can already connect with their usual username
+            and password. Anybody else can create an account specific to MySmeuh
+            here.
+            {% endblocktrans %}
+            <p><a href="{% url 'acct_login' %}">{% trans "Already have an account?" %}</a></p>
+
+            <p>{% blocktrans %}If you have any trouble creating your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
+        </div>
         
-        <form class="signup uniForm" id="signup_form" method="post" action="{% url 'acct_signup' %}">
+        <div id="signup-forms">
+        <form class="signup" id="signup_form" method="post" action="{% url 'acct_signup' %}">
             {% csrf_token %}
             <fieldset class="inlineLabels">
-                {{ form|as_uni_form }}
+                <legend>{% trans 'Create an account (not necessary for Smeuh.Org members)' %}</legend>
+                {{ form.as_ul }}
                 {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
@@ -28,11 +39,11 @@
         
         {# @@@ currently OpenID signup is not supported via signup codes #}
         {% if not code %}
-            <p>{% trans "Or sign in with your OpenID" %}:</p>
             {# @@@ why isn't this just does as a form object ? #}
-            <form class="login uniForm" action="/openid/register/" method="POST">
+            <form class="login" action="/openid/register/" method="POST">
                 {% csrf_token %}
                 <fieldset class="inlineLabels">
+            <legend>{% trans "Or sign in with your OpenID" %}</legend>
                     {% if url_required %}
                         <div class="ctrlHolder error">
                             <p class="errorField">
@@ -56,14 +67,9 @@
             {% if request.user.is_authenticated %}
                 <div><a href="{% url 'acct_logout' %}?next={{ request.path }}&amp;sm={{ split_test }}&amp;sn=logout">logout</a></div>
             {% endif %}
-            </div>
         {% endif %}
+        </div>
         
-        {% url 'terms' as terms_url %}
-        {% url 'privacy' as privacy_url %}
-        <p>{% blocktrans %}By clicking "Sign Up", you are indicating that you have read and agree to the <a href="{{ terms_url }}">Terms of Use</a> and <a href="{{ privacy_url }}">Privacy Policy</a>.{% endblocktrans %}</p>
-        
-        <p>{% blocktrans %}If you have any trouble creating your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
         
     {% endif %}
 {% endblock %}
