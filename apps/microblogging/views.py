@@ -94,7 +94,7 @@ def following(request, username, template_name="microblogging/following.html"):
     """
     other_user = get_object_or_404(User, username=username)
     following = Following.objects.filter(follower_object_id=other_user.id, follower_content_type=ContentType.objects.get_for_model(other_user))
-    follow_list = [u.followed_content_object for u in following]
+    follow_list = filter(None, [u.followed_content_object for u in following])
     return _follow_list(request, other_user, follow_list, template_name)
 
 def toggle_follow(request, username):
