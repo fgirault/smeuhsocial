@@ -33,7 +33,7 @@
             <li id="tab_tweets"><a href="{% url 'tweets_you_follow' %}">{% trans "Tweets" %}</a></li>
             <li id="tab_blogs"><a href="{% url 'blog_list_all' %}">{% trans "Blogs" %}</a></li>
             <li id="tab_tags"><a href="{% url 'tagging_ext_index' %}">{% trans "Tags" %}</a></li>
-            <li id="tab_inbox"><a href="{% url 'messages_inbox' %}">{% trans "Inbox" %} ({{ combined_inbox_count }})</a></li>
+            <li id="tab_inbox"><a href="{% url 'messages_inbox' %}">{% trans "Messages" %} ({{ combined_inbox_count }})</a></li>
         {% endspaceless %}</ul>
     {% endif %}
 {% endblock %}
