@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 """
 This file demonstrates two different styles of tests (one doctest and one
 unittest). These will both pass when you run "manage.py test".
@@ -11,6 +12,7 @@ from avatar.models import Avatar
 
 from messages.models import Message
 
+
 class TestHomePage(TestCase):
 
     def test_home_page(self):
@@ -19,7 +21,7 @@ class TestHomePage(TestCase):
 
 
 class BaseTestCase(TestCase):
-    
+
     def setUp(self):
         self.me = self.create_user('bob')
         self.login(self.me.username)
@@ -38,7 +40,8 @@ class TestTouites(BaseTestCase):
 
         self.login(self.me.username)
 
-        resp = self.client.post('/touites/toggle_follow/%s/' % self.her.username, {
+        resp = self.client.post(
+            '/touites/toggle_follow/%s/' % self.her.username, {
             'action': action,
         }, follow=True)
 
@@ -104,7 +107,8 @@ class TestInvite(BaseTestCase):
             'message': 'Message body',
         }, follow=True)
 
-        self.assertContains(resp, 'Invitation to join sent to somebody@example.com')
+        self.assertContains(resp,
+                            'Invitation to join sent to somebody@example.com')
 
 
 class BaseImageTest(BaseTestCase):
@@ -150,3 +154,15 @@ class TestPhoto(BaseImageTest):
         }, follow=True)
 
         self.assertContains(resp, title)
+
+
+class TestResetPassword(BaseTestCase):
+
+    def test_post(self):
+        from emailconfirmation.models import EmailAddress
+        user = User.objects.create_user('foo', password='secret',
+                                        email='foo@example.com')
+        EmailAddress.objects.create(user=user, email=user.email, verified=True)
+        response = self.client.post('/account/password_reset/',
+                                    {'email': user.email}, follow=True)
+        self.assertContains(response, u"Nous vous avons envoyé un email")
