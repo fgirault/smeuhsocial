@@ -7,6 +7,7 @@ Replace these with more appropriate tests for your application.
 
 from django.contrib.auth.models import User
 from django.test import TestCase
+from avatar.models import Avatar
 
 from messages.models import Message
 
@@ -125,14 +126,14 @@ class TestAvatar(BaseImageTest):
     def test_change_avatar(self):
         self.upload_avatar()
         resp = self.client.post('/avatar/change/', {
-            'choice': 1,
+            'choice': Avatar.objects.get().pk,
         }, follow=True)
         self.assertContains(resp, 'Successfully updated')
 
     def test_delete_avatar(self):
         self.upload_avatar()
         resp = self.client.post('/avatar/delete/', {
-            'choices': [1],
+            'choices': [Avatar.objects.get().pk],
         }, follow=True)
         self.assertContains(resp, 'Successfully deleted')
 
