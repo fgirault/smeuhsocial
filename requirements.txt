@@ -28,7 +28,7 @@ django-tagging-ext==0.3.5
 django-threadedcomments==0.5.2
 django-photologue==2.3
 django-markup==0.3
-PIL
+Pillow
 python-ldap
 django-auth-ldap
 versiontools
