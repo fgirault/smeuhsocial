@@ -5,7 +5,10 @@ from contextlib import nested
 from fabric.api import env, run, prefix, local, cd, roles, settings
 from fabric.api import get
 
-import local_settings
+try:
+    import local_settings as settings
+except ImportError:
+    import settings
 
 
 DATETIME_FMT = "%Y-%m-%d_%H-%M"

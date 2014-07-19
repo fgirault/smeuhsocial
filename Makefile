@@ -7,3 +7,8 @@ install:
 
 test:
 	python manage.py test smeuhoverride
+
+
+.PHONY: deploy
+deploy:
+	fab -R smeuh deploy
