@@ -193,6 +193,9 @@ INSTALLED_APPS = [
     "about",
     "audiotracks",
     "smeuhoverride",
+    
+    # look
+    'bootstrap3',
 ]
 
 FIXTURE_DIRS = [

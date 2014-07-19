@@ -1,57 +1,122 @@
 {% extends "photos/base.html" %}
-
 {% load i18n %}
 {% load humanize %}
 {% load account_tags %}
 {% load tagging_tags %}
-{% load comments_tag %}
-{% load photo_tags %}
-{% load theme_tags %}
+{% load comments_tag %} 
+{% load photo_tags %} 
+{% load theme_tags %} 
+{% load avatar_tags %}
+{% load bootstrap3 %}
 
-{% block head_title %}{{ photo.title }}{% endblock %}
+{% block head_title %}{{ photo.title }}{% endblock %} 
 
 {% block body %}
-  
-    <div class="right_panel">
-        {% include "photos/photo_right_panel.html" %}
-    </div>
-    
-    <div class="left_panel">
-      <h1 class="photo-title">{{ photo.title }}</h1>
-    {% if photo %}
-        <div class="next-previous">
-          {% if previous_photo_id %}
-          <a href="{% url 'photo_details' previous_photo_id %}">&lt;&lt; {% trans 'Previous picture' %}</a>
-          {% endif %}
-          {% if next_photo_id %}
-          <a class="gallery-previous" href="{% url 'photo_details' next_photo_id %}">{% trans 'Next picture'  %} &gt;&gt;</a>
-          {% endif %}
-        </div>
-        <div class="gallery-photo">
-          <a href="{{ photo.image.url }}"><img class="border-shadow" src="{{ photo_url }}" alt="{{ photo.title }}"/></a>
-        </div>
-        <div class="photo-caption">
-            <p>{{ photo.caption|urlize }}</p>
-        </div>
-        
-        <h3>{% blocktrans %}Comments on this photo:{% endblocktrans %}</h3>
-        {% comments photo %}
-    {% else %}
-    <p>No photos were found.</p>
-    {% endif %}
-    </div>
-    
-{% endblock %}
 
 
-{% block extra_body %}
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#embed-code').hide();
-            $('#embed-code-toggle').click(function() {
-                $('#embed-code').toggle();
-                return false;
-            })
-        });
-    </script>
+<div class="container">	
+	
+	<div class="row">
+		<div class="page-header">
+			<h1>{{ photo.title }}</h1>		
+		</div>
+	</div>
+
+	<div class="row">	
+	
+		<div class="col-xs-12 col-md-6">
+			<p><a href="{{ photo.image.url }}"><img class="img-responsive center-block" src="{{ photo_url }}" alt="{{ photo.title }}" /></a></p>		
+		</div>
+		
+		<div class="col-xs-12 col-md-6">
+										
+			<div class="pull-right">
+				<div class="btn-group">											 					  
+				{% if previous_photo_id %}				
+					<a href="{% url 'photo_details' previous_photo_id %}" class="btn btn-default" title="{% trans 'Previous picture' %}">
+						{% bootstrap_icon "step-backward" %}
+					</a>				
+				{% endif %} 						
+				{% if next_photo_id %} 					
+					<a href="{% url 'photo_details' next_photo_id %}" class="btn btn-default" title="{% trans 'Next picture' %}">
+						 {% bootstrap_icon "step-forward" %}
+					</a>					
+				{% endif %}
+					  
+	
+	  			<div class="btn-group">
+	   	
+				    <button type="button" class="btn btn-default dropdown-toggle {% if not is_me %}disabled{% endif %}" data-toggle="dropdown">      
+				      <span class="caret"></span>
+				    </button>
+				 	{% if is_me %}
+				    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'photo_edit' id=photo.id %}">{% bootstrap_icon "pencil" %} {% trans 'Edit Photo' %}</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'photo_edit' id=photo.id %}">						    
+				          <form action="{% url 'photo_destroy' id=photo.id %}" method="POST">
+				              {% csrf_token %}
+				              <input type="image" src="{{ STATIC_URL }}pinax/img/silk/icons/delete.png" border="0" title="{% trans "Delete Photo" %}" /><label>{% trans 'Delete Photo' %}</label>
+				              <input type="hidden" name="action" value="delete"/>
+				          </form>					    
+				    	</li>        
+					</ul>
+					{% endif %}
+				  </div>
+				</div>				
+			</div>
+				
+			
+			<div class="photo-avatar">
+				<a href="{% url 'profile_detail' photo.member.username %}"
+					title="{% user_display photo.member %}">{% avatar photo.member.username 50 %}</a>
+			</div>
+	
+			{% trans "Posted by" %} <a href="{% url 'profile_detail' photo.member.username %}"title="{% user_display photo.member %}">{% user_display	photo.member %}</a>  
+			- <small>{{ photo.date_taken|date:"DATE_FORMAT" }}</small>
+			<p>{% blocktrans with photo.view_count as view_count %}Viewed {{ view_count }} times{% endblocktrans %}</p>			
+			
+			{% if photo.tags %}
+				<p>
+				{% tags_for_object photo as tags %}
+	            {% for tag in tags %}
+	                <a href="/tags/{{ tag }}">{% bootstrap_icon "tag" %} {{ tag }}</a>
+	            {% endfor %}
+	           	</p>
+	   		{% else %}
+	           	<div class="panel warning">
+  					<div class="panel-body">   
+       {% blocktrans %}
+       The person who posted this picture is a huge Sarah Palin fan who hasn't
+       added any tag.
+       {% endblocktrans %}
+  					</div>
+	        	</div>
+	   		{% endif %}            
+						
+			<p class="lead">{{ photo.caption|urlize }}</p>
+																					
+		</div>
+												
+	</div>
+	
+	
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+		<h4>{% blocktrans %}Comments on this photo:{% endblocktrans %}</h4>
+				{% comments photo %}
+		</div>
+	</div>
+	
+</div>
+
+{% endblock %} {% block extra_body %}
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#embed-code').hide();
+		$('#embed-code-toggle').click(function() {
+			$('#embed-code').toggle();
+			return false;
+		})
+	});
+</script>
 {% endblock %}

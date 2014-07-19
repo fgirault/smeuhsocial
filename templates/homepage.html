@@ -6,6 +6,7 @@
 {% load override_tags %}
 {% load avatar_tags %}
 {% load blog_tags %}
+{% load bootstrap3 %}
 
 {% block head_title %}{% trans "Welcome" %}{% endblock %}
 
@@ -22,7 +23,7 @@ title="Photos" href="{% url 'all_photos_feed' %}" />
 title="Commentaires" href="{% url 'all_comments_feed' %}" />
 <link rel="alternate" type="application/rss+xml" 
 title="Tracks" href="{% url 'tracks_feed' %}" />
-<link rel="alternate" type="application/rss+xml" 
+<link rel="alternate" type="ap	plication/rss+xml" 
 title="Blogs" href="{% url 'all_blogs_feed' %}" />
 {% endblock %}
 

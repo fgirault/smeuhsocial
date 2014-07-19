@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load compress %}
+{% load bootstrap3 %}
 <!DOCTYPE html>
 <html dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}" lang="{{ LANGUAGE_CODE }}">
     <head>
@@ -11,6 +12,8 @@
                 zoom: 1; /* trigger hasLayout */
             }
         </style><![endif]-->
+       
+		
         {% compress css %}
         <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/base.css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/tabs.css" />
@@ -36,9 +39,15 @@
         {% block extra_head_base %}
             {% block extra_head %}{% endblock %}
         {% endblock %}
+        
+         {% bootstrap_css %}
+		<script type="text/javascript" src="{% bootstrap_jquery_url %}"></script>
+        {% bootstrap_javascript %}
+        
     </head>
     
     <body class="{% block body_class %}{% endblock %}">
+    
         {% if site_wide_announcements %}
             <div id="site_wide_announcements">
                 <ul>
@@ -64,14 +73,7 @@
         <div id="body-wrapper">
           <div id="body">
               {% if messages %}
-                  <ul id="messages">
-                      {% for message in messages %}
-                      <li id="message_{{ forloop.counter }}"{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-                          <a href="#"><small>{% trans "clear" %}</small></a>
-                          {{ message }}
-                      </li>
-                      {% endfor %}
-                  </ul>
+              	{% bootstrap_messages %}
               {% endif %}
               
               {% block body %}
