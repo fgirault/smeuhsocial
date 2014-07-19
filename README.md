@@ -44,17 +44,15 @@ Once you've got your environment setup you can do:
 
     $ git clone git@github.com:<USERNAME>/smeuhsocial.git
     $ cd smeuhsocial
+    $ make install
+
+Note: the provided Makefile is just a thin wrapper around pip and manage.py.
 
 
-And install dependencies (this will take a while):
+Running tests
+-------------
 
-    $ pip install -r requirements.txt
-
-
-Initialize the database
------------------------
-
-    $ python manage.py syncdb
+    $ make test
 
 
 Start development server
