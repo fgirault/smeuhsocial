@@ -34,6 +34,7 @@ django-auth-ldap
 versiontools
 django_compressor
 fabric
+django-bootstrap
 
 -e git+ssh://git@github.com/amarandon/pinax.git#egg=Pinax
 -e git+ssh://git@github.com/amarandon/django-audiotracks.git#egg=django_audiotracks
