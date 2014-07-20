@@ -5,6 +5,7 @@
 {% load account_tags %}
 
 {% block body %}
+ <div class="container">
     <h1>{% trans "Sent Messages" %}</h1>
     
     <table class="messages">
@@ -24,4 +25,5 @@
             {% endfor %}
         </tbody>
     </table>
+</div>    
 {% endblock %}

@@ -8,7 +8,7 @@
 {% block head_title %}{% trans "Notices" %}{% endblock %}
 
 {% block body %}
-    
+<div class="container">
     <h1>{% trans "Notices" %}</h1>
     
     {% autopaginate notices %}
@@ -40,5 +40,5 @@
     {% else %}
         <p>{% trans "No notices." %}</p>
     {% endif %}
-    
+</div>    
 {% endblock %}

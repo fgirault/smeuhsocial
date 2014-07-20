@@ -7,6 +7,7 @@
 {% block head_title %}{% trans "Notice" %}{% endblock %}
 
 {% block body %}
+ <div class="container">
     <h1>{% trans "Notice" %}</h1>
     
     {% if notice.is_unseen %}
@@ -18,5 +19,5 @@
         <span class="notice_message">{{ notice.message|safe }}</span>
         <span class="notice_time">{{ notice.added|localtime:account.timezone|time:"P" }}</span>
     </div>
-    
+ </div>   
 {% endblock %}

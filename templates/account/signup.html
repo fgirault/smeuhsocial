@@ -6,6 +6,7 @@
 {% block body_class %}signup{% endblock %}
 
 {% block body %}
+ <div class="container">
     <h1>{% trans "Sign Up" %}</h1>
     
     {% if user.is_authenticated %}
@@ -72,6 +73,7 @@
         
         
     {% endif %}
+</div>    
 {% endblock %}
 
 {% block extra_body %}

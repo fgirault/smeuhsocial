@@ -6,6 +6,7 @@
 {% block head_title %}{% trans "What Next?" %}{% endblock %}
 
 {% block body %}
+	<div class="container">
     <h1>{% trans "What Next?" %}</h1>
     
     {% if user.is_authenticated %}
@@ -46,4 +47,5 @@
                 {% endifsetting %}
             </p>
         {% endif %}
+        </div>
 {% endblock %}

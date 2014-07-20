@@ -5,6 +5,7 @@
 {% block head_title %}{% trans "OpenID Associations" %}{% endblock %}
 
 {% block body %}
+ <div class="container">
     <h1>{% trans "Manage OpenID Associations" %}</h1>
     {% url 'acct_passwd_set' as acct_passwd_set_url %}
     {% if not request.user.password %}
@@ -36,4 +37,5 @@
             <input type="submit" value="{% trans "Authenticate and associate with this account" %}" />
         </p>
     </form>
+</div>    
 {% endblock %}

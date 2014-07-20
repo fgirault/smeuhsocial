@@ -155,7 +155,6 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.humanize",
-    "django.contrib.markup",
     "pinax.templatetags",
     
     # external
@@ -178,6 +177,7 @@ INSTALLED_APPS = [
     "microblogging",
     "django_sorting",
     "django_markup",
+    "markup_deprecated",
     "tagging_ext",
     
     # Pinax

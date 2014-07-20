@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block body %}
-
+<div class="container">
 <h1>{% blocktrans %}Blog posts by {{ username }}{% endblocktrans %}
   <a title="Atom Feed" class="feed-icon" href="{% if username %}{% url 'user_blog_feed' username=username %}{% else %}{% url 'all_blogs_feed' %}{% endif %}">
   <img src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
@@ -37,5 +37,5 @@
     {% else %}
         {% trans "No blog posts yet." %}
     {% endif %}
-
+</div>
 {% endblock %}

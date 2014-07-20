@@ -34,13 +34,14 @@
         <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/topics.css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/jquery.autocomplete.css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}audiotracks/css/screen.css" />
-        <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/override.css" />
         {% endcompress %}
         {% block extra_head_base %}
             {% block extra_head %}{% endblock %}
         {% endblock %}
         
-         {% bootstrap_css %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/override.css" />
+        
 		<script type="text/javascript" src="{% bootstrap_jquery_url %}"></script>
         {% bootstrap_javascript %}
         
@@ -61,26 +62,52 @@
             </div>
         {% endif %}
         
-        <div id="tabhead">
-          <div class="logo" dir="ltr">{% block logo_link_image %}{% endblock %}</div>
-            <div class="login">{% block login %}{% endblock %}<div style="text-align: right;"></div></div>
-            <div id="left_tabs" >{% block left_tabs %}{% endblock %}</div>
-            <div id="right_tabs" >{% block right_tabs %}{% endblock %}</div>
-        </div>
-        <div id="subnav" class="clearfix">{% block subnav_base %}<div class="clearfix">{% block subnav %}&nbsp;{% endblock %}</div>{% endblock %}</div>
+        <!--  -->
         
+      <div class="navbar navbar-default navbar-smeuh" role="navigation">
+	      <div class="container">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <span class="logo" dir="ltr">{% block logo_link_image %}{% endblock %}</span>
+	        </div>
+	        <div class="navbar-collapse collapse">	        	          	          
+	          {% block right_tabs %}{% endblock %}
+	        </div><!--/.nav-collapse -->
+		    
+		    <div class="navbar-collapse collapse">	        	          	          
+		          {% block subnav %}&nbsp;{% endblock %}	          	          	          
+		       </div><!--/.nav-collapse -->
+	      </div>	      
+	   </div>	          
+       <!-- 
+       <div class="container"> 
+        <div class="login">{% block login %}{% endblock %}<div style="text-align: right;"></div></div>              
+        </div>        
+         -->
         {% block body_outer %}
+        {% if messages %}
+        <div class="container">{% bootstrap_messages %}</div>        	
+        {% endif %}
+        <!-- 
         <div id="body-wrapper">
           <div id="body">
-              {% if messages %}
-              	{% bootstrap_messages %}
-              {% endif %}
+          -->
+              
               
               {% block body %}
               {% endblock %}
+           <!-- 
           </div>
         </div>
+         -->
+         
         <footer>
+         <div class="container">
         {% block footer %}
           <a href="/al/blog/manifeste-mysmeuh">{% trans 'About' %}</a>
           |
@@ -90,8 +117,11 @@
           {% endblocktrans %}
         {% endblock %}
         {% block locale_switcher %}{% endblock %}
+        </div>
         </footer>
         {% endblock %}
+        
+        
         
         
         {% compress js %}

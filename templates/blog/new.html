@@ -6,7 +6,7 @@
 {% block head_title %}{% blocktrans %}Write a Blog Post{% endblocktrans %}{% endblock %}
 
 {% block body %}
-    
+    <div class="container">
     {# @@@ not sure how to bring back teaser toggle with uni_form #}
     <form class="uniForm" id="edit-profile" method="POST" action="">
         {% csrf_token %}
@@ -18,7 +18,7 @@
             </div>
         </fieldset>
     </form>
-    
+    </div>
 {% endblock %}
 
 {% block extra_body %}

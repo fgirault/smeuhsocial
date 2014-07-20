@@ -6,6 +6,7 @@
 {% block head_title %}{% blocktrans %}Editing Post{% endblocktrans %}{% endblock %}
 
 {% block body %}
+<div class="container">
     {% ifequal post.author request.user %}
     <form class="uniForm" id="edit-profile" method="POST" action="">
         {% csrf_token %}
@@ -20,6 +21,7 @@
     {% else %}
     <p>{% trans "You are not the author of this post" %}</p>
     {% endifequal %}
+</div>    
 {% endblock %}
 
 {% block extra_body %}

@@ -7,6 +7,9 @@
 {% block head_title %}{{ track.title }}{% endblock %}
 
 {% block body %}
+<div class="container">
+
+
 <div class="right_panel">
     {% include "audiotracks/track_right_panel.html" %}
 </div>
@@ -65,5 +68,7 @@
 <div class="clear">
 <h3>{% trans 'Comments on this track:' %}</h3>
 {% comments track %}
-{% endblock %}
 </div>
+</div>
+{% endblock %}
+

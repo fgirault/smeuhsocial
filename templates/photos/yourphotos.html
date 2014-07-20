@@ -10,8 +10,10 @@
 
 {% block head_title %}{% blocktrans %}Your Photos{% endblocktrans %}{% endblock %}
 
+{% block login %}{% endblock %}
+
 {% block body %}
-  
+  <div class="container">
     <h1>{% trans "Your Photos" %}</h1>
     
     {% if photos %}
@@ -30,6 +32,7 @@
     {% else %}
     <p>No photos were found.</p>
     {% endif %}
+  </div>
     
     
 {% endblock %}

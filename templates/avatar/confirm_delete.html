@@ -5,6 +5,7 @@
 {% block head_title %}{% trans "Avatar" %}{% endblock %}
 
 {% block body %}
+ <div class="container">
     <h1>{% trans "Avatar" %}</h1>
   {% if not avatars %}
         <h3>You have no avatars to delete.  Please <a href="{% url 'avatar_change' %}">upload one</a> now.</h3>
@@ -19,6 +20,7 @@
             <input type="submit" value="Delete These" />
         </form>
     {% endif %}
+</div>    
 {% endblock %}
 
 {% block extra_body %}

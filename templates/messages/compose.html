@@ -4,6 +4,7 @@
 {% load uni_form_tags %}
 
 {% block body %}
+ <div class="container">
     <h1>{% trans "Compose Message"%}</h1>
     
     <form action="" method="post" class="uniForm">
@@ -14,6 +15,7 @@
                 <input type="submit" value="{% trans "Send" %} &raquo;"/>
             </div>
     </form>
+</div>    
 {% endblock %}
 
 {% block extra_body %}

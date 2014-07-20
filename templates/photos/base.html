@@ -1,4 +1,5 @@
 {% extends "site_base.html" %}
+{% load bootstrap3 %}
 {% comment %}
 This template is copied from the base templates to provide the friends
 photos link which is specific to social_project.
@@ -12,14 +13,14 @@ crash.
 {% block body_class %}photos{% endblock %}
 
 {% block subnav %}
-    {% if user.is_authenticated %}
-        <ul>
-            <li><a href="{% url 'photos' %}">{% trans "Latest Photos" %}</a></li>
-            <li><a href="{% url 'photo_most_viewed' %}">{% trans "Most Viewed" %}</a></li>
-            <li><a href="{% url 'photos_yours' %}">{% trans "Your Photos" %}</a></li>
-            <li><a href="{% url 'friends_photos' %}">{% trans "Friends' Photos" %}</a></li>
-            <li><a href="{% url 'photo_upload' %}">{% trans "Upload a Photo" %}</a></li>
-        </ul>
+    {% if user.is_authenticated %}    
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'photo_upload' %}">{% bootstrap_icon "upload" %}  {% trans "Upload a Photo" %}</a></li>
+            <li><a href="{% url 'photos' %}">{% bootstrap_icon "fire" %} {% trans "Latest Photos" %}</a></li>
+            <li><a href="{% url 'photo_most_viewed' %}">{% bootstrap_icon "star" %} {% trans "Most Viewed" %}</a></li>
+            <li><a href="{% url 'photos_yours' %}">{% bootstrap_icon "user" %} {% trans "Your Photos" %}</a></li>
+            <li><a href="{% url 'friends_photos' %}">{% bootstrap_icon "heart" %} {% trans "Friends' Photos" %}</a></li>
+        </ul>       
     {% else %}
         &nbsp;
     {% endif %}

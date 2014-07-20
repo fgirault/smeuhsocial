@@ -6,6 +6,7 @@
 {% block head_title %}{% trans "Invitations" %}{% endblock %}
 
 {% block body %}
+ <div class="container">
     <h1>{% trans "Invitations" %}</h1>
     
     <p><a href="{% url 'invite_to_join' %}" rel="facebox">{% trans "Invite someone new to join" %}</a></p>
@@ -86,7 +87,7 @@
     {% else %}
         <p>{% trans "No join requests sent." %}</p>
     {% endif %}
-    
+</div>    
 {% endblock %}
 
 {% block extra_body %}

@@ -13,6 +13,7 @@
 {% block head_title %}{% user_display other_user as other_user_display %}{% blocktrans %}{{ other_user_display }}{% endblocktrans %}{% endblock %}
 
 {% block body %}
+<div class="container">
     {% user_display other_user as other_user_display %}
     <div class="right_panel">
         {% include "profiles/profile_right_panel.html" %}
@@ -168,6 +169,7 @@
             {% endif %}
         </div><!--/vcard-->
     </div>
+</div>    
 {% endblock %}
 
 {% block extra_body %}

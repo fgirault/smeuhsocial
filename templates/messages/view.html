@@ -5,6 +5,7 @@
 {% load account_tags %}
 
 {% block body %}
+ <div class="container">
     <h1>{% trans "View Message" %}</h1>
     
     <dl class="message-headers">
@@ -25,4 +26,5 @@
     {% endifequal %}
     
     <p><a href="{% url 'messages_delete' message.id %}">{% trans "Delete" %}</a></p>
+</div>    
 {% endblock %}

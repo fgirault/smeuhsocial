@@ -7,6 +7,7 @@
 {% block head_title %}{% trans "Contacts" %}{% endblock %}
 
 {% block body %}
+ <div class="container">
     <h1>{% trans "Contacts" %}</h1>
     
     <p>Contacts are people you know but who may or may not be on this site (yet).</p>
@@ -38,5 +39,5 @@
             <p>{% trans "No contacts." %}</p>
         {% endif %}
     {% endwith %}
-    
+</div>
 {% endblock %}

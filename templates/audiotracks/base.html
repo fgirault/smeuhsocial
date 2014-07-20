@@ -1,4 +1,5 @@
 {% extends "site_base.html" %}
+{% load bootstrap3 %}
 {% comment %}
 This template is copied from the base templates to provide the friends
 photos link which is specific to social_project.
@@ -13,10 +14,10 @@ crash.
 
 {% block subnav %}
     {% if user.is_authenticated %}
-        <ul>
-          <li><a href="{% url 'audiotracks' %}">{% trans 'Latest tracks' %}</a></li>
-          <li><a href="{% url 'user_index' user.username %}">{% trans 'Your tracks' %}</a></li>
-          <li><a href="{% url 'upload_track' %}">{% trans 'Upload track' %}</a></li>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{% url 'upload_track' %}">{% bootstrap_icon "upload" %} {% trans 'Upload track' %}</a></li>
+          <li><a href="{% url 'audiotracks' %}">{% bootstrap_icon "fire" %} {% trans 'Latest tracks' %}</a></li>
+          <li><a href="{% url 'user_index' user.username %}">{% bootstrap_icon "user" %} {% trans 'Your tracks' %}</a></li>
         </ul>
     {% else %}
         &nbsp;

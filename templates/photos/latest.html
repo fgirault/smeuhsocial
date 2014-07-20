@@ -10,10 +10,14 @@
 
 {% block head_title %}{% blocktrans %}{{ title }}{% endblocktrans %}{% endblock %}
 
+{% block login %}{% endblock %}
+
 {% block body %}
-    
+    <div class="container">
+    <div class="row">
+    <div class="center-block">
     <h1>{% trans title %}</h1>
-    
+    </div>
     {% if photos %}
     {% autopaginate photos 18 %}
         <div class="thumb-row clearfix">
@@ -31,6 +35,6 @@
     {% else %}
         <p>{% trans "No photos were found." %}</p>
     {% endif %}
-    
-    
+    </div>
+     </div>
 {% endblock %}

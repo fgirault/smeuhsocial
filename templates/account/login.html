@@ -8,7 +8,7 @@
 {% block head_title %}{% trans "Login" %}{% endblock %}
 
 {% block body %}
-    
+    <div class="container">
     {% if openid and not user.is_authenticated %}
         <p><span class="warning">It appears you have started to login using OpenID. Want to <a href="/openid/register/">finish logging in</a>?</span></p>
     {% endif %}
@@ -67,6 +67,7 @@
     </form>
     
     <p>{% blocktrans %}If you have any trouble logging in to your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
+    </div>
 {% endblock %}
 
 {% block extra_body %}

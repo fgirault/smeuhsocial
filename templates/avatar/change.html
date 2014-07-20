@@ -6,6 +6,7 @@
 {% block head_title %}{% trans "Avatar" %}{% endblock %}
 
 {% block body %}
+ <div class="container">
     <h1>{% trans "Avatar" %}</h1>
     <h3>{% trans "Here is your current avatar:" %}</h3>
   {% avatar user 80 %}
@@ -33,6 +34,7 @@
         <input type="submit" value="{% trans "Upload New Image" %}" />
     </form>
     </p>
+</div>    
 {% endblock %}
 
 {% block extra_body %}

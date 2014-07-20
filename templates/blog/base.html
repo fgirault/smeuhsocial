@@ -2,15 +2,17 @@
 
 {% load i18n %}
 
+{% load bootstrap3 %}
+
 {% block body_class %}blogs{% endblock %}
 
 {% block subnav %}
     {% if user.is_authenticated %}
-        <ul>
-            <li><a href="{% url 'friends_blogs' %} ">{% trans "Friends' Blogs" %}</a></li>
-            <li><a href="{% url 'blog_list_all' %} ">{% trans "All Blogs" %}</a></li>
-            <li><a href="{% url 'blog_list_yours' %}">{% trans "Your Posts" %}</a></li>
-            <li><a href="{% url 'blog_new' %}">{% trans "Write a Blog Post" %}</a></li>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'blog_new' %}">{% bootstrap_icon "pencil" %} {% trans "Write a Blog Post" %}</a></li>
+            <li><a href="{% url 'blog_list_all' %} ">{% bootstrap_icon "list" %} {% trans "All Blogs" %}</a></li>
+            <li><a href="{% url 'blog_list_yours' %}">{% bootstrap_icon "user" %}{% trans "Your Posts" %}</a></li>
+            <li><a href="{% url 'friends_blogs' %} ">{% bootstrap_icon "heart" %} {% trans "Friends' Blogs" %}</a></li>
         </ul>
     {% else %}
         &nbsp;

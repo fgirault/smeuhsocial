@@ -9,6 +9,7 @@
 {% block head_title %}{% blocktrans %}All Profiles{% endblocktrans %}{% endblock %}
 
 {% block body %}
+<div class="container">
     <h1>{% trans "Profiles" %}</h1>
     
     <form method="GET" action="">
@@ -52,4 +53,5 @@
        {% else %}
            <p>No profile were found.</p>
       {% endif %}
+</div>      
 {% endblock %}

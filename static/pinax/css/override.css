@@ -9,8 +9,28 @@
  *
  *****************************/
 
+
 body {
-  background-color: #000;
+  background-color: #fff;
+  background-image: url(/media/static/img/white-texture.jpg);
+
+}
+
+.navbar-smeuh {
+	background-color: #000;
+	color: #F4C021;
+	/*margin: 0;*/
+	border-bottom: 6px solid #00B000;
+}
+
+.navbar-smeuh a {
+	color: #F4C021;	
+}
+
+.subnav-smeuh {
+	color: #000;	
+	background-color: #00B000;
+	margin: 0;
 }
 
 #body-wrapper {

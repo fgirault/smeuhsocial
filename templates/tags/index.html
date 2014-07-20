@@ -12,6 +12,7 @@
 {% block head_title %}{% blocktrans %}Tags{% endblocktrans %}{% endblock %}
 
 {% block body %}
+<div class="container">
     <h1>{% trans "All Photos Matching " %}<i>"{{ tag }}"</i></h1>
     
     {% if phototags %}
@@ -65,7 +66,7 @@
     </table>
     {% endcomment %}
 
-
+</div>
 {% endblock %}
 
 
