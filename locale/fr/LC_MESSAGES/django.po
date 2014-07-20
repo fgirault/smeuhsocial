@@ -127,7 +127,7 @@ msgstr ""
 
 #: apps/account/forms.py:450 templates/account/base.html:22
 msgid "Timezone"
-msgstr "Fuseau horairre"
+msgstr "Fuseau horaire"
 
 #: apps/account/forms.py:464 templates/account/base.html:21
 msgid "Language"
@@ -142,7 +142,7 @@ msgstr ""
 #: apps/account/models.py:22
 #, fuzzy
 msgid "timezone"
-msgstr "Fuseau horairre"
+msgstr "Fuseau horaire"
 
 #: apps/account/models.py:23
 #, fuzzy

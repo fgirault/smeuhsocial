@@ -2,24 +2,26 @@
 
 {% load i18n %}
 
+{% load bootstrap3 %}
+
 {% block body_class %}account{% endblock %}
 
 
 {% block subnav %}
     {% if user.is_authenticated %}
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'acct_email' %}">{% trans "E-Mail Addresses" %}</a></li>
-            <li><a href="/openid/associations/">{% trans "OpenID Associations" %}</a></li>
+            <li><a href="{% url 'acct_email' %}">{% bootstrap_icon "envelope" %} {% trans "E-Mail Addresses" %}</a></li>
+            <li><a href="/openid/associations/">{% bootstrap_icon "cog" %} {% trans "OpenID Associations" %}</a></li>
             {% if user.password %}
-            <li><a href="{% url 'acct_passwd' %}">{% trans "Change Password" %}</a></li>
+            <li><a href="{% url 'acct_passwd' %}">{% bootstrap_icon "lock" %} {% trans "Change Password" %}</a></li>
             {% else %}
-            <li><a href="{% url 'acct_passwd_set' %}">{% trans "Set Password" %}</a></li>
+            <li><a href="{% url 'acct_passwd_set' %}">{% bootstrap_icon "lock" %} {% trans "Set Password" %}</a></li>
             {% endif %}
             {% if user.password and request.openids %}
-            <li><a href="{% url 'acct_passwd_delete' %}">{% trans "Delete Password" %}</a></li>
+            <li><a href="{% url 'acct_passwd_delete' %}">{% bootstrap_icon "remove" %} {% trans "Delete Password" %}</a></li>
             {% endif %}
-            <li><a href="{% url 'acct_language_change' %}">{% trans "Language" %}</a></li>
-            <li><a href="{% url 'acct_timezone_change' %}">{% trans "Timezone" %}</a></li>
+            <li><a href="{% url 'acct_language_change' %}">{% bootstrap_icon "globe" %} {% trans "Language" %}</a></li>
+            <li><a href="{% url 'acct_timezone_change' %}">{% bootstrap_icon "time" %} {% trans "Timezone" %}</a></li>
         </ul>
     {% else %}
         &nbsp; {# need this to give subnav some height when empty #}
