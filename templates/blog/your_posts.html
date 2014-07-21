@@ -20,15 +20,16 @@
 {% block body %}
 <div class="container">
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-12">
     <h1>{% trans "Your Posts" %}</h1>
     
     {% if blogs %}
-        <table cellpadding="5" cellspacing="0" border="0" class="blog-list" width="100%">
+        <table cellpadding="5" cellspacing="0" border="0" class="table table-hover" width="100%">
           <th>{% trans 'Title' %}</th>
           <th>{% trans 'Published On' %}</th>
           <th>{% trans 'Status' %}</th>
-            <th></th>
+          <th></th>
+          <th></th>
             {% for post in blogs %}
                 <tr class="{% cycle odd,even %}">
                     <td><b><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></b><br />
@@ -54,16 +55,14 @@
                         {% endwith %}
                     </td>
                     <td width="50px" align="center">
-                        <a href="{% url 'blog_edit' post.id %}">
-                            {% bootstrap_icon "pencil" %} 
+                        <a href="{% url 'blog_edit' post.id %}" class="btn">
+                            {% bootstrap_icon "pencil" %} {% trans 'Edit Post' %}
                         </a>
                     </td>
                     <td align="right">
                         <form action="{% url 'blog_destroy' post.id %}" method="POST">
                             {% csrf_token %}
-                            {# @@@ still can't replace this with a silk tag yet #}
-                            <input type="image" src="{{ STATIC_URL }}pinax/img/silk/icons/delete.png" border="0" title="{% trans "Delete Post" %}" />
-                            <input type="hidden" name="action" value="delete"/>
+                            <button class="btn" name="action" value="delete">{% bootstrap_icon "remove" %} {% trans "Delete Post" %}</button>
                        </form>
                     </td>
                 </tr>
