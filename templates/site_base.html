@@ -42,11 +42,11 @@
 	         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	         	{% bootstrap_icon "user" %}
 	         		<strong>{% user_display user %} 
-	         		{% if combined_inbox_count > 0 %} ({{ combined_inbox_count }}) {% endif %}
+	         		{% if combined_inbox_count > 0 %} <span class="badge">{{ combined_inbox_count }}</span> {% endif %}
 	         		</strong><span class="caret"></span>
 	         </a>
 	         <ul class="dropdown-menu" role="menu">
-               <li><a href="{% url 'messages_inbox' %}">{% bootstrap_icon "envelope" %} {% if combined_inbox_count > 0 %} <strong>{% endif %} {% trans "Messages" %}  {% if combined_inbox_count > 0 %} ({{ combined_inbox_count }})</strong> {% endif %}</a></li>
+               <li><a href="{% url 'messages_inbox' %}">{% bootstrap_icon "envelope" %} {% if combined_inbox_count > 0 %} <strong>{% endif %} {% trans "Messages" %}  {% if combined_inbox_count > 0 %} <span class="badge">{{ combined_inbox_count }}</span></strong> {% endif %}</a></li>
 	           <li><a href="{% url 'profile_detail' user.username %} ">{% bootstrap_icon "picture" %} {% trans "Your Profile" %}</a></li>
                <li><a href="{% url 'profile_list' %} ">{% bootstrap_icon "list" %} {% trans "All Profiles" %}</a></li>
 	           <li class="divider"></li>
