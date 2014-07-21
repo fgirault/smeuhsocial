@@ -1,6 +1,7 @@
 {% load override_tags %}
 {% load i18n %}
 {% load tagging_tags %}
+{% load bootstrap3 %}
   <div class="audiotracks-list-entry">
     {% if track.image %}
     <img class="track-image" src="{{ track.image.url_48x48 }}" alt="{% trans 'Track Image' %}" />
@@ -37,8 +38,8 @@
     <p class="debug-info">Player type: <span class="audio-type"></span></p>
     {% if track.user == request.user %}
     <div class="audiotracks-action">
-      <a href="{% url 'edit_track' track.id %}">{% trans 'Edit' %}</a>
-      <a href="{% url 'confirm_delete_track' track.id %}">{% trans 'Delete' %}</a>
+      <a href="{% url 'edit_track' track.id %}">{% bootstrap_icon "pencil" %} {% trans 'Edit' %}</a>
+      <a href="{% url 'confirm_delete_track' track.id %}">{% bootstrap_icon "remove" %} {% trans 'Delete' %}</a>
     </div>
     {% endif %}
   </div>

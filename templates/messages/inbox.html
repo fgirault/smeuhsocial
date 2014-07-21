@@ -3,12 +3,13 @@
 {% load i18n %}
 {% load account_tags %}
 {% load timezone_filters %}
+{% load bootstrap3 %}
 
 {% block body %}
  <div class="container">
     <h1>{% trans "Inbox" %}</h1>
     
-    <table class="messages">
+    <table class="table table-hover">
         <thead>
             <tr><th scope="col">{% trans "Sender" %}</th><th scope="col">{% trans "Subject" %}</th><th scope="col">{% trans "Received" %}</th><th scope="col">{% trans "Action" %}</th></tr>
         </thead>
@@ -23,7 +24,7 @@
                         {% if message.replied %}</em>{% endif %}
                         {% if message.new %}</strong>{% endif %}</td>
                     <td>{{ message.sent_at|localtime:account.timezone|date:_("DATETIME_FORMAT") }}</td>
-                    <td><a href="{% url 'messages_delete' message.id %}">{% trans "delete" %}</a></td>
+                    <td><a href="{% url 'messages_delete' message.id %}">{% bootstrap_icon "remove" %} {% trans "delete" %}</a></td>
                 </tr>
             {% endfor %}
         </tbody>

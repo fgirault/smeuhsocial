@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load timezone_filters %}
 {% load account_tags %}
+{% load bootstrap3 %}
 
 {% block body %}
  <div class="container">
@@ -25,6 +26,6 @@
         <p><a href="{% url 'messages_reply' message.id %}">{% trans "Reply" %}</a></p>
     {% endifequal %}
     
-    <p><a href="{% url 'messages_delete' message.id %}">{% trans "Delete" %}</a></p>
+    <p><a href="{% url 'messages_delete' message.id %}">{% bootstrap_icon "remove" %} {% trans "Delete" %}</a></p>
 </div>    
 {% endblock %}
