@@ -84,11 +84,7 @@
 		       </div><!--/.nav-collapse -->
 	      </div>	      
 	   </div>	          
-       <!-- 
-       <div class="container"> 
-        <div class="login">{% block login %}{% endblock %}<div style="text-align: right;"></div></div>              
-        </div>        
-         -->
+
         {% block body_outer %}
         {% if messages %}
         <div class="container">{% bootstrap_messages %}</div>        	
@@ -120,10 +116,7 @@
         </div>
         </footer>
         {% endblock %}
-        
-        
-        
-        
+                               
         {% compress js %}
         <script src="{% block jquery_src %}{{ STATIC_URL }}pinax/js/jquery-1.7.1.min.js{% endblock %}" type="text/javascript"></script>
         <script src="{{ STATIC_URL }}pinax/js/base.js" type="text/javascript"></script>

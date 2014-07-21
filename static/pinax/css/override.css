@@ -9,11 +9,19 @@
  *
  *****************************/
 
+html {
+  position: relative;
+  min-height: 100%;
+}
 
 body {
   background-color: #fff;
   background-image: url(/media/static/img/white-texture.jpg);
+ /* margin-bottom: 60px; */ 
+}
 
+body > .container {
+  padding: 0px 15px 60px;
 }
 
 .navbar-smeuh {
@@ -39,11 +47,6 @@ body {
   overflow: hidden;
 }
 
-body:not(.home) #body
-{
-  max-width: 900px;
-  margin: auto;
-}
 
 .signup form li {
     list-style: none;
@@ -208,10 +211,14 @@ textarea#new_tweet {
 
 footer {
   border-top: 5px solid #00B000;
-  padding: 12px 1.66%;
+  padding: 12px;
   background-color: black;
   color: #ccc;
-  line-height: 24px;
+   height: 60px;
+  /* line-height: 24px; */
+  /* position: absolute; */  
+  /* bottom: 0; */
+  width: 100%;  
 }
 
 footer a,
@@ -221,6 +228,11 @@ footer a:visited {
 
 footer #locale_switcher {
   float: right;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 @media screen and (min-width: 1200px) {

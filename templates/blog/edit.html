@@ -8,15 +8,17 @@
 {% block body %}
 <div class="container">
     {% ifequal post.author request.user %}
-    <form class="uniForm" id="edit-profile" method="POST" action="">
+    <form class="form-horizontal" role="form" id="edit-profile" method="POST" action="">
         {% csrf_token %}
-        <fieldset class="inlineLabels">
-            {{ blog_form|as_uni_form }}
-            <div class="form_block">
-            <input type="hidden" name="action" value="update" />
-            <input type="submit" value="{% trans "Update" %}"/>
-            </div>
-        </fieldset>
+        
+        {{ blog_form|as_uni_form }}
+            
+        <div class="form-group">
+    		<div class="col-sm-offset-2 col-sm-10">
+      			<input type="hidden" name="action" value="update" />
+                <input type="submit" value="{% trans "Update" %}" class="btn btn-default" />
+		    </div>
+		</div>
     </form>
     {% else %}
     <p>{% trans "You are not the author of this post" %}</p>
