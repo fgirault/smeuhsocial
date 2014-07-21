@@ -18,7 +18,7 @@
 
     {% user_display other_user as other_user_display %}
 	<div class="row">
-		<div class="vcard">
+		<div class="col-xs-12 col-md-6">
             <div id="profile_avatar">
                 <div><img src="{% avatar_url other_user 80 %}" alt="Photo of {{ other_user }}" class="photo" /></div>
                 {% if is_me %}
@@ -33,7 +33,37 @@
             {% endif %} 
             {% if is_me %}
                 <p><a href="{% url 'profile_edit' %}" rel="facebox" class="btn btn-default">{% bootstrap_icon "pencil" %} {% trans "Edit profile" %}</a></p>
-            {% endif %}                      
+            {% else %}
+            	{% if is_friend %}
+            	<p>{% blocktrans %}You are friends with {{ other_user_display }}.{% endblocktrans %} .</p>
+            	{% endif %} 
+            <div class="btn-group">
+                <form method="POST" action="{% url 'toggle_follow' other_user %}" class="form-inline" role="form">
+                    {% csrf_token %}
+                    {% if is_friend %}
+                 	<a href="{% url 'messages_compose' %}{{ other_user }}/" class="btn btn-default">{% bootstrap_icon "envelope" %}  {% trans "Send a message" %}</a>                      
+                  	{% endif %}
+                    {% if is_following %}
+                        <!-- <input type="hidden" name="action" value="unfollow" />  -->
+                        <button class="btn btn-default" name="action" value="unfollow">{% bootstrap_icon "minus-sign" %} {% trans "unfollow" %}</button>                                
+                    {% else %}
+                        <!-- <input type="hidden" name="action" value="follow" />  -->
+                        <button class="btn btn-default" name="action" value="follow">{% bootstrap_icon "plus-sign" %} {% trans "follow tweets" %}</button>                                
+                    {% endif %}
+                    {% if is_friend %}
+                    <button class="btn btn-default" name="action" value="remove">{% bootstrap_icon "ban-circle" %} {% trans "remove from friends" %}</button>
+                    {% endif %}
+                </form>
+                 {% if is_friend %}
+                      <form method="POST" action="" class="form-inline" role="form">
+                          {% csrf_token %}
+                          <input type="hidden" name="action" value="remove" />
+                                                   
+                      </form>
+                  {% endif %}
+            </div>
+            {% endif %}     
+                             
             <div class="profile_info">
             <dl class="dl-horizontal">
             	{% if other_user.get_profile.name %}
@@ -52,6 +82,11 @@
                 <dt>{% trans "Website" %}</dt>
                 <dd><a class="url" href="{{ other_user.get_profile.website }}">{% bootstrap_icon "globe" %} {{ other_user.get_profile.website }}</a></dd>
                 {% endif %}          
+                <dt></dt>
+                <dd><a href="{% url 'tweet_following' other_user %}">{% bootstrap_icon "star" %} {% trans "Following" %} <span class="badge">{% following_count other_user %}</span></a></dd>
+                <dt></dt>
+                <dd><a href="{% url 'tweet_followers' other_user %}">{% bootstrap_icon "eye-open" %} {% trans "Followers" %} <span class="badge">{% follower_count other_user %}</span></a></dd>
+                
 			</dl>
                         
             </div>
@@ -59,34 +94,13 @@
             
             
             {% if 1 %}
-                <p>
-                    <a href="{% url 'tweet_followers' other_user %}">{% trans "Followers" %}</a>: {% follower_count other_user %}
-                    <a href="{% url 'tweet_following' other_user %}">{% trans "Following" %}</a>: {% following_count other_user %}
-                </p>
-                
                 {% if is_me %}
                 {% else %}
                     {# @@@ this could be done with ajax, or at the very least turned into an inclusion tag #}
-                    <div>
-                        <form method="POST" action="{% url 'toggle_follow' other_user %}">
-                            {% csrf_token %}
-                            {% if is_following %}
-                                <input type="hidden" name="action" value="unfollow" /><input type="submit" value="{% trans "unfollow" %}"/>
-                            {% else %}
-                                <input type="hidden" name="action" value="follow" /><input type="submit" value="{% trans "follow tweets" %}"/>
-                            {% endif %}
-                        </form>
-                    </div>
+                    
                     
                     {# @@@ this should be an inclusion tag #}
-                    {% if is_friend %}
-                        <p>{% blocktrans %}You are friends with {{ other_user_display }}.{% endblocktrans %} <a href="{% url 'messages_compose' %}{{ other_user }}/">{% bootstrap_icon "envelope" %}  {% trans "Send a message" %}</a>.</p>
-                        <div>
-                            <form method="POST" action="">
-                                {% csrf_token %}
-                                <input type="hidden" name="action" value="remove" /><input type="submit" value="{% trans "remove from friends" %}"/>
-                            </form>
-                        </div>
+                    {% if is_friend %}                        
                     {% else %}
                         {% if previous_invitations_from %}
                             <p>{% blocktrans %}{{ other_user_display }} has requested friendship.{% endblocktrans %}</p>
@@ -136,26 +150,8 @@
                 {% url 'acct_login' as login_url %}
                 <p>{% blocktrans %}<a href="{{ signup_url }}">Sign up</a> and <a href="{{ login_url }}">log in </a> to add this person as a friend and see their tweets and blog posts.{% endblocktrans %}</p>
             {% endif %}
-        </div><!--/vcard-->	
-        
-        {% comment %}
-        <div class="right_panel">
-        {% include "profiles/profile_right_panel.html" %}
-    	</div>
-    	{% endcomment %}
-	</div>
-	<div class="row">
-		<div class="col-xs-12 col-md-6">
-			<h2>{% trans "Tweets" %}</h2>
-                
-            {% if user.is_authenticated and is_me %}
-                {% sent_tweet_listing user 0 is_me %}
-            {% else %}
-                {% sent_tweet_listing other_user 0 is_me %}
-            {% endif %}
-		</div>
-		<div class="col-xs-12 col-md-6">
-			{% public_photos for other_user as photos %}
+            
+            {% public_photos for other_user as photos %}
                 
             {% if photos %}
                 <h2>{% trans "Photos" %}</h2>
@@ -169,6 +165,27 @@
             {% else %}
                {% trans "No photos uploaded yet..." %}
             {% endif %}
+            
+        </div><!--/vcard-->	
+        <div class="col-xs-12 col-md-6">
+			<h2>{% trans "Tweets" %}</h2>
+                
+            {% if user.is_authenticated and is_me %}
+                {% sent_tweet_listing user 0 is_me %}
+            {% else %}
+                {% sent_tweet_listing other_user 0 is_me %}
+            {% endif %}
+		</div>
+        {% comment %}
+        <div class="right_panel">
+        {% include "profiles/profile_right_panel.html" %}
+    	</div>
+    	{% endcomment %}
+	</div>
+	<div class="row">
+		
+		<div class="col-xs-12 col-md-6">
+			
 		</div>
 	</div>
 	<div class="row">

@@ -12,14 +12,7 @@
 <div class="container">
     <h1>{% trans "Profiles" %}</h1>
     
-    <form method="GET" action="" class="form">
-        {% csrf_token %}
-        <input type="text" name="search" value="{{ search_terms }}" />
-        <input type="submit" value="Search" />
-        {% if search_terms %}
-            <a href="{% clear_search_url request %}">Clear Search Terms</a>
-        {% endif %}
-    </form>
+    
     
     {% if users %}
         <p>{% trans "Order by:" %}
