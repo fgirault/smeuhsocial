@@ -11,7 +11,7 @@
 {% block subnav %}
     <ul class="nav navbar-nav navbar-right">
         <li><a href="{% url 'messages_compose' %} ">{% bootstrap_icon "pencil" %}  {% trans "Compose" %}</a></li>
-        <li><a href="{% url 'messages_inbox' %} ">{% bootstrap_icon "envelope" %} {% trans "Inbox" %} ({{ messages_inbox_count }})</a></li>
+        <li><a href="{% url 'messages_inbox' %} ">{% bootstrap_icon "envelope" %} {% if messages_inbox_count %}<strong>{% endif %} {% trans "Inbox" %} {% if messages_inbox_count %} ({{ messages_inbox_count }})</strong>{% endif %}</a></li>
         <li><a href="{% url 'messages_outbox' %} ">{% bootstrap_icon "send" %} {% trans "Sent" %}</a></li>
         <li><a href="{% url 'messages_trash' %}">{% bootstrap_icon "trash" %} {% trans "Trash" %}</a></li>
         <li><a href="{% url 'notification_notices' %}">{% bootstrap_icon "flag" %}  {% trans "Notices" %}{% if notice_unseen_count %} ({{ notice_unseen_count }}){% endif %}</a></li>

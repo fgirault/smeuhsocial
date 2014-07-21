@@ -12,10 +12,14 @@
 
 {% block body %}
 <div class="container">
-    <h1>{% trans "All Tweets" %}</h1>
-    
-    <p>{% trans "These are tweets from everyone:" %}</p>
-    
-    {% tweet_listing tweets 1 0 %}
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+		    <h1>{% trans "All Tweets" %}</h1>
+		    
+		    <p>{% trans "These are tweets from everyone:" %}</p>
+		    
+		    {% tweet_listing tweets 1 0 %}
+	    </div>
+	</div>
 </div>
 {% endblock %}

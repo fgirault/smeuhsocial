@@ -9,7 +9,6 @@
 
 {% block subnav %}
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="{% url 'tweets_you_follow' %}">{% bootstrap_icon "star" %} {% trans "Tweets You Follow" %}</a></li>
         <li><a href="{% url 'all_tweets' %}">{% bootstrap_icon "list" %} {% trans "All Tweets" %}</a></li>
         <li><a href="{% url 'tweet_followers' request.user %}">{% bootstrap_icon "eye-open" %} {% trans "Your Followers" %}</a></li>
         <li><a href="{% url 'tweet_following' request.user %}">{% bootstrap_icon "eye-open" %} {% trans "Who You Are Following" %}</a></li>

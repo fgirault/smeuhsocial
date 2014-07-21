@@ -16,7 +16,6 @@ crash.
     {% if user.is_authenticated %}
         <ul class="nav navbar-nav navbar-right">
           <li><a href="{% url 'upload_track' %}">{% bootstrap_icon "upload" %} {% trans 'Upload track' %}</a></li>
-          <li><a href="{% url 'audiotracks' %}">{% bootstrap_icon "fire" %} {% trans 'Latest tracks' %}</a></li>
           <li><a href="{% url 'user_index' user.username %}">{% bootstrap_icon "user" %} {% trans 'Your tracks' %}</a></li>
         </ul>
     {% else %}

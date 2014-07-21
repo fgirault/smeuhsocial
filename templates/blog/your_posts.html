@@ -8,6 +8,7 @@
 {% load tagging_tags %}
 {% load restructuredtext %}
 {% load theme_tags %}
+{% load bootstrap3 %}
 
 {% block head_title %}{% blocktrans %}Your Blog Posts{% endblocktrans %}{% endblock %}
 
@@ -52,7 +53,7 @@
                     </td>
                     <td width="50px" align="center">
                         <a href="{% url 'blog_edit' post.id %}">
-                            {% silk "pencil" %}
+                            {% bootstrap_icon "pencil" %} 
                         </a>
                     </td>
                     <td align="right">

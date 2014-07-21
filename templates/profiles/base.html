@@ -2,13 +2,15 @@
 
 {% load i18n %}
 
+{% load bootstrap3 %}
+
 {% block body_class %}profile{% endblock %}
 
 {% block subnav %}
     {% if user.is_authenticated %}
         <ul class="nav navbar-nav navbar-right" >
-            <li><a href="{% url 'profile_detail' user.username %} ">{% trans "Your Profile" %}</a></li>
-            <li><a href="{% url 'profile_list' %} ">{% trans "All Profiles" %}</a></li>
+            <li><a href="{% url 'profile_detail' user.username %} ">{% bootstrap_icon "picture" %} {% trans "Your Profile" %}</a></li>
+            <li><a href="{% url 'profile_list' %} ">{% bootstrap_icon "list" %} {% trans "All Profiles" %}</a></li>
         </ul>
     {% else %}
         &nbsp;

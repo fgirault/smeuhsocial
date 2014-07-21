@@ -9,6 +9,7 @@
 {% load theme_tags %}
 {% load markup_tags %}
 {% load override_tags %}
+{% load bootstrap3 %}
 
 {% block head_title %}{% blocktrans %}Blog Post{% endblocktrans %} : {{ post.title }}{% endblock %}
 
@@ -23,28 +24,32 @@ href="{% url 'all_blogs_feed' %}" />
 
 {% block body %}
 <div class="container">
+
+<div class="page-header blog-post">
+  <h1> {{ post.title }} </h1>
+</div>
+
 <div class="blog-meta"><p>{% trans 'Posted by' %} 
 <a href="{% url 'profile_detail' post.author.username %}">{% user_display post.author %}</a> 
 {% trans 'on' %}
-  {{ post.publish|date:"DATE_FORMAT" }}
-      {% silk "tag_blue" %}
+  {{ post.publish|date:"DATE_FORMAT" }}      
       {% tags_for_object post as tags %}
       {% for tag in tags %}
-      <a href="/tags/{{ tag }}">{{ tag }}</a>
+      <a href="/tags/{{ tag }}">{% bootstrap_icon "tag" %} {{ tag }}</a>
       {% endfor %}
       </p>
     </div>
 
       {% ifequal post.author request.user %}
       <p>
-        <a href="{% url 'blog_edit' post.id %}">{% trans 'Edit Post' %}</a>
+        <a href="{% url 'blog_edit' post.id %}" class="btn btn-default">{% bootstrap_icon "pencil" %} {% trans 'Edit Post' %}</a>
       </p>
       {% endifequal %} 
       
     
     <div class="blog-post">
         
-        <h1>{{ post.title }}</h1>
+        
         {{ post.body|apply_markup:post.markup }}
         
     </div>

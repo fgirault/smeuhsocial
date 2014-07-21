@@ -14,13 +14,10 @@
 
 {% block body %}
 <div class="container">
+
     {% user_display other_user as other_user_display %}
-    <div class="right_panel">
-        {% include "profiles/profile_right_panel.html" %}
-    </div>
-    
-    <div class="left_panel">
-        <div class="vcard">
+	<div class="row">
+		<div class="vcard">
             <div id="profile_avatar">
                 <div><img src="{% avatar_url other_user 80 %}" alt="Photo of {{ other_user }}" class="photo" /></div>
                 {% if is_me %}
@@ -117,58 +114,76 @@
                     {% endif %} {# is_friend #}
                     
                 {% endif %} {# is me #}
-
-                <h2>{% trans "Tweets" %}</h2>
-                
-                {% if user.is_authenticated and is_me %}
-                    {% sent_tweet_listing user 0 is_me %}
-                {% else %}
-                    {% sent_tweet_listing other_user 0 is_me %}
-                {% endif %}
-                
-
-                {% if other_user.tracks.all %}
-                    <h2>{% trans "Tracks" %}</h2>
-                    {% include "audiotracks/_track_list.html" with tracks=other_user.tracks.all %}
-                {% else %}
-                    <p>{% trans "No tracks yet." %}</p>
-                {% endif %}
-
-                {% if other_user.added_posts.all %}
-                    <h2>{% trans "Blog Posts" %}</h2>
-                    {% for blog_post in other_user.added_posts.all %}
-                        {% if blog_post.published %}
-                          {% show_blog_post blog_post %}
-                        {% endif %}
-                    {% endfor %}
-                    <a href="{% url 'blog_list_user' other_user %}">{% trans "View all posts" %}</a>
-                {% else %}
-                    {% trans "No blog posts yet." %}
-                {% endif %}
-                
-                
-                {% public_photos for other_user as photos %}
-                
-                {% if photos %}
-                    <h2>{% trans "Photos" %}</h2>
-                    <div class="clearfix">
-                    {% for photo in photos %}
-                        <div class="gallery-photo-thumb">
-                            <a href="{% url 'photo_details' id=photo.id %}"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
-                        </div>
-                    {% endfor %}
-                    </div>
-                {% else %}
-                   {% trans "No photos uploaded yet..." %}
-                {% endif %}
-                
+   
             {% else %} {# not user.is_authenticated #}
                 {% url 'acct_signup' as signup_url %}
                 {% url 'acct_login' as login_url %}
                 <p>{% blocktrans %}<a href="{{ signup_url }}">Sign up</a> and <a href="{{ login_url }}">log in </a> to add this person as a friend and see their tweets and blog posts.{% endblocktrans %}</p>
             {% endif %}
-        </div><!--/vcard-->
-    </div>
+        </div><!--/vcard-->	
+        
+        {% comment %}
+        <div class="right_panel">
+        {% include "profiles/profile_right_panel.html" %}
+    	</div>
+    	{% endcomment %}
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-md-6">
+			<h2>{% trans "Tweets" %}</h2>
+                
+            {% if user.is_authenticated and is_me %}
+                {% sent_tweet_listing user 0 is_me %}
+            {% else %}
+                {% sent_tweet_listing other_user 0 is_me %}
+            {% endif %}
+		</div>
+		<div class="col-xs-12 col-md-6">
+			{% public_photos for other_user as photos %}
+                
+            {% if photos %}
+                <h2>{% trans "Photos" %}</h2>
+                <div class="clearfix">
+                {% for photo in photos %}
+                    <div class="gallery-photo-thumb">
+                        <a href="{% url 'photo_details' id=photo.id %}"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
+                    </div>
+                {% endfor %}
+                </div>
+            {% else %}
+               {% trans "No photos uploaded yet..." %}
+            {% endif %}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-md-6">
+		{% if other_user.tracks.all %}
+           <h2>{% trans "Tracks" %}</h2>
+            {% include "audiotracks/_track_list.html" with tracks=other_user.tracks.all %}
+        {% else %}
+            <p>{% trans "No tracks yet." %}</p>
+        {% endif %}
+		</div>
+		<div class="col-xs-12 col-md-6">
+		{% if other_user.added_posts.all %}
+           <h2>{% trans "Blog Posts" %}</h2>
+           {% for blog_post in other_user.added_posts.all %}
+               {% if blog_post.published %}
+                 {% show_blog_post blog_post %}
+               {% endif %}
+           {% endfor %}
+           <a href="{% url 'blog_list_user' other_user %}">{% trans "View all posts" %}</a>
+       {% else %}
+           {% trans "No blog posts yet." %}
+       {% endif %}
+		</div>
+	</div>
+
+   {% comment %}
+    <div class="right_panel">
+        {% include "profiles/profile_right_panel.html" %}
+    </div>        
+    {% endcomment %}
 </div>    
 {% endblock %}
 

@@ -20,6 +20,9 @@ href="{% url 'user_friends_tweets' user.username %}" />
 
 {% block body %}
 <div class="container">
+
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
     <h1>{% trans "Touites" %}</h1>
     
     {# @@@ can the publish to twitter checkbox actually be part of form and then we can use uni-form #}
@@ -44,6 +47,9 @@ href="{% url 'user_friends_tweets' user.username %}" />
     
     {% tweet_listing tweets 1 0 %}
     </div>
+		
+	</div>
+</div>    
 {% endblock %}
 
 {% block extra_body %}

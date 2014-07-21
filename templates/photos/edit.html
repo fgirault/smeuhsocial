@@ -1,0 +1,66 @@
+{% extends "photos/base.html" %}
+
+{% load i18n %}
+{% load humanize %}
+{% load tagging_tags %}
+{% load comments_tag %}
+{% load photo_tags %}
+
+{% block head_title %}{% blocktrans %}Editing Photo Details{% endblocktrans %}{% endblock %}
+
+{% block body %}
+    <div class="container">
+    
+    <div class="row">	
+	
+		<div class="col-xs-12 col-md-6">
+			<p><a href="{{ photo.image.url }}"><img class="img-responsive center-block" src="{{ photo_url }}" alt="{{ photo.title }}" /></a></p>		
+		</div>
+		
+		<div class="col-xs-12 col-md-6">
+		{% ifequal photo.member request.user %}
+        <form method="POST" action="" class="form-horizontal">
+            {% csrf_token %}
+            {{ photo_form.non_field_errors }}
+            
+                {% for field in photo_form %}
+                
+                <div class="form-group">
+                	
+                	{% if field.label %}
+		            <label for="{{ field.auto_id }}" class="col-sm-2 control-label">
+		                {{ field.label }}{% if field.field.required %}<span>*</span>{% endif %}
+		            </label>
+			        {% endif %}
+					<div class="col-sm-10">
+		            {{ field }}
+			        
+			        {% if field.help_text %}
+			        	<span id="hint_{{ field.auto_id }}" class="help-block">{{ field.help_text|safe }}</span>
+			        {% endif %}
+			        
+	                	
+                    {% if field.errors %} {{ field.errors } {% endif %}
+                    </div>                        
+                                           
+                 </div>
+                {% endfor %}                                
+            
+        <div class="form-group">
+    		<div class="col-sm-offset-2 col-sm-10">
+      			<input type="hidden" name="action" value="update" />
+                <input type="submit" value="{% trans "Update" %}" class="btn btn-default" />
+		    </div>
+		</div>
+            
+        </form>
+    {% else %}
+        <p>You are not the author of this photo.</p>
+    {% endifequal %}
+		</div>
+    
+    </div>
+           
+</div>    
+    
+{% endblock %}
