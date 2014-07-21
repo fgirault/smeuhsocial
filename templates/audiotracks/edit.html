@@ -5,7 +5,7 @@
 {% if user.is_authenticated %}
 <div class="container">
 <div class="audiotracks-form">
-  <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="{% url 'edit_track' track.id %}">
+  <form class="form" role="form" method="POST" enctype="multipart/form-data" action="{% url 'edit_track' track.id %}">
     {% csrf_token %}
     <fieldset>
       <legend>{% trans 'Edit track' %}</legend>
