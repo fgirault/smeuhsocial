@@ -16,7 +16,7 @@ crash.
     {% if user.is_authenticated %}    
         <ul class="nav navbar-nav navbar-right">
             <li><a href="{% url 'photo_upload' %}">{% bootstrap_icon "upload" %}  {% trans "Upload a Photo" %}</a></li>
-            <li><a href="{% url 'photo_most_viewed' %}">{% bootstrap_icon "star" %} {% trans "Most Viewed" %}</a></li>
+            <li><a href="{% url 'photo_most_viewed' %}">{% bootstrap_icon "eye-open" %} {% trans "Most Viewed" %}</a></li>
             <li><a href="{% url 'photos_yours' %}">{% bootstrap_icon "user" %} {% trans "Your Photos" %}</a></li>
             <li><a href="{% url 'friends_photos' %}">{% bootstrap_icon "heart" %} {% trans "Friends' Photos" %}</a></li>
         </ul>       
