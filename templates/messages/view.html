@@ -9,7 +9,7 @@
  <div class="container">
     <h1>{% trans "View Message" %}</h1>
     
-    <dl class="message-headers">
+    <dl class="dl-horizontal">
         <dt>{% trans "Sender" %}:</dt>
         <dd><a href="{% url 'profile_detail' message.sender %}">{% user_display message.sender %}</a></dd>
         <dt>{% trans "Subject" %}:</dt>
@@ -23,9 +23,9 @@
     <p>{{ message.body|linebreaksbr }}</p>
     
     {% ifequal message.recipient user %}
-        <p><a href="{% url 'messages_reply' message.id %}">{% trans "Reply" %}</a></p>
+        <p><a href="{% url 'messages_reply' message.id %}" class="btn btn-default">{% trans "Reply" %}</a></p>
     {% endifequal %}
     
-    <p><a href="{% url 'messages_delete' message.id %}">{% bootstrap_icon "remove" %} {% trans "Delete" %}</a></p>
+    <p><a href="{% url 'messages_delete' message.id %}" class="btn btn-default">{% bootstrap_icon "remove" %} {% trans "Delete" %}</a></p>
 </div>    
 {% endblock %}

@@ -9,11 +9,17 @@
     
     <form action="" method="post" class="form-horizontal">
         {% csrf_token %}
-        <fieldset class="inlineLabels">
-            {{ form|as_uni_form }}
-            <div class="form_block">
-                <input type="submit" value="{% trans "Send" %} &raquo;"/>
-            </div>
+        
+        {{ form|as_uni_form }}
+        
+        <div class="form-group">
+    		<div class="col-sm-offset-2 col-sm-10">
+      			<input type="hidden" name="action" value="create" />
+                <input  class="btn btn-default" type="submit" value="{% trans "Send" %} &raquo;"/>
+                
+		    </div>
+		</div>
+        
     </form>
 </div>    
 {% endblock %}

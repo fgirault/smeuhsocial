@@ -55,14 +55,14 @@
                         {% endwith %}
                     </td>
                     <td width="50px" align="center">
-                        <a href="{% url 'blog_edit' post.id %}" class="btn">
+                        <a href="{% url 'blog_edit' post.id %}" class="btn btn-default">
                             {% bootstrap_icon "pencil" %} {% trans 'Edit Post' %}
                         </a>
                     </td>
                     <td align="right">
                         <form action="{% url 'blog_destroy' post.id %}" method="POST">
                             {% csrf_token %}
-                            <button class="btn" name="action" value="delete">{% bootstrap_icon "remove" %} {% trans "Delete Post" %}</button>
+                            <button class="btn btn-default" name="action" value="delete">{% bootstrap_icon "remove" %} {% trans "Delete Post" %}</button>
                        </form>
                     </td>
                 </tr>
