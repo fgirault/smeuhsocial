@@ -146,7 +146,7 @@
             {% else %} {# not user.is_authenticated #}
                 {% url 'acct_signup' as signup_url %}
                 {% url 'acct_login' as login_url %}
-                <p>{% blocktrans %}<a href="{{ signup_url }}">Sign up</a> and <a href="{{ login_url }}">log in </a> to add this person as a friend and see their tweets and blog posts.{% endblocktrans %}</p>
+                <p>{% blocktrans %}<a href="{{ signup_url }}" class="btn btn-default">Sign up</a> and <a href="{{ login_url }}" class="btn btn-default">log in </a> to add this person as a friend and see their tweets and blog posts.{% endblocktrans %}</p>
             {% endif %}
             
             {% public_photos for other_user as photos %}
