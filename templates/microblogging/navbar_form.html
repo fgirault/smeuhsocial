@@ -3,11 +3,12 @@
 
 <form action="{% url 'tweets_you_follow' %}" class="navbar-form navbar-left" method="POST">
     {% csrf_token %}
-   	<div class="form-group">
-   		<label for="text"> {% blocktrans %}Touiter{% endblocktrans %}</label>
-    	<input type="text" autocomplete="off" id="new_tweet" name="text" cols="30" rows="4"/>
+   	<div class="input-group">
+   		<input type="text" class="form-control" autocomplete="off" id="new_tweet" name="text" cols="30" rows="1" placeholder="{% blocktrans %}Touiter{% endblocktrans %} ..."/>
+    	<span class="input-group-btn">
+    		<button type="submit" class="btn btn-default">{% bootstrap_icon "bullhorn" %} {% trans 'Bang' %}</button>
+    	</span>
 	</div>
-    <button type="submit" class="btn btn-default">{% bootstrap_icon "bullhorn" %} {% trans 'Bang' %}</button>
     <!-- set display of tip to none because of space -->
  	<span id="chars_hint" style="display: none;">
     <small><span id="chars_left">140</span> caractères restant.</small>
