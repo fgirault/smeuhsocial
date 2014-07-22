@@ -57,7 +57,10 @@
 						<li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'photo_edit' id=photo.id %}">						    
 				          <form action="{% url 'photo_destroy' id=photo.id %}" method="POST">
 				              {% csrf_token %}
+				              <button>{% bootstrap_icon "remove" %} {% trans 'Delete Photo' %}</button>
+				              <!-- 
 				              <input type="image" src="{{ STATIC_URL }}pinax/img/silk/icons/delete.png" border="0" title="{% trans "Delete Photo" %}" /><label>{% trans 'Delete Photo' %}</label>
+				               -->
 				              <input type="hidden" name="action" value="delete"/>
 				          </form>					    
 				    	</li>        
