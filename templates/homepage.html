@@ -14,11 +14,6 @@
 
 {% block subnav %}
 {% if user.is_authenticated %}    
-	
-
-    {% include 'microblogging/navbar_form.html' %}
-  
-
         <ul class="nav navbar-nav navbar-right">
             <li><a href="{% url 'photo_upload' %}">{% bootstrap_icon "upload" %}  {% trans "Upload a Photo" %}</a></li>
             <li><a href="{% url 'upload_track' %}">{% bootstrap_icon "upload" %} {% trans 'Upload track' %}</a></li>

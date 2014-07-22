@@ -79,7 +79,10 @@
 	          {% block right_tabs %}{% endblock %}
 	        </div><!--/.nav-collapse -->
 		    
-		    <div class="navbar-collapse collapse">	        	          	          
+		    <div class="navbar-collapse collapse">
+		    	  {% if user.is_authenticated %} 
+		    	  {% include 'microblogging/navbar_form.html' %}
+		    	  {% endif %}		    	  	        	          	          
 		          {% block subnav %}&nbsp;{% endblock %}	          	          	          
 		       </div><!--/.nav-collapse -->
 	      </div>	      
