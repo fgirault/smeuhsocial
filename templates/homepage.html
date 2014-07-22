@@ -13,15 +13,7 @@
 {% block body_class %}home{% endblock %}
 
 {% block subnav %}
-{% if user.is_authenticated %}    
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'photo_upload' %}">{% bootstrap_icon "upload" %}  {% trans "Upload a Photo" %}</a></li>
-            <li><a href="{% url 'upload_track' %}">{% bootstrap_icon "upload" %} {% trans 'Upload track' %}</a></li>
-          	<li><a href="{% url 'blog_new' %}">{% bootstrap_icon "pencil" %} {% trans "Write a Blog Post" %}</a></li>            
-        </ul>       
-    {% else %}
-        &nbsp;
-    {% endif %}
+{% include "call_to_action.html" %}
 {% endblock %}
 
 {% block extra_head %}

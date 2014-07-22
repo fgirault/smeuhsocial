@@ -30,14 +30,12 @@
 
 {% block right_tabs %}
     {% if user.is_authenticated %}       
-        <ul class="nav navbar-nav navbar-right" role="tablist">        
-         
+        <ul class="nav navbar-nav navbar-right" role="tablist">         
             <li id=""><a href="{% url 'photos' %}">{% bootstrap_icon "camera" %} {% trans "Photos" %}</a></li>
             <li id=""><a href="{% url 'audiotracks' %}">{% bootstrap_icon "headphones" %} {% trans "Music" %}</a></li>
             <li id=""><a href="{% url 'tweets_you_follow' %}">{% bootstrap_icon "comment" %} {% trans "Tweets" %}</a></li>
             <li id=""><a href="{% url 'blog_list_all' %}">{% bootstrap_icon "pencil" %} {% trans "Blogs" %}</a></li>
-            <li id=""><a href="{% url 'tagging_ext_index' %}">{% bootstrap_icon "tags" %} {% trans "Tags" %}</a></li>
-            
+            <li id=""><a href="{% url 'tagging_ext_index' %}">{% bootstrap_icon "tags" %} {% trans "Tags" %}</a></li>            
             <li class="dropdown">
 	         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	         	{% bootstrap_icon "user" %}
@@ -64,9 +62,7 @@
 	           <li class="divider"></li>	                
 	           <li><a href="{% if request.openid %}/openid/logout/?next={% url 'acct_logout' %}{% else %}{% url 'acct_logout' %}{% endif %}">{% bootstrap_icon "log-out" %} {% trans 'Logout' %}</a></li>
 	         </ul>
-		 </li>   
-        
-        
+		 </li>           
         </ul>
     {% endif %}
 {% endblock %}
