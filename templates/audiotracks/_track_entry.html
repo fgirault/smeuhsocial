@@ -23,7 +23,7 @@
       <ul class="tags">
           {% tags_for_object track as tags %}
           {% for tag in tags %}
-              <li><a href="/tags/{{ tag }}">{{ tag }}</a></li>
+              <li><a href="/tags/{{ tag }}">{% bootstrap_icon "tag" %}{{ tag }}</a></li>
           {% endfor %}
       </ul>
       {% else %}
@@ -38,8 +38,8 @@
     <p class="debug-info">Player type: <span class="audio-type"></span></p>
     {% if track.user == request.user %}
     <div class="audiotracks-action">
-      <a href="{% url 'edit_track' track.id %}">{% bootstrap_icon "pencil" %} {% trans 'Edit' %}</a>
-      <a href="{% url 'confirm_delete_track' track.id %}">{% bootstrap_icon "remove" %} {% trans 'Delete' %}</a>
+      <a href="{% url 'edit_track' track.id %}" class="btn btn-default btn-sm">{% bootstrap_icon "pencil" %} {% trans 'Edit' %}</a>
+      <a href="{% url 'confirm_delete_track' track.id %}" class="btn btn-default btn-sm">{% bootstrap_icon "remove" %} {% trans 'Delete' %}</a>
     </div>
     {% endif %}
   </div>

@@ -9,8 +9,10 @@
       
     {% trans 'Posted by' %} <a href="{% url 'profile_detail' photo.member.username %}">{% user_display photo.member %}</a><br />
     <small>
-    <a href="{% url 'photo_details' id=photo.id %}#photocomments">{% bootstrap_icon "comment" %} {% get_comment_count for photo as commentcount %} {{ commentcount }} </a> 
-    {% bootstrap_icon "eye-open" %} {% blocktrans with photo.view_count as view_count %}  {{ view_count }} {% endblocktrans %}
+    
+    <a href="{% url 'photo_details' id=photo.id %}#photocomments">{% bootstrap_icon "comment" %} {% get_comment_count for photo as commentcount %} {{ commentcount }} </a>
+    
+    {% bootstrap_icon "eye-open" %} {% blocktrans with photo.view_count as view_count %}  {{ view_count }} {% endblocktrans %}    
     {% ifequal photo.member request.user %}
     <a href="{% url 'photo_edit' id=photo.id %}">{% bootstrap_icon "pencil" %}</a>
     {% endifequal %}

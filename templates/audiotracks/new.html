@@ -1,19 +1,24 @@
 {% extends "audiotracks/base.html" %}
 {% load i18n %}
+{% load uni_form_tags %}
+{% load bootstrap3 %}
 
 {% block body %}
 <div class="container">
 {% if user.is_authenticated %}
-<form class="audiotracks-form" id="audiotracks-upload-form" 
+<form class="form-horizontal" id="audiotracks-upload-form" 
       method="POST" enctype="multipart/form-data" action="{% url 'upload_track' %}">
-  {% csrf_token %}
-  <fieldset>
-    <legend>{% trans 'Upload a new track' %}</legend>
-    {{ form.as_p }}
-  </fieldset>
-  <p>
-  <button class="btn primary">{% trans 'Upload' %}</button>
-  </p>
+	{% csrf_token %}
+	<fieldset>
+		<legend>{% trans 'Upload a new track' %}</legend>
+		{{ form|as_uni_form }}
+	</fieldset>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<input type="hidden" name="action" value="create" />
+			<button class="btn btn-default">{% bootstrap_icon "upload" %} {% trans 'Upload' %}</button>                
+  		</div>
+	</div>  
 </form>
 </div>
 {% endif %}

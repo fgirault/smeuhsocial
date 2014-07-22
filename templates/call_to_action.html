@@ -1,0 +1,18 @@
+{% load i18n %}
+{% load bootstrap3 %}
+{% comment %}
+
+these are sub navigation items we want the users to see the more so they click the more
+
+can be a default subnav in many case. Especially the case you don't have any subnav to show :)
+
+{% endcomment %}
+{% if user.is_authenticated %}    
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'photo_upload' %}">{% bootstrap_icon "upload" %}  {% trans "Upload a Photo" %}</a></li>
+            <li><a href="{% url 'upload_track' %}">{% bootstrap_icon "upload" %} {% trans 'Upload track' %}</a></li>
+          	<li><a href="{% url 'blog_new' %}">{% bootstrap_icon "pencil" %} {% trans "Write a Blog Post" %}</a></li>            
+        </ul>       
+{% else %}
+   
+{% endif %}
