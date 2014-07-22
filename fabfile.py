@@ -1,14 +1,13 @@
 from __future__ import with_statement
 import os
 from datetime import datetime
-from contextlib import nested
 from fabric.api import env, run, prefix, local, cd, roles, settings
 from fabric.api import get
 
 try:
-    import local_settings as settings
+    import local_settings
 except ImportError:
-    import settings
+    import settings as local_settings
 
 
 DATETIME_FMT = "%Y-%m-%d_%H-%M"
@@ -62,7 +61,7 @@ def backup_media():
     host, port = env.host_string.split(':')
     local("rsync --port={port} -av {host}:site_media .".format(
           host=host, port=port))
-    
+
 
 @roles('smeuh')
 def backup():
@@ -75,8 +74,8 @@ def backup():
 
 def createdb():
     kwargs = local_settings.DATABASES['default']
-    create_user = "create user {USER} with password '{PASSWORD}'".format(**kwargs)
-    local('sudo -u postgres psql -c "%s"' % create_user)
+    sql = "create user {USER} with password '{PASSWORD}'"
+    local('sudo -u postgres psql -c "%s"' % sql.format(**kwargs))
     local('sudo -u postgres createdb --owner {USER} {NAME}'.format(**kwargs))
 
 
