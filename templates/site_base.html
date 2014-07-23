@@ -7,6 +7,8 @@
 
 {% load bootstrap3 %}
 
+{% load avatar_tags %}
+
 {% block extra_head_base %}
     {% block extra_head %}{% endblock %}
 {% endblock %}
@@ -38,10 +40,11 @@
             <li id=""><a href="{% url 'tagging_ext_index' %}">{% bootstrap_icon "tags" %} {% trans "Tags" %}</a></li>            
             <li class="dropdown">
 	         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	         	{% bootstrap_icon "user" %}
+	         		<img src="{% avatar_url user 24 %}" alt="Photo of {{ user }}" class="" width="24" height="24"/>
 	         		<strong>{% user_display user %} 
 	         		{% if combined_inbox_count > 0 %} <span class="badge">{{ combined_inbox_count }}</span> {% endif %}
-	         		</strong><span class="caret"></span>
+	         		</strong>
+	         		<span class="caret"></span>
 	         </a>
 	         <ul class="dropdown-menu" role="menu">
                <li><a href="{% url 'messages_inbox' %}">{% bootstrap_icon "envelope" %} {% if combined_inbox_count > 0 %} <strong>{% endif %} {% trans "Messages" %}  {% if combined_inbox_count > 0 %} <span class="badge">{{ combined_inbox_count }}</span></strong> {% endif %}</a></li>
