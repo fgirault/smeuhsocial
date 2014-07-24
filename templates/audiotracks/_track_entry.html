@@ -3,11 +3,25 @@
 {% load tagging_tags %}
 {% load bootstrap3 %}
   <div class="audiotracks-list-entry">
-    {% if track.image %}
+    
+	{% if track.user == request.user %}
+    <div class="dropdown pull-right">
+    	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">      
+	      <span class="caret"></span>
+	    </button>
+	    <ul class="dropdown-menu" role="menu">
+			<li role="presentation"><a href="{% url 'edit_track' track.id %}" role="menuitem">{% bootstrap_icon "pencil" %} {% trans 'Edit' %}</a></li>
+			<li role="presentation"><a href="{% url 'confirm_delete_track' track.id %}" role="menuitem">{% bootstrap_icon "remove" %} {% trans 'Delete' %}</a></li>        
+		</ul>
+    </div>
+	{% endif %}
+						
+	{% if track.image %}
     <img class="track-image" src="{{ track.image.url_48x48 }}" alt="{% trans 'Track Image' %}" />
     {% else %}
     {% avatar_link track.user 48 %}
-    {% endif %}
+    {% endif %}					
+					
     <div class="track-details">
       <a href="{% url 'track_detail' track.user.username track.slug %}">
         <p class="track-title">
@@ -35,11 +49,5 @@
         <source src="{{ track.audio_file.url }}" type="{{ track.mimetype }}">
       </audio>
     </div>
-    <p class="debug-info">Player type: <span class="audio-type"></span></p>
-    {% if track.user == request.user %}
-    <div class="audiotracks-action">
-      <a href="{% url 'edit_track' track.id %}" class="btn btn-default btn-sm">{% bootstrap_icon "pencil" %} {% trans 'Edit' %}</a>
-      <a href="{% url 'confirm_delete_track' track.id %}" class="btn btn-default btn-sm">{% bootstrap_icon "remove" %} {% trans 'Delete' %}</a>
-    </div>
-    {% endif %}
+    <p class="debug-info">Player type: <span class="audio-type"></span></p>    
   </div>
