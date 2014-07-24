@@ -36,7 +36,6 @@ href="{% url 'user_friends_tweets' user.username %}" />
 {% endblock %}
 
 {% block extra_body %}
-    <script type="text/javascript" src="{{ STATIC_URL }}js/microblogging.js"></script>
     <script>
         $(document).ready(function() {
             {% if reply %}
