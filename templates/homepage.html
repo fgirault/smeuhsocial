@@ -101,7 +101,7 @@ title="Blogs" href="{% url 'all_blogs_feed' %}" />
   <div class="photos">
     {% for photo in latest_photos%}
     <a href="{% url 'photo_details' id=photo.id %}"><img
-      class="homepage-photo border-shadow" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}"></a>
+      class="homepage-photo border-shadow img-rounded" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}"></a>
     {% endfor %}
   </div>
 </div>
