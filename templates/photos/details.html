@@ -52,9 +52,10 @@
 			
 			{% if photo.tags %}
 				<p>
+				{% bootstrap_icon "tag" %}
 				{% tags_for_object photo as tags %}
 	            {% for tag in tags %}
-	                <a href="/tags/{{ tag }}">{% bootstrap_icon "tag" %} {{ tag }}</a>
+	                <a href="/tags/{{ tag }}">{{ tag }}</a>
 	            {% endfor %}
 	           	</p>
 	   		{% else %}
