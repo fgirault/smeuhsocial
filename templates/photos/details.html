@@ -27,49 +27,19 @@
 	<div class="row">	
 	
 		<div class="col-xs-12 col-md-6">
-			<p><a href="{{ photo.image.url }}"><img class="img-responsive center-block" src="{{ photo_url }}" alt="{{ photo.title }}" /></a></p>		
+		 <div class="next-previous">
+          {% if previous_photo_id %}
+          <a href="{% url 'photo_details' previous_photo_id %}" class="btn btn-default btn-sm">{% bootstrap_icon "backward" %} {% trans 'Previous picture' %}</a>
+          {% endif %}
+          {% if next_photo_id %}
+          <a class="btn btn-default btn-sm gallery-previous" href="{% url 'photo_details' next_photo_id %}" >{% trans 'Next picture' %} {% bootstrap_icon "forward" %}</a>
+          {% endif %}
+        </div>
+		
+			<a href="{{ photo.image.url }}"><img class="img-responsive img-rounded " src="{{ photo_url }}" alt="{{ photo.title }}" /></a>		
 		</div>
 		
-		<div class="col-xs-12 col-md-6">
-										
-			<div class="pull-right">
-				<div class="btn-group">											 					  
-				{% if previous_photo_id %}				
-					<a href="{% url 'photo_details' previous_photo_id %}" class="btn btn-default" title="{% trans 'Previous picture' %}">
-						{% bootstrap_icon "step-backward" %}
-					</a>				
-				{% endif %} 						
-				{% if next_photo_id %} 					
-					<a href="{% url 'photo_details' next_photo_id %}" class="btn btn-default" title="{% trans 'Next picture' %}">
-						 {% bootstrap_icon "step-forward" %}
-					</a>					
-				{% endif %}
-					  
-	
-	  			<div class="btn-group">
-	   	
-				    <button type="button" class="btn btn-default dropdown-toggle {% if not is_me %}disabled{% endif %}" data-toggle="dropdown">      
-				      <span class="caret"></span>
-				    </button>
-				 	{% if is_me %}
-				    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'photo_edit' id=photo.id %}">{% bootstrap_icon "pencil" %} {% trans 'Edit Photo' %}</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'photo_edit' id=photo.id %}">						    
-				          <form action="{% url 'photo_destroy' id=photo.id %}" method="POST">
-				              {% csrf_token %}
-				              <button>{% bootstrap_icon "remove" %} {% trans 'Delete Photo' %}</button>
-				              <!-- 
-				              <input type="image" src="{{ STATIC_URL }}pinax/img/silk/icons/delete.png" border="0" title="{% trans "Delete Photo" %}" /><label>{% trans 'Delete Photo' %}</label>
-				               -->
-				              <input type="hidden" name="action" value="delete"/>
-				          </form>					    
-				    	</li>        
-					</ul>
-					{% endif %}
-				  </div>
-				</div>				
-			</div>
-				
+		<div class="col-xs-12 col-md-6">			
 			
 			<div class="photo-avatar">
 				<a href="{% url 'profile_detail' photo.member.username %}"
@@ -97,7 +67,9 @@
   					</div>
 	        	</div>
 	   		{% endif %}            
-						
+			{% if is_me %}
+			<a href="{% url 'photo_edit' id=photo.id %}" class="btn btn-default">{% bootstrap_icon "pencil" %} {% trans 'Edit Photo' %}</a>						
+			{% endif %}
 			<p class="lead">{{ photo.caption|urlize }}</p>
 																					
 		</div>
@@ -105,7 +77,7 @@
 	</div>	
 	
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
+		<div class="col-md-10">
 			<h4><a name="photocomments"> {% blocktrans %}Comments on this photo:{% endblocktrans %}</a></h4>
 			{% comments photo %}
 		</div>
