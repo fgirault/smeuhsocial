@@ -37,6 +37,13 @@ body {
 	margin: 0;
 }
 
+.title {
+  color: #00B000;
+  font-size: 24px;
+  text-shadow: 0.5px 0.5px 0px #aaa;
+}
+
+
 #body-wrapper {
   background-color: #fff;
   background-image: url(/media/static/img/white-texture.jpg);
@@ -80,9 +87,6 @@ body {
 h1 {
   color: #00B000;
   font-size: 24px;
-}
-
-h1 {
   text-shadow: 0.5px 0.5px 0px #aaa;
 }
 
@@ -146,7 +150,7 @@ h1 {
 
 
 /* Detail page generic styles */
-
+/*
 .next-previous {
   margin: 0px 0px 24px 0;
   width: 100%;
@@ -155,9 +159,10 @@ h1 {
 .previous {
   float: right;
 }
+*/
 
 /* Pagination */
-
+/*
 .pagination {
   margin-top: 24px;
 }
@@ -196,6 +201,8 @@ h1 {
   display: none;
 }
 
+*/
+
 textarea#new_tweet {
   width: 100%;
   height: 2.5em;
@@ -212,8 +219,10 @@ footer {
   color: #ccc;
    height: 60px;
   /* line-height: 24px; */
-  /* position: absolute; */  
-  /* bottom: 0; */
+  /* I still miss something about positioning a nice footer at the bottom :( 
+  position: absolute;  
+  bottom: 0;
+  */
   width: 100%;  
 }
 
