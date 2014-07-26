@@ -54,7 +54,7 @@ def avatar(user, size=80):
     else:
         alt = unicode(user)
         url = avatar_url(user, size)
-    return """<img src="%s" alt="%s" width="%s" height="%s" />""" % (url, alt,
+    return """<img src="%s" alt="%s" width="%s" height="%s" class="img-rounded"/>""" % (url, alt,
         size, size)
 register.simple_tag(avatar)
 
@@ -62,6 +62,6 @@ register.simple_tag(avatar)
 def render_avatar(avatar, size=80):
     if not avatar.thumbnail_exists(size):
         avatar.create_thumbnail(size)
-    return """<img src="%s" alt="%s" width="%s" height="%s" />""" % (
+    return """<img src="%s" alt="%s" width="%s" height="%s" class="img-rounded" />""" % (
         avatar.avatar_url(size), str(avatar), size, size)
 register.simple_tag(render_avatar)
