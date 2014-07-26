@@ -20,7 +20,7 @@
 	<div class="row">
 		<div class="col-xs-12 col-md-6">
             <div id="profile_avatar">
-                <div><img src="{% avatar_url other_user 80 %}" alt="Photo of {{ other_user }}" class="photo" /></div>
+                <div><img src="{% avatar_url other_user 80 %}" alt="Photo of {{ other_user }}" class="photo img-rounded" /></div>
                 {% if is_me %}
                 <a href="{% url 'avatar_change' %}" id="avatar_replace">{% bootstrap_icon "pencil" %} ({% trans "replace" %})</a>
                 {% endif %}
@@ -32,7 +32,10 @@
                 <h1>{% blocktrans %}<span class="fn nickname">{{ other_user_display }}</span>{% endblocktrans %}</h1>
             {% endif %} 
             {% if is_me %}
-                <p><a href="{% url 'profile_edit' %}" rel="facebox" class="btn btn-default">{% bootstrap_icon "pencil" %} {% trans "Edit profile" %}</a></p>
+                <p>
+                	<a href="{% url 'profile_edit' %}" rel="facebox" class="btn btn-default">{% bootstrap_icon "pencil" %} {% trans "Edit profile" %}</a>
+                	<a href="{% url 'avatar_change' %}" class="btn btn-default">{% bootstrap_icon "picture" %} {% trans "Avatar" %}</a>
+                </p>
             {% else %}
             	{% if is_friend %}
             	<p>{% blocktrans %}You are friends with {{ other_user_display }}.{% endblocktrans %} .</p>
@@ -156,7 +159,7 @@
                 <div class="clearfix">
                 {% for photo in photos %}
                     <div class="gallery-photo-thumb">
-                        <a href="{% url 'photo_details' id=photo.id %}"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
+                        <a href="{% url 'photo_details' id=photo.id %}"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}" class="img-rounded"/></a>
                     </div>
                 {% endfor %}
                 </div>
