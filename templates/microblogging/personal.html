@@ -21,16 +21,22 @@ href="{% url 'user_friends_tweets' user.username %}" />
 {% block body %}
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-    <h1>{% trans "Touites" %}</h1>        
-    
-    <p>{% blocktrans with user.followed.count as follow_count and user.followed.count|pluralize:_("person,people") as follow_name %}
-        These are tweets from the {{ follow_count }} {{ follow_name }} you are following (plus your own){% endblocktrans %}:
-    </p>
-    
-    {% tweet_listing tweets 1 0 %}
-    </div>
-		
+		<div class="col-md-3 col-md-offset-3">
+			<h1>{% trans "Touites" %}</h1>
+		</div>
+	</div>
+	<div class="row">
+	    <div class="col-md-3">	   
+			<p>{% blocktrans with user.followed.count as follow_count and user.followed.count|pluralize:_("person,people") as follow_name %}
+	        These are tweets from the {{ follow_count }} {{ follow_name }} you are following (plus your own){% endblocktrans %}:
+	    </p>
+		</div>	
+		<div class="col-md-6">	    	    
+	    {% tweet_listing tweets 1 0 %}
+	    </div>
+		<div class="col-md-3">
+			{% include "microblogging/sidebar.html" %}
+		</div>
 	</div>
 </div>    
 {% endblock %}

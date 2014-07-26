@@ -17,7 +17,7 @@
 	{% endif %}
 						
 	{% if track.image %}
-    <img class="track-image" src="{{ track.image.url_48x48 }}" alt="{% trans 'Track Image' %}" />
+    <img class="track-image img-rounded" src="{{ track.image.url_48x48 }}" alt="{% trans 'Track Image' %}" />
     {% else %}
     {% avatar_link track.user 48 %}
     {% endif %}					
@@ -35,9 +35,10 @@
       </p>
       {% if track.tags %}
       <ul class="tags">
+      	<li>{% bootstrap_icon "tag" %}</li>
           {% tags_for_object track as tags %}
-          {% for tag in tags %}
-              <li><a href="/tags/{{ tag }}">{% bootstrap_icon "tag" %}{{ tag }}</a></li>
+          {% for tag in tags %}          
+              <li> <a href="/tags/{{ tag }}">{{ tag }} </a></li>
           {% endfor %}
       </ul>
       {% else %}

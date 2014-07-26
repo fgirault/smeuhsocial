@@ -9,22 +9,25 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from microblogging.utils import twitter_account_for_user, twitter_verify_credentials
-from microblogging.models import Tweet, TweetInstance, Following
+from microblogging.models import Tweet, TweetInstance, Following, get_following_followers_lists
 from microblogging.forms import TweetForm
+
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
 else:
     notification = None
 
-
 def personal(request, form_class=TweetForm,
         template_name="microblogging/personal.html", success_url=None):
     """
     just the tweets the current user is following
     """
+    
     twitter_account = twitter_account_for_user(request.user)
-
+    
+    following_list, followers_list = get_following_followers_lists(request.user)
+    
     if request.method == "POST":
         form = form_class(request.user, request.POST)
         if form.is_valid():
@@ -47,6 +50,8 @@ def personal(request, form_class=TweetForm,
         "reply": reply,
         "tweets": tweets,
         "twitter_authorized": twitter_verify_credentials(twitter_account),
+        "following_list": following_list,   
+        "followers_list": followers_list
     }, context_instance=RequestContext(request))
 personal = login_required(personal)
     
@@ -55,9 +60,12 @@ def public(request, template_name="microblogging/public.html"):
     all the tweets
     """
     tweets = Tweet.objects.all().order_by("-sent")
+    following_list, followers_list = get_following_followers_lists(request.user)
 
     return render_to_response(template_name, {
         "tweets": tweets,
+        "following_list": following_list,   
+        "followers_list": followers_list
     }, context_instance=RequestContext(request))
 
 def single(request, id, template_name="microblogging/single.html"):
@@ -69,33 +77,6 @@ def single(request, id, template_name="microblogging/single.html"):
         "tweet": tweet,
     }, context_instance=RequestContext(request))
 
-
-def _follow_list(request, other_user, follow_list, template_name):
-    # the only difference between followers/following views is template
-    # this function captures the similarity
-    
-    return render_to_response(template_name, {
-        "other_user": other_user,
-        "follow_list": follow_list,
-    }, context_instance=RequestContext(request))
-
-def followers(request, username, template_name="microblogging/followers.html"):
-    """
-    a list of users following the given user.
-    """
-    other_user = get_object_or_404(User, username=username)
-    users_followers = Following.objects.filter(followed_object_id=other_user.id, followed_content_type=ContentType.objects.get_for_model(other_user))
-    follow_list = [u.follower_content_object for u in users_followers]
-    return _follow_list(request, other_user, follow_list, template_name)
-
-def following(request, username, template_name="microblogging/following.html"):
-    """
-    a list of users the given user is following.
-    """
-    other_user = get_object_or_404(User, username=username)
-    following = Following.objects.filter(follower_object_id=other_user.id, follower_content_type=ContentType.objects.get_for_model(other_user))
-    follow_list = filter(None, [u.followed_content_object for u in following])
-    return _follow_list(request, other_user, follow_list, template_name)
 
 def toggle_follow(request, username):
     """
@@ -116,3 +97,4 @@ def toggle_follow(request, username):
             Following.objects.unfollow(request.user, other_user)
             messages.success(request, _("You have stopped following %(other_user)s") % {'other_user': other_user})
     return HttpResponseRedirect(reverse("profile_detail", args=[other_user]))
+

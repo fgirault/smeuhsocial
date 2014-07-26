@@ -1,0 +1,20 @@
+{% load i18n %}
+{% load avatar_tags %}
+{% load account_tags %}
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+	    	<h3 class="panel-title">{% trans "Your Followers" %}</h3>
+	  	</div>
+		<div class="panel-body">
+		  {% if followers_list %}
+		     {% for following_user in followers_list %}		   		     
+		         {# @@@ this is common code from all profiles list -- refactor #}            
+		             {# @@@ factor out style into css file #}
+		             <div style="float: left; margin: 2px;"><a href="{% url 'profile_detail' following_user.username %}" title="{% user_display following_user %}">{% avatar following_user 40 %}</a></div>		                         
+		     {% endfor %}
+		  {% else %}
+		      <p>{% trans 'No followers.' %}</p>
+		  {% endif %}
+		</div>
+	</div>        

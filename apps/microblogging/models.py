@@ -147,3 +147,8 @@ class Following(models.Model):
     objects = FollowingManager()
 
 post_save.connect(tweet, sender=Tweet)
+
+def get_following_followers_lists(other_user):
+    following = Following.objects.filter(follower_object_id=other_user.id, follower_content_type=ContentType.objects.get_for_model(other_user))
+    users_followers = Following.objects.filter(followed_object_id=other_user.id, followed_content_type=ContentType.objects.get_for_model(other_user))            
+    return filter(None, [u.followed_content_object for u in following]), [u.follower_content_object for u in users_followers]    

@@ -82,11 +82,14 @@
                 {% if other_user.get_profile.website %}
                 <dt>{% trans "Website" %}</dt>
                 <dd><a class="url" href="{{ other_user.get_profile.website }}">{% bootstrap_icon "globe" %} {{ other_user.get_profile.website }}</a></dd>
-                {% endif %}          
-                <dt></dt>
-                <dd><a href="{% url 'tweet_following' other_user %}">{% bootstrap_icon "star" %} {% trans "Following" %} <span class="badge">{% following_count other_user %}</span></a></dd>
-                <dt></dt>
-                <dd><a href="{% url 'tweet_followers' other_user %}">{% bootstrap_icon "eye-open" %} {% trans "Followers" %} <span class="badge">{% follower_count other_user %}</span></a></dd>
+                {% endif %}         
+                {% comment %} 
+                <dt>{% bootstrap_icon "star" %} {% trans "Following" %} <span class="badge">{% following_count other_user %}</span></dt>
+                <dd>
+                </dd>
+                <dt>{% bootstrap_icon "eye-open" %} {% trans "Followers" %} <span class="badge">{% follower_count other_user %}</span></dt>
+                <dd></dd>
+                {% endcomment %}
                 
 			</dl>
                         

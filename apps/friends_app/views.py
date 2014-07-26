@@ -15,7 +15,7 @@ from account.forms import SignupForm
 
 from friends_app.forms import ImportVCardForm
 
-
+from microblogging.models import get_following_followers_lists
 
 # @@@ if made more generic these could be moved to django-friends proper
 
@@ -136,9 +136,12 @@ def friends_objects(request, template_name, friends_objects_function, extra_cont
     """
     
     friends = friend_set_for(request.user)
+    following_list, followers_list = get_following_followers_lists(request.user)
     
     dictionary = {
         "object_list": friends_objects_function(friends),
+        "following_list": following_list,   
+        "followers_list": followers_list
     }
     for name, func in extra_context.items():
         dictionary[name] = func(request)
