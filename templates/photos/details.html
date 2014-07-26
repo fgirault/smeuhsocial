@@ -24,31 +24,41 @@
 		</div>
 	</div>
 
+<div class="row">
+<div class="col-xs-12 col-md-6">
+<ul class="pager">
+			  {% if previous_photo_id %}
+			  <li class="previous">
+			  	<a href="{% url 'photo_details' previous_photo_id %}"> &laquo; {% trans 'Previous picture' %}</a>
+			  </li>
+		      {% endif %}
+		      {% if next_photo_id %}
+			  <li class="next">
+			  	<a  href="{% url 'photo_details' next_photo_id %}" >{% trans 'Next picture' %}  &raquo;</a>
+			  </li>			  			 
+		      {% endif %}			  
+			</ul>
+</div>			
+</div>
 	<div class="row">	
 	
-		<div class="col-xs-12 col-md-6">
-		 <div class="next-previous">
-          {% if previous_photo_id %}
-          <a href="{% url 'photo_details' previous_photo_id %}" class="btn btn-default btn-sm">{% bootstrap_icon "backward" %} {% trans 'Previous picture' %}</a>
-          {% endif %}
-          {% if next_photo_id %}
-          <a class="btn btn-default btn-sm gallery-previous" href="{% url 'photo_details' next_photo_id %}" >{% trans 'Next picture' %} {% bootstrap_icon "forward" %}</a>
-          {% endif %}
-        </div>
 		
-			<a href="{{ photo.image.url }}"><img class="img-responsive img-rounded " src="{{ photo_url }}" alt="{{ photo.title }}" /></a>		
+		<div class="col-xs-12 col-md-6">
+			
+					
+			<a href="{{ photo.image.url }}"><img class="img-responsive img-rounded center-block" src="{{ photo_url }}" alt="{{ photo.title }}" /></a>		
 		</div>
 		
 		<div class="col-xs-12 col-md-6">			
-			
-			<div class="photo-avatar">
-				<a href="{% url 'profile_detail' photo.member.username %}"
-					title="{% user_display photo.member %}">{% avatar photo.member.username 50 %}</a>
-			</div>
-	
-			{% trans "Posted by" %} <a href="{% url 'profile_detail' photo.member.username %}"title="{% user_display photo.member %}">{% user_display	photo.member %}</a>  
+			<p>
+			{% if is_me %}
+				<a href="{% url 'photo_edit' id=photo.id %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "pencil" %} {% trans 'Edit Photo' %}</a>						
+			{% endif %}
+			{% trans "Posted by" %} <a href="{% url 'profile_detail' photo.member.username %}"title="{% user_display photo.member %}">{% avatar photo.member.username 16 %} <strong>{% user_display	photo.member %}</strong></a>  
 			- <small>{{ photo.date_taken|date:"DATE_FORMAT" }}</small>
-			<p>{% blocktrans with photo.view_count as view_count %}Viewed {{ view_count }} times{% endblocktrans %}</p>			
+			<br>
+				<small>{% blocktrans with photo.view_count as view_count %}Viewed {{ view_count }} times{% endblocktrans %}</small>								
+			</p>			
 			
 			{% if photo.tags %}
 				<p>
@@ -68,9 +78,6 @@
   					</div>
 	        	</div>
 	   		{% endif %}            
-			{% if is_me %}
-			<a href="{% url 'photo_edit' id=photo.id %}" class="btn btn-default">{% bootstrap_icon "pencil" %} {% trans 'Edit Photo' %}</a>						
-			{% endif %}
 			<p class="lead">{{ photo.caption|urlize }}</p>
 																					
 		</div>

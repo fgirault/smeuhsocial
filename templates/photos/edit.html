@@ -28,6 +28,8 @@
 		{% ifequal photo.member request.user %}
         <form method="POST" action="" class="form-horizontal">
             {% csrf_token %}
+            <fieldset>
+        	<legend>{% blocktrans %}Editing Photo Details{% endblocktrans %}</legend>
             {{ photo_form.non_field_errors }}
             
                 {% for field in photo_form %}
@@ -59,7 +61,7 @@
 		      			<button class="btn btn-default">{% bootstrap_icon "ok" %} {% trans "Update" %}</button>                
 				    </div>
 				</div>
-            
+        	</fieldset>            
         </form>               
         
     {% else %}

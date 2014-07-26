@@ -15,21 +15,21 @@
 
 {% block body %}
     <div class="container">
-    <div class="row">
-    <div class="center-block">
-    <h1>{% trans title %}</h1>
+	    <div class="row">
+		    <div class="center-block">
+		    <h1>{% trans title %}</h1>
+		    </div>
+		    {% if photos %}
+		    {% autopaginate photos 18 %}
+	        <div class="thumb-row clearfix">
+	        {% for photo in photos %}
+	       	{% include 'photos/photo_thumb.html' %}
+	        {% endfor %}
+	        </div>
+	        {% paginate %}
+		    {% else %}
+		    <p>{% trans "No photos were found." %}</p>
+		    {% endif %}
+	    </div>
     </div>
-    {% if photos %}
-    {% autopaginate photos 18 %}
-        <div class="thumb-row clearfix">
-        {% for photo in photos %}
-       	{% include 'photos/photo_thumb.html' %}
-        {% endfor %}
-        </div>
-        {% paginate %}
-    {% else %}
-        <p>{% trans "No photos were found." %}</p>
-    {% endif %}
-    </div>
-     </div>
 {% endblock %}
