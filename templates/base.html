@@ -65,7 +65,7 @@
         
         <!--  -->
         
-      <div class="navbar navbar-default navbar-smeuh" role="navigation">
+      <nav class="navbar navbar-default" role="navigation">
 	      <div class="container">
 	        <div class="navbar-header">
 	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -78,16 +78,14 @@
 	        </div>
 	        <div class="navbar-collapse collapse">	        	          	          
 	          {% block right_tabs %}{% endblock %}
-	        </div><!--/.nav-collapse -->
-		    
-		    <div class="navbar-collapse collapse">
-		    	  {% if user.is_authenticated %} 
-		    	  {% include 'microblogging/navbar_form.html' %}
-		    	  {% endif %}		    	  	        	          	          
-		          {% block subnav %}&nbsp;{% endblock %}	          	          	          
-		       </div><!--/.nav-collapse -->
+	        </div><!--/.nav-collapse -->		    		    
 	      </div>	      
-	   </div>	          
+	   </nav>
+	   <nav class="navbar-collapse collapse subnav-smeuh">
+	   		<div class="container">	   		
+			{% block subnav %}&nbsp;{% endblock %}
+			</div>	          	          	          
+	   </nav><!--/.nav-collapse -->
 
         {% block body_outer %}
         {% if messages %}
@@ -96,9 +94,7 @@
         <!-- 
         <div id="body-wrapper">
           <div id="body">
-          -->
-              
-              
+          -->                            
               {% block body %}
               {% endblock %}
            <!-- 

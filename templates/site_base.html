@@ -13,7 +13,7 @@
     {% block extra_head %}{% endblock %}
 {% endblock %}
 
-{% block logo_link_image %}<a href="{% url 'home' %}"><img title="Logo MySmeuh" src="{{ STATIC_URL }}pinax/img/logo.gif" /></a>{% endblock %}
+{% block logo_link_image %}<a href="{% url 'home' %}" rel="home"><img alt="Logo MySmeuh" src="{{ STATIC_URL }}pinax/img/logo.gif" class="img-responsive" /></a>{% endblock %}
 
 {% block login %}
     {% include "_account_bar.html" %}
@@ -32,41 +32,48 @@
 
 {% block right_tabs %}
     {% if user.is_authenticated %}       
-        <ul class="nav navbar-nav navbar-right" role="tablist">         
-            <li id=""><a href="{% url 'photos' %}">{% bootstrap_icon "camera" %} {% trans "Photos" %}</a></li>
-            <li id=""><a href="{% url 'audiotracks' %}">{% bootstrap_icon "headphones" %} {% trans "Music" %}</a></li>
-            <li id=""><a href="{% url 'tweets_you_follow' %}">{% bootstrap_icon "comment" %} {% trans "Tweets" %}</a></li>
-            <li id=""><a href="{% url 'blog_list_all' %}">{% bootstrap_icon "pencil" %} {% trans "Blogs" %}</a></li>
-            <li id=""><a href="{% url 'tagging_ext_index' %}">{% bootstrap_icon "tags" %} {% trans "Tags" %}</a></li>            
-            <li class="dropdown">
-	         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	         		<img src="{% avatar_url user 24 %}" alt="Photo of {{ user }}" class="img-rounded" width="24" height="24"/>
-	         		<strong>{% user_display user %} 
-	         		{% if combined_inbox_count > 0 %} <span class="badge">{{ combined_inbox_count }}</span> {% endif %}
-	         		</strong>
+        <ul class="nav navbar-nav">         
+            <li><a href="{% url 'photos' %}" title="{% trans "Photos" %}" class="big-icon">{% bootstrap_icon "camera" %} <span class="visible-xs-inline-block">{% trans "Photos" %}</span></a></li>
+            <li><a href="{% url 'audiotracks' %}" title="{% trans "Music" %}" class="big-icon">{% bootstrap_icon "headphones" %} <span class="visible-xs-inline-block">{% trans "Music" %}</span></a></li>
+            <li><a href="{% url 'tweets_you_follow' %}" title="{% trans "Tweets" %}" class="big-icon">{% bootstrap_icon "comment" %} <span class="visible-xs-inline-block">{% trans "Tweets" %}</span></a></li>
+            <li><a href="{% url 'blog_list_all' %}" title="{% trans "Blogs" %}" class="big-icon">{% bootstrap_icon "pencil" %} <span class="visible-xs-inline-block">{% trans "Blogs" %}</span></a></li>
+            <li><a href="{% url 'tagging_ext_index' %}" title="{% trans "Tags" %}" class="big-icon">{% bootstrap_icon "tags" %} <span class="visible-xs-inline-block">{% trans "Tags" %}</span></a></li>                               
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        	<li class="dropdown">
+		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	         		<img src="{% avatar_url user 28 %}" alt="Photo of {{ user }}" class="img-rounded" width="28" height="28"/>
+		         		<strong>{% user_display user %} 
+		         		{% if combined_inbox_count > 0 %} <span class="badge">{{ combined_inbox_count }}</span> {% endif %}
+		         		</strong>
 	         		<span class="caret"></span>
-	         </a>
-	         <ul class="dropdown-menu" role="menu">
-               <li><a href="{% url 'messages_inbox' %}">{% bootstrap_icon "envelope" %} {% if combined_inbox_count > 0 %} <strong>{% endif %} {% trans "Messages" %}  {% if combined_inbox_count > 0 %} <span class="badge">{{ combined_inbox_count }}</span></strong> {% endif %}</a></li>
-	           <li class="divider"></li>	           
-	           <li><a href="{% url 'profile_detail' user.username %} ">{% bootstrap_icon "picture" %} {% trans "Your Profile" %}</a></li>
-               <li><a href="{% url 'profile_list' %} ">{% bootstrap_icon "list" %} {% trans "All Profiles" %}</a></li>
-	           <li class="divider"></li>
-	           <li><a href="{% url 'photos_yours' %}">{% bootstrap_icon "camera" %} {% trans "Your Photos" %}</a></li>
-	           <li><a href="{% url 'user_index' user.username %}">{% bootstrap_icon "headphones" %} {% trans 'Your tracks' %}</a></li>
-	           <li><a href="{% url 'blog_list_yours' %}">{% bootstrap_icon "pencil" %} {% trans "Your Posts" %}</a></li>
-               <li class="divider"></li>	           
-	           <li><a href="{% url 'acct_email' %}">{% bootstrap_icon "wrench" %} {% trans "Account" %}</a></li>
-	           {% if user.is_staff %}
+		         </a>
+		         <ul class="dropdown-menu" role="menu">
+	               <li><a href="{% url 'messages_inbox' %}">{% bootstrap_icon "envelope" %} {% if combined_inbox_count > 0 %} <strong>{% endif %} {% trans "Messages" %}  {% if combined_inbox_count > 0 %} <span class="badge">{{ combined_inbox_count }}</span></strong> {% endif %}</a></li>
+		           <li class="divider"></li>	           
+		           <li><a href="{% url 'profile_detail' user.username %} ">{% bootstrap_icon "user" %} {% trans "Your Profile" %}</a></li>
+	               <li><a href="{% url 'profile_list' %} ">{% bootstrap_icon "list" %} {% trans "All Profiles" %}</a></li>
+		           <li class="divider"></li>
+		           <li><a href="{% url 'photos_yours' %}">{% bootstrap_icon "camera" %} {% trans "Your Photos" %}</a></li>
+		           <li><a href="{% url 'user_index' user.username %}">{% bootstrap_icon "headphones" %} {% trans 'Your tracks' %}</a></li>
+		           <li><a href="{% url 'blog_list_yours' %}">{% bootstrap_icon "pencil" %} {% trans "Your Posts" %}</a></li>
+	               <li class="divider"></li>	           
+		           <li><a href="{% url 'acct_email' %}">{% bootstrap_icon "wrench" %} {% trans "Account" %}</a></li>
+		           {% if user.is_staff %}
 	               <li class="divider"></li>
 			       <li><a href="{% url 'admin:index' %}">{% bootstrap_icon "wrench" %} Admin</a></li>
-			   {% endif %}
-	           
-	           <li class="divider"></li>	                
-	           <li><a href="{% if request.openid %}/openid/logout/?next={% url 'acct_logout' %}{% else %}{% url 'acct_logout' %}{% endif %}">{% bootstrap_icon "log-out" %} {% trans 'Logout' %}</a></li>
-	         </ul>
-		 </li>           
+				   {% endif %}		           
+		           <li class="divider"></li>	                
+		           <li><a href="{% if request.openid %}/openid/logout/?next={% url 'acct_logout' %}{% else %}{% url 'acct_logout' %}{% endif %}">{% bootstrap_icon "log-out" %} {% trans 'Logout' %}</a></li>
+		    	</ul>
+		 	</li>   
         </ul>
+    {% else %}      
+    	<ul class="nav navbar-nav navbar-right">    	
+            <li><a href="{% url 'acct_login' %}">{% bootstrap_icon "log-in" %} {% trans "Log in" %}</a></li>
+            <li><a>{% trans "or" %}</a></li>       
+    		<li><a href="{% url 'acct_signup' %}">{% bootstrap_icon "plus" %} {% trans "Sign Up" %}</a></li>
+    	</ul>
     {% endif %}
 {% endblock %}
 

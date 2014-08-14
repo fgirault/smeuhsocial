@@ -64,7 +64,10 @@ title="Blogs" href="{% url 'all_blogs_feed' %}" />
   <h2>
     <a title="Atom Feed" href="{% url 'all_tweets_feed' %}"><img alt="Feed Icon" src="{{ STATIC_URL }}img/feed-icon.png"></a>
     <a href="{% url 'all_tweets' %}">{% blocktrans %}Touites{% endblocktrans %}</a>
-  </h2>  
+  </h2>
+  {% if user.is_authenticated %} 
+	{% include 'microblogging/navbar_form.html' %}
+	{% endif %}	
   {% for tweet in latest_tweets %}
     {% include "microblogging/_tweet.html" %}
   {% endfor %}
