@@ -17,7 +17,7 @@
 <div class="container">		
 
 	<div class="row">
-		<div class="col-xs-12 col-md-6 col-md-offset-1">
+		<div class="col-xs-12 col-md-10 col-md-offset-1">
 			<ul class="pager photo-pager">
 				  {% if previous_photo_id %}
 				  <li class="previous">
@@ -30,17 +30,16 @@
 				  </li>			  			 
 			      {% endif %}			  
 			</ul>
-		</div>
-		<div class="col-xs-12 col-md-5">
-			<h1>{{ photo.title }}</h1>		
 		</div>		
 	</div>
 	<div class="row">				
+		
 		<div class="col-xs-12 col-md-6 col-md-offset-1">							
 			<a href="{{ photo.image.url }}"><img class="img-responsive img-rounded center-block photo-details" src="{{ photo_url }}" alt="{{ photo.title }}" /></a>		
 		</div>
 		
 		<div class="col-xs-12 col-md-4">						
+			<h1>{{ photo.title }}</h1>		
 			<p>
 			{% if is_me %}
 				<a href="{% url 'photo_edit' id=photo.id %}" class="btn btn-default btn-sm pull-right" title="{% trans 'Edit Photo' %}">{% bootstrap_icon "pencil" %} <span class="hidden-xs">{% trans 'Edit Photo' %}</span></a>						
@@ -72,11 +71,14 @@
 			<p class="lead">{{ photo.caption|urlize }}</p>
 																					
 		</div>
+		
+		
+		
 												
 	</div>	
 	
 	<div class="row">
-		<div class="col-md-6 block-comment col-md-offset-1">
+		<div class="col-md-10 block-comment col-md-offset-1">
 			<h4><a name="photocomments"> {% blocktrans %}Comments on this photo:{% endblocktrans %}</a></h4>
 			{% comments photo %}
 		</div>
