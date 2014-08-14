@@ -15,22 +15,9 @@
 
 {% block subnav %}
     {% if user.is_authenticated %}
-        <ul class="nav navbar-nav navbar-right" >
-            <li><a href="{% url 'profile_detail' user.username %} ">{% bootstrap_icon "picture" %} {% trans "Your Profile" %}</a></li>
-            <li><a href="{% url 'profile_list' %} ">{% bootstrap_icon "list" %} {% trans "All Profiles" %}</a></li>
-            <li>
-            
-            <form method="GET" action="{% url 'profile_list' %}" class="navbar-form navbar-left" role="search">
-		        {% csrf_token %}		       
-		        <div class="input-group">
-				    <input type="text" name="search"  class="form-control" placeholder="{% trans "Search profile" %}">				 
-				  <span class="input-group-btn">
-				  	<button type="submit" class="btn btn-default">{% bootstrap_icon "search" %}</button>
-				  </span>
-				 </div>   
-		    </form>
-            
-            </li>
+        <ul class="nav navbar-nav subnav" >
+            <li><a href="{% url 'profile_detail' user.username %} ">{% bootstrap_icon "user" %} {% trans "Your Profile" %}</a></li>
+            <li><a href="{% url 'profile_list' %} ">{% bootstrap_icon "list" %} {% trans "All Profiles" %}</a></li>            
         </ul>
     {% else %}
         &nbsp;

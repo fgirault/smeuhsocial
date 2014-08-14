@@ -9,7 +9,7 @@
 
 {% block subnav %}
     {% if user.is_authenticated %}
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav subnav">
             <li><a href="{% url 'acct_email' %}">{% bootstrap_icon "envelope" %} {% trans "E-Mail Addresses" %}</a></li>
             <li><a href="/openid/associations/">{% bootstrap_icon "cog" %} {% trans "OpenID Associations" %}</a></li>
             {% if user.password %}

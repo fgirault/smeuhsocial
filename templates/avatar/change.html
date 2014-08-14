@@ -1,4 +1,4 @@
-{% extends "account/base.html" %}
+{% extends "profiles/base.html" %}
 
 {% load i18n %}
 {% load avatar_tags %}
@@ -7,6 +7,7 @@
 
 {% block body %}
  <div class="container">
+ <div class="col-md-10 col-md-offset-1">
     <h1>{% trans "Avatar" %}</h1>
     <h3>{% trans "Here is your current avatar:" %}</h3>
   {% avatar user 80 %}
@@ -34,6 +35,7 @@
         <input type="submit" value="{% trans "Upload New Image" %}" />
     </form>
     </p>
+</div>
 </div>    
 {% endblock %}
 
