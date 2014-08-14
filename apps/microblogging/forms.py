@@ -31,4 +31,5 @@ class TweetForm(forms.ModelForm):
         tweet_instance = super(TweetForm, self).save(commit=False)
         tweet_instance.sender = self.user
         tweet_instance.save()
+        return tweet_instance
         #tweet(self.user, text, tweet_instance)

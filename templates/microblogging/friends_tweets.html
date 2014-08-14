@@ -11,12 +11,13 @@
 {% block body %}
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-6 col-md-offset-1">
 	    	<h1>{% trans "Friends' Tweets" %}</h1>
+		{% include 'microblogging/navbar_form.html' %}	    
 	    </div>
 	</div>
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">	    
+		<div class="col-md-6 col-md-offset-1">
 	    {% if object_list %}
 	        
 	        {% autopaginate object_list %}
@@ -26,12 +27,12 @@
 	        {% endfor %}
 	        
 	    {% else %}
-	        <p>{% blocktrans %}No tweets yet.{% endblocktrans %}</p>
+	        <p class="lead">{% blocktrans %}No tweets yet.{% endblocktrans %}</p>
 	    {% endif %}
 	    
 	    {% paginate %}
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-3 col-md-offset-1">
 			{% include "microblogging/sidebar.html" %}
 		</div>		
 	</div>

@@ -8,6 +8,7 @@
 {% block body %}
     <div class="container">
     {# @@@ not sure how to bring back teaser toggle with uni_form #}
+    <div class="col-md-10 col-md-offset-1">
     <form class="form-horizontal" id="edit-profile" method="POST" action="">
         {% csrf_token %}
        
@@ -20,6 +21,7 @@
 		    </div>
 		</div>
     </form>
+    </div>
     </div>
 {% endblock %}
 
