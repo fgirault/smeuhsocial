@@ -8,7 +8,7 @@ can be a default subnav in many case. Especially the case you don't have any sub
 
 {% endcomment %}
 {% if user.is_authenticated %}    
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav subnav">
             <li><a href="{% url 'photo_upload' %}">{% bootstrap_icon "upload" %}  {% trans "Upload a Photo" %}</a></li>
             <li><a href="{% url 'upload_track' %}">{% bootstrap_icon "upload" %} {% trans 'Upload track' %}</a></li>
           	<li><a href="{% url 'blog_new' %}">{% bootstrap_icon "pencil" %} {% trans "Write a Blog Post" %}</a></li>            

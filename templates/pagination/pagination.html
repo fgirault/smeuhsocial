@@ -1,10 +1,10 @@
 {% if is_paginated %}
 {% load i18n %}
 {% load bootstrap3 %}
-<ul class="pagination">
+<ul class="pagination pull-right">
 	{% if  page_obj.has_previous %}
 	<li>
-		<a href="?page={{ page_obj.previous_page_number }}{{ getvars }}{{ hashtag }}"> &laquo; {% trans "previous" %}</a>
+		<a href="?page={{ page_obj.previous_page_number }}{{ getvars }}{{ hashtag }}">{% bootstrap_icon "arrow-left" %}</a>
 	</li>
 	{% endif %}
 	{% for page in pages %}			
@@ -13,12 +13,12 @@
 		<a href="?page={{ page }}{{ getvars }}{{ hashtag }}">{{ page }}</a>
 	</li>	          
 	{% else %}
-		...
+	<li><a>...</a></li> 	
 	{% endif %}
 	{% endfor %}   
   	{% if page_obj.has_next %}
 	<li>
-        <a href="?page={{ page_obj.next_page_number }}{{ getvars }}{{ hashtag }}">{% trans "next" %} &raquo;</a>
+        <a href="?page={{ page_obj.next_page_number }}{{ getvars }}{{ hashtag }}">{% bootstrap_icon "arrow-right" %}</a>
 	</li>
     {% endif %}
 </ul>

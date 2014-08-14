@@ -4,15 +4,13 @@
 
 {% block body %}
 	<div class="container">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-10 col-md-offset-1">
 			<h1>Tags</h1>		
 			<ul id="tag-cloud">
 			    {% for tag in tags %}
 			        <li><a title="{{ tag.name }} ({{tag.count}})" class="tag-size-{{ tag.font_size }}" href="{% url 'tagging_ext_tag' tag.name %}">{{ tag.name }}</a></li>
 			    {% endfor %}		
 			</ul>
-		</div>
 		</div>
 	</div>
 {% endblock %}

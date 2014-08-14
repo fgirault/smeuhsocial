@@ -10,20 +10,22 @@
 
 {% block body %}
 <div class="container">
-    <form class="form-horizontal" role="form" id="edit-profile" method="POST" enctype="multipart/form-data" action="">
-        {% csrf_token %}
-        <fieldset>
-        	<legend>{% trans "Upload a Photo" %}</legend>        
-        {{ photo_form|as_uni_form }}
-        </fieldset>
-                    
-        <div class="form-group">
-    		<div class="col-sm-offset-2 col-sm-10">
-      			<input type="hidden" name="action" value="upload" />
-      			<button class="btn btn-default">{% bootstrap_icon "upload" %} {% trans "Upload" %}</button>                
-		    </div>
-		</div>
-        
-    </form>
+	<div class="col-xs-12 col-md-10 col-md-offset-1">
+	    <form class="form-horizontal" role="form" id="edit-profile" method="POST" enctype="multipart/form-data" action="">
+	        {% csrf_token %}
+	        <fieldset>
+	        	<legend>{% trans "Upload a Photo" %}</legend>        
+	        {{ photo_form|as_uni_form }}
+	        </fieldset>
+	                    
+	        <div class="form-group">
+	    		<div class="col-sm-offset-2 col-sm-10">
+	      			<input type="hidden" name="action" value="upload" />
+	      			<button class="btn btn-default">{% bootstrap_icon "upload" %} {% trans "Upload" %}</button>                
+			    </div>
+			</div>
+	        
+	    </form>
+    </div>
 </div>
 {% endblock %}

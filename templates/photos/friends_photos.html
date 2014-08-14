@@ -14,19 +14,20 @@
 
 {% block body %}
     <div class="container">
-    <h1>{% blocktrans %}Friends' Photos{% endblocktrans %}</h1>
-    
-    {% if object_list %}
-        {% autopaginate object_list 24 %}
-        <div class="thumb-row clearfix">
-            {% for photo in object_list %}
-                {% include 'photos/photo_thumb.html' %}
-            {% endfor %}
-        </div>
-        {% paginate %}
-    {% else %}
-        <p>No photos were found.</p>
-    {% endif %}
-    </div>
-    
+	    <div class="col-xs-12 col-md-10 col-md-offset-1">
+		    <h1>{% blocktrans %}Friends' Photos{% endblocktrans %}</h1>
+		    
+		    {% if object_list %}
+		        {% autopaginate object_list 24 %}
+		        <div class="thumb-row clearfix">
+		            {% for photo in object_list %}
+		                {% include 'photos/photo_thumb.html' %}
+		            {% endfor %}
+		        </div>
+		        {% paginate %}
+		    {% else %}
+		        <p>No photos were found.</p>
+		    {% endif %}
+	    </div>
+    </div>    
 {% endblock %}

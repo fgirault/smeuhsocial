@@ -11,20 +11,22 @@
 
 {% block body %}
 <div class="container">
-    
+    <div class="row">
+		<div class="col-xs-12 col-md-10 col-md-offset-1">
+			<h1>{{ photo.title }}</h1>		
+		</div>
+	</div>
     <div class="row">	
-	
-		<div class="col-xs-12 col-md-6">
-			<p><a href="{{ photo.image.url }}"><img class="img-responsive img-rounded" src="{{ photo_url }}" alt="{{ photo.title }}" /></a></p>
+		<div class="col-xs-12 col-md-5 col-md-offset-1">
+			<p><a href="{{ photo.image.url }}"><img class="img-responsive img-rounded  center-block" src="{{ photo_url }}" alt="{{ photo.title }}" /></a></p>
 			
 			<form action="{% url 'photo_destroy' id=photo.id %}" method="POST" class="form-horizontal">
 	            {% csrf_token %}
 	            <input type="hidden" name="action" value="delete"/>
 	            <button class="btn btn-default">{% bootstrap_icon "remove" %} {% trans 'Delete Photo' %}</button>
         	</form>					
-		</div>
-		
-		<div class="col-xs-12 col-md-6">
+		</div>		
+		<div class="col-xs-12 col-md-5">
 		{% ifequal photo.member request.user %}
         <form method="POST" action="" class="form-horizontal">
             {% csrf_token %}
