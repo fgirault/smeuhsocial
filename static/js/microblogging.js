@@ -17,6 +17,7 @@ jQuery(document).ready(function($) {
           update_chars_left();
       });
       
+      /*
       $("#touite_navbar_form").submit(function() {
   		var urlSubmit = $(this).attr('action');
   		$.ajax({  
@@ -30,6 +31,7 @@ jQuery(document).ready(function($) {
   		});
   		return false;
   	});
+  	*/
 
     };
 });
