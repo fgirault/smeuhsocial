@@ -16,6 +16,20 @@ jQuery(document).ready(function($) {
       $('#new_tweet').keyup(function() {
           update_chars_left();
       });
+      
+      $("#touite_navbar_form").submit(function() {
+  		var urlSubmit = $(this).attr('action');
+  		$.ajax({  
+  			type: "POST",
+  			url: urlSubmit,
+  			data: $(this).serializeArray(),
+  			success: function(data) {
+  				$('#new_tweet')[0].value = ""; 
+  				location.reload();
+  			}
+  		});
+  		return false;
+  	});
 
     };
 });

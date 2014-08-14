@@ -1,9 +1,9 @@
 {% load bootstrap3 %}
 {% load i18n %}
-<form action="{% url 'tweets_you_follow' %}" class="navbar-form navbar-left" method="POST">
+<form id="touite_navbar_form" action="{% url 'tweets_you_follow' %}" method="POST">
     {% csrf_token %}
    	<div class="input-group">
-   		<input id="new_tweet" type="text" class="form-control" autocomplete="off" name="text" cols="30" rows="1" 
+   		<input id="new_tweet" type="text" class="form-control" autocomplete="off" name="text" cols="15" rows="1" 
    		placeholder="{% blocktrans %}Touiter{% endblocktrans %} ..." 
    		data-placement="bottom" data-trigger="focus" 
    		data-content='<span id="chars_left">140</span> caractères restant.</small>' data-html="true"

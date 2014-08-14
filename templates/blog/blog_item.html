@@ -4,9 +4,10 @@
 {% load avatar_tags %}
 {% load extra_tagging_tags %}
 
-<div class="blog-post clearfix">
+<div class="container">
+<div class="col-md-8">
     <h4><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></h4>
-    <div class="blog-post-tease">
+    <div class="">
         {% if blog_post.tease %}
              {% with blog_post.tease as body %}
                 {{ body|apply_markup:blog_post.markup }}
@@ -17,4 +18,5 @@
             {% endwith %}
         {% endif %}
     </div>
+</div>
 </div>

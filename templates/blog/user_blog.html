@@ -19,23 +19,25 @@
 
 {% block body %}
 <div class="container">
-<h1>{% blocktrans %}Blog posts by {{ username }}{% endblocktrans %}
-  <a title="Atom Feed" class="feed-icon" href="{% if username %}{% url 'user_blog_feed' username=username %}{% else %}{% url 'all_blogs_feed' %}{% endif %}">
-  <img src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
-</h1>
-
-    {% if blogs %}
-
-        {% autopaginate blogs %}
-
-            {% for blog_post in blogs %}
-                {% show_blog_post blog_post %}
-            {% endfor %}
-
-        {% paginate %}
-
-    {% else %}
-        {% trans "No blog posts yet." %}
-    {% endif %}
+	<div class="col-md-10 col-md-offset-1">
+	<h1>{% blocktrans %}Blog posts by {{ username }}{% endblocktrans %}
+	  <a title="Atom Feed" class="feed-icon" href="{% if username %}{% url 'user_blog_feed' username=username %}{% else %}{% url 'all_blogs_feed' %}{% endif %}">
+	  <img src="{{ STATIC_URL }}img/feed-icon.png"/ ></a>
+	</h1>
+	
+	    {% if blogs %}
+	
+	        {% autopaginate blogs %}
+	
+	            {% for blog_post in blogs %}
+	                {% show_blog_post blog_post %}
+	            {% endfor %}
+	
+	        {% paginate %}
+	
+	    {% else %}
+	        {% trans "No blog posts yet." %}
+	    {% endif %}
+	</div>
 </div>
 {% endblock %}

@@ -8,8 +8,7 @@
 
 {% block body %}
     <div class="container">
-    	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+    	<div class="col-md-10 col-md-offset-1">
     <h1>{% blocktrans %}Friends' Blogs{% endblocktrans %}</h1>
     
     {% if object_list %}
@@ -27,5 +26,5 @@
         {% trans "No blog posts yet." %}
     {% endif %}
     </div>
-    </div></div>
+    </div>
 {% endblock %}
