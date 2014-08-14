@@ -5,6 +5,8 @@
 
 {% block body %}
 <div class="container">
+
+	<div class="col-md-10 col-md-offset-1">
 {% if user.is_authenticated %}
 <form class="form-horizontal" id="audiotracks-upload-form" 
       method="POST" enctype="multipart/form-data" action="{% url 'upload_track' %}">
@@ -22,4 +24,5 @@
 </form>
 </div>
 {% endif %}
+	</div>
 {% endblock %}

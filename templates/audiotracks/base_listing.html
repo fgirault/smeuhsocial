@@ -5,6 +5,7 @@
 
 {% block body %}
 <div class="container">
+	<div class="col-md-10 col-md-offset-1">
 	<h1>{% block body_title %}{% trans 'Latest Tracks' %}{% endblock %}</h1>
 	
   	<a title="Atom Feed" class="podcast-feed-icon" href="{% if username %}{% url 'tracks_feed' username=username %}{% else %}{% url 'tracks_feed' %}{% endif %}">  	
@@ -15,6 +16,7 @@
 	
 {% include 'audiotracks/_track_list.html' %}
 
-{% include '_pagination.html' %}
+{% include 'audiotracks/_pagination.html' %}
+	</div>
 </div>
 {% endblock %}

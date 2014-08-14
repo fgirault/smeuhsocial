@@ -4,6 +4,7 @@
 {% block body %}
 {% if user.is_authenticated %}
 <div class="container">
+<div class="col-md-10 col-md-offset-1">
 <div class="audiotracks-form">
   <form class="form" role="form" method="POST" enctype="multipart/form-data" action="{% url 'edit_track' track.id %}">
     {% csrf_token %}
@@ -80,6 +81,7 @@
     <button class="btn btn-danger">{% trans 'Delete this track' %}</button>
     </p>
   </form>
+</div>
 </div>
 </div>
 {% endif %}
