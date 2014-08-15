@@ -43,7 +43,7 @@
 
 {% if user.is_authenticated %}
     <fieldset class="inlineLabels">
-        <form class="uniForm" method="POST" action="{% get_comment_url object %}">
+        <form class="uniForm" method="POST" action="{% get_comment_url object %}" role="form">
             {% csrf_token %}
                 <div class="ctrlHolder">
                     <label for="id_comment">{% trans 'Enter your comment' %}</label>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="form_block">
                     <input type="hidden" name="next" value="{{ request.path }}" />
-                    <input type="submit" value="{% trans "Post Response" %}" />
+                    <button type="submit" value="" class="btn btn-xs btn-default">{% bootstrap_icon "ok" %} {% trans "Post Response" %}</button>                   
                 </div>
         </form>
     </fieldset>
