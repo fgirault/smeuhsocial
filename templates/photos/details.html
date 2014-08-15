@@ -32,26 +32,22 @@
 			</ul>
 		</div>		
 	</div>
-	<div class="row">				
-		
+	
+	<div class="row">		
 		<div class="col-xs-12 col-sm-8 col-md-6 col-md-offset-1">							
-			<a href="{{ photo.image.url }}"><img class="img-responsive img-rounded center-block photo-details" src="{{ photo_url }}" alt="{{ photo.title }}" /></a>		
+			<a href="{{ photo.image.url }}"><img class="img-responsive img-rounded center-block photo-details" src="{{ photo_url }}" alt="{{ photo.title }}" style="max-height: 640px;" /></a>		
 		</div>
 		
 		<div class="col-xs-12 col-sm-4 col-md-4">						
 			<h1>{{ photo.title }}</h1>		
 			<p>
-			{% if is_me %}
-				<a href="{% url 'photo_edit' id=photo.id %}" class="btn btn-default btn-sm pull-right" title="{% trans 'Edit Photo' %}">{% bootstrap_icon "pencil" %} <span class="hidden-xs">{% trans 'Edit Photo' %}</span></a>						
-			{% endif %}
-			{% trans "Posted by" %} <a href="{% url 'profile_detail' photo.member.username %}"title="{% user_display photo.member %}">{% avatar photo.member.username 24 %} <strong>{% user_display	photo.member %}</strong></a>  
-			- <small>{{ photo.date_taken|date:"DATE_FORMAT" }}</small>
-			<br>
-				<small>{% blocktrans with photo.view_count as view_count %}Viewed {{ view_count }} times{% endblocktrans %}</small>								
+				{% trans "Posted by" %} <a href="{% url 'profile_detail' photo.member.username %}"title="{% user_display photo.member %}">{% avatar photo.member.username 24 %} <strong>{% user_display	photo.member %}</strong></a>  
+				- <small>{{ photo.date_taken|date:"DATE_FORMAT" }}</small>
+			 	- <small>{% blocktrans with photo.view_count as view_count %}Viewed {{ view_count }} times{% endblocktrans %}</small>								
 			</p>			
 			
 			{% if photo.tags %}
-				<p>
+				<p class="text-right">
 				{% bootstrap_icon "tag" %}
 				{% tags_for_object photo as tags %}
 	            {% for tag in tags %}
@@ -69,7 +65,9 @@
 	        	</div>
 	   		{% endif %}            
 			<p class="lead">{{ photo.caption|urlize }}</p>
-																					
+							{% if is_me %}
+				<a href="{% url 'photo_edit' id=photo.id %}" class="btn btn-sm btn-default pull-right" title="{% trans 'Edit Photo' %}">{% bootstrap_icon "pencil" %} {% trans 'Edit Photo' %}</a>						
+			{% endif %}														
 		</div>
 		
 		

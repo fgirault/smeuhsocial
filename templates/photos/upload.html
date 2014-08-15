@@ -8,6 +8,9 @@
 
 {% block head_title %}{% blocktrans %}Latest Photos{% endblocktrans %}{% endblock %}
 
+{% block extra_head %}<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.file-input.js"></script>{% endblock %}
+
+
 {% block body %}
 <div class="container">
 	<div class="col-xs-12 col-md-10 col-md-offset-1">
@@ -29,3 +32,5 @@
     </div>
 </div>
 {% endblock %}
+
+{% block extra_body %}<script>$(document).ready(function(){$('input[type=file]').bootstrapFileInput();});</script>{% endblock %}

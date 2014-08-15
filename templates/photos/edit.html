@@ -5,19 +5,19 @@
 {% load tagging_tags %}
 {% load comments_tag %}
 {% load photo_tags %}
+{% load uni_form_field %}
+{% load uni_form_tags %}
 {% load bootstrap3 %}
+{% load override_tags %}
 
 {% block head_title %}{% blocktrans %}Editing Photo Details{% endblocktrans %}{% endblock %}
+{% block extra_head %}<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.file-input.js"></script>{% endblock %}
 
 {% block body %}
 <div class="container">
-    <div class="row">
-		<div class="col-xs-12 col-md-10 col-md-offset-1">
-			<h1>{{ photo.title }}</h1>		
-		</div>
-	</div>
     <div class="row">	
-		<div class="col-xs-12 col-md-5 col-md-offset-1">
+		<div class="col-xs-12 col-sm-6 col-md-5 col-md-offset-1">
+			<h1>{{ photo.title }}</h1>
 			<p><a href="{{ photo.image.url }}"><img class="img-responsive img-rounded  center-block" src="{{ photo_url }}" alt="{{ photo.title }}" /></a></p>
 			
 			<form action="{% url 'photo_destroy' id=photo.id %}" method="POST" class="form-horizontal">
@@ -26,37 +26,15 @@
 	            <button class="btn btn-default">{% bootstrap_icon "remove" %} {% trans 'Delete Photo' %}</button>
         	</form>					
 		</div>		
-		<div class="col-xs-12 col-md-5">
+		<div class="col-xs-12 col-sm-6 col-md-5">
 		{% ifequal photo.member request.user %}
         <form method="POST" action="" class="form-horizontal">
             {% csrf_token %}
             <fieldset>
         	<legend>{% blocktrans %}Editing Photo Details{% endblocktrans %}</legend>
-            {{ photo_form.non_field_errors }}
-            
-                {% for field in photo_form %}
-                
-                <div class="form-group">
-                	
-                	{% if field.label %}
-		            <label for="{{ field.auto_id }}" class="col-sm-2 control-label">
-		                {{ field.label }}{% if field.field.required %}<span>*</span>{% endif %}
-		            </label>
-			        {% endif %}
-					<div class="col-sm-10">
-			            {{ field }}
-				        
-				        {% if field.help_text %}
-				        	<span id="hint_{{ field.auto_id }}" class="help-block">{{ field.help_text|safe }}</span>
-				        {% endif %}
-				        
-		                	
-	                    {% if field.errors %} {{ field.errors } {% endif %}
-                    </div>                        
-                                           
-                 </div>
-                {% endfor %}                                
-            
+        	
+        	{{ photo_form|as_uni_form }}
+        	            
 		        <div class="form-group">
 		    		<div class="col-sm-offset-2 col-sm-10">
 		      			<input type="hidden" name="action" value="update" />
@@ -76,3 +54,5 @@
 </div>    
     
 {% endblock %}
+
+
