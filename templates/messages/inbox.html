@@ -8,7 +8,10 @@
 {% block body %}
  <div class="container">
     <h1>{% trans "Inbox" %}</h1>
-    
+    <a href="{% url 'messages_compose' %}" class="btn btn-default">{% bootstrap_icon "pencil" %}  {% trans "Compose" %}</a>
+    <a href="{% url 'messages_outbox' %} "class="btn btn-default">{% bootstrap_icon "send" %} {% trans "Sent" %}</a>
+    <a href="{% url 'messages_trash' %}" class="btn btn-default">{% bootstrap_icon "trash" %} {% trans "Trash" %}</a>
+    {# <a href="{% url 'invitations_contacts' %}">{% bootstrap_icon "list" %} {% trans "Contacts" %}</a>  #}
     <table class="table table-hover">
         <thead>
             <tr><th scope="col">{% trans "Sender" %}</th><th scope="col">{% trans "Subject" %}</th><th scope="col">{% trans "Received" %}</th><th scope="col">{% trans "Action" %}</th></tr>
