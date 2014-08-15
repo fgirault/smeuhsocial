@@ -2,6 +2,9 @@
 {% load i18n %}
 {% load uni_form_tags %}
 {% load bootstrap3 %}
+{% load override_tags %}
+
+{% block extra_head %}<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.file-input.js"></script>{% endblock %}
 
 {% block body %}
 <div class="container">
@@ -26,3 +29,5 @@
 {% endif %}
 	</div>
 {% endblock %}
+
+{% block extra_body %}<script>$(document).ready(function(){$('input[type=file]').bootstrapFileInput();});</script>{% endblock %}
