@@ -112,10 +112,12 @@ urlpatterns = patterns(
     url(r"^touites/", include("microblogging.urls")),
     url(r"^comments/", include("threadedcomments.urls")),
     url(r"^i18n/", include("django.conf.urls.i18n")),
-    url(r"^photos/details/(?P<id>\d+)/$",
-        "smeuhoverride.views.photo_details", name="photo_details"),
     url(r"^photos/", include("photos.urls")),
     url(r"^avatar/", include("avatar.urls")),
+    
+    #url(r"^timeline/", include("timeline.urls")),    
+    
+    # Feeds urls
     url(r"^feeds/touites/(?P<username>[\w\._-]+)/with_friends/?$",
         feeds.UserTweetWithFriends(
         ), name="user_friends_tweets"),

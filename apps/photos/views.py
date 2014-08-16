@@ -169,23 +169,26 @@ def most_viewed(request, template_name="photos/latest.html"):
     
     return render_to_response(template_name, RequestContext(request, ctx))
 
+def get_first_id_or_none(objects):
+    try:
+        return objects[0].id
+    except IndexError:
+        return None
 
-@login_required
 def details(request, id, template_name="photos/details.html"):
     """
     show the photo details
     """
-    
-    group, bridge = group_and_bridge(request)
-    
+
     photos = Image.objects.all()
-    
-    if group:
-        photos = group.content_objects(photos, join="pool", gfk_field="content_object")
-    else:
-        photos = photos.filter(pool__object_id=None)
+    photos = photos.filter(pool__object_id=None)
     
     photo = get_object_or_404(photos, id=id)
+
+    previous_photo_id = get_first_id_or_none(
+            photos.filter(id__lt=photo.id, is_public=True).order_by('-id'))
+    next_photo_id = get_first_id_or_none(photos.filter(id__gt=photo.id,
+        is_public=True).order_by('id'))
     
     # @@@: test
     if not photo.is_public and request.user != photo.member:
@@ -193,21 +196,21 @@ def details(request, id, template_name="photos/details.html"):
     
     photo_url = photo.get_display_url()
     
-    title = photo.title
-    host = "http://%s" % get_host(request)
+    host = "http://%s" % request.get_host()
     
     if photo.member == request.user:
         is_me = True
     else:
         is_me = False
     
-    ctx = group_context(group, bridge)
-    ctx.update({
+    ctx = {
         "host": host,
         "photo": photo,
         "photo_url": photo_url,
         "is_me": is_me,
-    })
+        "previous_photo_id": previous_photo_id,
+        "next_photo_id": next_photo_id,
+    }
     
     return render_to_response(template_name, RequestContext(request, ctx))
 
@@ -342,3 +345,7 @@ def destroy(request, id):
         )
     
     return HttpResponseRedirect(redirect_to)
+
+def random(request):
+    photo = Image.objects.filter(is_public = True).order_by('?')[0]
+    return details(request, photo.id)

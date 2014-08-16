@@ -1,6 +1,4 @@
-from django.conf.urls import *
-
-
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns("",
     # all photos or latest photos
@@ -19,4 +17,7 @@ urlpatterns = patterns("",
     url(r"^destroy/(?P<id>\d+)/$", "photos.views.destroy", name="photo_destroy"),
     #edit photo
     url(r"^edit/(?P<id>\d+)/$", "photos.views.edit", name="photo_edit"),
+    # a random photo
+    url(r"^random/$", "photos.views.random", name="photo_random"),
+    
 )
