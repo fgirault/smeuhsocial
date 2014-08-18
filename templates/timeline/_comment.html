@@ -3,7 +3,7 @@
 {% load i18n %}
 {% load override_tags %}
 
-{% block item_action_label %}{% with timelineitem.item as comment %} a commenté <a href="{{ comment.content_object.get_absolute_url }}">{{ comment.content_object.title }}</a>{% endwith %}{% endblock %}
+{% block item_action_label %}{% with timelineitem.item as comment %} {% trans 'commented' %} <a href="{{ comment.content_object.get_absolute_url }}">{{ comment.content_object.title }}</a>{% endwith %}{% endblock %}
 
 {% block item_content %}
 {% with timelineitem.item as comment %}
@@ -14,6 +14,20 @@
 	<a href="{% url 'photo_details' id=photo.id %}">
 		<img class="img-rounded timeline-comment-thumb" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}">
 	</a>
+</div>
+{% endwith %}
+{% endif %}
+
+{% if comment.content_object.image.url_48x48 %}
+{% with comment.content_object as track %}
+<div class="pull-left" style="margin: 3px;">
+	<a href="{% url 'track_detail' track.user.username track.slug %}">
+	{% if track.image %}
+    <img class="img-rounded" src="{{ track.image.url_48x48 }}" alt="{% trans 'Track Image' %}" style="max-height: 48px;"/>
+    {% else %}
+    {% avatar_link track.user 48 %}
+    {% endif %}
+    </a>
 </div>
 {% endwith %}
 {% endif %}
