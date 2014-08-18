@@ -471,7 +471,13 @@ footer #locale_switcher {
 	max-height: 96px;
 }
 
+.timeline-comment-thumb {
+	margin: 3px 5px 0 3px; 
+	max-height: 48px;
+}
+
 .timesince {
     color: #999;
     font-size: 80%;
 }
+

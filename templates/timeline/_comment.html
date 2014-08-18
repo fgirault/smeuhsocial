@@ -7,6 +7,17 @@
 
 {% block item_content %}
 {% with timelineitem.item as comment %}
+
+{% if comment.content_object.get_thumbnail_url %}
+{% with comment.content_object as photo %}
+<div class="pull-left">
+	<a href="{% url 'photo_details' id=photo.id %}">
+		<img class="img-rounded timeline-comment-thumb" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}">
+	</a>
+</div>
+{% endwith %}
+{% endif %}
+
 {{ comment.comment|truncatewords:32|urlize|profilize }}
 {% endwith %}
 {% endblock %}
