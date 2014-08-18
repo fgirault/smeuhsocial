@@ -2,26 +2,26 @@
 
 {% load i18n %}
 {% load uni_form_tags %}
+{% load bootstrap3 %}
 
 {% block head_title %}{% blocktrans %}Write a Blog Post{% endblocktrans %}{% endblock %}
 
 {% block body %}
     <div class="container">
-    {# @@@ not sure how to bring back teaser toggle with uni_form #}
-    <div class="col-md-10 col-md-offset-1">
-    <form class="form-horizontal" id="edit-profile" method="POST" action="">
-        {% csrf_token %}
-       
-       	{{ blog_form|as_uni_form }}
-
-    	<div class="form-group">
-    		<div class="col-sm-offset-2 col-sm-10">
-      			<input type="hidden" name="action" value="create" />
-                <input type="submit" value="{% trans "create" %}" class="btn btn-default" />
-		    </div>
-		</div>
-    </form>
-    </div>
+	    {# @@@ not sure how to bring back teaser toggle with uni_form #}
+	        <form class="form-horizontal" id="edit-profile" method="POST" action="">
+		        {% csrf_token %}
+		       
+		       	{{ blog_form|as_uni_form }}
+		
+		    	<div class="form-group">
+		    		<div class="col-sm-offset-2 col-sm-10">
+		      			<input type="hidden" name="action" value="create" />      			
+		                <button type="submit" class="btn btn-default pull-right">{% bootstrap_icon "ok" %} {% trans "create" %}</button>         
+				    </div>
+				</div>
+		    </form>
+	    
     </div>
 {% endblock %}
 

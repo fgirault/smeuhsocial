@@ -25,11 +25,15 @@ href="{% url 'all_blogs_feed' %}" />
 {% block body %}
 <div class="container">
 <div class="col-md-9 col-md-offset-1">
-<div class="page-header blog-post">
-  <h1> {{ post.title }} </h1>
-</div>
 
-<div class="blog-meta"><p>{% trans 'Posted by' %} 
+<div class="blog-meta">
+{% ifequal post.author request.user %}
+      
+        <a href="{% url 'blog_edit' post.id %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "pencil" %} {% trans 'Edit Post' %}</a>
+      
+      {% endifequal %} 
+      
+<p>{% trans 'Posted by' %} 
 <a href="{% url 'profile_detail' post.author.username %}">{% user_display post.author %}</a> 
 {% trans 'on' %}
   {{ post.publish|date:"DATE_FORMAT" }}      
@@ -41,19 +45,13 @@ href="{% url 'all_blogs_feed' %}" />
       </p>
     </div>
 
-      {% ifequal post.author request.user %}
-      <p>
-        <a href="{% url 'blog_edit' post.id %}" class="btn btn-default">{% bootstrap_icon "pencil" %} {% trans 'Edit Post' %}</a>
-      </p>
-      {% endifequal %} 
       
-    
-    <div class="blog-post">
-                
-        {{ post.body|apply_markup:post.markup }}
+      
+	<div class="blog-post">
+	  <h1 class="page-header"> {{ post.title }} </h1>
+      {{ post.body|apply_markup:post.markup }}
+	</div>
         
-    </div>
-    
     <h3>{% trans 'Comments on this post:' %}</h3>
     {% comments post %}
       <p>

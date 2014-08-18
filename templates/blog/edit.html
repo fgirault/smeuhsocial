@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load uni_form_tags %}
+{% load bootstrap3 %}
 
 {% block head_title %}{% blocktrans %}Editing Post{% endblocktrans %}{% endblock %}
 
@@ -16,7 +17,7 @@
         <div class="form-group">
     		<div class="col-sm-offset-2 col-sm-10">
       			<input type="hidden" name="action" value="update" />
-                <input type="submit" value="{% trans "Update" %}" class="btn btn-default" />
+      			<button type="submit" class="btn btn-default pull-right">{% bootstrap_icon "ok" %} {% trans "Update" %}</button>                
 		    </div>
 		</div>
     </form>

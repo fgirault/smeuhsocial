@@ -1,80 +1,124 @@
 {% extends "audiotracks/base.html" %}
 {% load i18n %}
 
+{% block extra_head %}<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.file-input.js"></script>{% endblock %}
+
 {% block body %}
 {% if user.is_authenticated %}
 <div class="container">
 <div class="col-md-10 col-md-offset-1">
-<div class="audiotracks-form">
   <form class="form" role="form" method="POST" enctype="multipart/form-data" action="{% url 'edit_track' track.id %}">
     {% csrf_token %}
     <fieldset>
       <legend>{% trans 'Edit track' %}</legend>
       {{ form.non_field_errors }}
-      <div class="audiotracks-edit-row">
-        {{ form.audio_file.errors }}
-        <label class="top" for="id_audio_file">{{ form.audio_file.label }}</label>
-        {{ form.audio_file }}
-        <span class="audiotracks-edit-current-data">{{ track_filename }}</span>
+      
+      <div class="form-group">
+            <label for="id_title" class="col-sm-2 control-label">
+                {{ form.audio_file.label }}
+            </label>
+			<div class="col-sm-10">
+            	{{ form.audio_file }}
+            	<p class="help-block">{{ track_filename }}</p>
+            	{{ form.audio_file.errors }}     	
+            </div>	
       </div>
-      <div class="audiotracks-edit-row">
+      
+      
+      <div class="form-group">
         {{ form.image.errors }}
-        <label class="top" for="id_image">{{ form.image.label }}</label>
-        {{ form.image }}
+        <label class="col-sm-2 control-label" for="id_image">{{ form.image.label }}</label>
+        <div class="col-sm-10">
         {% if track.image %}
-          <img src="{{ track.image.url_48x48 }}" alt="Track image">
-          <input type="checkbox" name="delete_image" value="1"
-          id="delete_image">
-          <label id="audiotracks-delete-image-label" for="delete_image">{% trans 'Delete image' %}</label>
+        <img src="{{ track.image.url_48x48 }}" alt="Track image" class="img-round">
+          
+        <div class="checkbox">
+		  <label id="audiotracks-delete-image-label">
+		    <input type="checkbox" value="" name="delete_image" value="1"
+		          id="delete_image">
+		    {% trans 'Delete image' %}
+		  </label>
+		</div>                             
         {% endif %}
-      </div>
-      <div class="audiotracks-edit-row">
-        <div class="audiotracks-edit-half-row">
-          {{ form.title.errors }}
-          <label for="id_title">{{ form.title.label }}</label>
-          {{ form.title }}
-        </div>
-        <div class="audiotracks-edit-half-row">
-          {{ form.artist.errors }}
-          <label for="id_artist">{{ form.artist.label }}</label>
-          {{ form.artist }}
+        {{ form.image }}
         </div>
       </div>
-      <div class="audiotracks-edit-row">
-        <div class="audiotracks-edit-half-row">
-          {{ form.genre.errors }}
-          <label for="id_genre">{{ form.genre.label }}</label>
-          {{ form.genre }}
-        </div>
-        <div class="audiotracks-edit-half-row">
-          {{ form.date.errors }}
-          <label for="id_date">{{ form.date.label }}</label>
-          {{ form.date }}
-        </div>
+      
+      <div class="form-group">
+          <label for="id_title" class="col-sm-2 control-label">
+              {{ form.title.label }}
+          </label>
+		  <div class="col-sm-4">
+          	{{ form.title }}
+          	{{ form.title.errors }}          	     	
+          </div>	
       </div>
-      <div class="audiotracks-edit-row">
-        {{ form.tags.errors }}
-        <label for="id_tags">{{ form.tags.label }}</label>
-        {{ form.tags }}
+      
+      <div class="form-group">
+          <label for="id_artist" class="col-sm-2 control-label">
+              {{ form.artist.label }}
+          </label>
+		  <div class="col-sm-4">
+          	{{ form.artist }}
+          	{{ form.artist.errors }}          	     	
+          </div>	
       </div>
-      <div class="audiotracks-edit-row">
-        {{ form.description.errors }}
-        <label class="top" for="id_description">{{ form.description.label }}</label>
-        {{ form.description }}
+      
+      <div class="form-group">
+          <label for="id_genre" class="col-sm-2 control-label">
+              {{ form.genre.label }}
+          </label>
+		  <div class="col-sm-4">
+          	{{ form.genre }}
+          	{{ form.genre.errors }}          	     	
+          </div>	
       </div>
+      
+      <div class="form-group">
+          <label for="id_date" class="col-sm-2 control-label">
+              {{ form.genre.label }}
+          </label>
+		  <div class="col-sm-4">
+          	{{ form.date }}
+          	{{ form.date.errors }}          	     	
+          </div>	
+      </div>
+
+      <div class="form-group">
+            <label for="id_tags" class="col-sm-2 control-label">
+                {{ form.tags.label }}
+            </label>
+			<div class="col-sm-10">
+            	{{ form.tags }}
+            	{{ form.tags.errors }}
+            </div>	
+      </div>
+
+	  <div class="form-group">
+            <label for="id_tags" class="col-sm-2 control-label">
+                {{ form.description.label }}
+            </label>
+			<div class="col-sm-10">
+            	{{ form.description }}            	
+            </div>	
+      </div>
+
+	<div id="slug" class="audiotracks-edit-ro form-group">
       <div id="slug" class="audiotracks-edit-row">
         {{ form.slug.errors }}
-        <label for="id_slug">{{ form.slug.label }}</label>
+        <label for="id_slug" class="col-sm-2 control-label">{{ form.slug.label }}</label>
         <div class="input-prepend">
           <span class="audiotracks-edit-current-data add-on">{{ track_url_prefix }}</span>{{ form.slug }}
         </div>
       </div>
+	</div>
+
       <p id="save-button">
-      <button class="btn btn-primary">{% trans 'Save your changes' %}</button>
+      <button class="btn btn-primary pull-right">{% trans 'Save your changes' %}</button>
       </p>
     </fieldset>
   </form>
-</div>
+
 <div class="audiotracks-form" id="delete-form">
   <form action="{% url 'confirm_delete_track' track.id %}">
     <p id="delete-button">
@@ -84,5 +128,8 @@
 </div>
 </div>
 </div>
+
 {% endif %}
 {% endblock %}
+
+{% block extra_body %}<script>$(document).ready(function(){$('input[type=file]').bootstrapFileInput();});</script>{% endblock %}

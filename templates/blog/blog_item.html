@@ -5,18 +5,18 @@
 {% load extra_tagging_tags %}
 
 <div class="container">
-<div class="col-md-8">
-    <h4><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></h4>
-    <div class="">
-        {% if blog_post.tease %}
-             {% with blog_post.tease as body %}
-                {{ body|apply_markup:blog_post.markup }}
-            {% endwith %}
-        {% else %}
-            {% with blog_post.body|truncatewords:"150" as body %}
-                {{ body|apply_markup:blog_post.markup }}
-            {% endwith %}
-        {% endif %}
-    </div>
-</div>
+	<div class="col-md-8">
+	    <h4><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></h4>
+	    <div class="">
+	        {% if blog_post.tease %}
+	             {% with blog_post.tease as body %}
+	                {{ body|apply_markup:blog_post.markup }}
+	            {% endwith %}
+	        {% else %}
+	            {% with blog_post.body|truncatewords:"150" as body %}
+	                {{ body|apply_markup:blog_post.markup }}
+	            {% endwith %}
+	        {% endif %}
+	    </div>
+	</div>
 </div>
