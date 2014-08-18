@@ -57,7 +57,10 @@ urlpatterns = patterns(
     "",
     url(r"^favicon.ico/?$", RedirectView.as_view(
         url=settings.STATIC_URL + 'img/favicon.ico')),
-    url(r"^$", HomePageView.as_view(), name="home"),
+    #url(r"^$", HomePageView.as_view(), name="home"),    
+    
+    url(r"^$", "timeline.views.home", name="home"),
+    
     url(r"^admin/", include(admin.site.urls)),
     url(r"^about/", include("about.urls")),
     url(r"^account/", include("account.urls")),
@@ -114,8 +117,9 @@ urlpatterns = patterns(
     url(r"^i18n/", include("django.conf.urls.i18n")),
     url(r"^photos/", include("photos.urls")),
     url(r"^avatar/", include("avatar.urls")),
+    url(r"^fu/",  include("fukung.urls")),
     
-    #url(r"^timeline/", include("timeline.urls")),    
+    url(r"^timeline/", include("timeline.urls")),    
     
     # Feeds urls
     url(r"^feeds/touites/(?P<username>[\w\._-]+)/with_friends/?$",
@@ -137,7 +141,7 @@ urlpatterns = patterns(
 
 friends_photos_kwargs = {
     "template_name": "photos/friends_photos.html",
-    "friends_objects_function": lambda users: Image.objects.filter(is_public=True, member__in=users),
+    "friends_objects_function": lambda users: Image.objects.filter(is_public=True, member__in=users).order_by("-date_added"),
 }
 
 friends_blogs_kwargs = {
