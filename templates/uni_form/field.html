@@ -16,6 +16,7 @@
 	        	<div class="checkbox">
 				  <label>{{ field }} {{ field.label }}</label>
 				</div>
+				{% if field.help_text %}<p class="help-block"><span id="hint_{{ field.auto_id }}">{{ field.help_text|safe }}</span></p>{% endif %}
         	</div>        	           
         {% else %}
 	        {% if field.label %}
@@ -24,16 +25,14 @@
 	            </label>
 				<div class="col-sm-10">
 	            	{{ field|with_class }}
+	            	{% if field.help_text %}<p class="help-block"><span id="hint_{{ field.auto_id }}">{{ field.help_text|safe }}</span></p>{% endif %}
 	            </div>
 	        {% else %}
 	        	<div class="col-sm-10 col-offset-sm-2">
 	           	 {{ field|with_class }}
+	           	 {% if field.help_text %}<p class="help-block"><span id="hint_{{ field.auto_id }}">{{ field.help_text|safe }}</span></p>{% endif %}
 	            </div>
-	        {% endif %}
-	        
-	        {% if field.help_text %}
-	        	<span id="hint_{{ field.auto_id }}" class="help-block">{{ field.help_text|safe }}</span>
-	        {% endif %}
+	        {% endif %}	        	        	       
 	        
 		
         
