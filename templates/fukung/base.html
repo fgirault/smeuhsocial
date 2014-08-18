@@ -1,0 +1,94 @@
+{% load i18n %}
+{% load compress %}
+{% load tagging_tags %}
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>fusmeuh</title>
+
+    <!-- Bootstrap -->
+    {% bootstrap_css %}
+
+
+	<link rel="stylesheet" href="{{ STATIC_URL }}fukung/style.css" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  	<div class="container">    
+  	
+  	<div class="header">
+	<div class="menu">
+    <ul id="nav">
+        
+                <li><a href="/recent/page,2" id="next_button" onclick="_gaq.push(['_trackEvent', 'topmenu', 'next']);">next</a></li>        <li><A href="/recent"  onclick="_gaq.push(['_trackEvent', 'topmenu', 'recent']);">recent</a></li>
+        <li><A href="/hot"  onclick="_gaq.push(['_trackEvent', 'topmenu', 'hot']);">hot</a></li>
+        <li><A href="/tags"  onclick="_gaq.push(['_trackEvent', 'topmenu', 'tags']);">tags</a></li>
+                <li><A href="/nsfw"  onclick="_gaq.push(['_trackEvent', 'topmenu', 'nsfw']);">nsfw</a></li>
+                
+        <li><a href="/contribute">contribute</a>
+            <ul>
+                <li><A href="/contribute"  onclick="_gaq.push(['_trackEvent', 'topmenu', 'contribute']);">upload</a> </li>
+                <li><A href="/grade"  onclick="_gaq.push(['_trackEvent', 'topmenu', 'grade']);">grade</a> </li>
+
+                <li><A href="/shorten"  onclick="_gaq.push(['_trackEvent', 'topmenu', 'shorten']);">shorten urls</a></li>
+            </ul>
+        </li>
+        <li><a href="#">social</a>
+            <ul>
+                <li><a href="http://www.facebook.com/pages/Fukungnet/42674773557"  onclick="_gaq.push(['_trackEvent', 'topmenu', 'fbfan']);">like us on facebook</a> </li>
+                <li><a href="http://www.twitter.com/fukungnet"  onclick="_gaq.push(['_trackEvent', 'topmenu', 'fukung']);">follow us on twitter</a> </li>
+                <li><A href="https://chrome.google.com/webstore/detail/mddnnociimbnpedphlhccabfnfmmjjgl"  onclick="_gaq.push(['_trackEvent', 'topmenu', 'chromeapp']);">install in chrome</a> </li>
+            </ul>
+        </li>
+        
+                <li><a href="/login" class="signin" title="login">log in</a></li>
+        
+            
+    </ul>
+</div>		<a class="title" href="{% url 'fukung' %}">fusmeuh</a>		
+	</div>
+	<div style="clear: both;"></div>
+	</div>
+  	
+  	<div class="main">
+
+		<div class="instruc">click on the image for another random image</div>
+
+		<div id="image">	
+			<a href="{% url 'fukung' %}"><img class="img-responsive center-block photo-details" src="{{ photo_url }}" alt="{{ photo.title }}" style="max-height: 640px;" /></a>	
+		</div>
+		<div class="tags">{% bootstrap_icon "tag" %} Tags: <span id="taglist">
+				{% tags_for_object photo as tags %}
+	            {% for tag in tags %}<a href="/tags/{{ tag }}">{{ tag }}</a>&nbsp;{% endfor %}</span>
+		</div>
+		<a href="{% url 'photo_details' id=photo.id %}" >View on MySmeuh</a>
+{%comment%}
+
+				<a id="tagaddlink" href="javascript:showAddDialog();">Add&nbsp;tag</a>
+
+
+<div id="tagadd" class="tagadd" style="display: none;">
+<form method="post" onsubmit="javascript:addTag(this);return false;" id="tagAddForm" name="tagAddForm">
+<input value="15364" name="id" type="hidden">
+<input value="e93190919b26beac4ec054208e7eca6c" name="api_key" type="hidden">
+<input value="" name="tag" id="tagaddinput" type="text">
+<input value="Add!" type="submit">
+</form>
+	</div>
+{% endcomment %}
+  	</div>
+
+    <script type="text/javascript" src="{% bootstrap_jquery_url %}"></script>
+    
+  </body>
+</html>
