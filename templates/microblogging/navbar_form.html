@@ -1,6 +1,6 @@
 {% load bootstrap3 %}
 {% load i18n %}
-<form id="touite_navbar_form" action="{% url 'tweets_you_follow' %}" method="POST">
+<form id="touite_navbar_form" action="{% url 'tweets_you_follow' %}" method="POST" class="form-horizontal">
     {% csrf_token %}
    	<div class="input-group">
    		<input id="new_tweet" type="text" class="form-control" autocomplete="off" name="text" cols="15" rows="1" 
