@@ -1,0 +1,12 @@
+{% extends "timeline/_item.html" %}
+
+{% load i18n %}
+{% load override_tags %}
+
+{% block item_action_label %}{% with timelineitem.item as comment %} a commenté <a href="{{ comment.content_object.get_absolute_url }}">{{ comment.content_object.title }}</a>{% endwith %}{% endblock %}
+
+{% block item_content %}
+{% with timelineitem.item as comment %}
+{{ comment.comment|truncatewords:32|urlize|profilize }}
+{% endwith %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "timeline/_item.html" %}
+
+{% load i18n %}
+{% load override_tags %}
+
+{% block item_action_label %}a posté une photo{% endblock %}
+
+{% block item_content %}
+{% with timelineitem.item  as  photo %}
+<a href="{% url 'photo_details' id=photo.id %}"><div class="pull-left"><img
+      class="img-rounded timeline-thumb" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}"></div><h4> {{ photo.title }}</h4></a>
+{{ photo.caption|truncatewords:24|urlize }}
+{% endwith %}
+{% endblock %}
+
+

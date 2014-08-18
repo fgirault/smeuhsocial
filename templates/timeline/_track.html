@@ -1,0 +1,12 @@
+{% extends "timeline/_item.html" %}
+
+{% load i18n %}
+{% load override_tags %}
+
+{% block item_action_label %}a posté un morceau{% endblock %}
+
+{% block item_content %}
+{% with timelineitem.item as track %}  
+  {% include "timeline/homepage/_track.html" %}
+{% endwith %}
+{% endblock %}

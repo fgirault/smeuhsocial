@@ -1,0 +1,38 @@
+{% load i18n %}
+{% load override_tags %}
+
+<div class="homepage-item {% if forloop.first %} first{% endif %}{% cycle ' odd' '' %} clearfix">
+
+	<div class="clearfix">
+		<div class="pull-left" style="margin: 3px;">
+			{% if track.image %}
+		    <img class="img-rounded" src="{{ track.image.url_48x48 }}" alt="{% trans 'Track Image' %}" style="max-height: 48px;"/>
+		    {% else %}
+		    {% avatar_link track.user 48 %}
+		    {% endif %}
+		</div>
+
+		<div>
+			<a href="{% url 'track_detail' track.user.username track.slug %}">{{ track.title|title }}</a>
+			{% if track.artist %}<small>&#8211; {{ track.artist }} </small><br>{% endif %}
+			</div>
+			<div>
+				<small>{% trans 'uploaded by' %}
+		        	<a href="{% url 'profile_detail' username=track.user.username %}">{{ track.user.username }}</a>
+		        </small>
+		</div>
+	</div>
+    
+    {% comment %}
+	<div class="blog-tease visible-lg">
+  		{{ track.description|truncatewords:12 }}
+  	</div>
+  	{% endcomment %}
+  	
+  	<div class="clearfix player-container">
+      <audio preload="none">
+        <source src="{{ track.audio_file.url }}" type="{{ track.mimetype }}">
+      </audio>
+    </div>
+	 
+</div>

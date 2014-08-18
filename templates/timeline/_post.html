@@ -1,0 +1,13 @@
+{% extends "timeline/_item.html" %}
+
+{% load i18n %}
+{% load override_tags %}
+
+{% block item_action_label %}a posté un article{% endblock %}
+
+{% block item_content %}
+{% with timelineitem.item as blog_post %}
+  <h4><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></h4>
+  {{ blog_post.tease|truncatewords:32 }}
+{% endwith %}
+{% endblock %}

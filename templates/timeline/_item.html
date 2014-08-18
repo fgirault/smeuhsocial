@@ -1,0 +1,20 @@
+{% load account_tags %}
+{% load i18n %}
+{% load override_tags %}
+{% load avatar_tags %}
+
+<div class="timeline-item homepage-item {% if forloop.first %} first{% endif %}{% cycle ' odd' '' %} clearfix">
+  {% avatar_link timelineitem.user 24 %}
+  <div class="clearfix {% if forloop.last %}last{% endif %}">
+    <a href="{% url 'profile_detail' timelineitem.user %}"><strong>{% user_display timelineitem.user %}</strong></a> 
+    {% block item_action_label %}{% endblock %}    
+    <div class="pull-right">
+    	<span class="timesince">{% blocktrans with timelineitem.date|timesince as item_age %}{{ item_age }} ago{% endblocktrans %}</span>
+    </div>
+    <div class="timeline-item-content">
+    {% block item_content %}{% endblock %}
+    </div>
+  </div>
+</div>
+
+
