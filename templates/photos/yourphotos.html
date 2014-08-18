@@ -18,7 +18,7 @@
 	    <h1>{% trans "Your Photos" %}</h1>
 	    
 	    {% if photos %}
-	    {% autopaginate photos %}
+	    {% autopaginate photos 21 %}
 	        <div class="thumb-row clearfix">
 	        {% for photo in photos %}
 	        {% include 'photos/photo_thumb.html' %}

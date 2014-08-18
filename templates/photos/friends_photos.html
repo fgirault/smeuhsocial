@@ -7,10 +7,13 @@
 {% load tagging_tags %}
 {% load threadedcommentstags %}
 {% load theme_tags %}
+{% load bootstrap3 %}
 
 {% block head_title %}{% blocktrans %}Friends' Photos{% endblocktrans %}{% endblock %}
 
 {% block login %}{% endblock %}
+
+{% block ssnav %}<li><a href="{% url 'photos' %}">{% bootstrap_icon "camera" %} {% trans "Latest Photos" %}</a></li>{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -18,7 +21,7 @@
 		    <h1>{% blocktrans %}Friends' Photos{% endblocktrans %}</h1>
 		    
 		    {% if object_list %}
-		        {% autopaginate object_list 24 %}
+		        {% autopaginate object_list 21 %}
 		        <div class="thumb-row clearfix">
 		            {% for photo in object_list %}
 		                {% include 'photos/photo_thumb.html' %}
