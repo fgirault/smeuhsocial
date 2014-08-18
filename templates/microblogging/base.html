@@ -10,6 +10,6 @@
 {% block subnav %}
     <ul class="nav navbar-nav subnav">
         <li><a href="{% url 'all_tweets' %}">{% bootstrap_icon "list" %} {% trans "All Tweets" %}</a></li>
-        <li><a href="{% url 'friends_tweets' %}">{% bootstrap_icon "heart" %} {% trans "Friends' Tweets" %}</a></li>
+        {% block ssnav %}<li><a href="{% url 'friends_tweets' %}">{% bootstrap_icon "heart" %} {% trans "Friends' Tweets" %}</a></li> {% endblock %}
     </ul>
 {% endblock %}

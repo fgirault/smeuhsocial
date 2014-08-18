@@ -4,9 +4,12 @@
 {% load microblogging_tags %}
 {% load pagination_tags %}
 {% load account_tags %}
+{% load bootstrap3 %}
 {% load override_tags %}
 
 {% block head_title %}{% blocktrans %}Friends' Tweets{% endblocktrans %}{% endblock %}
+
+{% block ssnav %}<li><a href="{% url 'tweets_you_follow' %}">{% bootstrap_icon "comment" %} {% trans "Tweets You Follow" %}</a></li>{% endblock %}      
 
 {% block body %}
 <div class="container">

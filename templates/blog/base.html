@@ -1,7 +1,6 @@
 {% extends "site_base.html" %}
 
 {% load i18n %}
-
 {% load bootstrap3 %}
 
 {% block body_class %}blogs{% endblock %}
@@ -10,7 +9,7 @@
     {% if user.is_authenticated %}
         <ul class="nav navbar-nav subnav">
             <li><a href="{% url 'blog_new' %}">{% bootstrap_icon "pencil" %} {% trans "Write a Blog Post" %}</a></li>
-            <li><a href="{% url 'friends_blogs' %} ">{% bootstrap_icon "heart" %} {% trans "Friends' Blogs" %}</a></li>
+            {% block ssnav %}<li><a href="{% url 'friends_blogs' %} ">{% bootstrap_icon "heart" %} {% trans "Friends' Blogs" %}</a></li>{% endblock %}
         </ul>
         <ul class="nav navbar-nav navbar-right subnav">
             <li><a href="{% url 'blog_list_yours' %}">{% bootstrap_icon "cog" %} {% trans "Your Posts" %}</a></li>

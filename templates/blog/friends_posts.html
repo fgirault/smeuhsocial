@@ -3,8 +3,12 @@
 {% load i18n %}
 {% load pagination_tags %}
 {% load blog_tags %}
+{% load bootstrap3 %}
 
 {% block head_title %}{% blocktrans %}Friends' Blogs{% endblocktrans %}{% endblock %}
+
+{% block ssnav %}<li><a href="{% url 'blog_list_all' %} ">{% bootstrap_icon "list" %} {% trans "All Blogs" %}</a></li>{% endblock %}
+            
 
 {% block body %}
     <div class="container">
