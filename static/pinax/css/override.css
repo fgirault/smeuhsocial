@@ -179,6 +179,7 @@ h1 {
 .homepage-item {
   border-bottom: 1px solid #CCC;
   word-wrap: break-word;
+  margin-bottom: 3px;
 }
 
 .homepage-item.first {
@@ -461,4 +462,16 @@ footer #locale_switcher {
   }
 }
 
+.timeline-item-content {
+	margin: 0 5px 0 5px;
+}
 
+.timeline-thumb {
+	margin: 3px 5px 0 3px; 
+	max-height: 96px;
+}
+
+.timesince {
+    color: #999;
+    font-size: 80%;
+}

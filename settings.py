@@ -179,6 +179,7 @@ INSTALLED_APPS = [
     "django_markup",
     "markup_deprecated",
     "tagging_ext",
+    'bootstrap3',
     
     # Pinax
     "account",
@@ -193,9 +194,9 @@ INSTALLED_APPS = [
     "about",
     "audiotracks",
     "smeuhoverride",
+    "timeline"
     
-    # look
-    'bootstrap3',
+   
 ]
 
 FIXTURE_DIRS = [
