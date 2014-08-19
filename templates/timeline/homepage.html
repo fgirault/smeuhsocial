@@ -44,13 +44,10 @@
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6">
 			<h4>
-			{% comment %}
 			  <a title="Atom Feed" href="{% url 'all_photos_feed' %}"><img alt="Feed Icon"
 			    src="{{ STATIC_URL }}img/feed-icon.png"></a>
 			  <a href="{% url 'photos' %}">{% blocktrans %}Photos{% endblocktrans %}</a>
-			  {% endcomment %}
-			  
-			  {% blocktrans %}Photos{% endblocktrans %}
+
 			</h4>
 			<div class="center-block" style="margin-bottom: 10px">
 			  {% for photo in latest_photos %}
@@ -58,48 +55,42 @@
 			    class="img-rounded  timeline-thumb" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}"></a>
 			  {% endfor %}			  
  			</div>
- 			<div  class="clearfix" >
-	 			<a href="{% url 'photos' %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "camera" %} {% trans "Latest Photos" %}</a>
- 			</div>
- 			
- 			
- 				<div class="col-xs-12 col-sm-6 col-md-6">
- 				  <h4>
- 				  {% comment %}
-				    <a title="Atom Feed" href="{% url 'tracks_feed' %}"><img alt="Feed Icon"
-				      src="{{ STATIC_URL }}img/feed-icon.png"></a>
-				    <a href="{% url 'audiotracks' %}">
-				      {% blocktrans %}Tracks{% endblocktrans %}
-				    </a>
-				    {% endcomment %}
-				    {% blocktrans %}Tracks{% endblocktrans %}
-				  </h4>
-				    {% for track in latest_tracks %}
-    				{% include "timeline/homepage/_track.html" %}
-  					{% endfor %}
-  					
-  					<a href="{% url 'audiotracks' %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "headphones" %} {% trans 'Latest tracks' %}</a>			  				 
- 				</div>
- 				
- 				<div class="col-xs-12 col-sm-6 col-md-6"> 				
-				  <h4>
-				  {% comment %}
-				    <a title="Atom Feed" href="{% url 'all_blogs_feed' %}"><img alt="Feed Icon"
-				      src="{{ STATIC_URL }}img/feed-icon.png"></a>
-				    <a href="{% url 'blog_list_all' %}">
-				      {% blocktrans %}Blogs{% endblocktrans %}
-				    </a>
-				    {% endcomment %}
-				    {% blocktrans %}Blogs{% endblocktrans %}
-				  </h4>
-				  {% for blog_post in latest_blogs%}
-				  {% include "timeline/homepage/_post.html" %}
-				  {% endfor %}
-				  
-				  <a href="{% url 'blog_list_all' %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "pencil" %}  {% trans "All Blogs" %}</a>
-            
+				<div  class="clearfix" >
+					<a href="{% url 'photos' %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "camera" %} {% trans "Latest Photos" %}</a>
 				</div>
  			
+ 			
+				<div class="col-xs-12 col-sm-6 col-md-6">
+				<h4>
+			 		<a title="Atom Feed" href="{% url 'tracks_feed' %}">
+			 			<img alt="Feed Icon" src="{{ STATIC_URL }}img/feed-icon.png">
+			 		</a>
+			 		<a href="{% url 'audiotracks' %}">
+			   			{% blocktrans %}Tracks{% endblocktrans %}
+			 		</a>
+				</h4>
+				{% for track in latest_tracks %}
+					{% include "timeline/homepage/_track.html" %}
+				{% endfor %}  					
+				<a href="{% url 'audiotracks' %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "headphones" %} {% trans 'Latest tracks' %}</a>			  				 
+			</div>
+				
+				<div class="col-xs-12 col-sm-6 col-md-6"> 				
+				<h4>
+		   			<a title="Atom Feed" href="{% url 'all_blogs_feed' %}">
+		   				<img alt="Feed Icon" src="{{ STATIC_URL }}img/feed-icon.png">
+		   			</a>
+			 		<a href="{% url 'blog_list_all' %}">
+			      		{% blocktrans %}Blogs{% endblocktrans %}
+			    	</a>				    
+			  	</h4>
+				{% for blog_post in latest_blogs%}
+				{% include "timeline/homepage/_post.html" %}
+				{% endfor %}				  
+				<a href="{% url 'blog_list_all' %}" class="btn btn-default btn-sm pull-right">
+					{% bootstrap_icon "pencil" %}  {% trans "All Blogs" %}
+				</a>            
+			</div> 			
 		</div>
 	</div>
 </div>
