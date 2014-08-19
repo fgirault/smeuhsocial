@@ -40,7 +40,7 @@ class TimeLineView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(TimeLineView, self).get_context_data(**kwargs)
         # TODO use a query parameter for the time delta. here is 3 months
-        ago = datetime.datetime.now() - datetime.timedelta(30)
+        ago = datetime.datetime.now() - datetime.timedelta(30 * 3)
                         
         tweets = [ 
             TimeLineItem(item, item.sent, item.sender, "timeline/_tweet.html") 
@@ -104,7 +104,7 @@ def merge(*querysets, **kwargs):
     
 class HomePageView(TimeLineView):
     
-    template_name = "timeline/homepage.html"
+    template_name = "timeline/homepage/homepage.html"
     
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
@@ -114,6 +114,28 @@ class HomePageView(TimeLineView):
         context['latest_blogs'] = Post.objects.all().filter(status = 2).order_by("-publish")[:10]
         context['latest_tracks'] = Track.objects.all().order_by("-created_at")[:6]        
         return context
+
+# old stuff extracted from the main urls.py file, to run the 5 column home page
+class LegacyHomePageView(TemplateView):
+
+    template_name = "timeline/homepage/legacy.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(LegacyHomePageView, self).get_context_data(**kwargs)
+        context['latest_tweets'] = lambda: Tweet.objects.all().order_by(
+            "-sent")[:12]
+        context['latest_blogs'] = lambda: Post.objects.filter(
+            status=2).order_by("-publish")[:10]
+        context['latest_photos'] = lambda: Image.objects.all().order_by(
+            "-date_added")[:18]
+        context['latest_tracks'] = lambda: Track.objects.all().order_by(
+            "-created_at")[:6]
+        context['prefix_sender'] = True
+        return context
+
     
 home = login_required(HomePageView.as_view())
+
+legacy = LegacyHomePageView.as_view()
+
     

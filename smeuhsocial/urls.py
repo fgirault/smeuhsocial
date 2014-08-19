@@ -34,33 +34,12 @@ blogs_feed_dict = {"feed_dict": {
     "only": BlogFeedUser,
 }}
 
-
-class HomePageView(TemplateView):
-
-    template_name = "homepage.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(HomePageView, self).get_context_data(**kwargs)
-        context['latest_tweets'] = lambda: Tweet.objects.all().order_by(
-            "-sent")[:12]
-        context['latest_blogs'] = lambda: Post.objects.filter(
-            status=2).order_by("-publish")[:10]
-        context['latest_photos'] = lambda: Image.objects.all().order_by(
-            "-date_added")[:18]
-        context['latest_tracks'] = lambda: Track.objects.all().order_by(
-            "-created_at")[:6]
-        context['prefix_sender'] = True
-        return context
-
-
 urlpatterns = patterns(
     "",
     url(r"^favicon.ico/?$", RedirectView.as_view(
-        url=settings.STATIC_URL + 'img/favicon.ico')),
-    #url(r"^$", HomePageView.as_view(), name="home"),    
-    
-    url(r"^$", "timeline.views.home", name="home"),
-    
+        url=settings.STATIC_URL + 'img/favicon.ico')),    
+    url(r"^$", "timeline.views.home", name="home"),   
+    url(r"5c/$", "timeline.views.legacy",), 
     url(r"^admin/", include(admin.site.urls)),
     url(r"^about/", include("about.urls")),
     url(r"^account/", include("account.urls")),
@@ -118,8 +97,8 @@ urlpatterns = patterns(
     url(r"^photos/", include("photos.urls")),
     url(r"^avatar/", include("avatar.urls")),
     url(r"^fu/",  include("fukung.urls")),
-    
     url(r"^timeline/", include("timeline.urls")),    
+    
     
     # Feeds urls
     url(r"^feeds/touites/(?P<username>[\w\._-]+)/with_friends/?$",
