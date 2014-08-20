@@ -20,11 +20,23 @@ body {
  /* margin-bottom: 60px; */ 
 }
 
+a {
+	color: #00B000;
+}
+
+a:VISITED {
+	color: #00B000;
+}
+
 .navbar-default {
 	background-color: #000;
 	color: #F4C021;
 	margin: 0;	
 	border-radius:none !important;
+}
+
+.main-nav {
+	font-size: 28px;
 }
 
 .subnav-smeuh {
@@ -87,8 +99,8 @@ body {
 
 */
 .big-icon {
-	font-size: 28px;
-	margin-left: 4px;
+	font-size: 24px;
+	margin-left: 2px;
 	color: #F4C021;
 }
 
