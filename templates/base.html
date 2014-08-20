@@ -37,17 +37,17 @@
         <link rel="stylesheet" href="{{ STATIC_URL }}audiotracks/css/screen.css" />
         {% endcompress %}
         
-		<script type="text/javascript" src="{% bootstrap_jquery_url %}"></script>
-
-        {% block extra_head_base %}
-            {% block extra_head %}{% endblock %}
-        {% endblock %}
+		<script type="text/javascript" src="{% bootstrap_jquery_url %}"></script>        
         
         {% bootstrap_css %}
         <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/override.css" />
         
         {% bootstrap_javascript %}
-        <script type="text/javascript" src="{{ STATIC_URL }}js/microblogging.js"></script>
+        {# <script type="text/javascript" src="{{ STATIC_URL }}js/microblogging.js"></script> #}
+        
+        {% block extra_head_base %}
+            {% block extra_head %}{% endblock %}
+        {% endblock %}
         
     </head>
     
