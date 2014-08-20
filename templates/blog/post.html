@@ -36,13 +36,14 @@ href="{% url 'all_blogs_feed' %}" />
 <p>{% trans 'Posted by' %} 
 <a href="{% url 'profile_detail' post.author.username %}">{% user_display post.author %}</a> 
 {% trans 'on' %}
-  {{ post.publish|date:"DATE_FORMAT" }}      
-      {% tags_for_object post as tags %}
-      {% bootstrap_icon "tag" %}
+  {{ post.publish|date:"DATE_FORMAT" }}
+  	<p>     
+      {% tags_for_object post as tags %}      
       {% for tag in tags %}
-      <a href="/tags/{{ tag }}">{{ tag }}</a>
+      <a class="badge" href="/tags/{{ tag }}">{% bootstrap_icon "tag" %} {{ tag }}</a>
       {% endfor %}
       </p>
+      
     </div>
 
       
