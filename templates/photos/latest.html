@@ -1,33 +1,7 @@
-{% extends "photos/base.html" %}
+{% extends "photos/gallery_base.html" %}
 
 {% load i18n %}
-{% load humanize %}
-{% load account_tags %}
-{% load pagination_tags %}
-{% load tagging_tags %}
-{% load threadedcommentstags %}
-{% load theme_tags %}
-{% load bootstrap3 %}
 
 {% block head_title %}{% trans title %}{% endblock %}
 
-{% block login %}{% endblock %}
-
-{% block body %}
-    <div class="container">
-	    <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">		    
-			<h1>{% trans title %}</h1>
-		    {% if photos %}
-		    {% autopaginate photos 21 %}
-	        <div class="thumb-row clearfix">
-	        {% for photo in photos %}
-	       	{% include 'photos/photo_thumb.html' %}
-	        {% endfor %}
-	        </div>
-	        {% paginate %}
-		    {% else %}
-		    <p>{% trans "No photos were found." %}</p>
-		    {% endif %}
-	    </div>
-    </div>
-{% endblock %}
+{% block title %}{% trans title %}{% endblock %}

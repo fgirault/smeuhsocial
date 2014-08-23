@@ -6,9 +6,9 @@
 
 {% block body_class %}tweets{% endblock %}
 
-
 {% block subnav %}
     <ul class="nav navbar-nav subnav">
+    	{% include 'cta_drop.html' %}
         <li><a href="{% url 'all_tweets' %}">{% bootstrap_icon "list" %} {% trans "All Tweets" %}</a></li>
         {% block ssnav %}<li><a href="{% url 'friends_tweets' %}">{% bootstrap_icon "heart" %} {% trans "Friends' Tweets" %}</a></li> {% endblock %}
     </ul>

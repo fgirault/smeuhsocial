@@ -10,7 +10,6 @@
                 {{ error }}
             </p>
         {% endfor %}
-
         {% if field|is_checkbox %}
         	<div class="col-sm-10 col-sm-offset-2">
 	        	<div class="checkbox">
@@ -32,11 +31,7 @@
 	           	 {{ field|with_class }}
 	           	 {% if field.help_text %}<p class="help-block"><span id="hint_{{ field.auto_id }}">{{ field.help_text|safe }}</span></p>{% endif %}
 	            </div>
-	        {% endif %}	        	        	       
-	        
-		
-        
+	        {% endif %}	        	        	               
         {% endif %}
-
     </div>
 {% endif %}
