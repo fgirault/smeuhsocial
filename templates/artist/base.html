@@ -1,0 +1,21 @@
+{% extends "site_base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+
+{% block body_class %}artist{% endblock %}
+
+{% block subnav %}
+    {% if user.is_authenticated %}
+        <ul class="nav navbar-nav subnav">
+          <li><a href="{% url 'upload_track' %}">{% bootstrap_icon "upload" %} {% trans 'Upload track' %}</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right subnav">
+          <li><a href="{% url 'user_index' user.username %}">{% bootstrap_icon "user" %} {% trans 'Your tracks' %}</a></li>
+        </ul> 
+    {% else %}
+        &nbsp;
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+{% endblock %}
