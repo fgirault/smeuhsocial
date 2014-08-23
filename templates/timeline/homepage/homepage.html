@@ -5,7 +5,7 @@
 {% load override_tags %}
 {% load bootstrap3 %}
 
-{% block head_title %}{% trans "Timeline" %}{% endblock %}
+{% block head_title %}{% trans "Homepage" %}{% endblock %}
 
 {% block subnav %}
 {% include "call_to_action.html" %}
@@ -13,6 +13,7 @@
 
 {% block body %}
 <div class="container">
+	{% block touiteform %}
 	<div class="row">
 		<div class="col-xs-12">
 			<form id="touite_navbar_form" action="{% url 'tweets_you_follow' %}" method="POST" class="form-horizontal">
@@ -29,20 +30,30 @@
 			    	</span>
 				</div>    
 			</form>	
-		</div>
+		</div>		
 	</div>
-	
+	{% endblock %}
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-6">
-			<h4>Actualités</h4>
+			{% block newsblock %}
+			{% if timelineitems %}
+			<h4>
+				<a>
+					<img alt="Feed Icon" src="{{ STATIC_URL }}img/feed-icon.png">
+				</a>
+			    <a href="{% url 'timeline' %}">{% trans 'News' %}</a>
+			</h4>
 			{% for timelineitem in timelineitems %}
 			{% include timelineitem.template %}				    			
   			{% endfor %}
   			<div  class="clearfix" >
 	 			<a href="{% url 'timeline' %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "bullhorn" %} {% trans "Plus d'actualités" %}</a>
  			</div>
+ 			{% endif %}	
+ 			{% endblock %}
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6">
+			{% if latest_photos %}
 			<h4>
 			  <a title="Atom Feed" href="{% url 'all_photos_feed' %}"><img alt="Feed Icon"
 			    src="{{ STATIC_URL }}img/feed-icon.png"></a>
@@ -59,8 +70,9 @@
 					<a href="{% url 'photos' %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "camera" %} {% trans "Latest Photos" %}</a>
 				</div>
  			
- 			
-				<div class="col-xs-12 col-sm-12 col-md-6">
+ 			{% endif %}	
+			<div class="col-xs-12 col-sm-12 col-md-6">
+				{% if latest_tracks %}
 				<h4>
 			 		<a title="Atom Feed" href="{% url 'tracks_feed' %}">
 			 			<img alt="Feed Icon" src="{{ STATIC_URL }}img/feed-icon.png">
@@ -72,10 +84,12 @@
 				{% for track in latest_tracks %}
 					{% include "timeline/homepage/_track.html" %}
 				{% endfor %}  					
-				<a href="{% url 'audiotracks' %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "headphones" %} {% trans 'Latest tracks' %}</a>			  				 
+				<a href="{% url 'audiotracks' %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "headphones" %} {% trans 'Latest tracks' %}</a>
+				{% endif %}			  				 
 			</div>
 				
-				<div class="col-xs-12 col-sm-12 col-md-6"> 				
+				<div class="col-xs-12 col-sm-12 col-md-6">
+				{% if latest_blogs %} 				
 				<h4>
 		   			<a title="Atom Feed" href="{% url 'all_blogs_feed' %}">
 		   				<img alt="Feed Icon" src="{{ STATIC_URL }}img/feed-icon.png">
@@ -89,7 +103,8 @@
 				{% endfor %}				  
 				<a href="{% url 'blog_list_all' %}" class="btn btn-default btn-sm pull-right">
 					{% bootstrap_icon "pencil" %}  {% trans "All Blogs" %}
-				</a>            
+				</a> 
+				{% endif %}          
 			</div> 			
 		</div>
 	</div>

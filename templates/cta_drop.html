@@ -1,0 +1,19 @@
+{% load i18n %}
+{% load bootstrap3 %}
+{% comment %}
+
+Call to action dropdown
+
+{% endcomment %}
+{% if user.is_authenticated %}    
+		<li class="dropdown">
+		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% bootstrap_icon "asterisk" %} {% trans "Contribute" %}<span class="caret"></span></a>
+		  <ul class="dropdown-menu" role="menu">
+		     <li><a href="{% url 'photo_upload' %}">{% bootstrap_icon "upload" %}  {% trans "Upload a Photo" %}</a></li>
+		    <li><a href="{% url 'upload_track' %}">{% bootstrap_icon "upload" %} {% trans 'Upload track' %}</a></li>
+		  	<li><a href="{% url 'blog_new' %}">{% bootstrap_icon "pencil" %} {% trans "Write a Blog Post" %}</a></li>  
+		  </ul>
+		</li>     
+{% else %}
+   
+{% endif %}

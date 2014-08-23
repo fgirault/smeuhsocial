@@ -1,0 +1,69 @@
+{% extends "timeline/homepage/homepage.html" %}
+{% load i18n %}
+{% load account_tags %}
+{% load avatar_tags %}
+{% load microblogging_tags %}
+{% load override_tags %}
+{% load bootstrap3 %}
+
+{% block head_title %}{% trans "User Homepage" %}{% endblock %}
+
+{% block touiteform %}{% endblock %}
+
+{% block body %}
+	
+{{ block.super }}
+{% endblock %}
+
+{% block newsblock %}
+{% user_display other_user as other_user_display %}
+<dl class="dl-horizontal">
+
+			<dt><div class="clearfix">
+                <div><img src="{% avatar_url other_user 80 %}" alt="Photo of {{ other_user }}" class="photo img-rounded" /></div>
+                {% if is_me %}
+                <a href="{% url 'avatar_change' %}" id="avatar_replace">{% bootstrap_icon "pencil" %} ({% trans "replace" %})</a>
+                {% endif %}
+            </div></dt>
+			<dd>
+			
+			<div class="clearfix">
+			
+             {% if other_user.get_profile.name %}
+                <h1>{% blocktrans %}<span class="nickname">{{ other_user_display }}</span>{% endblocktrans %}</h1>
+            {% else %}
+                <h1>{% blocktrans %}<span class="fn nickname">{{ other_user_display }}</span>{% endblocktrans %}</h1>
+            {% endif %} 
+</div>            
+			
+			
+			</dd>
+
+           	{% if other_user.get_profile.name %}
+ 				<dt>{% trans "Name" %}</dt>
+		  	<dd>{{ other_user.get_profile.name }}</dd>
+		  	{% endif %}
+		  	{% if other_user.get_profile.about %}
+		  	<dt>{% trans "About" %}</dt>
+		  	<dd> {{ other_user.get_profile.about }}</dd>
+		  	{% endif %}      
+		  	{% if other_user.get_profile.location%}
+		  	<dt>{% trans "Location" %}</dt>
+		  	<dd>{% bootstrap_icon "map-marker" %}  {{ other_user.get_profile.location }}</dd>
+		  	{% endif %}
+               {% if other_user.get_profile.website %}
+               <dt>{% trans "Website" %}</dt>
+               <dd><a class="url" href="{{ other_user.get_profile.website }}">{% bootstrap_icon "globe" %} {{ other_user.get_profile.website }}</a></dd>
+               {% endif %}         
+               {% comment %} 
+               <dt>{% bootstrap_icon "star" %} {% trans "Following" %} <span class="badge">{% following_count other_user %}</span></dt>
+               <dd>
+               </dd>
+               <dt>{% bootstrap_icon "eye-open" %} {% trans "Followers" %} <span class="badge">{% follower_count other_user %}</span></dt>
+               <dd></dd>
+               {% endcomment %}
+               
+		</dl>
+                                  
+{{ block.super }}
+{% endblock %}

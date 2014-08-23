@@ -97,7 +97,8 @@ urlpatterns = patterns(
     url(r"^photos/", include("photos.urls")),
     url(r"^avatar/", include("avatar.urls")),
     url(r"^fu/",  include("fukung.urls")),
-    url(r"^timeline/", include("timeline.urls")),    
+    url(r"^timeline/", include("timeline.urls")),  
+    url(r"^artist/", include("artist.urls")),  
     
     
     # Feeds urls
@@ -157,10 +158,7 @@ tagged_models = (
     dict(title="Audio Tracks",
          query=lambda tag: TaggedItem.objects.get_by_model(Track, tag),
          content_template="pinax_tagging_ext/audiotracks.html",
-         ),
-    dict(title="Topics",
-         query=lambda tag: TaggedItem.objects.get_by_model(Topic, tag),
-         ),
+         ),   
 )
 tagging_ext_kwargs = {
     "tagged_models": tagged_models,
@@ -179,14 +177,16 @@ urlpatterns += patterns(
 urlpatterns += patterns(
     "",
     url("^(?P<username>[\w\._-]+)/music", include(
-        "audiotracks.urls")),
+        "audiotracks.urls"), name = "user_track"),
     url("^music", include("audiotracks.urls"))
 )
 
 urlpatterns += patterns(
     "",
+    #url(r"^(?P<username>[\w\._-]+)/$",
+    #    "profiles.views.profile", name="profile_detail"),
     url(r"^(?P<username>[\w\._-]+)/$",
-        "profiles.views.profile", name="profile_detail"),
+        "timeline.views.userhome", name="profile_detail"),                    
 )
 
 if settings.SERVE_MEDIA:

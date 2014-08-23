@@ -8,14 +8,24 @@
 {% block head_title %}{% trans "Timeline" %}{% endblock %}
 
 {% block subnav %}
-{% include "call_to_action.html" %}
+<ul class="nav navbar-nav subnav">
+	{% include 'cta_drop.html' %}
+	{% block ssnav %}<li><a href="{% url 'friends_news' %}">{% bootstrap_icon "heart" %} {% trans "Friends' News" %}</a></li>{% endblock %}
+	<li><a href="{% url 'following_news' %}">{% bootstrap_icon "comment" %} {% trans "Tweets You Follow" %}</a></li>
+{#   	<li><a href="{% url 'tweets_you_follow' %}" title="{% trans "Tweets" %}" >{% bootstrap_icon "comment" %} {% trans "Tweets" %}</a></li> #}
+	
+</ul>
+<ul class="nav navbar-nav subnav navbar-right">
+
+</ul>
 {% endblock %}
 
 {% block body %}
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1">
-			<h1>Actualités</h1>
+		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-7 col-md-offset-1 col-lg-6 col-lg-offset-1">
+		<h1>{% block title %}{% trans 'News' %}{% endblock %}</h1>			
+			
 			<form id="touite_navbar_form" action="{% url 'tweets_you_follow' %}" method="POST" class="form-horizontal">
 			    {% csrf_token %}
 			   	<div class="input-group">
