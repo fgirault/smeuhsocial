@@ -18,12 +18,13 @@ crash.
     {% if user.is_authenticated %}    
         <ul class="nav navbar-nav subnav">
             <li><a href="{% url 'photo_upload' %}">{% bootstrap_icon "upload" %}  {% trans "Upload a Photo" %}</a></li>
-            {% block ssnav %}<li><a href="{% url 'friends_photos' %}">{% bootstrap_icon "heart" %} {% trans "Friends' Photos" %}</a></li>{% endblock %}
-            <li><a href="{% url 'photo_most_viewed' %}">{% bootstrap_icon "eye-open" %} {% trans "Most Viewed" %}</a></li>
-            <li><a href="{% url 'photo_random' %}">{% bootstrap_icon "gift" %} <span class="hidden-sm">{% trans "Random" %}</span></a></li>
+            <li><a href="{% url 'photos' %}">{% bootstrap_icon "list" %} {% trans "Latest Photos" %}</a></li>
+            <li><a href="{% url 'friends_photos' %}">{% bootstrap_icon "heart" %} {% trans "Friends' Photos" %}</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right subnav">
-            <li><a href="{% url 'photos_yours' %}">{% bootstrap_icon "user" %} {% trans "Your Photos" %}</a></li>
+            <li><a href="{% url 'photo_random' %}"  title="{% trans 'Random' %}">{% bootstrap_icon "gift" %} <span class="hidden-sm">{% trans "Random" %}</span></a></li>
+            <li><a href="{% url 'photo_most_viewed' %}" title="{% trans 'Most Viewed' %}">{% bootstrap_icon "eye-open" %} <span class="hidden-sm">{% trans "Most Viewed" %}</span></a></li>
+            <li><a href="{% url 'photos_yours' %}"  title="{% trans 'Your Photos' %}">{% bootstrap_icon "user" %} <span class="hidden-sm">{% trans "Your Photos" %}</span></a></li>
         </ul>       
     {% else %}
         &nbsp;
