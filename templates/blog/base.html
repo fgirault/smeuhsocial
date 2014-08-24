@@ -9,7 +9,8 @@
     {% if user.is_authenticated %}
         <ul class="nav navbar-nav subnav">
             <li><a href="{% url 'blog_new' %}">{% bootstrap_icon "pencil" %} {% trans "Write a Blog Post" %}</a></li>
-            {% block ssnav %}<li><a href="{% url 'friends_blogs' %} ">{% bootstrap_icon "heart" %} {% trans "Friends' Blogs" %}</a></li>{% endblock %}
+            <li><a href="{% url 'blog_list_all' %} ">{% bootstrap_icon "list" %} {% trans "All Blogs" %}</a></li>
+            <li><a href="{% url 'friends_blogs' %} ">{% bootstrap_icon "heart" %} {% trans "Friends' Blogs" %}</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right subnav">
             <li><a href="{% url 'blog_list_yours' %}">{% bootstrap_icon "cog" %} {% trans "Your Posts" %}</a></li>
