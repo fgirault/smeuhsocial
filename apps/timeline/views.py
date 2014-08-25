@@ -10,6 +10,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.utils.translation import ugettext
+from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
+
+from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
 
 # model import
 from microblogging.models import Tweet
@@ -288,48 +292,7 @@ class UserHomePageView(TemplateView):
         
         else:
             if self.request.user.is_authenticated() and self.request.method == "POST":
-                if self.request.POST.get("action") == "invite": # @@@ perhaps the form should just post to friends and be redirected here
-                    invite_form = InviteFriendForm(self.request.user, self.request.POST)
-                    if invite_form.is_valid():
-                        invite_form.save()
-                        messages.success(self.request, _("Friendship requested with %(username)s") % {
-                            'username': invite_form.cleaned_data['to_user']
-                        })
-                else:
-                    invite_form = InviteFriendForm(self.request.user, {
-                        "to_user": username,
-                        "message": ugettext("Let's be friends!"),
-                    })
-                    invitation_id = self.request.POST.get("invitation", None)
-                    if self.request.POST.get("action") == "accept": # @@@ perhaps the form should just post to friends and be redirected here
-                        try:
-                            invitation = FriendshipInvitation.objects.get(id=invitation_id)
-                            if invitation.to_user == self.equest.user:
-                                invitation.accept()
-                                messages.add_message(self.request, messages.SUCCESS,
-                                    ugettext("You have accepted the friendship request from %(from_user)s") % {
-                                        "from_user": invitation.from_user
-                                    }
-                                )
-                                is_friend = True
-                                other_friends = Friendship.objects.friends_for_user(other_user)
-                        except FriendshipInvitation.DoesNotExist:
-                            pass
-                    elif self.request.POST.get("action") == "decline": # @@@ perhaps the form should just post to friends and be redirected here
-                        try:
-                            invitation = FriendshipInvitation.objects.get(id=invitation_id)
-                            if invitation.to_user == self.request.user:
-                                invitation.decline()
-                                messages.add_message(self.request, messages.SUCCESS,
-                                    ugettext("You have declined the friendship request from %(from_user)s") % {
-                                        "from_user": invitation.from_user
-                                    }
-                                )
-                                other_friends = Friendship.objects.friends_for_user(other_user)
-                        except FriendshipInvitation.DoesNotExist:
-                            pass
-                previous_invitations_to = FriendshipInvitation.objects.invitations(to_user=other_user, from_user=self.request.user)
-                previous_invitations_from = FriendshipInvitation.objects.invitations(to_user=self.request.user, from_user=other_user)
+                pass
             else:
                 invite_form = InviteFriendForm(self.request.user, {
                     "to_user": username,
@@ -345,8 +308,60 @@ class UserHomePageView(TemplateView):
         return context
     
     
-    def post(self):
-        pass
+    def post(self, *args, **kw):        
+        if self.request.POST.get("action") == "invite": 
+            username = self.request.POST.get("to_user")
+            other_user = get_object_or_404(User, username=username)
+            
+            invite_form = InviteFriendForm(self.request.user, self.request.POST)
+            if invite_form.is_valid():
+                invite_form.save()
+                messages.success(self.request, _("Friendship requested with %(username)s") % {
+                    'username': invite_form.cleaned_data['to_user']
+                })
+        elif self.request.POST.get("action") == "remove":
+            username = kw['username']
+            other_user = get_object_or_404(User, username=username)
+            Friendship.objects.remove(self.request.user, other_user)
+            messages.add_message(self.request, messages.SUCCESS,
+                ugettext("You have removed %(from_user)s from friends") % {
+                    "from_user": other_user
+                }
+            )           
+        else:
+            username = kw['username']
+            other_user = get_object_or_404(User, username=username)
+            invite_form = InviteFriendForm(self.request.user, {
+                "to_user": username,
+                "message": ugettext("Let's be friends!"),
+            })
+            invitation_id = self.request.POST.get("invitation", None)
+            if self.request.POST.get("action") == "accept":
+                try:
+                    invitation = FriendshipInvitation.objects.get(id=invitation_id)
+                    if invitation.to_user == self.equest.user:
+                        invitation.accept()
+                        messages.add_message(self.request, messages.SUCCESS,
+                            ugettext("You have accepted the friendship request from %(from_user)s") % {
+                                "from_user": invitation.from_user
+                            }
+                        )
+                except FriendshipInvitation.DoesNotExist:
+                    pass
+            elif self.request.POST.get("action") == "decline":
+                try:
+                    invitation = FriendshipInvitation.objects.get(id=invitation_id)
+                    if invitation.to_user == self.request.user:
+                        invitation.decline()
+                        messages.add_message(self.request, messages.SUCCESS,
+                            ugettext("You have declined the friendship request from %(from_user)s") % {
+                                "from_user": invitation.from_user
+                            }
+                        )                        
+                except FriendshipInvitation.DoesNotExist:
+                    pass
+        
+        return HttpResponseRedirect(reverse("timeline.views.userhome", kwargs = {"username": username}))
 
 
 
