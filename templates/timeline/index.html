@@ -10,13 +10,14 @@
 {% block subnav %}
 <ul class="nav navbar-nav subnav">
 	{% include 'cta_drop.html' %}
-	{% block ssnav %}<li><a href="{% url 'friends_news' %}">{% bootstrap_icon "heart" %} {% trans "Friends' News" %}</a></li>{% endblock %}
+	<li><a href="{% url 'timeline' %}">{% bootstrap_icon "list" %} {% trans "All News" %}</a></li>		
+	<li><a href="{% url 'friends_news' %}">{% bootstrap_icon "heart" %} {% trans "Friends' News" %}</a></li>
 	<li><a href="{% url 'following_news' %}">{% bootstrap_icon "comment" %} {% trans "Tweets You Follow" %}</a></li>
 {#   	<li><a href="{% url 'tweets_you_follow' %}" title="{% trans "Tweets" %}" >{% bootstrap_icon "comment" %} {% trans "Tweets" %}</a></li> #}
 	
 </ul>
 <ul class="nav navbar-nav subnav navbar-right">
-
+{% block subnavright %}{% endblock %}
 </ul>
 {% endblock %}
 

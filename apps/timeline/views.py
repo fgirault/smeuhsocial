@@ -8,6 +8,8 @@ from django.views.generic import TemplateView #, RedirectView
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib import messages
+from django.utils.translation import ugettext
 
 # model import
 from microblogging.models import Tweet
@@ -17,6 +19,10 @@ from blog.models import Post
 from threadedcomments.models import ThreadedComment
 from friends.models import friend_set_for
 from microblogging.models import get_following_followers_lists
+from friends.forms import InviteFriendForm
+from friends.models import FriendshipInvitation, Friendship
+from microblogging.models import Following
+from django.db.transaction import is_managed
         
 class TimeLineItem(object):
     """
@@ -209,14 +215,24 @@ class UserHomePageView(TemplateView):
         # TODO use a query parameter for the time delta. here is 3 months
         ago = datetime.datetime.now() - datetime.timedelta(30 * 3)
         following_list, followers_list = get_following_followers_lists(self.request.user)
-       
-        name = context['username'] 
-        #name = self.request.GET.get('name', None)
+        other_friends = None
+        username = name = context.get('username', None)                         
+        
         if name:
-            user = get_object_or_404(User, username=name)
+            user = other_user = get_object_or_404(User, username=name)
         else:
-            user = self.request.user
-        context['other_user'] = user
+            user = other_user = self.request.user
+            
+        if self.request.user == other_user:
+            context['is_me']= True
+            is_friend = False
+        else:
+            is_friend = context['is_friend'] = Friendship.objects.are_friends(self.request.user, other_user)
+            context['is_following'] = Following.objects.is_following(self.request.user, other_user)
+        context['other_friends'] = Friendship.objects.friends_for_user(other_user)
+                     
+            
+        context['other_user'] = other_user
         tweets = [ 
             TimeLineItem(item, item.sent, item.sender, "timeline/_tweet.html") 
             for item in Tweet.objects.all().filter(sender_id=user.id, sender_type__name="user").order_by("-sent")[:16]
@@ -249,8 +265,88 @@ class UserHomePageView(TemplateView):
             ]        
         
         context['timelineitems'] = merge(tweets, comments, field="date")[:16]                 
-        context['prefix_sender'] = True        
+        context['prefix_sender'] = True
+        
+        
+        invite_form = None
+        if is_friend:
+            previous_invitations_to = None
+            previous_invitations_from = None
+            if self.request.method == "POST":
+                if self.request.POST.get("action") == "remove": # @@@ perhaps the form should just post to friends and be redirected here
+                    Friendship.objects.remove(self.request.user, other_user)
+                    messages.add_message(self.request, messages.SUCCESS,
+                        ugettext("You have removed %(from_user)s from friends") % {
+                            "from_user": other_user
+                        }
+                    )
+                    is_friend = False
+                    invite_form = InviteFriendForm(self.request.user, {
+                        "to_user": username,
+                        "message": ugettext("Let's be friends!"),
+                    })
+        
+        else:
+            if self.request.user.is_authenticated() and self.request.method == "POST":
+                if self.request.POST.get("action") == "invite": # @@@ perhaps the form should just post to friends and be redirected here
+                    invite_form = InviteFriendForm(self.request.user, self.request.POST)
+                    if invite_form.is_valid():
+                        invite_form.save()
+                        messages.success(self.request, _("Friendship requested with %(username)s") % {
+                            'username': invite_form.cleaned_data['to_user']
+                        })
+                else:
+                    invite_form = InviteFriendForm(self.request.user, {
+                        "to_user": username,
+                        "message": ugettext("Let's be friends!"),
+                    })
+                    invitation_id = self.request.POST.get("invitation", None)
+                    if self.request.POST.get("action") == "accept": # @@@ perhaps the form should just post to friends and be redirected here
+                        try:
+                            invitation = FriendshipInvitation.objects.get(id=invitation_id)
+                            if invitation.to_user == self.equest.user:
+                                invitation.accept()
+                                messages.add_message(self.request, messages.SUCCESS,
+                                    ugettext("You have accepted the friendship request from %(from_user)s") % {
+                                        "from_user": invitation.from_user
+                                    }
+                                )
+                                is_friend = True
+                                other_friends = Friendship.objects.friends_for_user(other_user)
+                        except FriendshipInvitation.DoesNotExist:
+                            pass
+                    elif self.request.POST.get("action") == "decline": # @@@ perhaps the form should just post to friends and be redirected here
+                        try:
+                            invitation = FriendshipInvitation.objects.get(id=invitation_id)
+                            if invitation.to_user == self.request.user:
+                                invitation.decline()
+                                messages.add_message(self.request, messages.SUCCESS,
+                                    ugettext("You have declined the friendship request from %(from_user)s") % {
+                                        "from_user": invitation.from_user
+                                    }
+                                )
+                                other_friends = Friendship.objects.friends_for_user(other_user)
+                        except FriendshipInvitation.DoesNotExist:
+                            pass
+                previous_invitations_to = FriendshipInvitation.objects.invitations(to_user=other_user, from_user=self.request.user)
+                previous_invitations_from = FriendshipInvitation.objects.invitations(to_user=self.request.user, from_user=other_user)
+            else:
+                invite_form = InviteFriendForm(self.request.user, {
+                    "to_user": username,
+                    "message": ugettext("Let's be friends!"),
+                })
+                previous_invitations_to = None
+                previous_invitations_from = None
+        
+        context['invite_form'] = invite_form
+        context['previous_invitations_to'] = previous_invitations_to
+        context['previous_invitations_from'] = previous_invitations_from  
+        context['other_friends'] = other_friends               
         return context
+    
+    
+    def post(self):
+        pass
 
 
 

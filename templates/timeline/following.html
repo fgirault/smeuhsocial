@@ -5,14 +5,3 @@
 {% block head_title %}{% trans "Tweets You Follow" %}{% endblock %}
 
 {% block title %}{% trans "Tweets You Follow" %}{% endblock %}
-
-{% block subnav %}
-<ul class="nav navbar-nav subnav">
-	{% include 'cta_drop.html' %}
-	<li><a href="{% url 'timeline' %}">{% bootstrap_icon "list" %} {% trans "All News" %}</a></li>	
-	{% block ssnav %}<li><a href="{% url 'friends_news' %}">{% bootstrap_icon "heart" %} {% trans "Friends' News" %}</a></li>{% endblock %}
-</ul>
-<ul class="nav navbar-nav subnav navbar-right">
-
-</ul>
-{% endblock %}

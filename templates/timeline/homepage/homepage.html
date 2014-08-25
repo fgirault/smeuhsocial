@@ -53,6 +53,7 @@
  			{% endblock %}
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6">
+			{% block photosblock %}			
 			{% if latest_photos %}
 			<h4>
 			  <a title="Atom Feed" href="{% url 'all_photos_feed' %}"><img alt="Feed Icon"
@@ -105,7 +106,8 @@
 					{% bootstrap_icon "pencil" %}  {% trans "All Blogs" %}
 				</a> 
 				{% endif %}          
-			</div> 			
+			</div>
+		{% endblock %} 			
 		</div>
 	</div>
 </div>

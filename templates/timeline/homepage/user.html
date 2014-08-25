@@ -1,7 +1,9 @@
 {% extends "timeline/homepage/homepage.html" %}
+
 {% load i18n %}
 {% load account_tags %}
 {% load avatar_tags %}
+{% load uni_form_tags %}
 {% load microblogging_tags %}
 {% load override_tags %}
 {% load bootstrap3 %}
@@ -11,32 +13,27 @@
 {% block touiteform %}{% endblock %}
 
 {% block body %}
-	
+	    
 {{ block.super }}
 {% endblock %}
 
 {% block newsblock %}
 {% user_display other_user as other_user_display %}
-<dl class="dl-horizontal">
-
-			<dt><div class="clearfix">
-                <div><img src="{% avatar_url other_user 80 %}" alt="Photo of {{ other_user }}" class="photo img-rounded" /></div>
+	<dl class="dl-horizontal">
+			<dt>
+				<div class="clearfix">
+                <img src="{% avatar_url other_user 80 %}" alt="Photo of {{ other_user }}" class="photo img-rounded" />
                 {% if is_me %}
                 <a href="{% url 'avatar_change' %}" id="avatar_replace">{% bootstrap_icon "pencil" %} ({% trans "replace" %})</a>
                 {% endif %}
-            </div></dt>
-			<dd>
-			
-			<div class="clearfix">
-			
+            	</div>
+            </dt>
+			<dd>										
              {% if other_user.get_profile.name %}
                 <h1>{% blocktrans %}<span class="nickname">{{ other_user_display }}</span>{% endblocktrans %}</h1>
             {% else %}
                 <h1>{% blocktrans %}<span class="fn nickname">{{ other_user_display }}</span>{% endblocktrans %}</h1>
-            {% endif %} 
-</div>            
-			
-			
+            {% endif %}				            						
 			</dd>
 
            	{% if other_user.get_profile.name %}
@@ -51,19 +48,91 @@
 		  	<dt>{% trans "Location" %}</dt>
 		  	<dd>{% bootstrap_icon "map-marker" %}  {{ other_user.get_profile.location }}</dd>
 		  	{% endif %}
-               {% if other_user.get_profile.website %}
-               <dt>{% trans "Website" %}</dt>
-               <dd><a class="url" href="{{ other_user.get_profile.website }}">{% bootstrap_icon "globe" %} {{ other_user.get_profile.website }}</a></dd>
-               {% endif %}         
-               {% comment %} 
-               <dt>{% bootstrap_icon "star" %} {% trans "Following" %} <span class="badge">{% following_count other_user %}</span></dt>
-               <dd>
-               </dd>
-               <dt>{% bootstrap_icon "eye-open" %} {% trans "Followers" %} <span class="badge">{% follower_count other_user %}</span></dt>
-               <dd></dd>
-               {% endcomment %}
+             {% if other_user.get_profile.website %}
+             <dt>{% trans "Website" %}</dt>
+             <dd><a class="url" href="{{ other_user.get_profile.website }}">{% bootstrap_icon "globe" %} {{ other_user.get_profile.website }}</a></dd>
+             {% endif %}         
+             {% comment %} 
+             <dt>{% bootstrap_icon "star" %} {% trans "Following" %} <span class="badge">{% following_count other_user %}</span></dt>
+             <dd>
+             </dd>
+             <dt>{% bootstrap_icon "eye-open" %} {% trans "Followers" %} <span class="badge">{% follower_count other_user %}</span></dt>
+             <dd></dd>
+             {% endcomment %}
                
 		</dl>
-                                  
+                
+		<div class="col-xs-12">
+			{% if is_me %}
+			{% else %}
+	        <form method="POST" action="{% url 'toggle_follow' other_user %}" class="form-inline" role="form" style="display: inline;">
+	            {% csrf_token %}
+	            {% if is_following %}
+	            <button class="btn btn-default" name="action" value="unfollow">{% bootstrap_icon "minus-sign" %} {% trans "unfollow" %}</button>                                
+	            {% else %}
+	            <button class="btn btn-default" name="action" value="follow">{% bootstrap_icon "plus-sign" %} {% trans "follow tweets" %}</button>                                
+	            {% endif %}
+	            {% if is_friend %}	            
+	         	<a href="{% url 'messages_compose' %}{{ other_user }}/" class="btn btn-default">{% bootstrap_icon "envelope" %}  {% trans "Send a message" %}</a>                      
+	          	{% endif %}	                             
+	        </form>
+	         {% if is_friend %}
+	         <form method="POST" action="" class="form-inline" role="form" style="display: inline;">
+	          {% csrf_token %}
+	          <button class="btn btn-default" name="action" value="remove">{% bootstrap_icon "ban-circle" %} {% trans "remove from friends" %}</button>                                                                       
+	          </form>
+              {% else %}
+              
+              {% endif %} {# is_friend #}
+	          
+	          
+	          
+	          {% endif %}
+        </div>                                  
+{{ block.super }}
+{% endblock %}
+
+{% block photosblock %}
+{% if is_friend %}
+{% else %}
+{% if previous_invitations_from %}
+                  <p>{% blocktrans %}{{ other_user_display }} has requested friendship.{% endblocktrans %}</p>
+                  {% for invitation in previous_invitations_from %}
+                      <div class="friendship_request">
+                          <p>From <a href="{% url 'profile_detail' invitation.from_user.username %}">{% user_display invitation.from_user %}</a> ({{ invitation.sent }}):</p>
+                          <p class="invitation_message">{{ invitation.message }}</p>
+                          <form method="post" action="">
+                              <input type="hidden" name="invitation" value="{{ invitation.id }}"/>
+                              <input type="hidden" name="action" value="accept"/>
+                              <input type="submit" value="{% trans 'accept' %}" />
+                          </form>
+                          <form method="post" action="">
+                              {% csrf_token %}
+                              <input type="hidden" name="invitation" value="{{ invitation.id }}"/>
+                              <input type="hidden" name="action" value="decline"/>
+                              <input type="submit" value="{% trans 'decline' %}" />
+                          </form>
+                      </div>
+                  {% endfor %}
+              {% else %}
+                  {% if user.is_authenticated %}
+                    {% if previous_invitations_to %}
+                        <p>{% trans "Friendship request sent." %}</p>
+                    {% else %}                                  
+                        <form class="form" method="POST" action="">
+                            {% csrf_token %}
+                            <fieldset><legend>{% trans "Add As Friend" %}</legend>
+                                {{ invite_form|as_uni_form }}
+                                <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">						   		
+						     		<button name="action" value="invite" class="btn btn-default pull-right">{% bootstrap_icon "plus" %} {% trans "invite" %}</button>
+						     		</div>                											    
+						  </div>                                                                                    
+                            </fieldset>
+                        </form>
+                    {% endif %} {# previous_invitations_to #}
+                  {% endif %}
+              {% endif %} {# previous_invitations_from #}
+{% endif %}
 {{ block.super }}
 {% endblock %}
