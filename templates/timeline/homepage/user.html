@@ -62,7 +62,7 @@
                
 		</dl>
                 
-		<div class="col-xs-12">
+		
 			{% if is_me %}
 			{% else %}
 	        <form method="POST" action="{% url 'toggle_follow' other_user %}" class="form-inline" role="form" style="display: inline;">
@@ -89,7 +89,7 @@
 	          
 	          
 	          {% endif %}
-        </div>                                  
+                                      
 {{ block.super }}
 {% endblock %}
 
