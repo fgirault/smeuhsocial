@@ -20,12 +20,12 @@
 			<ul class="pager photo-pager">
 				  {% if previous_photo_id %}
 				  <li class="previous">
-				  	<a href="{% url 'photo_details' previous_photo_id %}" title="{% trans 'Previous picture' %}">{% bootstrap_icon "arrow-left" %} <span class="hidden-xs">{% trans 'Previous picture' %}</span></a>
+				  	<a id="previous_link" href="{% url 'photo_details' previous_photo_id %}" title="{% trans 'Previous picture' %}">{% bootstrap_icon "arrow-left" %} <span class="hidden-xs">{% trans 'Previous picture' %}</span></a>
 				  </li>
 			      {% endif %}
 			      {% if next_photo_id %}
 				  <li class="next">
-				  	<a  href="{% url 'photo_details' next_photo_id %}" title="{% trans 'Next picture' %}"><span class="hidden-xs">{% trans 'Next picture' %}</span>  {% bootstrap_icon "arrow-right" %}</a>
+				  	<a  id="next_link" href="{% url 'photo_details' next_photo_id %}" title="{% trans 'Next picture' %}"><span class="hidden-xs">{% trans 'Next picture' %}</span>  {% bootstrap_icon "arrow-right" %}</a>
 				  </li>			  			 
 			      {% endif %}			  
 			</ul>
@@ -84,5 +84,19 @@
 			return false;
 		})
 	});
+	
+	/*
+
+	$("body").keydown(function(e) {
+	  if(e.keyCode == 37) { // left
+	    $("#previous_link")[0].click();
+	  }
+	  else if(e.keyCode == 39) { // right
+		$("#next_link")[0].click();
+	  }
+	});
+	*/
+
 </script>
+
 {% endblock %}
