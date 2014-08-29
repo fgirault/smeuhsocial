@@ -8,6 +8,7 @@
     {% if user.is_authenticated %}
         <ul class="nav navbar-nav subnav">
           <li><a href="{% url 'upload_track' %}">{% bootstrap_icon "upload" %} {% trans 'Upload track' %}</a></li>
+          <li><a href="{% url 'artist_index' %}">{% bootstrap_icon "list" %} {% trans 'Artists' %}</a></li>  
         </ul>
         <ul class="nav navbar-nav navbar-right subnav">
           <li><a href="{% url 'user_index' user.username %}">{% bootstrap_icon "user" %} {% trans 'Your tracks' %}</a></li>

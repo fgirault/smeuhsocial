@@ -23,9 +23,7 @@
 		<div class="col-md-10 col-md-offset-1">
     <h1>{% trans "All Blogs" %}</h1>
 
-    {% if blogs %}
-        <p>{% trans "These are blog posts from everyone:" %}</p>
-
+    {% if blogs %}        
         {% autopaginate blogs %}
 
             {% for blog_post in blogs %}
