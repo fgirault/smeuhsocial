@@ -44,11 +44,15 @@
 			    <a href="{% url 'timeline' %}">{% trans 'News' %}</a>
 			</h4>
 			{% for timelineitem in timelineitems %}
-			{% include timelineitem.template %}				    			
+				{% include timelineitem.template %}				    			
   			{% endfor %}
+ 			{% endif %}
+ 			{% endblock %}
+  			{% block newsfooter %}
+  			{% if timelineitems %}
   			<div  class="clearfix" >
 	 			<a href="{% url 'timeline' %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "bullhorn" %} {% trans "Plus d'actualités" %}</a>
- 			</div>
+ 			</div> 		
  			{% endif %}	
  			{% endblock %}
 		</div>
@@ -66,12 +70,15 @@
 			  <a href="{% url 'photo_details' id=photo.id %}" title="{{ photo.title }} - {% trans 'Posted by' %} {% user_display photo.member %}"><img
 			    class="img-rounded  timeline-thumb" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}"></a>
 			  {% endfor %}			  
- 			</div>
+ 			</div> 			
+ 			{% endif %} 				
+ 			{% block photosfooter %}
+ 				{% if latest_photos %}
 				<div  class="clearfix" >
 					<a href="{% url 'photos' %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "camera" %} {% trans "Latest Photos" %}</a>
 				</div>
- 			
- 			{% endif %}	
+				{% endif %}
+			{% endblock %}
 			<div class="col-xs-12 col-sm-12 col-md-6">
 				{% if latest_tracks %}
 				<h4>
@@ -85,8 +92,12 @@
 				{% for track in latest_tracks %}
 					{% include "timeline/homepage/_track.html" %}
 				{% endfor %}  					
-				<a href="{% url 'audiotracks' %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "headphones" %} {% trans 'Latest tracks' %}</a>
-				{% endif %}			  				 
+				{% endif %}
+				{% block tracksfooter %}
+					{% if latest_tracks %}
+						<a href="{% url 'audiotracks' %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "headphones" %} {% trans 'Latest tracks' %}</a>				
+					{% endif %}
+				{% endblock %}			  				 
 			</div>
 				
 				<div class="col-xs-12 col-sm-12 col-md-6">
@@ -101,11 +112,15 @@
 			  	</h4>
 				{% for blog_post in latest_blogs%}
 				{% include "timeline/homepage/_post.html" %}
-				{% endfor %}				  
-				<a href="{% url 'blog_list_all' %}" class="btn btn-default btn-sm pull-right">
-					{% bootstrap_icon "pencil" %}  {% trans "All Blogs" %}
-				</a> 
-				{% endif %}          
+				{% endfor %}				  				 
+				{% endif %}
+				{% block blogsfooter %}
+				{% if latest_blogs %}
+					<a href="{% url 'blog_list_all' %}" class="btn btn-default btn-sm pull-right">
+						{% bootstrap_icon "pencil" %}  {% trans "All Blogs" %}
+					</a>
+				{% endif %}
+				{% endblock %}          
 			</div>
 		{% endblock %} 			
 		</div>

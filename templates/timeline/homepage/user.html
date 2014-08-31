@@ -145,4 +145,25 @@
 {{ block.super }}
 {% endblock %}
 
+
+{% block newsfooter %}
+{% comment %}
+{% user_display other_user as other_user_display %}
+{% if timelineitems %}
+<div  class="clearfix" >
+	<a href="{% url 'user_timeline' other_user_display %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "bullhorn" %} {% trans "More news" %}</a>
+</div> 		
+{% endif %}	
+{% endcomment %}
+{% endblock %}
+
+{% block photosfooter %}
+{% endblock %}
+
+{% block tracksfooter %}
+{% endblock %}
+
+{% block blogsfooter %}
+{% endblock %}
+
 {% block extra_body %}<script>$(document).ready(function(){$('button[type=submit]').popConfirm();});</script>{% endblock %}

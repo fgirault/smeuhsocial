@@ -186,7 +186,7 @@ urlpatterns += patterns(
     #url(r"^(?P<username>[\w\._-]+)/$",
     #    "profiles.views.profile", name="profile_detail"),
     url(r"^(?P<username>[\w\._-]+)/$",
-        "timeline.views.userhome", name="profile_detail"),                    
+        "timeline.views.user_home", name="profile_detail"),                    
 )
 
 if settings.SERVE_MEDIA:

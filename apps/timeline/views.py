@@ -28,24 +28,10 @@ from friends.models import FriendshipInvitation, Friendship
 from microblogging.models import Following
 from django.db.transaction import is_managed
         
-class TimeLineItem(object):
-    """
-    A wrapping class over a content to be displayed in the timeline
-    """    
-    def __init__(self, item, date, user, template):
-        """
         
-        @param item: an object to be displayed in the timeline (tweet, 
-            image, comment, post, track ...)
-        @param date: the datetime of the item
-        @param user: original poster
-        @param template:  
-        """        
-        self.item = item
-        self.date = date
-        self.user = user
-        self.template = template           
-
+        
+from timeline.models import TimeLineItem        
+        
 class TimeLineView(TemplateView):
 
     template_name = "timeline/index.html"
@@ -383,6 +369,7 @@ class LegacyHomePageView(TemplateView):
         context['prefix_sender'] = True
         return context
 
+timeline = login_required(TimeLineView.as_view())
     
 home = login_required(HomePageView.as_view())
 
@@ -392,4 +379,6 @@ friends = login_required(FriendsPageView.as_view())
 
 following = login_required(FollowingPageView.as_view())
 
-userhome = login_required(UserHomePageView.as_view())
+user_home = login_required(UserHomePageView.as_view())
+
+user_timeline = login_required(UserHomePageView.as_view())

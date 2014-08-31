@@ -58,7 +58,7 @@
                       <form method="POST" action="" class="form-inline" role="form">
                           {% csrf_token %}
                           <input type="hidden" name="action" value="remove" />
-						<button class="btn btn-default" name="action" value="remove">{% bootstrap_icon "ban-circle" %} {% trans "remove from friends" %}</button>
+						<button class="btn btn-default">{% bootstrap_icon "ban-circle" %} {% trans "remove from friends" %}</button>
                                                                        
                       </form>
                   {% endif %}
