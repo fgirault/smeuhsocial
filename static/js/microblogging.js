@@ -24,15 +24,13 @@ jQuery(document).ready(function($) {
   			url: urlSubmit,
   			data: $(this).serializeArray(),
   			success: function(data) {
-  				//alert(data);
   				$('#new_tweet')[0].value = "";
   				update_chars_left();
   				$('#new_tweet').blur();
   				
   				var div = $(data).hide();
   				$("#timeline div:first-child").first().prepend(div);
-  			    div.fadeIn("slow");
-  				
+  			    div.slideDown("slow");  				
   			}
   		});
   		return false;
