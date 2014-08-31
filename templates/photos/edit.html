@@ -23,7 +23,7 @@
 			<form action="{% url 'photo_destroy' id=photo.id %}" method="POST" class="form-horizontal">
 	            {% csrf_token %}
 	            <input type="hidden" name="action" value="delete"/>
-	            <button type="submit" name="action" value="delete" class="btn btn-default" id="delete_photo">{% bootstrap_icon "remove" %} {% trans 'Delete Photo' %}</button>	           
+	            <button type="submit" class="btn btn-default" id="delete_photo">{% bootstrap_icon "remove" %} {% trans 'Delete Photo' %}</button>	           
         	</form>					
 		</div>		
 		<div class="col-xs-12 col-sm-6 col-md-5">

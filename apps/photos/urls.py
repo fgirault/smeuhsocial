@@ -12,7 +12,7 @@ urlpatterns = patterns("",
     # your photos
     url(r"^yourphotos/$", "photos.views.yourphotos", name="photos_yours"),
     # a members photos
-    url(r"^member/(?P<username>[\w]+)/$", "photos.views.memberphotos", name="photos_member"),
+    url(r"^user/(?P<username>[\w]+)/$", "photos.views.user_photos", name="photos_user"),
     #destory photo
     url(r"^destroy/(?P<id>\d+)/$", "photos.views.destroy", name="photo_destroy"),
     #edit photo

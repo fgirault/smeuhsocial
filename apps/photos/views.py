@@ -216,40 +216,24 @@ def details(request, id, template_name="photos/details.html"):
 
 
 @login_required
-def memberphotos(request, username, template_name="photos/memberphotos.html"):
+def user_photos(request, username, template_name="photos/user_photos.html"):
     """
-    Get the members photos and display them
+    Get the photos of a user and display them
     """
-    
-    group, bridge = group_and_bridge(request)
-    
-    if bridge:
-        try:
-            group = bridge.get_group(group_slug)
-        except ObjectDoesNotExist:
-            raise Http404
-    else:
-        group = None
-    
+        
     user = get_object_or_404(User, username=username)
-    
+    # TODO add non-public photos to result if authenticated user is a friend
     photos = Image.objects.filter(
-        member__username = username,
+        member = user,
         is_public = True,
-    )
-    
-    if group:
-        photos = group.content_objects(photos, join="pool", gfk_field="content_object")
-    else:
-        photos = photos.filter(pool__object_id=None)
-    
+    )           
     photos = photos.order_by("-date_added")
-    
+    group, bridge = group_and_bridge(request)
     ctx = group_context(group, bridge)
     ctx.update({
         "photos": photos,
-    })
-    
+        "username": username
+    })    
     return render_to_response(template_name, RequestContext(request, ctx))
 
 
