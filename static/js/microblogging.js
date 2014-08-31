@@ -17,21 +17,21 @@ jQuery(document).ready(function($) {
           update_chars_left();
       });
       
-      /*
-      $("#touite_navbar_form").submit(function() {
+      $("#touite_form").submit(function() {
   		var urlSubmit = $(this).attr('action');
   		$.ajax({  
   			type: "POST",
   			url: urlSubmit,
   			data: $(this).serializeArray(),
   			success: function(data) {
-  				$('#new_tweet')[0].value = ""; 
-  				location.reload();
+  				//alert(data);
+  				$('#new_tweet')[0].value = "";
+  				update_chars_left();
+  				$("#timeline").prepend(data);
   			}
   		});
   		return false;
   	});
-  	*/
-
+  	
     };
 });

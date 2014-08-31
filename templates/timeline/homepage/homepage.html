@@ -6,6 +6,7 @@
 {% load bootstrap3 %}
 
 {% block head_title %}{% trans "Homepage" %}{% endblock %}
+{% block extra_head %}{{ block.super }}<script type="text/javascript" src="{{ STATIC_URL }}js/microblogging.js"></script>{% endblock %}
 
 {% block subnav %}
 {% include "call_to_action.html" %}
@@ -16,20 +17,7 @@
 	{% block touiteform %}
 	<div class="row">
 		<div class="col-xs-12">
-			<form id="touite_navbar_form" action="{% url 'post_tweet' %}" method="POST" class="form-horizontal">
-			    {% csrf_token %}
-			   	<div class="input-group">
-			   		<input id="new_tweet" type="text" class="form-control" autocomplete="off" name="text" cols="15" rows="1" 
-			   		placeholder="{% blocktrans %}Touiter{% endblocktrans %} ..." 
-			   		data-placement="bottom" data-trigger="focus" 
-			   		data-content='<span id="chars_left">140</span> caractères restant.</small>' data-html="true"
-			   		data-animation="false"
-			   		/>
-			    	<span class="input-group-btn">
-			    		<button type="submit" class="btn btn-default">{% bootstrap_icon "bullhorn" %} {% trans 'Bang' %}</button>    		
-			    	</span>
-				</div>    
-			</form>	
+			{% include 'microblogging/tweet_form.html' %}	
 		</div>		
 	</div>
 	{% endblock %}
@@ -43,9 +31,11 @@
 				</a>
 			    <a href="{% url 'timeline' %}">{% trans 'News' %}</a>
 			</h4>
+			<div id="timeline">
 			{% for timelineitem in timelineitems %}
 				{% include timelineitem.template %}				    			
   			{% endfor %}
+			</div>
  			{% endif %}
  			{% endblock %}
   			{% block newsfooter %}
