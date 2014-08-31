@@ -1,8 +1,8 @@
 {% load microblogging_tags %}
 {% load account_tags %}
 {% load i18n %}
-{% load override_tags %}
 {% load avatar_tags %}
+{% load override_tags %}
 <div class="tweet-item homepage-item {% if forloop.first %} first{% endif %}{% cycle ' odd' '' %} clearfix">
   {% avatar_link tweet.sender 24 %}
   <div class="clearfix tweet {% if forloop.last %}last{% endif %}" id="t{{ tweet.id }}">
