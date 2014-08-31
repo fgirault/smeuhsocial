@@ -172,6 +172,12 @@
 {% endblock %}
 
 {% block blogsfooter %}
+{% user_display other_user as other_user_display %}
+{% if latest_blogs %}
+	<a href="{% url 'blog_list_user' other_user_display %}" class="btn btn-default btn-sm pull-right">
+		{% bootstrap_icon "pencil" %}  {% trans "All Blogs" %}
+	</a>
+{% endif %}
 {% endblock %}
 
 {% block extra_body %}<script>$(document).ready(function(){$('button[type=submit]').popConfirm();});</script>{% endblock %}
