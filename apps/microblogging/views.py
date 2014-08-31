@@ -58,6 +58,22 @@ def personal(request, form_class=TweetForm,
         "followers_list": followers_list
     }, context_instance=RequestContext(request))
 personal = login_required(personal)
+
+def post_tweet(request, form_class=TweetForm, success_url=None):
+    if request.method == "POST":
+        twitter_account = twitter_account_for_user(request.user)
+        form = form_class(request.user, request.POST)
+        if form.is_valid():
+            text = form.cleaned_data['text']
+            tweet = form.save()
+            if request.POST.get("pub2twitter", False):
+                twitter_account.PostUpdate(text)
+            if request.is_ajax():
+                return render_to_response('microblogging/_tweet.html', { 'tweet': tweet})                
+            else:
+                if success_url is None:
+                    success_url = reverse('timeline.views.home')
+                return HttpResponseRedirect(success_url)        
     
 def public(request, template_name="microblogging/public.html"):
     """

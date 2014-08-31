@@ -9,4 +9,6 @@ urlpatterns = patterns('',
     #url(r'^following/(\w+)/$', 'microblogging.views.following', name='tweet_following'),
     
     url(r'^toggle_follow/(\w+)/$', 'microblogging.views.toggle_follow', name='toggle_follow'),
+    url(r'^post/$', 'microblogging.views.post_tweet', name='post_tweet'),
+    
 )

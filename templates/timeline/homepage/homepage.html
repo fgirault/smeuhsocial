@@ -16,7 +16,7 @@
 	{% block touiteform %}
 	<div class="row">
 		<div class="col-xs-12">
-			<form id="touite_navbar_form" action="{% url 'tweets_you_follow' %}" method="POST" class="form-horizontal">
+			<form id="touite_navbar_form" action="{% url 'post_tweet' %}" method="POST" class="form-horizontal">
 			    {% csrf_token %}
 			   	<div class="input-group">
 			   		<input id="new_tweet" type="text" class="form-control" autocomplete="off" name="text" cols="15" rows="1" 
