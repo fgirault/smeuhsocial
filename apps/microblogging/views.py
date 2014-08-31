@@ -59,6 +59,7 @@ def personal(request, form_class=TweetForm,
     }, context_instance=RequestContext(request))
 personal = login_required(personal)
 
+@login_required
 def post_tweet(request, form_class=TweetForm, success_url=None):
     if request.method == "POST":
         twitter_account = twitter_account_for_user(request.user)
