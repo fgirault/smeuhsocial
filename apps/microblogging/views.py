@@ -70,7 +70,10 @@ def post_tweet(request, form_class=TweetForm, success_url=None):
             if request.POST.get("pub2twitter", False):
                 twitter_account.PostUpdate(text)
             if request.is_ajax():
-                return render_to_response('microblogging/_tweet.html', { 'tweet': tweet, 'prefix_sender': True})                
+                return render_to_response('microblogging/_tweet.html', { 
+                    'tweet': tweet, 
+                    'prefix_sender': True , 
+                    'extra_classes':  "fisrt odd"})                
             else:
                 if success_url is None:
                     success_url = reverse('timeline.views.home')
