@@ -166,6 +166,8 @@
 {% endif %}
 {% endblock %}
 
+{% block photoslink %}{% user_display other_user as other_user_display %}{% url 'photos_user' other_user_display %}{% endblock %}
+
 {% block tracksfooter %}
 {% endblock %}
 

@@ -62,7 +62,7 @@
 			<h4>
 			  <a title="Atom Feed" href="{% url 'all_photos_feed' %}"><img alt="Feed Icon"
 			    src="{{ STATIC_URL }}img/feed-icon.png"></a>
-			  <a href="{% url 'photos' %}">{% blocktrans %}Photos{% endblocktrans %}</a>
+			  <a href="{% block photoslink %}{% url 'photos' %}{% endblock %}">{% blocktrans %}Photos{% endblocktrans %}</a>
 
 			</h4>
 			<div class="center-block" style="margin-bottom: 10px">
