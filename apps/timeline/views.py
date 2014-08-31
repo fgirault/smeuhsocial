@@ -31,7 +31,7 @@ from django.db.transaction import is_managed
         
         
 from timeline.models import TimeLineItem        
-        
+
 class TimeLineView(TemplateView):
 
     template_name = "timeline/index.html"
@@ -47,8 +47,8 @@ class TimeLineView(TemplateView):
             ]            
                 
         posts =  [ 
-            TimeLineItem(item, item.publish, item.author, "timeline/_post.html") 
-            for item in Post.objects.all().filter(publish__gte=ago, status = 2).order_by("-publish")
+            TimeLineItem(item, item.updated_at, item.author, "timeline/_post.html") 
+            for item in Post.objects.all().filter(publish__gte=ago, status = 2).order_by("-updated_at")
             ]
                
         images = [ 
@@ -110,7 +110,7 @@ class HomePageView(TimeLineView):
         # reduce the timeline items
         context['timelineitems'] = context['timelineitems'][:16]
         context['latest_photos'] = Image.objects.all().order_by("-date_added")[:16]
-        context['latest_blogs'] = Post.objects.all().filter(status = 2).order_by("-publish")[:10]
+        context['latest_blogs'] = Post.objects.all().filter(status = 2).order_by("-updated_at")[:10]
         context['latest_tracks'] = Track.objects.all().order_by("-created_at")[:6]        
         return context
 
@@ -131,7 +131,7 @@ class FriendsPageView(TemplateView):
                 
         posts =  [ 
             TimeLineItem(item, item.publish, item.author, "timeline/_post.html") 
-            for item in Post.objects.all().filter(publish__gte=ago, status = 2, author__in=friends).order_by("-publish")
+            for item in Post.objects.all().filter(publish__gte=ago, status = 2, author__in=friends).order_by("-updated_at")
             ]
                
         images = [ 
@@ -171,8 +171,8 @@ class FollowingPageView(TemplateView):
             ]            
                 
         posts =  [ 
-            TimeLineItem(item, item.publish, item.author, "timeline/_post.html") 
-            for item in Post.objects.all().filter(publish__gte=ago, status = 2, author__in=following_list).order_by("-publish")
+            TimeLineItem(item, item.updated_at, item.author, "timeline/_post.html") 
+            for item in Post.objects.all().filter(publish__gte=ago, status = 2, author__in=following_list).order_by("-updated_at")
             ]
                
         images = [ 
@@ -228,10 +228,10 @@ class UserHomePageView(TemplateView):
             for item in Tweet.objects.all().filter(sender_id=user.id, sender_type__name="user").order_by("-sent")[:16]
             ]            
         
-        context['latest_blogs'] = Post.objects.all().filter(status = 2, author=user).order_by("-publish")[:10]
+        context['latest_blogs'] = Post.objects.all().filter(status = 2, author=user).order_by("-updated_at")[:10]
         
         posts =  [ 
-            TimeLineItem(item, item.publish, item.author, "timeline/_post.html") 
+            TimeLineItem(item, item.updated_at, item.author, "timeline/_post.html") 
             for item in context['latest_blogs']
             ]
                
@@ -361,7 +361,7 @@ class LegacyHomePageView(TemplateView):
         context['latest_tweets'] = lambda: Tweet.objects.all().order_by(
             "-sent")[:12]
         context['latest_blogs'] = lambda: Post.objects.filter(
-            status=2).order_by("-publish")[:10]
+            status=2).order_by("-updated_at")[:10]
         context['latest_photos'] = lambda: Image.objects.all().order_by(
             "-date_added")[:18]
         context['latest_tracks'] = lambda: Track.objects.all().order_by(
