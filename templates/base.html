@@ -143,8 +143,10 @@
                    return false;
                });
                
-               $('#back-to-top').tooltip('show');
-
+             $('#back-to-top').tooltip('show');
+             
+             $("a[href^='http']").attr('target','_blank'); 
+                              
        });</script>
         {% block extra_body_base %}
             {% block extra_body %}{% endblock %}
