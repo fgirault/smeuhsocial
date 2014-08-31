@@ -158,6 +158,12 @@
 {% endblock %}
 
 {% block photosfooter %}
+{% if latest_photos %}
+{% user_display other_user as other_user_display %}
+<div  class="clearfix" >
+	<a href="{% url 'photos_user' other_user_display %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "camera" %} {% trans "Latest Photos" %}</a>
+</div>
+{% endif %}
 {% endblock %}
 
 {% block tracksfooter %}
