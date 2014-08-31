@@ -6,6 +6,7 @@
 {% load bootstrap3 %}
 
 {% block head_title %}{% trans "Timeline" %}{% endblock %}
+{% block extra_head %}{{ block.super }}<script type="text/javascript" src="{{ STATIC_URL }}js/microblogging.js"></script>{% endblock %}
 
 {% block subnav %}
 <ul class="nav navbar-nav subnav">
@@ -26,26 +27,20 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-7 col-md-offset-1 col-lg-6 col-lg-offset-1">
 		<h1>{% block title %}{% trans 'News' %}{% endblock %}</h1>			
-			
-			<form id="touite_navbar_form" action="{% url 'tweets_you_follow' %}" method="POST" class="form-horizontal">
-			    {% csrf_token %}
-			   	<div class="input-group">
-			   		<input id="new_tweet" type="text" class="form-control" autocomplete="off" name="text" cols="15" rows="1" 
-			   		placeholder="{% blocktrans %}Touiter{% endblocktrans %} ..." 
-			   		data-placement="bottom" data-trigger="focus" 
-			   		data-content='<span id="chars_left">140</span> caractères restant.</small>' data-html="true"
-			   		data-animation="false"
-			   		/>
-			    	<span class="input-group-btn">
-			    		<button type="submit" class="btn btn-default">{% bootstrap_icon "bullhorn" %} {% trans 'Bang' %}</button>    		
-			    	</span>
-				</div>    
-			</form>
+		{% block touiteform %}
+			<div class="row">
+				<div class="col-xs-12">
+					{% include 'microblogging/tweet_form.html' %}	
+				</div>		
+			</div>
+			{% endblock %}
+			<div id="timeline">
 			{% autopaginate timelineitems 25 %}
 			{% for timelineitem in timelineitems %}
 			{% include timelineitem.template %}				    			
   			{% endfor %}
   			{% paginate %}
+			</div>
 		</div>
 	</div>
 </div>
