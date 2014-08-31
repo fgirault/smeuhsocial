@@ -503,9 +503,11 @@ footer #locale_switcher {
     display:none;
     background-color: #00B000;
     border-color: #00B000;
+    color: #FFFFFF;
 }
 
 .back-to-top:hover {
   background-color: #F4C021;
-  border-color: #00B000;  
+  border-color: #F4C021;
+  color: #FFFFFF;  
 }
