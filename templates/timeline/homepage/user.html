@@ -161,20 +161,22 @@
 {% if latest_photos %}
 {% user_display other_user as other_user_display %}
 <div  class="clearfix" >
-	<a href="{% url 'photos_user' other_user_display %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "camera" %} {% trans "Latest Photos" %}</a>
+	<a href="{% if is_me %}{% url 'photos_yours' %}{% else %}{% url 'photos_user' other_user_display %}{% endif %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "camera" %} {% trans "Latest Photos" %}</a>
 </div>
 {% endif %}
 {% endblock %}
 
-{% block photoslink %}{% user_display other_user as other_user_display %}{% url 'photos_user' other_user_display %}{% endblock %}
+{% block photoslink %}{% user_display other_user as other_user_display %}{% if is_me %}{% url 'photos_yours' %}{% else %}{% url 'photos_user' other_user_display %}{% endif %}{% endblock %}
 
 {% block tracksfooter %}
 {% endblock %}
 
+{% block blogslink %}{% user_display other_user as other_user_display %} {% if is_me %}{% url 'blog_list_yours' %}{% else %}{% url 'blog_list_user' other_user_display %}{% endif %}{% endblock %}
+
 {% block blogsfooter %}
 {% user_display other_user as other_user_display %}
 {% if latest_blogs %}
-	<a href="{% url 'blog_list_user' other_user_display %}" class="btn btn-default btn-sm pull-right">
+	<a href="{% if is_me %}{% url 'blog_list_yours' %}{% else %}{% url 'blog_list_user' other_user_display %}{% endif %}" class="btn btn-default btn-sm pull-right">
 		{% bootstrap_icon "pencil" %}  {% trans "All Blogs" %}
 	</a>
 {% endif %}

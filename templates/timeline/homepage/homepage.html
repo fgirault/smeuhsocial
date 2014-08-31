@@ -106,7 +106,7 @@
 		   			<a title="Atom Feed" href="{% url 'all_blogs_feed' %}">
 		   				<img alt="Feed Icon" src="{{ STATIC_URL }}img/feed-icon.png">
 		   			</a>
-			 		<a href="{% url 'blog_list_all' %}">
+			 		<a href="{% block blogslink %}{% url 'blog_list_all' %}{% endblock %}">
 			      		{% blocktrans %}Blogs{% endblocktrans %}
 			    	</a>				    
 			  	</h4>
