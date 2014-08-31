@@ -27,6 +27,7 @@ jQuery(document).ready(function($) {
   				//alert(data);
   				$('#new_tweet')[0].value = "";
   				update_chars_left();
+  				$('#new_tweet').blur();
   				
   				var div = $(data).hide();
   				$("#timeline div:first-child").first().prepend(div);
