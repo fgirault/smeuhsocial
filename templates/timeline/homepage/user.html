@@ -60,10 +60,12 @@
              <dd></dd>
              {% endcomment %}
                
-		</dl>
-                
-		
+		</dl>                		
 			{% if is_me %}
+			<div class="text-right">
+            <a href="{% url 'avatar_change' %}" class="btn btn-default">{% bootstrap_icon "picture" %} {% trans "Avatar" %}</a>			
+	    	<a href="{% url 'profile_edit' %}" rel="facebox" class="btn btn-default">{% bootstrap_icon "pencil" %} {% trans "Edit profile" %}</a>
+			</div>			
 			{% else %}
 	        <form method="POST" action="{% url 'toggle_follow' other_user %}" class="form-inline" role="form" style="display: inline;">
 	            {% csrf_token %}
@@ -94,6 +96,9 @@
 {% endblock %}
 
 {% block photosblock %}
+{% if is_me %}
+{% else %}
+
 {% if is_friend %}
 {% else %}
 {% if previous_invitations_from %}
@@ -135,6 +140,8 @@
                   {% endif %}
               {% endif %} {# previous_invitations_from #}
 {% endif %}
+{% endif %}
+
 {{ block.super }}
 {% endblock %}
 
