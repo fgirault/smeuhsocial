@@ -21,7 +21,8 @@ jQuery(document).ready(function($) {
       */
     };
       
-      $("#touite_form").submit(function() {
+      $("#touite_form").submit(function(e) {
+    	e.preventDefault();
   		var urlSubmit = $(this).attr('action');
   		$.ajax({  
   			type: "POST",
@@ -38,7 +39,7 @@ jQuery(document).ready(function($) {
   			    
   			}
   		});
-  		return false;
+  		//return false;
   	});
   	
 });

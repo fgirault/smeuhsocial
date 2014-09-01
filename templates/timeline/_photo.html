@@ -7,9 +7,9 @@
 
 {% block item_content %}
 {% with timelineitem.item  as  photo %}
-<a href="{% url 'photo_details' id=photo.id %}"><div class="pull-left"><img
-      class="img-rounded timeline-thumb" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}"></div><h4> {{ photo.title }}</h4></a>
-{{ photo.caption|truncatewords:24|urlize }}
+<h4><a href="{% url 'photo_details' id=photo.id %}"><span class="pull-left"><img
+      class="img-rounded timeline-thumb" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}"></span>{{ photo.title }}</a></h4>
+<a class="timeline-comment-body" href="{% url 'photo_details' id=photo.id %}">{{ photo.caption|truncatewords:24 }}</a>
 {% endwith %}
 {% endblock %}
 

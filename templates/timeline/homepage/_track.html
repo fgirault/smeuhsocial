@@ -25,7 +25,7 @@
     
     {% comment %}
 	<div class="blog-tease visible-lg">
-  		{{ track.description|truncatewords:12 }}
+  		<a class="timeline-comment-body" href="{% url 'track_detail' track.user.username track.slug %}">{{ track.description|truncatewords:24 }}</a>
   	</div>
   	{% endcomment %}
   	
