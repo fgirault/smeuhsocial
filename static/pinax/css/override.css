@@ -493,6 +493,20 @@ footer #locale_switcher {
     font-size: 80%;
 }
 
+.timeline-comment-body {
+	display: block;
+	color:inherit;
+}
+
+.timeline-comment-body:visited {
+	color:inherit;
+}
+
+.timeline-comment-body:hover {
+	color:inherit;
+	text-decoration: none;
+}
+
 .back-to-top,
 .back-to-top:focus,
 .back-to-top:visited {
