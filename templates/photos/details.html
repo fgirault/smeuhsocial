@@ -40,7 +40,7 @@
 		{% if is_me %}<a href="{% url 'photo_edit' id=photo.id %}" class="btn btn-default btn-sm pull-right" title="{% trans 'Edit Photo' %}">{% bootstrap_icon "pencil" %} {% trans 'Edit Photo' %}</a>{% endif %}				
 			<h1>{{ photo.title }}</h1>		
 			<p>
-				{% trans "Posted by" %} <a href="{% url 'profile_detail' photo.member.username %}"title="{% user_display photo.member %}">{% avatar photo.member.username 24 %} <strong>{% user_display	photo.member %}</strong></a>  
+				{% trans "Posted by" %} <a href="{% url 'profile_detail' photo.member.username %}" title="{% user_display photo.member %}">{% avatar photo.member.username 24 %} <strong>{% user_display	photo.member %}</strong></a>  
 				- <small>{{ photo.date_taken|date:"DATE_FORMAT" }}</small>
 			 	- <small>{% blocktrans with photo.view_count as view_count %}Viewed {{ view_count }} times{% endblocktrans %}</small>								
 			</p>			
