@@ -53,7 +53,7 @@ href="{% url 'all_blogs_feed' %}" />
       {{ post.body|apply_markup:post.markup }}
 	</div>
         
-    <h3>{% trans 'Comments on this post:' %}</h3>
+    <h3><a id="photocomments">{% trans 'Comments on this post:' %}</a></h3>
     {% comments post %}
       <p>
         <a href="{% url 'blog_post_source' post.author.username post.slug %}">{% blocktrans %}View source in {% endblocktrans %}{% render_markup_name post %}</a>
