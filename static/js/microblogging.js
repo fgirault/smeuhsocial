@@ -1,6 +1,7 @@
 jQuery(document).ready(function($) {
     if ($('#new_tweet').length) {
       function update_chars_left() {
+    	  /*
     	  $('#new_tweet').popover('show');
           var max_len = 140;
           var textarea = $('#new_tweet')[0];
@@ -11,11 +12,14 @@ jQuery(document).ready(function($) {
           } else {
         	  $('#chars_left').html(max_len - tweet_len);
           }
+          */
       }
-      
+      /*
       $('#new_tweet').keyup(function() {
           update_chars_left();
       });
+      */
+    };
       
       $("#touite_form").submit(function() {
   		var urlSubmit = $(this).attr('action');
@@ -25,16 +29,16 @@ jQuery(document).ready(function($) {
   			data: $(this).serializeArray(),
   			success: function(data) {
   				$('#new_tweet')[0].value = "";
-  				update_chars_left();
+  				//update_chars_left();
   				$('#new_tweet').blur();
   				
   				var div = $(data).hide();
   				$("#timeline div:first-child").first().prepend(div);
-  			    div.slideDown("slow");  				
+  			    div.slideDown("slow");
+  			    
   			}
   		});
   		return false;
   	});
   	
-    };
 });
