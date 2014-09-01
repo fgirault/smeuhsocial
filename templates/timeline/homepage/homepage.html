@@ -41,7 +41,7 @@
   			{% block newsfooter %}
   			{% if timelineitems %}
   			<div  class="clearfix" >
-	 			<a href="{% url 'timeline' %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "bullhorn" %} {% trans "Plus d'actualités" %}</a>
+	 			<a href="{% url 'timeline' %}#tli_{{timelineitems|length}}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "bullhorn" %} {% trans "Plus d'actualités" %}</a>
  			</div> 		
  			{% endif %}	
  			{% endblock %}

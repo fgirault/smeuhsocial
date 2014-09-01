@@ -67,6 +67,8 @@ class TimeLineView(TemplateView):
             ]
         
         items = merge(tweets, images, posts, tracks, comments, field="date")
+        for index, item in enumerate(items):
+            item.index = index
         
         context['timelineitems'] = items                
         context['posts'] = posts
@@ -150,7 +152,9 @@ class FriendsPageView(TemplateView):
             ]
         
         items = merge(tweets, images, posts, tracks, comments, field="date")
-        
+        for index, item in enumerate(items):
+            item.index = index + 1
+    
         context['timelineitems'] = items        
         context['prefix_sender'] = True        
         return context
@@ -191,7 +195,8 @@ class FollowingPageView(TemplateView):
             ]
         
         items = merge(tweets, images, posts, tracks, comments, field="date")
-        
+        for index, item in enumerate(items):
+            item.index = index + 1
         context['timelineitems'] = items                        
         context['prefix_sender'] = True        
         return context
@@ -252,9 +257,11 @@ class UserHomePageView(TemplateView):
         comments = [ 
             TimeLineItem(item, item.date_submitted, item.user, "timeline/_comment.html") 
             for item in ThreadedComment.objects.all().filter(user = user).order_by("-date_submitted")[:16]
-            ]        
-        
-        context['timelineitems'] = merge(tweets, comments, field="date")[:16]                 
+            ]
+        items = merge(tweets, comments, field="date")[:16]         
+        for index, item in enumerate(items):
+            item.index = index + 1            
+        context['timelineitems'] = items                 
         context['prefix_sender'] = True
         
         

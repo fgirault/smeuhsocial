@@ -3,7 +3,7 @@
 {% load i18n %}
 {% load override_tags %}
 
-{% block item_action_label %}a posté un morceau{% endblock %}
+{% block item_action_label %}{% trans 'posted a track'%}{% endblock %}
 
 {% block item_content %}
 {% with timelineitem.item as track %}  

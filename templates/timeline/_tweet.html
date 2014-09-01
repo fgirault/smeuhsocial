@@ -1,3 +1,5 @@
 {% with timelineitem.item as tweet  %}
+{% with timelineitem.index as tli_index %}
 {% include "microblogging/_tweet.html" %}
+{% endwith %}
 {% endwith %}
