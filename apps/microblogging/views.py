@@ -19,6 +19,7 @@ if "notification" in settings.INSTALLED_APPS:
 else:
     notification = None
 
+@login_required
 def personal(request, form_class=TweetForm,
         template_name="microblogging/personal.html", success_url=None):
     """
@@ -78,7 +79,7 @@ def post_tweet(request, form_class=TweetForm, success_url=None):
                 if success_url is None:
                     success_url = reverse('timeline.views.home')
                 return HttpResponseRedirect(success_url)        
-    
+@login_required    
 def public(request, template_name="microblogging/public.html"):
     """
     all the tweets
@@ -92,6 +93,7 @@ def public(request, template_name="microblogging/public.html"):
         "followers_list": followers_list
     }, context_instance=RequestContext(request))
 
+@login_required
 def single(request, id, template_name="microblogging/single.html"):
     """
     A single tweet.
@@ -101,7 +103,7 @@ def single(request, id, template_name="microblogging/single.html"):
         "tweet": tweet,
     }, context_instance=RequestContext(request))
 
-
+@login_required
 def toggle_follow(request, username):
     """
     Either follow or unfollow a user.
