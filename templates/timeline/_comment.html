@@ -11,9 +11,9 @@
 {% if comment.content_object.get_thumbnail_url %}
 {% with comment.content_object as photo %}
 <div class="pull-left">
-	<a href="{% url 'photo_details' id=photo.id %}#comment_{{comment.id}}">
-		<img class="img-rounded timeline-comment-thumb" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}">
-	</a>
+    <a href="{% url 'photo_details' id=photo.id %}#comment_{{comment.id}}">
+        <img class="img-rounded timeline-comment-thumb" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}">
+    </a>
 </div>
 {% endwith %}
 {% endif %}
@@ -21,8 +21,8 @@
 {% if comment.content_object.image.url_48x48 %}
 {% with comment.content_object as track %}
 <div class="pull-left" style="margin: 3px;">
-	<a href="{% url 'track_detail' track.user.username track.slug %}#comment_{{comment.id}}">
-	{% if track.image %}
+    <a href="{% url 'track_detail' track.user.username track.slug %}#comment_{{comment.id}}">
+    {% if track.image %}
     <img class="img-rounded" src="{{ track.image.url_48x48 }}" alt="{% trans 'Track Image' %}" style="max-height: 48px;"/>
     {% else %}
     {% avatar_link track.user 48 %}
@@ -32,7 +32,7 @@
 {% endwith %}
 {% endif %}
 <a class="timeline-comment-body" href="{{ comment.content_object.get_absolute_url }}#comment_{{comment.id}}">
-{{ comment.comment|truncatewords:24|profilize }}
+{{ comment.comment|truncatewords:24 }}
 </a>
 {% endwith %}
 {% endblock %}
