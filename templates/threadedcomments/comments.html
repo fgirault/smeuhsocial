@@ -2,13 +2,11 @@
 {% load avatar_tags %}
 {% load i18n %}
 {% load override_tags %}
-{% load pagination_tags %}
 {% load threadedcommentstags %}
 {% load uni_form_tags %}
 {% load bootstrap3 %}
 
 {% get_threaded_comment_tree for object as responses %}
-{% autopaginate responses %}
 
 <ul class="responses">
     {% for response in responses %}
@@ -43,8 +41,6 @@
         </li>
     {% endfor %}
 </ul>
-
-{% paginate %}
 
 {% if user.is_authenticated %}
     <fieldset class="inlineLabels">
