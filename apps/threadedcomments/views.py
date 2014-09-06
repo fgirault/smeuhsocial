@@ -17,7 +17,7 @@ def _adjust_max_comment_length(form, field_name='comment'):
 
 def _get_next(request):
     """
-    The part that's the least straightforward about views in this module is how they 
+    The part that's the least straightforward about views in this module is how they
     determine their redirects after they have finished computation.
 
     In short, they will try and determine the next place to go in the following order:
@@ -53,21 +53,21 @@ def _preview(request, context_processors, extra_context, form_class=ThreadedComm
         context['comment'] = None
     return render_to_response(
         'threadedcomments/preview_comment.html',
-        extra_context, 
+        extra_context,
         context_instance = RequestContext(request, context, context_processors)
     )
 
 def free_comment(request, content_type=None, object_id=None, edit_id=None, parent_id=None, add_messages=False, ajax=False, model=FreeThreadedComment, form_class=FreeThreadedCommentForm, context_processors=[], extra_context={}):
     """
-    Receives POST data and either creates a new ``ThreadedComment`` or 
+    Receives POST data and either creates a new ``ThreadedComment`` or
     ``FreeThreadedComment``, or edits an old one based upon the specified parameters.
 
     If there is a 'preview' key in the POST request, a preview will be forced and the
     comment will not be saved until a 'preview' key is no longer in the POST request.
-    
+
     If it is an *AJAX* request (either XML or JSON), it will return a serialized
     version of the last created ``ThreadedComment`` and there will be no redirect.
-    
+
     If invalid POST data is submitted, this will go to the comment preview page
     where the comment may be edited until it does not contain errors.
     """
@@ -106,7 +106,7 @@ def free_comment(request, content_type=None, object_id=None, edit_id=None, paren
         elif ajax == 'xml':
             return XMLResponse([new_comment,])
         else:
-            return HttpResponseRedirect(_get_next(request))
+            return HttpResponseRedirect(_get_next(request) + "#comment_%d"  % new_comment.id)
     elif ajax=="json":
         return JSONResponse({'errors' : form.errors}, is_iterable=False)
     elif ajax=="xml":
@@ -123,7 +123,7 @@ def free_comment(request, content_type=None, object_id=None, edit_id=None, paren
         return XMLResponse(response_str, is_iterable=False)
     else:
         return _preview(request, context_processors, extra_context, form_class=form_class)
-      
+
 def comment(*args, **kwargs):
     """
     Thin wrapper around free_comment which adds login_required status and also assigns
@@ -169,11 +169,11 @@ def comment_delete(request, object_id, model=ThreadedComment, extra_context = {}
             is_threaded_comment = False
         return render_to_response(
             'threadedcomments/confirm_delete.html',
-            extra_context, 
+            extra_context,
             context_instance = RequestContext(
-                request, 
+                request,
                 {
-                    'comment' : tc, 
+                    'comment' : tc,
                     'is_free_threaded_comment' : is_free_threaded_comment,
                     'is_threaded_comment' : is_threaded_comment,
                     'next' : _get_next(request),
