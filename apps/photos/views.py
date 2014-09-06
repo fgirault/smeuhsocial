@@ -330,6 +330,7 @@ def destroy(request, id):
     
     return HttpResponseRedirect(redirect_to)
 
+@login_required
 def random(request):
-    photo = Image.objects.filter(is_public = True).order_by('?')[0]
-    return details(request, photo.id)
+    photo = Image.objects.filter(Q(is_public = True)).order_by('?')[0]    
+    return HttpResponseRedirect(reverse('photo_details', args=(photo.id,)))
