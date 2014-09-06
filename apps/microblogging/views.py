@@ -25,11 +25,11 @@ def personal(request, form_class=TweetForm,
     """
     just the tweets the current user is following
     """
-    
+
     twitter_account = twitter_account_for_user(request.user)
-    
+
     following_list, followers_list = get_following_followers_lists(request.user)
-    
+
     if request.method == "POST":
         form = form_class(request.user, request.POST)
         if form.is_valid():
@@ -55,7 +55,7 @@ def personal(request, form_class=TweetForm,
         "reply": reply,
         "tweets": tweets,
         "twitter_authorized": twitter_verify_credentials(twitter_account),
-        "following_list": following_list,   
+        "following_list": following_list,
         "followers_list": followers_list
     }, context_instance=RequestContext(request))
 personal = login_required(personal)
@@ -71,15 +71,15 @@ def post_tweet(request, form_class=TweetForm, success_url=None):
             if request.POST.get("pub2twitter", False):
                 twitter_account.PostUpdate(text)
             if request.is_ajax():
-                return render_to_response('microblogging/_tweet.html', { 
-                    'tweet': tweet, 
-                    'prefix_sender': True , 
-                    'extra_classes':  "fisrt odd"})                
-            else:
-                if success_url is None:
-                    success_url = reverse('timeline.views.home')
-                return HttpResponseRedirect(success_url)        
-@login_required    
+                return render_to_response('microblogging/_tweet.html', {
+                    'tweet': tweet,
+                    'prefix_sender': True ,
+                    'extra_classes':  "fisrt odd"})
+    if success_url is None:
+        success_url = reverse('timeline.views.home')
+    return HttpResponseRedirect(success_url)
+
+@login_required
 def public(request, template_name="microblogging/public.html"):
     """
     all the tweets
@@ -89,7 +89,7 @@ def public(request, template_name="microblogging/public.html"):
 
     return render_to_response(template_name, {
         "tweets": tweets,
-        "following_list": following_list,   
+        "following_list": following_list,
         "followers_list": followers_list
     }, context_instance=RequestContext(request))
 
