@@ -8,7 +8,6 @@
 {% load tagging_tags %}
 {% load restructuredtext %}
 {% load theme_tags %}
-{% load bootstrap3 %}
 
 {% block head_title %}{% blocktrans %}Your Blog Posts{% endblocktrans %}{% endblock %}
 
@@ -56,14 +55,14 @@
                     </td>
                     <td width="50px" align="center">
                         <a href="{% url 'blog_edit' post.id %}" class="btn btn-default">
-                            {% bootstrap_icon "pencil" %} {% trans 'Edit Post' %}
+                            <i class="fa fa-pencil"></i> {% trans 'Edit Post' %}
                         </a>
                     </td>
                     <td align="right">
                         <form action="{% url 'blog_destroy' post.id %}" method="POST">
                             {% csrf_token %}
                             <input  type="hidden" name="action" value="delete"/>
-                            <button type="submit" class="btn btn-default">{% bootstrap_icon "remove" %} {% trans "Delete Post" %}</button>
+                            <button type="submit" class="btn btn-default"><i class="fa fa-remove"></i> {% trans "Delete Post" %}</button>
                        </form>
                     </td>
                 </tr>

@@ -3,18 +3,19 @@
 {% load i18n %}
 {% load override_tags %}
 {% load pagination_tags %}
-{% load bootstrap3 %}
 
 {% block head_title %}{% trans "Timeline" %}{% endblock %}
 {% block extra_head %}{{ block.super }}<script type="text/javascript" src="{{ STATIC_URL }}js/microblogging.js"></script>{% endblock %}
 
+{% block nav_news_li %}class="active"{% endblock%}
+
 {% block subnav %}
 <ul class="nav navbar-nav subnav">
 	{% include 'cta_drop.html' %}
-	<li><a href="{% url 'timeline' %}">{% bootstrap_icon "list" %} {% trans "All News" %}</a></li>		
-	<li><a href="{% url 'friends_news' %}">{% bootstrap_icon "heart" %} {% trans "Friends' News" %}</a></li>
-	<li><a href="{% url 'following_news' %}">{% bootstrap_icon "comment" %} {% trans "Tweets You Follow" %}</a></li>
-{#   	<li><a href="{% url 'tweets_you_follow' %}" title="{% trans "Tweets" %}" >{% bootstrap_icon "comment" %} {% trans "Tweets" %}</a></li> #}
+	<li><a href="{% url 'timeline' %}"><i class="fa fa-list"></i> {% trans "All News" %}</a></li>		
+	<li><a href="{% url 'friends_news' %}"><i class="fa fa-heart"></i> {% trans "Friends' News" %}</a></li>
+	<li><a href="{% url 'following_news' %}"><i class="fa fa-comment"></i> {% trans "Tweets You Follow" %}</a></li>
+{#   	<li><a href="{% url 'tweets_you_follow' %}" title="{% trans "Tweets" %}" ><i class="fa fa-comment"></i> {% trans "Tweets" %}</a></li> #}
 	
 </ul>
 <ul class="nav navbar-nav subnav navbar-right">

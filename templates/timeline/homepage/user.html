@@ -6,7 +6,6 @@
 {% load uni_form_tags %}
 {% load microblogging_tags %}
 {% load override_tags %}
-{% load bootstrap3 %}
 
 {% block head_title %}{% trans "User Homepage" %}{% endblock %}
 
@@ -24,7 +23,7 @@
 				<div class="clearfix">
                 <img src="{% avatar_url other_user 80 %}" alt="Photo of {{ other_user }}" class="photo img-rounded" />
                 {% if is_me %}
-                <a href="{% url 'avatar_change' %}" id="avatar_replace">{% bootstrap_icon "pencil" %} ({% trans "replace" %})</a>
+                <a href="{% url 'avatar_change' %}" id="avatar_replace"><i class="fa fa-pencil"></i> ({% trans "replace" %})</a>
                 {% endif %}
             	</div>
             </dt>
@@ -46,43 +45,43 @@
 		  	{% endif %}      
 		  	{% if other_user.get_profile.location%}
 		  	<dt>{% trans "Location" %}</dt>
-		  	<dd>{% bootstrap_icon "map-marker" %}  {{ other_user.get_profile.location }}</dd>
+		  	<dd><i class="fa fa-map-marker"></i> {{ other_user.get_profile.location }}</dd>
 		  	{% endif %}
              {% if other_user.get_profile.website %}
              <dt>{% trans "Website" %}</dt>
-             <dd><a class="url" href="{{ other_user.get_profile.website }}">{% bootstrap_icon "globe" %} {{ other_user.get_profile.website }}</a></dd>
+             <dd><a class="url" href="{{ other_user.get_profile.website }}"><i class="fa fa-globe"></i> {{ other_user.get_profile.website }}</a></dd>
              {% endif %}         
              {% comment %} 
-             <dt>{% bootstrap_icon "star" %} {% trans "Following" %} <span class="badge">{% following_count other_user %}</span></dt>
+             <dt><i class="fa fa-star"></i> {% trans "Following" %} <span class="badge">{% following_count other_user %}</span></dt>
              <dd>
              </dd>
-             <dt>{% bootstrap_icon "eye-open" %} {% trans "Followers" %} <span class="badge">{% follower_count other_user %}</span></dt>
+             <dt><i class="fa fa-eye"></i> {% trans "Followers" %} <span class="badge">{% follower_count other_user %}</span></dt>
              <dd></dd>
              {% endcomment %}
                
 		</dl>                		
 			{% if is_me %}
 			<div class="text-right">
-            <a href="{% url 'avatar_change' %}" class="btn btn-default">{% bootstrap_icon "picture" %} {% trans "Avatar" %}</a>			
-	    	<a href="{% url 'profile_edit' %}" rel="facebox" class="btn btn-default">{% bootstrap_icon "pencil" %} {% trans "Edit profile" %}</a>
+            <a href="{% url 'avatar_change' %}" class="btn btn-default"><i class="fa fa-picture"></i> {% trans "Avatar" %}</a>			
+	    	<a href="{% url 'profile_edit' %}" rel="facebox" class="btn btn-default"><i class="fa fa-pencil"></i> {% trans "Edit profile" %}</a>
 			</div>			
 			{% else %}
 	        <form method="POST" action="{% url 'toggle_follow' other_user %}" class="form-inline" role="form" style="display: inline;">
 	            {% csrf_token %}
 	            {% if is_following %}
-	            <button class="btn btn-default" name="action" value="unfollow">{% bootstrap_icon "minus-sign" %} {% trans "unfollow" %}</button>                                
+	            <button class="btn btn-default" name="action" value="unfollow"><i class="fa fa-minus"></i> {% trans "unfollow" %}</button>                                
 	            {% else %}
-	            <button class="btn btn-default" name="action" value="follow">{% bootstrap_icon "plus-sign" %} {% trans "follow tweets" %}</button>                                
+	            <button class="btn btn-default" name="action" value="follow"><i class="fa fa-plus"></i> {% trans "follow tweets" %}</button>                                
 	            {% endif %}
 	            {% if is_friend %}	            
-	         	<a href="{% url 'messages_compose' %}{{ other_user }}/" class="btn btn-default">{% bootstrap_icon "envelope" %}  {% trans "Send a message" %}</a>                      
+	         	<a href="{% url 'messages_compose' %}{{ other_user }}/" class="btn btn-default"><i class="fa fa-envelope"></i> {% trans "Send a message" %}</a>                      
 	          	{% endif %}	                             
 	        </form>
 	         {% if is_friend %}
 	         <form method="POST" action="" class="form-inline" role="form" style="display: inline;">
 	          {% csrf_token %}
 	          <input type="hidden" name="action" value="remove">
-	          <button type="submit" class="btn btn-default">{% bootstrap_icon "ban-circle" %} {% trans "remove from friends" %}</button>                                                                       
+	          <button type="submit" class="btn btn-default"><i class="fa fa-ban"></i> {% trans "remove from friends" %}</button>                                                                       
 	          </form>
               {% else %}
               
@@ -131,7 +130,7 @@
                                 {{ invite_form|as_uni_form }}
                                 <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">						   		
-						     		<button name="action" value="invite" class="btn btn-default pull-right">{% bootstrap_icon "plus" %} {% trans "invite" %}</button>
+						     		<button name="action" value="invite" class="btn btn-default pull-right"><i class="fa fa-plus"></i> {% trans "invite" %}</button>
 						     	</div>                											    
 						  </div>                                                                                    
                             </fieldset>
@@ -151,7 +150,7 @@
 {% user_display other_user as other_user_display %}
 {% if timelineitems %}
 <div  class="clearfix" >
-	<a href="{% url 'user_timeline' other_user_display %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "bullhorn" %} {% trans "More news" %}</a>
+	<a href="{% url 'user_timeline' other_user_display %}" class="btn btn-default btn-sm pull-right"><i class="fa fa-bullhorn"></i> {% trans "More news" %}</a>
 </div> 		
 {% endif %}	
 {% endcomment %}
@@ -161,7 +160,7 @@
 {% if latest_photos %}
 {% user_display other_user as other_user_display %}
 <div  class="clearfix" >
-	<a href="{% if is_me %}{% url 'photos_yours' %}{% else %}{% url 'photos_user' other_user_display %}{% endif %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "camera" %} {% trans "Latest Photos" %}</a>
+	<a href="{% if is_me %}{% url 'photos_yours' %}{% else %}{% url 'photos_user' other_user_display %}{% endif %}" class="btn btn-default btn-sm pull-right"><i class="fa fa-camera"></i> {% trans "Latest Photos" %}</a>
 </div>
 {% endif %}
 {% endblock %}
@@ -177,7 +176,7 @@
 {% user_display other_user as other_user_display %}
 {% if latest_blogs %}
 	<a href="{% if is_me %}{% url 'blog_list_yours' %}{% else %}{% url 'blog_list_user' other_user_display %}{% endif %}" class="btn btn-default btn-sm pull-right">
-		{% bootstrap_icon "pencil" %}  {% trans "All Blogs" %}
+		<i class="fa fa-pencil"></i>  {% trans "All Blogs" %}
 	</a>
 {% endif %}
 {% endblock %}

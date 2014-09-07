@@ -26,9 +26,7 @@
 			{% block newsblock %}
 			{% if timelineitems %}
 			<h4>
-				<a>
-					<img alt="Feed Icon" src="{{ STATIC_URL }}img/feed-icon.png">
-				</a>
+				<a><i class="fa fa-rss-square"></i></a>
 			    <a href="{% url 'timeline' %}">{% trans 'News' %}</a>
 			</h4>
 			<div id="timeline">
@@ -41,7 +39,7 @@
   			{% block newsfooter %}
   			{% if timelineitems %}
   			<div  class="clearfix" >
-	 			<a href="{% url 'timeline' %}#tli_{{timelineitems|length}}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "bullhorn" %} {% trans "Plus d'actualités" %}</a>
+	 			<a href="{% url 'timeline' %}#tli_{{timelineitems|length}}" class="btn btn-default btn-sm pull-right"><i class="fa fa-bullhorn"></i> {% trans "More news" %}</a>
  			</div> 		
  			{% endif %}	
  			{% endblock %}
@@ -65,7 +63,7 @@
  			{% block photosfooter %}
  				{% if latest_photos %}
 				<div  class="clearfix" >
-					<a href="{% url 'photos' %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "camera" %} {% trans "Latest Photos" %}</a>
+					<a href="{% url 'photos' %}" class="btn btn-default btn-sm pull-right"><i class="fa fa-camera"></i> {% trans "Latest Photos" %}</a>
 				</div>
 				{% endif %}
 			{% endblock %}
@@ -85,7 +83,7 @@
 				{% endif %}
 				{% block tracksfooter %}
 					{% if latest_tracks %}
-						<a href="{% url 'audiotracks' %}" class="btn btn-default btn-sm pull-right">{% bootstrap_icon "headphones" %} {% trans 'Latest tracks' %}</a>				
+						<a href="{% url 'audiotracks' %}" class="btn btn-default btn-sm pull-right"><i class="fa fa-headphones"></i> {% trans 'Latest tracks' %}</a>				
 					{% endif %}
 				{% endblock %}			  				 
 			</div>
@@ -107,7 +105,7 @@
 				{% block blogsfooter %}
 				{% if latest_blogs %}
 					<a href="{% url 'blog_list_all' %}" class="btn btn-default btn-sm pull-right">
-						{% bootstrap_icon "pencil" %}  {% trans "All Blogs" %}
+						<i class="fa fa-pencil"></i> {% trans "All Blogs" %}
 					</a>
 				{% endif %}
 				{% endblock %}          

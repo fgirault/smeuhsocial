@@ -2,10 +2,7 @@
 
 {% load i18n %}
 {% load analytics %}
-
 {% load ifsetting_tag account_tags openid_tags %}
-
-{% load bootstrap3 %}
 
 {% load avatar_tags %}
 
@@ -33,11 +30,11 @@
 {% block right_tabs %}
     {% if user.is_authenticated %}       
         <ul class="nav navbar-nav main-nav">         
-            <li><a href="{% url 'timeline' %}" title="{% trans "News" %}">{% bootstrap_icon "bullhorn" %} <span class="visible-xs-inline-block">{% trans "News" %}</span></a></li>
-            <li><a href="{% url 'photos' %}" title="{% trans "Photos" %}">{% bootstrap_icon "camera" %} <span class="visible-xs-inline-block">{% trans "Photos" %}</span></a></li>
-            <li><a href="{% url 'audiotracks' %}" title="{% trans "Music" %}" >{% bootstrap_icon "headphones" %} <span class="visible-xs-inline-block">{% trans "Music" %}</span></a></li>
-            <li><a href="{% url 'blog_list_all' %}" title="{% trans "Blogs" %}" >{% bootstrap_icon "pencil" %} <span class="visible-xs-inline-block">{% trans "Blogs" %}</span></a></li>
-            <li><a href="{% url 'tagging_ext_index' %}" title="{% trans "Tags" %}">{% bootstrap_icon "tags" %} <span class="visible-xs-inline-block">{% trans "Tags" %}</span></a></li>                               
+            <li {% block nav_news_li %}{% endblock %}><a href="{% url 'timeline' %}" title="{% trans "News" %}"><i class="fa fa-bullhorn"></i><span class="visible-xs-inline-block">{% trans "News" %}</span></a></li>
+            <li {% block nav_photos_li %}{% endblock %}><a href="{% url 'photos' %}" title="{% trans "Photos" %}"><i class="fa fa-camera"></i><span class="visible-xs-inline-block">{% trans "Photos" %}</span></a></li>
+            <li {% block nav_tracks_li %}{% endblock %}><a href="{% url 'audiotracks' %}" title="{% trans "Music" %}" ><i class="fa fa-headphones"></i><span class="visible-xs-inline-block">{% trans "Music" %}</span></a></li>
+            <li {% block nav_blogs_li %}{% endblock %}><a href="{% url 'blog_list_all' %}" title="{% trans "Blogs" %}" ><i class="fa fa-pencil"></i><span class="visible-xs-inline-block">{% trans "Blogs" %}</span></a></li>
+            <li {% block nav_tags_li %}{% endblock %}><a href="{% url 'tagging_ext_index' %}" title="{% trans "Tags" %}"><i class="fa fa-tags"></i><span class="visible-xs-inline-block">{% trans "Tags" %}</span></a></li>                               
         </ul>
         <ul class="nav navbar-nav navbar-right">
         	<li class="dropdown">
@@ -49,30 +46,30 @@
 	         		<span class="caret"></span>
 		         </a>
 		         <ul class="dropdown-menu" role="menu">
-	               <li><a href="{% url 'messages_inbox' %}">{% bootstrap_icon "envelope" %} {% if combined_inbox_count > 0 %} <strong>{% endif %} {% trans "Messages" %}  {% if combined_inbox_count > 0 %} <span class="badge">{{ combined_inbox_count }}</span></strong> {% endif %}</a></li>
+	               <li><a href="{% url 'messages_inbox' %}"><i class="fa fa-envelope-o"></i> {% if combined_inbox_count > 0 %} <strong>{% endif %} {% trans "Messages" %}  {% if combined_inbox_count > 0 %} <span class="badge">{{ combined_inbox_count }}</span></strong> {% endif %}</a></li>
 		           <li class="divider"></li>	           
-		           <li><a href="{% url 'profile_detail' user.username %} ">{% bootstrap_icon "user" %} {% trans "Your Profile" %}</a></li>
-	               <li><a href="{% url 'profile_list' %} ">{% bootstrap_icon "list" %} {% trans "All Profiles" %}</a></li>
+		           <li><a href="{% url 'profile_detail' user.username %} "><i class="fa fa-user"></i> {% trans "Your Profile" %}</a></li>
+	               <li><a href="{% url 'profile_list' %} "><i class="fa fa-users"></i> {% trans "All Profiles" %}</a></li>
 		           <li class="divider"></li>
-		           <li><a href="{% url 'photos_yours' %}">{% bootstrap_icon "camera" %} {% trans "Your Photos" %}</a></li>
-		           <li><a href="{% url 'user_index' user.username %}">{% bootstrap_icon "headphones" %} {% trans 'Your tracks' %}</a></li>
-		           <li><a href="{% url 'blog_list_yours' %}">{% bootstrap_icon "pencil" %} {% trans "Your Posts" %}</a></li>
+		           <li><a href="{% url 'photos_yours' %}"><i class="fa fa-camera"></i> {% trans "Your Photos" %}</a></li>
+		           <li><a href="{% url 'user_index' user.username %}"><i class="fa fa-headphones"></i> {% trans 'Your tracks' %}</a></li>
+		           <li><a href="{% url 'blog_list_yours' %}"><i class="fa fa-pencil"></i> {% trans "Your Posts" %}</a></li>
 	               <li class="divider"></li>	           
-		           <li><a href="{% url 'acct_email' %}">{% bootstrap_icon "wrench" %} {% trans "Account" %}</a></li>
+		           <li><a href="{% url 'acct_email' %}"><i class="fa fa-wrench"></i> {% trans "Account" %}</a></li>
 		           {% if user.is_staff %}
 	               <li class="divider"></li>
-			       <li><a href="{% url 'admin:index' %}">{% bootstrap_icon "wrench" %} Admin</a></li>
+			       <li><a href="{% url 'admin:index' %}"><i class="fa fa-wrench"></i> Admin</a></li>
 				   {% endif %}		           
 		           <li class="divider"></li>	                
-		           <li><a href="{% if request.openid %}/openid/logout/?next={% url 'acct_logout' %}{% else %}{% url 'acct_logout' %}{% endif %}">{% bootstrap_icon "log-out" %} {% trans 'Logout' %}</a></li>
+		           <li><a href="{% if request.openid %}/openid/logout/?next={% url 'acct_logout' %}{% else %}{% url 'acct_logout' %}{% endif %}"><i class="fa fa-sign-out"></i> {% trans 'Logout' %}</a></li>
 		    	</ul>
 		 	</li>   
         </ul>
     {% else %}      
     	<ul class="nav navbar-nav navbar-right">    	
-            <li><a href="{% url 'acct_login' %}">{% bootstrap_icon "log-in" %} {% trans "Log in" %}</a></li>
+            <li><a href="{% url 'acct_login' %}"><i class="fa fa-sign-in"></i>  {% trans "Log in" %}</a></li>
             <li><a>{% trans "or" %}</a></li>       
-    		<li><a href="{% url 'acct_signup' %}">{% bootstrap_icon "plus" %} {% trans "Sign Up" %}</a></li>
+    		<li><a href="{% url 'acct_signup' %}"><i class="fa fa-plus"></i> {% trans "Sign Up" %}</a></li>
     	</ul>
     {% endif %}
 {% endblock %}

@@ -4,8 +4,6 @@
 
 {% load uni_form_tags %}
 
-{% load bootstrap3 %}
-
 {% block head_title %}{% trans "Upload a Photo" %}{% endblock %}
 
 {% block extra_head %}<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.file-input.js"></script>{% endblock %}
@@ -24,7 +22,7 @@
 	        <div class="form-group">
 	    		<div class="col-sm-offset-2 col-sm-10">
 	      			<input type="hidden" name="action" value="upload" />
-	      			<button class="btn btn-default pull-right">{% bootstrap_icon "upload" %} {% trans "Upload" %}</button>                
+	      			<button class="btn btn-primary pull-right"><i class="fa fa-upload"></i> {% trans "Upload" %}</button>                
 			    </div>
 			</div>
 	        

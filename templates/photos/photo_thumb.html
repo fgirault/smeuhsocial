@@ -2,7 +2,6 @@
  {% load account_tags %}
  {% load threadedcommentstags %}
  {% load avatar_tags %}
- {% load bootstrap3 %}
  
  <div class="gallery-photo-thumb">
     <a href="{% url 'photo_details' id=photo.id %}" ><img
@@ -13,12 +12,12 @@
     <a href="{% url 'profile_detail' photo.member.username %}"title="{% trans 'Posted by' %} {% user_display photo.member %}" data-toggle="tooltip" data-placement="bottom">{% avatar photo.member.username 16 %}</a>
     {% endcomment %}
     
-    <a href="{% url 'photo_details' id=photo.id %}#photocomments" data-toggle="tooltip" data-placement="bottom">{% bootstrap_icon "comment" %} {% get_comment_count for photo as commentcount %} {{ commentcount }} </a>
+    <a href="{% url 'photo_details' id=photo.id %}#photocomments" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-comment"></i> {% get_comment_count for photo as commentcount %} {{ commentcount }} </a>
     
-    {% bootstrap_icon "eye-open" %} {% blocktrans with photo.view_count as view_count %}  {{ view_count }} {% endblocktrans %}    
+    <i class="fa fa-eye"></i> {% blocktrans with photo.view_count as view_count %}  {{ view_count }} {% endblocktrans %}    
     
     {% ifequal photo.member request.user %}    
-    <a href="{% url 'photo_edit' id=photo.id %}">{% bootstrap_icon "pencil" %}</a>
+    <a href="{% url 'photo_edit' id=photo.id %}"><i class="fa fa-pencil"></i></a>
     {% endifequal %}
     
     </small>           

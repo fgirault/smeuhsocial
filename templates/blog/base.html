@@ -1,19 +1,20 @@
 {% extends "site_base.html" %}
 
 {% load i18n %}
-{% load bootstrap3 %}
 
 {% block body_class %}blogs{% endblock %}
+
+{% block nav_blogs_li %}class="active"{% endblock%}
 
 {% block subnav %}
     {% if user.is_authenticated %}
         <ul class="nav navbar-nav subnav">
-            <li><a href="{% url 'blog_new' %}">{% bootstrap_icon "pencil" %} {% trans "Write a Blog Post" %}</a></li>
-            <li><a href="{% url 'blog_list_all' %} ">{% bootstrap_icon "list" %} {% trans "All Blogs" %}</a></li>
-            <li><a href="{% url 'friends_blogs' %} ">{% bootstrap_icon "heart" %} {% trans "Friends' Blogs" %}</a></li>
+            <li><a href="{% url 'blog_new' %}"><i class="fa fa-pencil"></i> {% trans "Write a Blog Post" %}</a></li>
+            <li><a href="{% url 'blog_list_all' %} "><i class="fa fa-list"></i> {% trans "All Blogs" %}</a></li>
+            <li><a href="{% url 'friends_blogs' %} "><i class="fa fa-heart"></i> {% trans "Friends' Blogs" %}</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right subnav">
-            <li><a href="{% url 'blog_list_yours' %}">{% bootstrap_icon "user" %} {% trans "Your Posts" %}</a></li>
+            <li><a href="{% url 'blog_list_yours' %}"><i class="fa fa-user"></i> {% trans "Your Posts" %}</a></li>
         </ul> 
     {% else %}
         &nbsp;

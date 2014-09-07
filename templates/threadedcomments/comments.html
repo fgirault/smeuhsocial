@@ -4,7 +4,6 @@
 {% load override_tags %}
 {% load threadedcommentstags %}
 {% load uni_form_tags %}
-{% load bootstrap3 %}
 
 {% get_threaded_comment_tree for object as responses %}
 
@@ -24,18 +23,20 @@
             <div class="bulk">
                 <div class="body">{{ response.comment|urlize|profilize|linebreaks }}</div>
                 {% ifequal user response.user %}
+                <div class="pull-right">
                 <form method="POST" action="{% url 'tc_comment_delete' response.id %}">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ request.path }}" />
-                    <button id="tc_comment_delete_{{response.id}}" type="submit" class="btn btn-xs btn-default">{% bootstrap_icon "remove" %} {% trans "Delete Post" %}</button>
+                    <button id="tc_comment_delete_{{response.id}}" type="submit" class="btn btn-xs btn-default"><i class="fa fa-remove"></i>  {% trans "Delete Post" %}</button>
                     <script>$("#tc_comment_delete_{{response.id}}").popConfirm();</script>
                 </form>
+                </div>
                 {% endifequal %}
-                <a href="javascript:toggle_comment_form({{ response.id }})" class="btn btn-xs btn-default">{% bootstrap_icon "pencil" %} {% trans "Reply to This Post" %}</a>
+                <a href="javascript:toggle_comment_form({{ response.id }})" class="btn btn-xs btn-default"><i class="fa fa-reply"></i>  {% trans "Reply to This Post" %}</a>
                 <form class="hidden" method="POST" action="{% get_comment_url object response %}" id="comment_form_{{ response.id }}">
                     {% csrf_token %}
                     <table><tr><td><textarea rows="10" cols="40" name="comment"></textarea></td></tr>
-                    <tr><td><button type="submit" value="" class="btn btn-xs btn-default">{% bootstrap_icon "ok" %} {% trans "Post Response" %}</button></td></tr></table>
+                    <tr><td><button type="submit" value="" class="btn btn-xs btn-default"><i class="fa fa-ok"></i>  {% trans "Post Response" %}</button></td></tr></table>
                     <input type="hidden" name="next" value="{{ request.path }}" />
                 </form>
             </div>
@@ -53,7 +54,7 @@
                 </div>
                 <div class="form_block">
                     <input type="hidden" name="next" value="{{ request.path }}" />
-                    <button type="submit" value="" class="btn btn-xs btn-default">{% bootstrap_icon "ok" %} {% trans "Post Response" %}</button>
+                    <button type="submit" value="" class="btn btn-xs btn-default"><i class="fa fa-ok"></i> {% trans "Post Response" %}</button>
                 </div>
         </form>
     </fieldset>

@@ -1,7 +1,6 @@
 {% load i18n %}
 {% load compress %}
 {% load tagging_tags %}
-{% load bootstrap3 %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -67,7 +66,7 @@
 		<div id="image">	
 			<a href="{% url 'fukung' %}"><img class="img-responsive center-block photo-details" src="{{ photo_url }}" alt="{{ photo.title }}" style="max-height: 640px;" /></a>	
 		</div>
-		<div class="tags">{% bootstrap_icon "tag" %} Tags: <span id="taglist">
+		<div class="tags"><i class="fa fa-tag"></i> Tags: <span id="taglist">
 				{% tags_for_object photo as tags %}
 	            {% for tag in tags %}<a href="/tags/{{ tag }}">{{ tag }}</a>&nbsp;{% endfor %}</span>
 		</div>

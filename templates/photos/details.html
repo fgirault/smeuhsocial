@@ -3,99 +3,98 @@
 {% load humanize %}
 {% load account_tags %}
 {% load tagging_tags %}
-{% load comments_tag %} 
-{% load photo_tags %} 
-{% load theme_tags %} 
+{% load comments_tag %}
+{% load photo_tags %}
+{% load theme_tags %}
 {% load avatar_tags %}
-{% load bootstrap3 %}
 
-{% block head_title %}{{ photo.title }}{% endblock %} 
+{% block head_title %}{{ photo.title }}{% endblock %}
 
-{% block login %}{% endblock %}
+{% block extra_meta %}{% endblock %}
 
 {% block body %}
 <div class="container">
-	<div class="row">
-		<div class="col-xs-12 col-md-10 col-md-offset-1">
-			<ul class="pager photo-pager">
-				  {% if previous_photo_id %}
-				  <li class="previous">
-				  	<a id="previous_link" href="{% url 'photo_details' previous_photo_id %}" title="{% trans 'Previous picture' %}">{% bootstrap_icon "arrow-left" %} <span class="hidden-xs">{% trans 'Previous picture' %}</span></a>
-				  </li>
-			      {% endif %}
-			      {% if next_photo_id %}
-				  <li class="next">
-				  	<a  id="next_link" href="{% url 'photo_details' next_photo_id %}" title="{% trans 'Next picture' %}"><span class="hidden-xs">{% trans 'Next picture' %}</span>  {% bootstrap_icon "arrow-right" %}</a>
-				  </li>			  			 
-			      {% endif %}			  
-			</ul>
-		</div>		
-	</div>
-	<div class="row">		
-		<div class="col-xs-12 col-sm-8 col-md-6 col-md-offset-1">							
-			<a href="{{ photo.image.url }}"><img class="img-responsive img-rounded center-block photo-details" src="{{ photo_url }}" alt="{{ photo.title }}" style="max-height: 640px;" /></a>		
-		</div>
-		
-		<div class="col-xs-12 col-sm-4 col-md-4">
-		{% if is_me %}<a href="{% url 'photo_edit' id=photo.id %}" class="btn btn-default btn-sm pull-right" title="{% trans 'Edit Photo' %}">{% bootstrap_icon "pencil" %} {% trans 'Edit Photo' %}</a>{% endif %}				
-			<h1>{{ photo.title }}</h1>		
-			<p>
-				{% trans "Posted by" %} <a href="{% url 'profile_detail' photo.member.username %}" title="{% user_display photo.member %}">{% avatar photo.member.username 24 %} <strong>{% user_display	photo.member %}</strong></a>  
-				- <small>{{ photo.date_taken|date:"DATE_FORMAT" }}</small>
-			 	- <small>{% blocktrans with photo.view_count as view_count %}Viewed {{ view_count }} times{% endblocktrans %}</small>								
-			</p>			
-			
-			{% if photo.tags %}
-				<p>
-				{% tags_for_object photo as tags %}
-	            {% for tag in tags %}
-	                <a class="badge" href="/tags/{{ tag }}">{% bootstrap_icon "tag" %} {{ tag }}</a>
-	            {% endfor %}
-	           	</p>
-	   		{% else %}
-	           	<div class="panel warning">
-  					<div class="panel-body">   
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
+            <ul class="pager photo-pager">
+                  {% if previous_photo_id %}
+                  <li class="previous">
+                    <a id="previous_link" href="{% url 'photo_details' previous_photo_id %}" title="{% trans 'Previous picture' %}"><i class="fa fa-arrow-left"></i> <span class="hidden-xs">{% trans 'Previous picture' %}</span></a>
+                  </li>
+                  {% endif %}
+                  {% if next_photo_id %}
+                  <li class="next">
+                    <a  id="next_link" href="{% url 'photo_details' next_photo_id %}" title="{% trans 'Next picture' %}"><span class="hidden-xs">{% trans 'Next picture' %}</span>  <i class="fa fa-arrow-right"></i></a>
+                  </li>
+                  {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-md-offset-1">
+            <a href="{{ photo.image.url }}"><img class="img-responsive img-rounded center-block photo-details" src="{{ photo_url }}" alt="{{ photo.title }}" style="max-height: 640px;" /></a>
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-md-4">
+        {% if is_me %}<a href="{% url 'photo_edit' id=photo.id %}" class="btn btn-default btn-sm pull-right" title="{% trans 'Edit Photo' %}"><i class="fa fa-pencil"></i> {% trans 'Edit Photo' %}</a>{% endif %}
+            <h1>{{ photo.title }}</h1>
+            <p>
+                {% trans "Posted by" %} <a href="{% url 'profile_detail' photo.member.username %}" title="{% user_display photo.member %}">{% avatar photo.member.username 24 %} <strong>{% user_display    photo.member %}</strong></a>
+                - <small>{{ photo.date_taken|date:"DATE_FORMAT" }}</small>
+                - <small>{% blocktrans with photo.view_count as view_count %}Viewed {{ view_count }} times{% endblocktrans %}</small>
+            </p>
+
+            {% if photo.tags %}
+                <p>
+                {% tags_for_object photo as tags %}
+                {% for tag in tags %}
+                    <a class="badge" href="/tags/{{ tag }}"><i class="fa fa-tag"></i> {{ tag }}</a>
+                {% endfor %}
+                </p>
+            {% else %}
+                <div class="panel warning">
+                    <div class="panel-body">
        {% blocktrans %}
        The person who posted this picture is a huge Sarah Palin fan who hasn't
        added any tag.
        {% endblocktrans %}
-  					</div>
-	        	</div>
-	   		{% endif %}            
-			<p class="lead">{{ photo.caption|urlize|linebreaksbr  }}</p>																	
-		</div>		
-	</div>	
-	
-	<div class="row">
-		<div class="col-md-10 block-comment col-md-offset-1">
-			<h4><a name="photocomments"> {% blocktrans %}Comments on this photo:{% endblocktrans %}</a></h4>
-			{% comments photo %}
-		</div>
-	</div>
-	
+                    </div>
+                </div>
+            {% endif %}
+            <p class="lead">{{ photo.caption|urlize|linebreaksbr  }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 block-comment col-md-offset-1">
+            <h4><a id="photocomments"> {% blocktrans %}Comments on this photo:{% endblocktrans %}</a></h4>
+            {% comments photo %}
+        </div>
+    </div>
+
 </div>
 
 {% endblock %} {% block extra_body %}
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('#embed-code').hide();
-		$('#embed-code-toggle').click(function() {
-			$('#embed-code').toggle();
-			return false;
-		})
-	});
-	
-	/*
+    $(document).ready(function() {
+        $('#embed-code').hide();
+        $('#embed-code-toggle').click(function() {
+            $('#embed-code').toggle();
+            return false;
+        })
+    });
 
-	$("body").keydown(function(e) {
-	  if(e.keyCode == 37) { // left
-	    $("#previous_link")[0].click();
-	  }
-	  else if(e.keyCode == 39) { // right
-		$("#next_link")[0].click();
-	  }
-	});
-	*/
+    /*
+
+    $("body").keydown(function(e) {
+      if(e.keyCode == 37) { // left
+        $("#previous_link")[0].click();
+      }
+      else if(e.keyCode == 39) { // right
+        $("#next_link")[0].click();
+      }
+    });
+    */
 
 </script>
 

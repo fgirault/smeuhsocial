@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load compress %}
 {% load bootstrap3 %}
+
 <!DOCTYPE html>
 <html dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}" lang="{{ LANGUAGE_CODE }}">
     <head>
@@ -37,7 +38,8 @@
 
         <link rel="stylesheet" href="{{ STATIC_URL }}audiotracks/css/screen.css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" />
-        <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap-theme.css" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap-theme-mysmeuh.css" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}font-awesome/css/font-awesome.css" />        
         {# <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/override.css" /> #}
         {% endcompress %}
 
@@ -72,7 +74,7 @@
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
-                {% bootstrap_icon "align-justify" %} MENU
+                <i class="fa fa-navicon"></i> MENU
               </button>
               <span class="logo" dir="ltr">{% block logo_link_image %}{% endblock %}</span>
             </div>

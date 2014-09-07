@@ -1,7 +1,5 @@
 {% extends "site_base.html" %}
 
-{% load bootstrap3 %}
-
 {% comment %}
 This template is copied from the base templates to provide the friends
 photos link which is specific to social_project.
@@ -14,17 +12,19 @@ crash.
 
 {% block body_class %}photos{% endblock %}
 
+{% block nav_photos_li %}class="active"{% endblock%}
+
 {% block subnav %}
     {% if user.is_authenticated %}    
         <ul class="nav navbar-nav subnav">
-            <li><a href="{% url 'photo_upload' %}">{% bootstrap_icon "upload" %}  {% trans "Upload a Photo" %}</a></li>
-            <li><a href="{% url 'photos' %}">{% bootstrap_icon "list" %} {% trans "Latest Photos" %}</a></li>
-            <li><a href="{% url 'friends_photos' %}">{% bootstrap_icon "heart" %} {% trans "Friends' Photos" %}</a></li>
+            <li><a href="{% url 'photo_upload' %}"><i class="fa fa-upload"></i> {% trans "Upload a Photo" %}</a></li>
+            <li><a href="{% url 'photos' %}"><i class="fa fa-list"></i> {% trans "Latest Photos" %}</a></li>
+            <li><a href="{% url 'friends_photos' %}"><i class="fa fa-heart"></i> {% trans "Friends' Photos" %}</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right subnav">
-            <li><a href="{% url 'photo_random' %}"  title="{% trans 'Random' %}">{% bootstrap_icon "gift" %} <span class="hidden-sm">{% trans "Random" %}</span></a></li>
-            <li><a href="{% url 'photo_most_viewed' %}" title="{% trans 'Most Viewed' %}">{% bootstrap_icon "eye-open" %} <span class="hidden-sm">{% trans "Most Viewed" %}</span></a></li>
-            <li><a href="{% url 'photos_yours' %}"  title="{% trans 'Your Photos' %}">{% bootstrap_icon "user" %} <span class="hidden-sm">{% trans "Your Photos" %}</span></a></li>
+            <li><a href="{% url 'photo_random' %}"  title="{% trans 'Random' %}"><i class="fa fa-gift"></i> <span class="hidden-sm">{% trans "Random" %}</span></a></li>
+            <li><a href="{% url 'photo_most_viewed' %}" title="{% trans 'Most Viewed' %}"><i class="fa fa-eye"></i> <span class="hidden-sm">{% trans "Most Viewed" %}</span></a></li>
+            <li><a href="{% url 'photos_yours' %}"  title="{% trans 'Your Photos' %}"><i class="fa fa-user"></i> <span class="hidden-sm">{% trans "Your Photos" %}</span></a></li>
         </ul>       
     {% else %}
         &nbsp;

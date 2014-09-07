@@ -7,7 +7,6 @@
 {% load photo_tags %}
 {% load uni_form_field %}
 {% load uni_form_tags %}
-{% load bootstrap3 %}
 {% load override_tags %}
 
 {% block head_title %}{% blocktrans %}Editing Photo Details{% endblocktrans %}{% endblock %}
@@ -23,7 +22,7 @@
 			<form action="{% url 'photo_destroy' id=photo.id %}" method="POST" class="form-horizontal">
 	            {% csrf_token %}
 	            <input type="hidden" name="action" value="delete"/>
-	            <button type="submit" class="btn btn-default" id="delete_photo">{% bootstrap_icon "remove" %} {% trans 'Delete Photo' %}</button>	           
+	            <button type="submit" class="btn btn-danger" id="delete_photo"><i class="fa fa-remove"></i> {% trans 'Delete Photo' %}</button>	           
         	</form>					
 		</div>		
 		<div class="col-xs-12 col-sm-6 col-md-5">
@@ -38,7 +37,7 @@
 		        <div class="form-group">
 		    		<div class="col-sm-offset-2 col-sm-10">
 		      			<input type="hidden" name="action" value="update" />
-		      			<button class="btn btn-default pull-right">{% bootstrap_icon "ok" %} {% trans "Update" %}</button>                
+		      			<button class="btn btn-primary pull-right"><i class="fa fa-check"></i> {% trans "Update" %}</button>                
 				    </div>
 				</div>
         	</fieldset>            
