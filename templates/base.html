@@ -5,18 +5,18 @@
 <html dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}" lang="{{ LANGUAGE_CODE }}">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">{% block extra_meta %}{% endblock %}
         <title>{% block head_title_base %}{% if SITE_NAME %}{{ SITE_NAME }} : {% endif %}{% block head_title %}{% endblock %}{% endblock %}</title>
         <!--[if IE]><style>
             div {
                 zoom: 1; /* trigger hasLayout */
             }
         </style><![endif]-->
-       <link rel="stylesheet" href="{{ STATIC_URL }}uni_form/uni-form.css" />
-       <!-- 
+       <!--
          -->
-		
+
         {% compress css %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}uni_form/uni-form.css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/base.css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/tabs.css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/facebox.css" />
@@ -34,26 +34,26 @@
         <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/tabs.css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/topics.css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/jquery.autocomplete.css" />
+
         <link rel="stylesheet" href="{{ STATIC_URL }}audiotracks/css/screen.css" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap-theme.css" />
+        {# <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/override.css" /> #}
         {% endcompress %}
-        
-		<script type="text/javascript" src="{% bootstrap_jquery_url %}"></script>        
-        
-        {% bootstrap_css %}
-        <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/override.css" />
-        
-        {% bootstrap_javascript %}
+
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.11.1.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/js/bootstrap.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.popconfirm.js"></script>
         {# <script type="text/javascript" src="{{ STATIC_URL }}js/microblogging.js"></script> #}
-        
+
         {% block extra_head_base %}
             {% block extra_head %}{% endblock %}
         {% endblock %}
-        
+
     </head>
-    
+
     <body class="{% block body_class %}{% endblock %}">
-    
+
         {% if site_wide_announcements %}
             <div id="site_wide_announcements">
                 <ul>
@@ -66,50 +66,50 @@
                 </ul>
             </div>
         {% endif %}
-        
+
       <nav class="navbar navbar-default" role="navigation">
-	      <div class="container">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">	          
-	            <span class="sr-only">Toggle navigation</span>
-	            {% bootstrap_icon "align-justify" %} MENU           
-	          </button>
-	          <span class="logo" dir="ltr">{% block logo_link_image %}{% endblock %}</span>
-	        </div>
-	        <div class="navbar-collapse collapse">	        	          	          
-	          {% block right_tabs %}{% endblock %}
-	        </div><!--/.nav-collapse -->		    		    
-	      </div>	      
-	   </nav>
-	   <nav class="navbar-collapse collapse subnav-smeuh">
-	   		<div class="container">	   		
-			{% block subnav %}&nbsp;{% endblock %}
-			</div>	          	          	          
-	   </nav><!--/.nav-collapse -->
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                {% bootstrap_icon "align-justify" %} MENU
+              </button>
+              <span class="logo" dir="ltr">{% block logo_link_image %}{% endblock %}</span>
+            </div>
+            <div class="navbar-collapse collapse">
+              {% block right_tabs %}{% endblock %}
+            </div><!--/.nav-collapse -->
+          </div>
+       </nav>
+       <nav class="navbar-collapse collapse subnav-smeuh">
+            <div class="container">
+            {% block subnav %}&nbsp;{% endblock %}
+            </div>
+       </nav><!--/.nav-collapse -->
 
         {% block body_outer %}
         {% if messages %}
-        	<div class="container"><div class="row">{% bootstrap_messages %}</div></div>        	
+            <div class="container"><div class="row">{% bootstrap_messages %}</div></div>
         {% endif %}
-        <!-- 
+        <!--
         <div id="body-wrapper">
           <div id="body">
-          -->                            
+          -->
               {% block body %}
               {% endblock %}
-           <!-- 
+           <!--
           </div>
         </div>
          -->
          <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
-	    
+
         <footer>
          <div class="container">
         {% block footer %}
           <a href="/al/blog/manifeste-mysmeuh">{% trans 'About' %}</a>
           |
           {% blocktrans %}
-          Site powered by 
+          Site powered by
           <a href="https://github.com/amarandon/smeuhsocial">SmeuhSocial</a>
           {% endblocktrans %}
           | Bored ? Try <a href="{% url 'fukung' %}">fusmeuh</a>, a fukung-like photo-roulette fed with mysmeuh data !
@@ -119,7 +119,7 @@
         </div>
         </footer>
         {% endblock %}
-                               
+
         {% compress js %}
         <script src="{{ STATIC_URL }}pinax/js/base.js" type="text/javascript"></script>
         {# <script src="{{ STATIC_URL }}uni_form/uni-form.jquery.js" type="text/javascript"></script> #}
@@ -142,11 +142,11 @@
                    }, 800);
                    return false;
                });
-               
+
              $('#back-to-top').tooltip('show');
-             
-             $("a[href^='http']").attr('target','_blank'); 
-                              
+
+             $("a[href^='http']").attr('target','_blank');
+
        });</script>
         {% block extra_body_base %}
             {% block extra_body %}{% endblock %}
