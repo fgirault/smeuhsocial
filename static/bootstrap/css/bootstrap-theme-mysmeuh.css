@@ -436,3 +436,39 @@ input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px rgba(0, 255, 0, 0.6);
     outline: 0 none;
 }
+
+h1 {
+  color: #00B000;
+  font-size: 32px;
+  text-shadow: 0.5px 0.5px 0px #ddd;
+}
+
+.home h2 a:visited {
+  color: #00B000;
+}
+
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+

@@ -3,10 +3,12 @@
 {% load i18n %}
 
 {% load uni_form_tags %}
+{% load uni_form_tags %}
+
 
 {% block head_title %}{% trans "Upload a Photo" %}{% endblock %}
 
-{% block extra_head %}<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.file-input.js"></script>{% endblock %}
+{% block extra_head %}{# <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.file-input.js"></script> #}{% endblock %}
 
 
 {% block body %}
@@ -31,4 +33,12 @@
 </div>
 {% endblock %}
 
-{% block extra_body %}<script>$(document).ready(function(){$('input[type=file]').bootstrapFileInput();});</script>{% endblock %}
+{% block extra_body %}
+<script>
+$(document).ready( function() {
+    $('.btn-file :file').on('change', function(event, numFiles, label) {
+    	$(this).parents('.input-group').find(':text').val($(this).val());                       
+    });
+});	
+</script>
+{% endblock %}

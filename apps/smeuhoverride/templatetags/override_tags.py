@@ -45,7 +45,7 @@ def profilize(text):
 
 
 #
-# uniform filters override to provide bootsrap styles 
+# uniform filters override to provide bootsrap styles
 #
 
 class_converter = {
@@ -58,6 +58,10 @@ def is_checkbox(field):
     return field.field.widget.__class__.__name__.lower() == "checkboxinput"
 
 @register.filter
+def is_fileinput(field):
+    return field.field.widget.__class__.__name__.lower().endswith("fileinput")
+
+@register.filter
 def with_class(field):
     class_name = field.field.widget.__class__.__name__.lower()
     class_name = class_converter.get(class_name, class_name)
@@ -65,7 +69,7 @@ def with_class(field):
         field.field.widget.attrs['class'] += " %s" % class_name
     else:
         field.field.widget.attrs['class'] = class_name
-    
+
     field.field.widget.attrs['class'] += " form-control"
     return unicode(field)
 
