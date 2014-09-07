@@ -10,8 +10,8 @@
     <title>fusmeuh</title>
 
     <!-- Bootstrap -->
-    {% bootstrap_css %}
-
+	<link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" />
+        
 
 	<link rel="stylesheet" href="{{ STATIC_URL }}fukung/style.css" />
 
@@ -78,7 +78,8 @@
 {% endcomment %}
   	</div>
 
-    <script type="text/javascript" src="{% bootstrap_jquery_url %}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.11.1.js"></script>
+        
     
   </body>
 </html>
