@@ -234,10 +234,10 @@ input[type="color"],
 
 .label,
 .badge {
-  padding: 1px 3px 2px;
-  font-size: 9.75px;
+  padding: 4px 6px 4px 6px;
+  font-size: 12px;
   color: #ffffff;
-  background-color: #999999;
+  background-color: #00B000;
 }
 
 .label-important,
@@ -477,8 +477,13 @@ input[readonly] {
   border-bottom: 1px solid #CCC;
   word-wrap: break-word;
   margin-bottom: 3px;
+  padding-bottom: 6px;
 }
 
 .homepage-item.first {
   border-top: 1px solid #CCC;
+}
+
+a.badge:visited {
+	color: #fff;
 }
