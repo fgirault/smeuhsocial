@@ -467,8 +467,18 @@ h1 {
   cursor: inherit;
   display: block;
 }
+
 input[readonly] {
   background-color: white !important;
   cursor: text !important;
 }
 
+.homepage-item {
+  border-bottom: 1px solid #CCC;
+  word-wrap: break-word;
+  margin-bottom: 3px;
+}
+
+.homepage-item.first {
+  border-top: 1px solid #CCC;
+}
