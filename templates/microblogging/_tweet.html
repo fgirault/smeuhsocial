@@ -5,7 +5,7 @@
 {% load override_tags %}
 <div class="tweet-item homepage-item {% if forloop.first %} first{% endif %}{% cycle ' odd' '' %} {{ extra_classes }} clearfix">
   {% avatar_link tweet.sender 24 %}
-  <div class="clearfix tweet " id="t{{ tweet.id }}">
+  <div class="clearfix tweet" id="{% if tli_index %}tli_{{ tli_index }}{% else %}t{{ tweet.id }}{% endif %}">
     {% if prefix_sender %}<a href="{% url 'profile_detail' tweet.sender %}"><b>{% user_display tweet.sender %}</b></a>{% endif %}
     {% render_tweet_text tweet %}
     <span class="timesince">{% blocktrans with tweet.sent|timesince as tweet_age %}{{ tweet_age }} ago{% endblocktrans %}</span>
