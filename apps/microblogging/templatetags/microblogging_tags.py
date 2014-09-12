@@ -13,17 +13,27 @@ from microblogging.models import Tweet, Following
 
 register = template.Library()
 user_ref_re = re.compile("@(\w+)")
-
+tag_ref_re = re.compile("#(\w+)")
+smile_ref_re = re.compile("(\:-?\))")
+meh_ref_re = re.compile("(\:-?\|)")
+frown_ref_re = re.compile("(\:-?\()")
 
 def make_user_link(text):
     username = text.group(1)
-    return """@<a href="%s">%s</a>""" % (reverse("profile_detail", args=[username]), username)
+    return """ <a href="%s">@%s</a>""" % (reverse("profile_detail", args=[username]), username)
 
+def make_tag_link(text):
+    tag = text.group(1)
+    return """ <small><a href="%s"><i class="fa fa-tag"></i> %s </a></small>""" % (reverse("tagging_ext_tag", args=[tag]), tag)
 
 @register.simple_tag
 def render_tweet_text(tweet):
     text = escape(tweet.text)
+    text = smile_ref_re.sub("""<i class="fa fa-smile-o"></i>""", text)
+    text = meh_ref_re.sub("""<i class="fa fa-meh-o"></i>""", text)
+    text = frown_ref_re.sub("""<i class="fa fa-frown-o"></i>""", text)
     text = user_ref_re.sub(make_user_link, text)
+    text = tag_ref_re.sub(make_tag_link, text)
     return mark_safe(text)
 
 

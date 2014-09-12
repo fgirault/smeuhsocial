@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
@@ -12,7 +13,7 @@ from django.http import HttpResponse
 from microblogging.utils import twitter_account_for_user, twitter_verify_credentials
 from microblogging.models import Tweet, TweetInstance, Following, get_following_followers_lists
 from microblogging.forms import TweetForm
-
+from tagging.models import Tag, TaggedItem
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
@@ -68,6 +69,22 @@ def post_tweet(request, form_class=TweetForm, success_url=None):
         if form.is_valid():
             text = form.cleaned_data['text']
             tweet = form.save()
+
+            for tag_name in re.findall(r'#([^\s]+)', text):
+                try:
+                    tag = Tag.objects.get(name__iexact=tag_name)
+                except Tag.DoesNotExist:
+                    # create the new tag !
+                    # tag = item.tags.create(label=tag_name, created_by=user)
+                    tag = Tag(name=tag_name)
+                    tag.save()
+                tagged_item = TaggedItem(
+                        tag = tag,
+                        content_type = ContentType.objects.get(name='tweet'),
+                        object_id = tweet.id
+                        )
+                tagged_item.save()
+
             if request.POST.get("pub2twitter", False):
                 twitter_account.PostUpdate(text)
             if request.is_ajax():
