@@ -18,11 +18,11 @@ class TagInTheCloud:
 
     a fake Tag model to feed the cloud
     """
-    def __init__(self, name, count, _):
+    def __init__(self, name, count, *args):
         self.name = name
         self.count = count
 
-def tag_index(request, template_name="tagging_ext/index.html", min_size=0, limit=1000):
+def tag_index(request, template_name="tagging_ext/index.html", *args, **kw):
     query = """
         SELECT tag.name as name, COUNT(tag_item.tag_id) as counter, tag_item.tag_id as tag_id
         FROM tagging_taggeditem as tag_item
