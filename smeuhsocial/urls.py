@@ -37,9 +37,9 @@ blogs_feed_dict = {"feed_dict": {
 urlpatterns = patterns(
     "",
     url(r"^favicon.ico/?$", RedirectView.as_view(
-        url=settings.STATIC_URL + 'img/favicon.ico')),    
-    url(r"^$", "timeline.views.home", name="home"),   
-    url(r"5c/$", "timeline.views.legacy",), 
+        url=settings.STATIC_URL + 'img/favicon.ico')),
+    url(r"^$", "timeline.views.home", name="home"),
+    url(r"5c/$", "timeline.views.legacy",),
     url(r"^admin/", include(admin.site.urls)),
     url(r"^about/", include("about.urls")),
     url(r"^account/", include("account.urls")),
@@ -97,10 +97,10 @@ urlpatterns = patterns(
     url(r"^photos/", include("photos.urls")),
     url(r"^avatar/", include("avatar.urls")),
     url(r"^fu/",  include("fukung.urls")),
-    url(r"^timeline/", include("timeline.urls")),  
-    url(r"^artist/", include("artist.urls")),  
-    
-    
+    url(r"^timeline/", include("timeline.urls")),
+    url(r"^artist/", include("artist.urls")),
+    url('^markdown/', include( 'django_markdown.urls')),
+
     # Feeds urls
     url(r"^feeds/touites/(?P<username>[\w\._-]+)/with_friends/?$",
         feeds.UserTweetWithFriends(
@@ -145,6 +145,11 @@ urlpatterns += patterns(
 )
 
 tagged_models = (
+    dict(title="Tweets",
+         query=lambda tag: TaggedItem.objects.get_by_model(
+             Tweet, tag),
+         content_template="pinax_tagging_ext/tweets.html",
+         ),
     dict(title="Blog Posts",
          query=lambda tag: TaggedItem.objects.get_by_model(
              Post, tag).filter(status=2),
@@ -158,7 +163,7 @@ tagged_models = (
     dict(title="Audio Tracks",
          query=lambda tag: TaggedItem.objects.get_by_model(Track, tag),
          content_template="pinax_tagging_ext/audiotracks.html",
-         ),   
+         ),
 )
 tagging_ext_kwargs = {
     "tagged_models": tagged_models,
@@ -186,7 +191,7 @@ urlpatterns += patterns(
     #url(r"^(?P<username>[\w\._-]+)/$",
     #    "profiles.views.profile", name="profile_detail"),
     url(r"^(?P<username>[\w\._-]+)/$",
-        "timeline.views.user_home", name="profile_detail"),                    
+        "timeline.views.user_home", name="profile_detail"),
 )
 
 if settings.SERVE_MEDIA:
