@@ -1,3 +1,9 @@
+<ul class="nav nav-pills">
 {% for model in model_counts %}
-    <h2><a href="{% url 'tagging_ext_tag_by_model' tag model.title|slugify %}">{{ model.title }}</a><span class="badge"> {{ model.count }}</span></h2>
+
+    <li>
+        <a href="{% url 'tagging_ext_tag_by_model' tag model.title|slugify %}">{{ model.title }}<span class="badge"> {{ model.count }}</span></a>
+    </li>
 {% endfor %}
+
+</ul>

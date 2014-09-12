@@ -1,25 +1,25 @@
 {% extends "tagging_ext/base.html" %}
 
-{% block head_title %}All {{model }} listings for "{{ tag }}" {% endblock %}
+{% block head_title %}All {{model }} listings for #{{ tag }} {% endblock %}
 
 {% block body %}
 <div class="container">
-<h2>All {{model }} listings for <i>#"{{ tag }}"</i></h2>
+    <div class="row">
+        <div id="tagging-ext-main" class="col-xs-12 col-md-10 col-md-offset-1">
+            <h2>All {{model }} listings for <a href="{% url 'tagging_ext_tag' tag %}">#{{ tag }}</a></h2>
+            <div id="tagging-ext-sidebar">
+            {% include "tagging_ext/sidebar.html" %}
+        </div>
+        <div id="tagging-ext-content">
+            <ul>
+                {% for result in results %}
+                    {% include content_template %}
+                {% endfor %}
+            </ul>
+        </div>
+        </div>
 
-<div id="tagging-ext-main">
-    
-    <div id="tagging-ext-sidebar">
-        {% include "tagging_ext/sidebar.html" %}
     </div>
-    <div id="tagging-ext-content">
-        <ul>
-            {% for result in results %}
-                {% include content_template %}
-            {% endfor %}
-
-        </ul>
-    </div>
-</div>
 </div>
 
 {% endblock %}
