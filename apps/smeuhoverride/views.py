@@ -13,36 +13,32 @@ from tagging.utils import calculate_cloud, LOGARITHMIC
 from pinax.apps.blog.models import Post
 from photos.models import Image
 
-def tag_index(request, template_name="tagging_ext/index.html", min_size=0, limit=100):
-    query = """
-        SELECT tag_item.tag_id as tag_id, COUNT(tag_item.tag_id) as counter 
-        FROM tagging_taggeditem as tag_item 
-        INNER JOIN tagging_tag as tag ON (tag.id = tag_item.tag_id)
-        GROUP BY tag.name,tag_id
-        HAVING COUNT(tag.name) > %s
-        ORDER BY tag.name
-        LIMIT %s
+class TagInTheCloud:
     """
 
+    a fake Tag model to feed the cloud
+    """
+    def __init__(self, name, count, _):
+        self.name = name
+        self.count = count
+
+def tag_index(request, template_name="tagging_ext/index.html", min_size=0, limit=1000):
+    query = """
+        SELECT tag.name as name, COUNT(tag_item.tag_id) as counter, tag_item.tag_id as tag_id
+        FROM tagging_taggeditem as tag_item
+        INNER JOIN tagging_tag as tag ON (tag.id = tag_item.tag_id)
+        GROUP BY tag.name, tag_id
+        ORDER BY tag.name
+    """
     cursor = connection.cursor()
-    cursor.execute(query, [min_size, limit])
+    cursor.execute(query)
 
-    tags = []
+    tags = calculate_cloud(
+        [ TagInTheCloud(*row) for row in cursor ],
+        steps=5,
+        distribution=LOGARITHMIC
+        )
 
-    for row in cursor.fetchall():
-        try:
-            tag = Tag.objects.get(id=row[0])
-        except ObjectDoesNotExist:
-            continue
-            
-        if ' ' in tag.name:
-            continue
-        
-        tag.count = row[1]
-        tags.append(tag)    
-
-    tags = calculate_cloud(tags, steps=5, distribution=LOGARITHMIC)
-        
     return render_to_response(template_name, {'tags': tags},
         context_instance=RequestContext(request))
 
