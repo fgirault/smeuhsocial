@@ -99,7 +99,6 @@ urlpatterns = patterns(
     url(r"^fu/",  include("fukung.urls")),
     url(r"^timeline/", include("timeline.urls")),
     url(r"^artist/", include("artist.urls")),
-    url('^markdown/', include( 'django_markdown.urls')),
 
     # Feeds urls
     url(r"^feeds/touites/(?P<username>[\w\._-]+)/with_friends/?$",
