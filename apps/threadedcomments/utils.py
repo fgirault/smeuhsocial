@@ -1,10 +1,10 @@
 from django.core.serializers import serialize
 from django.http import HttpResponse
-from django.utils import simplejson
+import json
 from django.utils.functional import Promise
-from django.utils.encoding import force_unicode 
+from django.utils.encoding import force_unicode
 
-class LazyEncoder(simplejson.JSONEncoder):
+class LazyEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, Promise):
             return force_unicode(obj)
