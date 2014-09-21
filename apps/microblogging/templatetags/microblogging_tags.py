@@ -13,10 +13,17 @@ from microblogging.models import Tweet, Following
 
 register = template.Library()
 user_ref_re = re.compile("@(\w+)")
-tag_ref_re = re.compile("#(\w+)")
+tag_ref_re = re.compile(" #(\w+)")
 smile_ref_re = re.compile("(\:-?\))")
 meh_ref_re = re.compile("(\:-?\|)")
 frown_ref_re = re.compile("(\:-?\()")
+
+emoticons = {
+    ":)": "fa-smile-o",
+    ":-)": "fa-smile-o",
+    ":|": "fa-meh-o",
+    ":(": "fa-frown-o"
+}
 
 def make_user_link(text):
     username = text.group(1)
