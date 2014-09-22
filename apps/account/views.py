@@ -490,7 +490,7 @@ def other_services(request, **kwargs):
 
 
 @login_required
-def other_services_remove(request):
+def other_services_remove(request, **kwargs):
     
     group, bridge = group_and_bridge(kwargs)
     
