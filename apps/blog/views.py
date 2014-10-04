@@ -11,8 +11,8 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-from pinax.apps.blog.models import Post
-from pinax.apps.blog.forms import *
+from blog.models import Post
+from blog.forms import *
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification

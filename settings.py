@@ -185,7 +185,6 @@ INSTALLED_APPS = [
     "account",
     "pinax.apps.analytics",
     "profiles",
-    "pinax.apps.blog",
     "photos",
     "pinax.apps.topics",
     "pinax.apps.threadedcomments_extras",

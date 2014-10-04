@@ -3,7 +3,7 @@ from django.core.exceptions import ImproperlyConfigured
 from django.contrib.auth.models import User
 
 from microblogging.models import Tweet
-from pinax.apps.blog.models import Post
+from blog.models import Post
 
 
 _inbox_count_sources = None
