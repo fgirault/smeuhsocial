@@ -84,6 +84,7 @@ class Message(models.Model):
         super(Message, self).save(force_insert, force_update) 
     
     class Meta:
+        db_table = "messages_message"
         ordering = ['-sent_at']
         verbose_name = _("Message")
         verbose_name_plural = _("Messages")
