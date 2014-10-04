@@ -2,11 +2,12 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.db.models import Count
 
-from audiotracks.models import Track
+from audiotracks.models import get_track_model
+
 
 def index(request):
     
-    names = Track.objects.values('artist').annotate(total=Count('artist')).distinct().order_by('artist')
+    names = get_track_model().objects.values('artist').annotate(total=Count('artist')).distinct().order_by('artist')
     
     ncols = 3
     
