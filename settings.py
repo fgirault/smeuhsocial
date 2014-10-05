@@ -194,7 +194,8 @@ INSTALLED_APPS = [
     "audiotracks",
     "smeuhoverride",
     "timeline",
-    "artist"
+    "artist",
+    "blog"
     
    
 ]
