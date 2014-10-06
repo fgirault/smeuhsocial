@@ -487,3 +487,7 @@ input[readonly] {
 a.badge:visited {
 	color: #fff;
 }
+
+a.badge:hover {
+	color: #F4C021;
+}
