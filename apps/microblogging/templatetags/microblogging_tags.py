@@ -31,7 +31,7 @@ def make_user_link(text):
 
 def make_tag_link(text):
     tag = text.group(1)
-    return """ <small><a href="%s"><i class="fa fa-tag"></i> %s </a></small>""" % (reverse("tagging_ext_tag", args=[tag]), tag)
+    return """ <small><a href="%s"><i class="fa fa-tag"></i> %s </a></small>""" % (reverse("tag_homepage", args=[tag]), tag)
 
 @register.simple_tag
 def render_tweet_text(tweet):

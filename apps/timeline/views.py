@@ -1,6 +1,10 @@
 """
 
 views for the mysmeuh timeline application.
+
+this module grows and gets bloated ... needs a serious refactoring soon, with 
+an abstraction over pages with meta things over timeline, photos, tracks and 
+blogs is strongly needed.
 """
 import datetime
 
@@ -28,6 +32,7 @@ from friends.models import FriendshipInvitation, Friendship
 from microblogging.models import Following
 from django.db.transaction import is_managed
 
+from tagging.models import TaggedItem
 from timeline.models import TimeLineItem
 
 class TimeLineView(TemplateView):
@@ -256,6 +261,7 @@ class UserHomePageView(TemplateView):
             TimeLineItem(item, item.date_submitted, item.user, "timeline/_comment.html")
             for item in ThreadedComment.objects.all().filter(user = user).order_by("-date_submitted")[:16]
             ]
+        
         items = merge(tweets, comments, field="date")[:16]
         for index, item in enumerate(items):
             item.index = index + 1
@@ -354,6 +360,61 @@ class UserHomePageView(TemplateView):
 
         return HttpResponseRedirect(reverse("timeline.views.user_home", kwargs = {"username": username}))
 
+class TagHomePageView(TemplateView):
+
+    template_name = "timeline/homepage/tag.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(TagHomePageView, self).get_context_data(**kwargs)
+        
+        tag = context.get("tagname")
+                        
+        # ago = datetime.datetime.now() - datetime.timedelta(30)
+                
+        tweets = [
+            TimeLineItem(item, item.sent, item.sender, "timeline/_tweet.html")
+            for item in TaggedItem.objects.get_by_model(Tweet, tag).order_by("-sent")[:16]
+            ]
+
+        context['latest_blogs'] = TaggedItem.objects.get_by_model(Post, tag).filter(status = 2).order_by("-updated_at")[:10]
+
+        posts =  [
+            TimeLineItem(item, item.updated_at, item.author, "timeline/_post.html")
+            for item in context['latest_blogs']
+            ]
+
+        context['latest_photos'] = TaggedItem.objects.get_by_model(Image, tag).filter(is_public = True).order_by("-date_added")[:16]
+
+        images = [
+            TimeLineItem(item, item.date_added, item.member, "timeline/_photo.html")
+            for item in context['latest_photos']
+            ]
+
+        context['latest_tracks'] = TaggedItem.objects.get_by_model(Track, tag).order_by("-updated_at")        
+
+        tracks = [
+            TimeLineItem(item, item.updated_at, item.user, "timeline/_track.html")
+            for item in context['latest_tracks']
+            ]
+
+        #comments = [
+        #    TimeLineItem(item, item.date_submitted, item.user, "timeline/_comment.html")
+        #    for item in ThreadedComment.objects.all().filter(date_submitted__gte=ago, user__in=following_list).order_by("-date_submitted")
+        #    ]
+        
+        # no tag for comment yet. so : no comment :)
+        
+        #Tag.objects.get_for_object(self.obj.resolve(context))
+        
+        
+        items = merge(tweets, images, posts, tracks, field="date")
+        for index, item in enumerate(items):
+            item.index = index + 1
+        context['timelineitems'] = items[:16]
+        context['prefix_sender'] = True
+        return context
+ 
+
 # old stuff extracted from the main urls.py file, to run the 5 column home page
 class LegacyHomePageView(TemplateView):
 
@@ -385,3 +446,5 @@ following = login_required(FollowingPageView.as_view())
 user_home = login_required(UserHomePageView.as_view())
 
 user_timeline = login_required(UserHomePageView.as_view())
+
+tag_home = login_required(TagHomePageView.as_view())
