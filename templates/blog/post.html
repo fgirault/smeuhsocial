@@ -39,7 +39,7 @@ href="{% url 'all_blogs_feed' %}" />
   	<p>     
       {% tags_for_object post as tags %}      
       {% for tag in tags %}
-      <a class="badge" href="/tags/{{ tag }}"><i class="fa fa-tag"></i> {{ tag }}</a>
+      <a class="badge" href="{% url 'tag_homepage' tag %}"><i class="fa fa-tag"></i> {{ tag }}</a>
       {% endfor %}
       </p>
       

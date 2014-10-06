@@ -68,7 +68,7 @@
 		</div>
 		<div class="tags"><i class="fa fa-tag"></i> Tags: <span id="taglist">
 				{% tags_for_object photo as tags %}
-	            {% for tag in tags %}<a href="/tags/{{ tag }}">{{ tag }}</a>&nbsp;{% endfor %}</span>
+	            {% for tag in tags %}<a href="{% url 'tag_homepage' tag %}">{{ tag }}</a>&nbsp;{% endfor %}</span>
 		</div>
 		<a href="{% url 'photo_details' id=photo.id %}" >View on MySmeuh</a>
 {%comment%}
