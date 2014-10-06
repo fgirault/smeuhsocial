@@ -21,17 +21,18 @@
                 <small>{{ response.date_submitted|date }}</small>
             </div>
             <div class="bulk">
-                <div class="body">{{ response.comment|urlize|profilize|linebreaks }}</div>
                 {% ifequal user response.user %}
                 <div class="pull-right">
-                <form method="POST" action="{% url 'tc_comment_delete' response.id %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="next" value="{{ request.path }}" />
-                    <button id="tc_comment_delete_{{response.id}}" type="submit" class="btn btn-xs btn-default"><i class="fa fa-remove"></i>  {% trans "Delete Post" %}</button>
-                    <script>$("#tc_comment_delete_{{response.id}}").popConfirm();</script>
-                </form>
+	                <form method="POST" action="{% url 'tc_comment_delete' response.id %}">
+	                    {% csrf_token %}
+	                    <input type="hidden" name="next" value="{{ request.path }}" />
+                		&nbsp;
+	                    <button id="tc_comment_delete_{{response.id}}" type="submit" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="{% trans "Delete Post" %}"><i class="fa fa-remove"></i> </button>
+	                    <script>$("#tc_comment_delete_{{response.id}}").popConfirm();</script>
+	                </form>
                 </div>
                 {% endifequal %}
+                <div class="body">{{ response.comment|urlize|profilize|linebreaks }}</div>
                 <a href="javascript:toggle_comment_form({{ response.id }})" class="btn btn-xs btn-default"><i class="fa fa-reply"></i>  {% trans "Reply to This Post" %}</a>
                 <form class="hidden" method="POST" action="{% get_comment_url object response %}" id="comment_form_{{ response.id }}">
                     {% csrf_token %}
