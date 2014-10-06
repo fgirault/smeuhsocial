@@ -181,4 +181,4 @@
 {% endif %}
 {% endblock %}
 
-{% block extra_body %}<script>$(document).ready(function(){$('button[type=submit]').popConfirm();});</script>{% endblock %}
+{% block extra_body %}{{ block.super }}<script>$(document).ready(function(){$('button[type=submit]').popConfirm();});</script>{% endblock %}
