@@ -1,0 +1,42 @@
+{% extends "timeline/homepage/homepage.html" %}
+
+{% load i18n %}
+{% load account_tags %}
+{% load avatar_tags %}
+{% load uni_form_tags %}
+{% load microblogging_tags %}
+{% load override_tags %}
+
+{% block head_title %}{% trans "Tag Homepage" %}{% endblock %}
+
+{% block nav_tags_li %}class="active"{% endblock %}
+
+{% block body %}	    
+{{ block.super }}
+{% endblock %}
+
+{% block touiteform %}{% endblock %}
+
+{% block newsblock %}
+<h1><i class="fa fa-tag"> </i> {{ tagname }}</h1>
+{{ block.super }}
+{% endblock %}
+
+{% block photosblock %}
+{{ block.super }}
+{% endblock %}
+
+
+{% block newsfooter %}
+{% endblock %}
+
+{% block photosfooter %}
+{% if latest_photos %}
+<div  class="clearfix" >
+	<a href="{% url 'photo_tag' tagname %}" class="btn btn-default btn-sm pull-right"><i class="fa fa-camera"></i> {% trans "All Photos" %}</a>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_body %}{{ block.super }}<script>$(document).ready(function(){$('button[type=submit]').popConfirm();});</script>{% endblock %}

@@ -48,7 +48,7 @@
                 <p>
                 {% tags_for_object photo as tags %}
                 {% for tag in tags %}
-                    <a class="badge" href="/tags/{{ tag }}"><i class="fa fa-tag"></i> {{ tag }}</a>
+                    <a class="badge" href="{% url 'tag_homepage' tag %}"><i class="fa fa-tag"></i> {{ tag }}</a>
                 {% endfor %}
                 </p>
             {% else %}

@@ -15,6 +15,7 @@ from photologue.models import *
 from photos.models import Image, Pool
 from photos.forms import PhotoUploadForm, PhotoEditForm
 
+from tagging.models import TaggedItem
 
 
 def group_and_bridge(request):
@@ -88,7 +89,7 @@ def upload(request, form_class=PhotoUploadForm, template_name="photos/upload.htm
 
 
 @login_required
-def yourphotos(request, template_name="photos/yourphotos.html"):
+def your_photos(request, template_name="photos/yourphotos.html"):
     """
     photos for the currently authenticated user
     """
@@ -233,6 +234,22 @@ def user_photos(request, username, template_name="photos/user_photos.html"):
     ctx.update({
         "photos": photos,
         "username": username
+    })    
+    return render_to_response(template_name, RequestContext(request, ctx))
+
+@login_required
+def tagged_photos(request, tagname, template_name="photos/tagged_photos.html"):
+    """
+    Get the photos with a tag and display them
+    """
+        
+    # TODO add non-public photos to result if authenticated user is a friend
+    photos = TaggedItem.objects.get_by_model(Image, tagname).filter(is_public = True).order_by("-date_added")   
+    group, bridge = group_and_bridge(request)
+    ctx = group_context(group, bridge)
+    ctx.update({
+        "photos": photos,
+        "tag": tagname
     })    
     return render_to_response(template_name, RequestContext(request, ctx))
 

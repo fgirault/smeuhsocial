@@ -10,7 +10,7 @@ urlpatterns = patterns("",
     # upload photos
     url(r"^upload/$", "photos.views.upload", name="photo_upload"),
     # your photos
-    url(r"^yourphotos/$", "photos.views.yourphotos", name="photos_yours"),
+    url(r"^yourphotos/$", "photos.views.your_photos", name="photos_yours"),
     # a members photos
     url(r"^user/(?P<username>[\w]+)/$", "photos.views.user_photos", name="photos_user"),
     #destory photo
@@ -19,5 +19,7 @@ urlpatterns = patterns("",
     url(r"^edit/(?P<id>\d+)/$", "photos.views.edit", name="photo_edit"),
     # a random photo
     url(r"^random/$", "photos.views.random", name="photo_random"),
+    # photos with a tag
+    url(r"^tag/(?P<tagname>.+)/$", "photos.views.tagged_photos", name="photo_tag"),
     
 )
