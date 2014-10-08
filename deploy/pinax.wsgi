@@ -15,5 +15,5 @@ os.environ["DJANGO_SETTINGS_MODULE"] = "settings"
 
 sys.path.insert(0, join(settings.PROJECT_ROOT, "apps"))
 
-from django.core.handlers.wsgi import WSGIHandler
-application = WSGIHandler()
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
