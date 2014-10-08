@@ -111,7 +111,7 @@ MIDDLEWARE_CLASSES = [
     "django_openid.consumer.SessionConsumer",
     "django.contrib.messages.middleware.MessageMiddleware",
     "account.middleware.LocaleMiddleware",
-    "django.middleware.doc.XViewMiddleware",
+    "django.contrib.admindocs.middleware.XViewMiddleware",
     "pagination.middleware.PaginationMiddleware",
     "django_sorting.middleware.SortingMiddleware",
     "pinax.middleware.security.HideSensistiveFieldsMiddleware",
