@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 from tagging.models import Tag
 from tagging.utils import calculate_cloud, LOGARITHMIC
-from pinax.apps.blog.models import Post
+from blog.models import Post
 from photos.models import Image
 
 class TagInTheCloud:

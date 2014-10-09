@@ -18,7 +18,7 @@ class JSONResponse(HttpResponse):
         if is_iterable:
             content = serialize('json', object)
         else:
-            content = simplejson.dumps(object, cls=LazyEncoder)
+            content = json.dumps(object, cls=LazyEncoder)
         super(JSONResponse, self).__init__(content, mimetype='application/json')
 
 class XMLResponse(HttpResponse):

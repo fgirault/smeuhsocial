@@ -31,6 +31,7 @@ class MessageAdminForm(forms.ModelForm):
 
     class Meta:
         model = Message
+        fields = []
 
 class MessageAdmin(admin.ModelAdmin):
     form = MessageAdminForm

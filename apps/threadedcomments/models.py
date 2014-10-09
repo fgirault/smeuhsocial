@@ -63,7 +63,7 @@ class ThreadedCommentManager(models.Manager):
             {% endfor %}
         """
         content_type = ContentType.objects.get_for_model(content_object)
-        children = list(self.get_query_set().filter(
+        children = list(self.get_queryset().filter(
             content_type = content_type,
             object_id = getattr(content_object, 'pk', getattr(content_object, 'id')),
         ).select_related().order_by('date_submitted'))
@@ -123,8 +123,8 @@ class PublicThreadedCommentManager(ThreadedCommentManager):
     but which also restricts the queryset to only the published methods 
     (in other words, ``is_public = True``).
     """
-    def get_query_set(self):
-        return super(ThreadedCommentManager, self).get_query_set().filter(
+    def get_queryset(self):
+        return super(ThreadedCommentManager, self).get_queryset().filter(
             Q(is_public = True) | Q(is_approved = True)
         )
 

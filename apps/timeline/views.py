@@ -22,7 +22,8 @@ from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirec
 # model import
 from microblogging.models import Tweet
 from photos.models import Image
-from audiotracks.models import Track
+from audiotracks.models import get_track_model
+Track = get_track_model()
 from blog.models import Post
 from threadedcomments.models import ThreadedComment
 from friends.models import friend_set_for

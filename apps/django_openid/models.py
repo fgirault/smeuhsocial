@@ -116,8 +116,8 @@ class DjangoOpenIDStore(OpenIDStore):
         return False
 
 # Only include table for User->OpenID associations if User model is installed
-user_model = models.get_model('auth', 'User')
-if user_model and user_model._meta.installed:
+from django.contrib.auth.models import User
+if User._meta.installed:
     class UserOpenidAssociation(models.Model):
         "Auth integration - lets you associate 1+ OpenIDs with a User"
         user = models.ForeignKey('auth.User', related_name = 'openids')

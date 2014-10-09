@@ -10,7 +10,7 @@ from django.template.defaultfilters import urlize
 
 from friends.models import friend_set_for
 from microblogging.models import Tweet
-from pinax.apps.blog.models import Post
+from blog.models import Post
 from photos.models import Image
 from threadedcomments.models import ThreadedComment
 

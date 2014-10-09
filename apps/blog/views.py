@@ -11,8 +11,8 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-from pinax.apps.blog.models import Post
-from pinax.apps.blog.forms import *
+from blog.models import Post
+from blog.forms import *
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
@@ -27,7 +27,7 @@ except ImportError:
 
 
 def blogs(request, username=None, template_name="blog/blogs.html"):
-    blogs = Post.objects.filter(status=2).select_related(depth=1).order_by("-publish")
+    blogs = Post.objects.filter(status=2).select_related('author').order_by("-publish")
     if username is not None:
         user = get_object_or_404(User, username=username.lower())
         blogs = blogs.filter(author=user)

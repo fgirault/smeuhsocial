@@ -1,23 +1,9 @@
 # -*- encoding: utf-8 -*-
-"""
-This file demonstrates two different styles of tests (one doctest and one
-unittest). These will both pass when you run "manage.py test".
-
-Replace these with more appropriate tests for your application.
-"""
-
 from django.contrib.auth.models import User
 from django.test import TestCase
 from avatar.models import Avatar
 
 from messages.models import Message
-
-
-class TestHomePage(TestCase):
-
-    def test_home_page(self):
-        resp = self.client.get('/')
-        self.assertContains(resp, 'Smeuh.org')
 
 
 class BaseTestCase(TestCase):
@@ -34,6 +20,13 @@ class BaseTestCase(TestCase):
         self.client.login(username=username, password='secret')
 
 
+class TestHomePage(BaseTestCase):
+
+    def test_home_page(self):
+        resp = self.client.get('/')
+        self.assertContains(resp, 'Homepage')
+
+
 class TestTouites(BaseTestCase):
 
     def check_toggle_follow(self, action):
@@ -42,8 +35,8 @@ class TestTouites(BaseTestCase):
 
         resp = self.client.post(
             '/touites/toggle_follow/%s/' % self.her.username, {
-            'action': action,
-        }, follow=True)
+                'action': action,
+            }, follow=True)
 
         self.assertEqual(resp.status_code, 200)
 
@@ -89,14 +82,15 @@ class TestMessages(BaseTestCase):
 class TestFriends(BaseTestCase):
 
     def test_invite(self):
-        resp = self.client.post('/%s/' % self.her.username, {
+        response = self.client.post('/%s/' % self.her.username, {
             'to_user': self.her.username,
             'action': u'invite',
             'message': u"Let's be friends!",
-        })
+        }, follow=True)
 
-        self.assertContains(resp, "Friendship requested with %s" %
-                self.her.username)
+        self.assertContains(
+            response,
+            "Friendship requested with %s" % self.her.username)
 
 
 class TestInvite(BaseTestCase):
@@ -107,8 +101,9 @@ class TestInvite(BaseTestCase):
             'message': 'Message body',
         }, follow=True)
 
-        self.assertContains(resp,
-                            'Invitation to join sent to somebody@example.com')
+        self.assertContains(
+            resp,
+            'Invitation to join sent to somebody@example.com')
 
 
 class BaseImageTest(BaseTestCase):

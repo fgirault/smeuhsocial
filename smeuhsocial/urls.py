@@ -5,7 +5,8 @@ from django.contrib import admin
 from django.conf.urls.static import static
 admin.autodiscover()
 
-from audiotracks.models import Track
+from audiotracks.models import get_track_model
+Track = get_track_model()
 from microblogging.feeds import TweetFeedAll, TweetFeedUser
 from microblogging.feeds import TweetFeedUserWithFriends
 from microblogging.models import Tweet

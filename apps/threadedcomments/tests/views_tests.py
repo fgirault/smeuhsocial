@@ -6,7 +6,7 @@ from django.core import mail
 from django.core.urlresolvers import reverse
 from django.template import Context, Template
 from django.test import TestCase
-from django.utils.simplejson import loads
+from json import loads
 
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
