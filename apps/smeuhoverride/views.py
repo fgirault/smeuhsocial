@@ -61,4 +61,4 @@ def blog_post_source(request, username, slug):
     if post.status == 1 and post.author != request.user:
         raise Http404
 
-    return HttpResponse(post.body, mimetype="text/plain; charset=utf-8")
+    return HttpResponse(post.body, content_type="text/plain; charset=utf-8")

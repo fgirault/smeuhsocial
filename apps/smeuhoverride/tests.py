@@ -4,6 +4,7 @@ from django.test import TestCase
 from avatar.models import Avatar
 
 from messages.models import Message
+from blog.models import Post
 
 
 class BaseTestCase(TestCase):
@@ -161,3 +162,12 @@ class TestResetPassword(BaseTestCase):
         response = self.client.post('/account/password_reset/',
                                     {'email': user.email}, follow=True)
         self.assertContains(response, u"Nous vous avons envoyé un email")
+
+
+class TestBlogPost(BaseTestCase):
+
+    def test_view_source(self):
+        Post.objects.create(title=u"A Neat Title", slug="the-slug",
+                            author=self.me, body="Some content")
+        response = self.client.get("/bob/blog/the-slug/source")
+        self.assertContains(response, "Some content")
