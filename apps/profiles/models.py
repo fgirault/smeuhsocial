@@ -37,6 +37,9 @@ class Profile(models.Model):
         })
 
 
+User.get_profile = lambda self: Profile.objects.get(user=self)
+
+
 def create_profile(sender, instance=None, **kwargs):
     if instance is None:
         return

@@ -47,6 +47,12 @@ class TestTouites(BaseTestCase):
     def test_unfollow(self):
         self.check_toggle_follow('unfollow')
 
+    def test_post(self):
+        response = self.client.post("/touites/post/", {
+            'text': 'Touite Content'
+        }, follow=True)
+        self.assertContains(response, 'Touite Content')
+
 
 class TestMessages(BaseTestCase):
 
@@ -171,3 +177,10 @@ class TestBlogPost(BaseTestCase):
                             author=self.me, body="Some content")
         response = self.client.get("/bob/blog/the-slug/source")
         self.assertContains(response, "Some content")
+
+
+class TestEditProfile(BaseTestCase):
+
+    def test_get_edit_profile(self):
+        response = self.client.get("/profiles/edit/")
+        self.assertContains(response, "bob")
