@@ -11,7 +11,7 @@ from ..utils import LINEAR, LOGARITHMIC
 
 register = Library()
 
-tag_ref_re = re.compile("(^|\s)#(\w+)")
+tag_ref_re = re.compile("(^|\s)#(\S+)")
 
 class TagsForModelNode(Node):
     def __init__(self, model, context_var, counts):
