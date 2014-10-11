@@ -9,6 +9,8 @@ from threadedcomments.forms import FreeThreadedCommentForm, ThreadedCommentForm
 from threadedcomments.models import ThreadedComment, FreeThreadedComment, DEFAULT_MAX_COMMENT_LENGTH
 from threadedcomments.utils import JSONResponse, XMLResponse
 
+from tagging.models import parse_tagged_text
+
 def _adjust_max_comment_length(form, field_name='comment'):
     """
     Sets the maximum comment length to that default specified in the settings.
@@ -92,6 +94,7 @@ def free_comment(request, content_type=None, object_id=None, edit_id=None, paren
         if parent_id:
             new_comment.parent = get_object_or_404(model, id = int(parent_id))
         new_comment.save()
+        parse_tagged_text(new_comment.comment, new_comment.id, 'threadedcomment')            
         if model == ThreadedComment:
             if add_messages:
                 request.user.message_set.create(message="Your message has been posted successfully.")
@@ -101,6 +104,7 @@ def free_comment(request, content_type=None, object_id=None, edit_id=None, paren
                 'website' : form.cleaned_data['website'],
                 'email' : form.cleaned_data['email'],
             }
+                        
         if ajax == 'json':
             return JSONResponse([new_comment,])
         elif ajax == 'xml':

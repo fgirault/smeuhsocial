@@ -3,6 +3,7 @@ from django.conf.urls import url, patterns, include
 from django.views.generic import TemplateView, RedirectView
 from django.contrib import admin
 from django.conf.urls.static import static
+from threadedcomments.models import ThreadedComment
 admin.autodiscover()
 
 from audiotracks.models import get_track_model
@@ -149,6 +150,11 @@ tagged_models = (
          query=lambda tag: TaggedItem.objects.get_by_model(
              Tweet, tag),
          content_template="pinax_tagging_ext/tweets.html",
+         ),
+    dict(title="Comments",
+         query=lambda tag: TaggedItem.objects.get_by_model(
+             ThreadedComment , tag),
+         content_template="pinax_tagging_ext/comments.html",
          ),
     dict(title="Blog Posts",
          query=lambda tag: TaggedItem.objects.get_by_model(

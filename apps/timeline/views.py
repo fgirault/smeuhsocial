@@ -62,7 +62,7 @@ class TimeLineView(TemplateView):
 
         tracks = [
             TimeLineItem(item, item.updated_at, item.user, "timeline/_track.html")
-            for item in Track.objects.all().filter(updated_at__gte=ago).order_by("-updated_at")
+            for item in Track.objects.all().filter(created_at__gte=ago).order_by("-created_at")
             ]
 
         comments = [
@@ -147,7 +147,7 @@ class FriendsPageView(TemplateView):
 
         tracks = [
             TimeLineItem(item, item.updated_at, item.user, "timeline/_track.html")
-            for item in Track.objects.all().filter(updated_at__gte=ago, user__in=friends).order_by("-updated_at")
+            for item in Track.objects.all().filter(created_at__gte=ago, user__in=friends).order_by("-created_at")
             ]
 
         comments = [
@@ -190,7 +190,7 @@ class FollowingPageView(TemplateView):
 
         tracks = [
             TimeLineItem(item, item.updated_at, item.user, "timeline/_track.html")
-            for item in Track.objects.all().filter(updated_at__gte=ago, user__in=following_list).order_by("-updated_at")
+            for item in Track.objects.all().filter(created_at__gte=ago, user__in=following_list).order_by("-created_at")
             ]
 
         comments = [
@@ -251,7 +251,7 @@ class UserHomePageView(TemplateView):
             for item in context['latest_photos']
             ]
 
-        context['latest_tracks'] = Track.objects.all().filter(user=user).order_by("-updated_at")[:6]
+        context['latest_tracks'] = Track.objects.all().filter(user=user).order_by("-created_at")[:6]
 
         tracks = [
             TimeLineItem(item, item.updated_at, item.user, "timeline/_track.html")
@@ -391,27 +391,27 @@ class TagHomePageView(TemplateView):
             for item in context['latest_photos']
             ]
 
-        context['latest_tracks'] = TaggedItem.objects.get_by_model(Track, tag).order_by("-updated_at")        
+        context['latest_tracks'] = TaggedItem.objects.get_by_model(Track, tag).order_by("-created_at")        
 
         tracks = [
             TimeLineItem(item, item.updated_at, item.user, "timeline/_track.html")
             for item in context['latest_tracks']
             ]
 
-        #comments = [
-        #    TimeLineItem(item, item.date_submitted, item.user, "timeline/_comment.html")
-        #    for item in ThreadedComment.objects.all().filter(date_submitted__gte=ago, user__in=following_list).order_by("-date_submitted")
-        #    ]
+        comments = [
+            TimeLineItem(item, item.date_submitted, item.user, "timeline/_comment.html")
+            for item in TaggedItem.objects.get_by_model(ThreadedComment, tag).order_by("-date_submitted")
+            ]
         
         # no tag for comment yet. so : no comment :)
         
         #Tag.objects.get_for_object(self.obj.resolve(context))
         
         
-        items = merge(tweets, images, posts, tracks, field="date")
+        items = merge(tweets, images, posts, tracks, comments, field="date")
         for index, item in enumerate(items):
             item.index = index + 1
-        context['timelineitems'] = items[:16]
+        context['timelineitems'] = items[:32]
         context['prefix_sender'] = True
         return context
  

@@ -33,7 +33,7 @@
 	                </form>
                 </div>
                 {% endifequal %}
-                <div class="body">{{ response.comment|urlize|profilize|linebreaks }}</div>
+                <div class="body">{{ response.comment|urlize|profilize|tagalize|smilize|linebreaks }}</div>
                 <a href="javascript:toggle_comment_form({{ response.id }})" class="btn btn-xs btn-default"><i class="fa fa-reply"></i>  {% trans "Reply to This Post" %}</a>
                 <form class="hidden" method="POST" action="{% get_comment_url object response %}" id="comment_form_{{ response.id }}">
                     {% csrf_token %}

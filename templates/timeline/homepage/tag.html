@@ -30,10 +30,12 @@
 {% block newsfooter %}
 {% endblock %}
 
+{% block photoslink %}{% url 'photo_tag' tagname %}{% endblock %}
+
 {% block photosfooter %}
 {% if latest_photos %}
 <div  class="clearfix" >
-	<a href="{% url 'photo_tag' tagname %}" class="btn btn-default btn-sm pull-right"><i class="fa fa-camera"></i> {% trans "All Photos" %}</a>
+	<a href="{% url 'photo_tag' tagname %}" class="btn btn-default btn-sm pull-right"><i class="fa fa-camera"></i> {% trans "Photos with tag" %} {{ tagname }}</a>
 </div>
 {% endif %}
 

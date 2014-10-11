@@ -9,14 +9,11 @@ from django.utils.safestring import mark_safe
 from django.contrib.contenttypes.models import ContentType
 
 from microblogging.models import Tweet, Following
-
+from tagging.templatetags.tagging_tags import tag_ref_re, make_tag_link
 
 register = template.Library()
-user_ref_re = re.compile("@(\w+)")
-tag_ref_re = re.compile(" #(\w+)")
-smile_ref_re = re.compile("(\:-?\))")
-meh_ref_re = re.compile("(\:-?\|)")
-frown_ref_re = re.compile("(\:-?\()")
+user_ref_re = re.compile("(^|\s)@(\w+)")
+
 
 emoticons = {
     ":)": "fa-smile-o",
@@ -25,20 +22,24 @@ emoticons = {
     ":(": "fa-frown-o"
 }
 
-def make_user_link(text):
-    username = text.group(1)
-    return """ <a href="%s">@%s</a>""" % (reverse("profile_detail", args=[username]), username)
+emoticon_res = {}
+for smiley, icon in emoticons.items():
+    emoticon_res[ icon ] = re.compile("(^|\s)(%s)" % re.escape(smiley))
 
-def make_tag_link(text):
-    tag = text.group(1)
-    return """ <small><a href="%s"><i class="fa fa-tag"></i> %s </a></small>""" % (reverse("tag_homepage", args=[tag]), tag)
+@register.filter
+def smilize(text):
+    for fa_icon, smiley_re in emoticon_res.items():
+        text = smiley_re.sub(""" <i class="fa %s"></i>""" % fa_icon, text)
+    return mark_safe(text)
+
+def make_user_link(text):
+    username = text.group(2)
+    return """ <a href="%s">@%s</a>""" % (reverse("profile_detail", args=[username]), username)
 
 @register.simple_tag
 def render_tweet_text(tweet):
     text = escape(tweet.text)
-    text = smile_ref_re.sub("""<i class="fa fa-smile-o"></i>""", text)
-    text = meh_ref_re.sub("""<i class="fa fa-meh-o"></i>""", text)
-    text = frown_ref_re.sub("""<i class="fa fa-frown-o"></i>""", text)
+    text = smilize(text)
     text = user_ref_re.sub(make_user_link, text)
     text = tag_ref_re.sub(make_tag_link, text)
     return mark_safe(text)

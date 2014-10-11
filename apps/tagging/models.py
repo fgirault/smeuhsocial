@@ -1,6 +1,8 @@
 """
 Models and managers for generic tagging.
 """
+import re
+
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.db import connection, models
@@ -488,3 +490,19 @@ class TaggedItem(models.Model):
 
     def __str__(self):
         return '%s [%s]' % (self.object, self.tag)
+
+def parse_tagged_text(text, object_id, model):
+    for tag_name in re.findall(r'#([^\s]+)', text):
+        try:
+            tag = Tag.objects.get(name__iexact=tag_name)
+        except Tag.DoesNotExist:
+            # create the new tag !
+            # tag = item.tags.create(label=tag_name, created_by=user)
+            tag = Tag(name=tag_name)
+            tag.save()
+        tagged_item = TaggedItem(
+                tag = tag,
+                content_type = ContentType.objects.get(model=model),
+                object_id = object_id
+                )
+        tagged_item.save()

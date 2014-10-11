@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
+import re
 
 from django import template
 from django.utils.safestring import mark_safe
@@ -8,9 +9,14 @@ from microblogging.templatetags.microblogging_tags import (
         render_tweet_text as _render_tweet_text,
         user_ref_re,
         make_user_link,
+        smilize
         )
 
+from tagging.templatetags.tagging_tags import tag_ref_re, make_tag_link
+
 register = template.Library()
+
+register.filter("smilize", smilize)
 
 @register.simple_tag
 def render_markup_name(post):
@@ -43,8 +49,14 @@ def profilize(text):
     text = user_ref_re.sub(make_user_link, text)
     return mark_safe(text)
 
+@register.filter
+def tagalize(text):
+    """
+    Replace @username by a link to the profile page
+    """
+    text = tag_ref_re.sub(make_tag_link, text)
+    return mark_safe(text)
 
-#
 # uniform filters override to provide bootsrap styles
 #
 

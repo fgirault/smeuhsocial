@@ -1,6 +1,9 @@
+import re
+
 from django.db.models import get_model
 from django.template import Library, Node, TemplateSyntaxError, Variable
 from django.utils.translation import ugettext as _
+from django.core.urlresolvers import reverse
 
 from ..models import Tag, TaggedItem
 from ..utils import LINEAR, LOGARITHMIC
@@ -8,6 +11,7 @@ from ..utils import LINEAR, LOGARITHMIC
 
 register = Library()
 
+tag_ref_re = re.compile("(^|\s)#(\w+)")
 
 class TagsForModelNode(Node):
     def __init__(self, model, context_var, counts):
@@ -235,7 +239,12 @@ def do_tagged_objects(parser, token):
     return TaggedObjectsNode(bits[1], bits[3], bits[5])
 
 
+def make_tag_link(text):
+    tag = text.group(2)
+    return """ <a href="%s"><i class="fa fa-tag"></i> %s</a>""" % (reverse("tag_homepage", args=[tag]), tag)
+
 register.tag('tags_for_model', do_tags_for_model)
 register.tag('tag_cloud_for_model', do_tag_cloud_for_model)
 register.tag('tags_for_object', do_tags_for_object)
 register.tag('tagged_objects', do_tagged_objects)
+register.filter('tagalize', make_tag_link)
