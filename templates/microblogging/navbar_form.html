@@ -2,12 +2,14 @@
 {% load i18n %}
 <form id="touite_navbar_form" action="{% url 'tweets_you_follow' %}" method="POST" class="form-horizontal">
     {% csrf_token %}
+    
    	<div class="input-group">
    		<input id="new_tweet" type="text" class="form-control" autocomplete="off" name="text" cols="15" rows="1" 
    		placeholder="{% blocktrans %}Touiter{% endblocktrans %} ..." 
    		data-placement="bottom" data-trigger="focus" 
    		data-content='<span id="chars_left">140</span> caractères restant.</small>' data-html="true"
    		data-animation="false"
+                value="{{ form.text.value }}"
    		/>
     	<span class="input-group-btn">
     		<button type="submit" class="btn btn-default">{% bootstrap_icon "bullhorn" %} {% trans 'Bang' %}</button>    		

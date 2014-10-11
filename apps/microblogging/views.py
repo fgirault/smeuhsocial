@@ -50,6 +50,8 @@ def personal(request, form_class=TweetForm,
         form = form_class()
         if reply:
             form.fields['text'].initial = u"@%s " % reply
+        else:
+            form.fields['text'].initial = u""
     tweets = TweetInstance.objects.tweets_for(request.user).order_by("-sent")
     return render_to_response(template_name, {
         "form": form,
