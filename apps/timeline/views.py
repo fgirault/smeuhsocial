@@ -33,7 +33,7 @@ from friends.models import FriendshipInvitation, Friendship
 from microblogging.models import Following
 from django.db.transaction import is_managed
 
-from tagging.models import TaggedItem
+from tagging.models import TaggedItem, Tag
 from timeline.models import TimeLineItem
 
 class TimeLineView(TemplateView):
@@ -367,9 +367,11 @@ class TagHomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(TagHomePageView, self).get_context_data(**kwargs)
+                
+        tag_instance = Tag.objects.get(name__iexact=context.get("tagname"))
         
-        tag = context.get("tagname")
-                        
+        tag = tag_instance.name
+        
         # ago = datetime.datetime.now() - datetime.timedelta(30)
                 
         tweets = [
