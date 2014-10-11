@@ -162,7 +162,7 @@ def profile_edit(request, form_class=ProfileForm, **kwargs):
             "profiles/profile_edit_facebox.html"
         )
     
-    profile = request.user.get_profile()
+    profile = Profile.objects.get(user=request.user)
     
     if request.method == "POST":
         profile_form = form_class(request.POST, instance=profile)

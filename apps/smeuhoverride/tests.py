@@ -4,6 +4,7 @@ from django.test import TestCase
 from avatar.models import Avatar
 
 from messages.models import Message
+from blog.models import Post
 
 
 class BaseTestCase(TestCase):
@@ -45,6 +46,12 @@ class TestTouites(BaseTestCase):
 
     def test_unfollow(self):
         self.check_toggle_follow('unfollow')
+
+    def test_post(self):
+        response = self.client.post("/touites/post/", {
+            'text': 'Touite Content'
+        }, follow=True)
+        self.assertContains(response, 'Touite Content')
 
 
 class TestMessages(BaseTestCase):
@@ -161,3 +168,19 @@ class TestResetPassword(BaseTestCase):
         response = self.client.post('/account/password_reset/',
                                     {'email': user.email}, follow=True)
         self.assertContains(response, u"Nous vous avons envoyé un email")
+
+
+class TestBlogPost(BaseTestCase):
+
+    def test_view_source(self):
+        Post.objects.create(title=u"A Neat Title", slug="the-slug",
+                            author=self.me, body="Some content")
+        response = self.client.get("/bob/blog/the-slug/source")
+        self.assertContains(response, "Some content")
+
+
+class TestEditProfile(BaseTestCase):
+
+    def test_get_edit_profile(self):
+        response = self.client.get("/profiles/edit/")
+        self.assertContains(response, "bob")
