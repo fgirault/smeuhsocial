@@ -116,7 +116,7 @@ class HomePageView(TimeLineView):
         # reduce the timeline items
         context['timelineitems'] = context['timelineitems'][:16]
         context['latest_photos'] = Image.objects.all().order_by("-date_added")[:16]
-        context['latest_blogs'] = Post.objects.all().filter(status = 2).order_by("-updated_at")[:10]
+        context['latest_blogs'] = Post.objects.all().filter(status = 2).order_by("-publish")[:10]
         context['latest_tracks'] = Track.objects.all().order_by("-created_at")[:6]
         return context
 
