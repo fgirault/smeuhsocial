@@ -9,9 +9,12 @@ test:
 	python manage.py test smeuhoverride
 
 fasttest:
-	DJANGO_TEST_FAST=1 python manage.py test smeuhoverride
+	DJANGO_TEST_FAST=1 python manage.py test --failfast smeuhoverride
 
 
 .PHONY: deploy
 deploy:
 	fab -R smeuh deploy
+
+serve:
+	python manage.py runserver
