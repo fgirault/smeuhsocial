@@ -53,6 +53,14 @@ class TestTouites(BaseTestCase):
         }, follow=True)
         self.assertContains(response, 'Touite Content')
 
+    def test_get_list_no_param(self):
+        response = self.client.get("/touites/")
+        self.assertNotContains(response, "None")
+
+    def test_get_list_with_reply_param(self):
+        response = self.client.get("/touites/?reply=alice")
+        self.assertContains(response, "@alice")
+
 
 class TestMessages(BaseTestCase):
 

@@ -49,7 +49,7 @@ def render_tweet_text(tweet):
 def tweet_listing(context, tweets, prefix_sender, are_mine):
     request = context.get('request', None)
     sc = {
-        'tweets': tweets.select_related(depth=1),
+        'tweets': tweets.select_related('sender'),
         'prefix_sender': prefix_sender,
         'are_mine': are_mine
     }

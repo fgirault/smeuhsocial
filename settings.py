@@ -240,6 +240,9 @@ if 'test' in sys.argv:
     AUTHENTICATION_BACKENDS = [
         "account.auth_backends.AuthenticationBackend",
     ]
+    PASSWORD_HASHERS = (
+            'django.contrib.auth.hashers.MD5PasswordHasher',
+    )
 else:
     AUTHENTICATION_BACKENDS = [
         "django_auth_ldap.backend.LDAPBackend",
@@ -342,3 +345,7 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+if os.environ.get('DJANGO_TEST_FAST'):
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+    DATABASES['default']['NAME'] = ':memory:'
