@@ -7,6 +7,6 @@
   <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a> 
   <small>{% trans 'by' %} {% profile_link blog_post.author %}</small>
   <div class="blog-tease">
-  {{ blog_post.tease|truncatewords:25 }}
+  {{ blog_post.tease|urlize|tagalize|smilize|truncatewords:25 }}
   </div>
 </div>

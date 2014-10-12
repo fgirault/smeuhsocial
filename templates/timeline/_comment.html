@@ -31,8 +31,9 @@
 </div>
 {% endwith %}
 {% endif %}
-<a class="timeline-comment-body" href="{{ comment.content_object.get_absolute_url }}#comment_{{comment.id}}">
-{{ comment.comment|smilize|truncatewords:24 }}
-</a>
+{# <a class="timeline-comment-body" href="{{ comment.content_object.get_absolute_url }}#comment_{{comment.id}}">{{ comment.comment|smilize|truncatewords:24 }}</a> #}
+
+{{ comment.comment|urlize|tagalize|smilize|truncatewords:24 }}
+
 {% endwith %}
 {% endblock %}
