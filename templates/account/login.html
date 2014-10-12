@@ -32,7 +32,29 @@
     <form class="form-horizontal" method="POST" action="{% url 'acct_login' %}">
         {% csrf_token %}
         
-        {{ form|as_uni_form }}
+        {{ form.non_field_errors }}
+        <div class="form-group">
+            {{ form.username.errors }}
+            <label for="id_username" class="col-sm-3 control-label">{% trans 'Username' %}</label>
+            <div class="col-sm-9">
+            {{ form.username }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form.password.errors }}
+            <label for="id_password" class="col-sm-3 control-label">{% trans 'Password' %}</label>
+            <div class="col-sm-9">
+            {{ form.password }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form.remember.errors }}
+            <div class="col-sm-offset-3 col-sm-9">
+                <div class="checkbox">
+                    <label>{{ form.remember }} {% trans 'Remember Me' %}</label>
+                </div>
+            </div>
+        </div>
         
         {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
@@ -40,13 +62,14 @@
         
             
          <div class="form-group">
-         	<div class="col-sm-offset-2 col-sm-10">
-         	<a href="{% url 'acct_passwd_reset' %}">{% trans "Forgot password?" %}</a>
-         	
-             	<button class="btn btn-default pull-right">{% bootstrap_icon "log-in" %} {% trans "Log in" %}</button>
+         	<div class="col-sm-offset-3 col-sm-9">
+             	<button class="btn btn-default">{% bootstrap_icon "log-in" %} {% trans "Log in" %}</button>
+         	<a class="pull-right" href="{% url 'acct_passwd_reset' %}">{% trans "Forgot password?" %}</a>
              </div>
          </div>
     </form>
+
+    <hr>
     
     <p>{% trans "Or sign in with your OpenID" %}:</p>
     {# @@@ why isn't this just does as a form object ? #}
