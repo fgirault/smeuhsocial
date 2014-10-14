@@ -8,6 +8,6 @@
 {% block item_content %}
 {% with timelineitem.item as blog_post %}
   <h4><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></h4>
-  <a class="timeline-comment-body" href="{{ blog_post.get_absolute_url }}">{{ blog_post.tease|truncatewords:32 }}</a>
+  {{ blog_post.tease|urlize|tagalize|smilize|truncatewords:32 }}
 {% endwith %}
 {% endblock %}

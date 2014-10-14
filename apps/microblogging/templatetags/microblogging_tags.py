@@ -19,7 +19,9 @@ emoticons = {
     ":)": "fa-smile-o",
     ":-)": "fa-smile-o",
     ":|": "fa-meh-o",
-    ":(": "fa-frown-o"
+    ":-|": "fa-meh-o",
+    ":(": "fa-frown-o",
+    ":-(": "fa-frown-o"
 }
 
 emoticon_res = {}
