@@ -9,32 +9,24 @@
   <div class="clearfix {% if forloop.last %}last{% endif %}">
     
    {% with timelineitem.firstcomment as comment %}
-   	<strong><a href="{{ comment.content_object.get_absolute_url }}#comment_{{comment.id}}">{{ comment.content_object.title }}</a></strong>  {% trans 'has been commented' %} 
-   {% endwith %}
-    
-    <div class="pull-right">
-    	<span class="timesince">{% blocktrans with timelineitem.date|timesince as item_age %}{{ item_age }} ago{% endblocktrans %}</span>
-    </div>
-    
-    <div>    
+   	<a href="{{ comment.content_object.get_absolute_url }}#comment_{{comment.id}}">{{ comment.content_object.title }}</a> {% trans 'has been commented' %} 
+   {% endwith %}      
+        
     	<div class="container-fluid">
     		<div class="row">
 	    		<div class="col-xs-2">
-	    		{% with timelineitem.firstcomment as comment %}
-	
+	    		{% with timelineitem.firstcomment as comment %}	
 				{% if comment.content_object.get_thumbnail_url %}
-				{% with comment.content_object as photo %}
-				<div class="pull-left">
+				{% with comment.content_object as photo %}				
 				    <a href="{% url 'photo_details' id=photo.id %}#comment_{{comment.id}}">
 				        <img class="img-rounded timeline-comment-thumb" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}">
 				    </a>
-				</div>
 				{% endwith %}
 				{% endif %}
 				
 				{% if comment.content_object.image.url_48x48 %}
 				{% with comment.content_object as track %}
-				<div class="pull-left" style="margin: 3px;">
+				<span style="margin: 3px;">
 				    <a href="{% url 'track_detail' track.user.username track.slug %}#comment_{{comment.id}}">
 				    {% if track.image %}
 				    <img class="img-rounded" src="{{ track.image.url_48x48 }}" alt="{% trans 'Track Image' %}" style="max-height: 48px;"/>
@@ -42,7 +34,7 @@
 				    {% avatar_link track.user 48 %}
 				    {% endif %}
 				    </a>
-				</div>
+				</span>
 				{% endwith %}
 				{% endif %}
 				{% endwith %}
@@ -70,4 +62,3 @@
   	
     </div>
   </div>         
-</div>
