@@ -17,7 +17,7 @@ Development Setup
 Requirements
 ------------
 
- - Python version 2.6
+ - Python 2.7
  - Development packages for Python, LDAP, SASL and SSL. For Debian-like systems:
 
     $ sudo apt-get install python-dev libldap-dev libsasl2-dev libssl-dev \

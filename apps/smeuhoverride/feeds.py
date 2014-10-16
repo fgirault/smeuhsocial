@@ -123,7 +123,7 @@ class AllBlogPosts(Feed):
     descriptions = u"Derniers billets publiés sur MySmeuh"
 
     def items(self):
-        posts = Post.objects.filter(status=2).select_related(depth=1).order_by("-publish")
+        posts = Post.objects.filter(status=2).select_related().order_by("-publish")
         return posts[:ITEMS_PER_FEED]
 
     def item_title(self, item):
@@ -141,6 +141,6 @@ class UserBlogPosts(AllBlogPosts):
         return get_object_or_404(User, username=username)
 
     def items(self, user):
-        posts = Post.objects.filter(status=2).select_related(depth=1).order_by("-publish")
+        posts = Post.objects.filter(status=2).select_related().order_by("-publish")
         posts = posts.filter(author=user)
         return posts[:ITEMS_PER_FEED]
