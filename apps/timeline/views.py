@@ -74,7 +74,7 @@ class TimeLineView(TemplateView):
         for index, item in enumerate(items):
             item.index = index
 
-        context['timelineitems'] = items
+        context['timelineitems'] = group_comments(items)
         context['posts'] = posts
         context['prefix_sender'] = True
         return context
@@ -107,6 +107,42 @@ def merge(*querysets, **kwargs):
         result = merge_lists(result, q, field)
     return result
 
+def group_comments(items):
+    group_list = []
+    group_dict = {}
+    grouped = []
+    
+    comment_count_dict = {}
+    
+    for tlitem in items:
+        item = tlitem.item
+        if isinstance(item, ThreadedComment):
+            key = (item.content_type_id, item.object_id)
+            if key in comment_count_dict:
+                comment_count_dict[key] += 1
+            else:
+                comment_count_dict[key] = 1
+    
+    for tlitem in items:
+        item = tlitem.item
+        if isinstance(item, ThreadedComment):
+            key = (item.content_type_id, item.object_id)
+            
+            if comment_count_dict[key] > 1:             
+                if key in group_dict:
+                    group_dict[key].comments.insert(0, tlitem)
+                else:
+                    group_item = group_dict[key]  = TimeLineItem(item, item.date_submitted, item.user, "timeline/_comment_group.html")
+                    group_item.firstcomment = item
+                    group_item.comments = [ group_item ]                    
+                    grouped.append(group_item)
+            else:
+                grouped.append(tlitem)
+        else:
+            grouped.append(tlitem)
+    return grouped
+            
+        
 class HomePageView(TimeLineView):
 
     template_name = "timeline/homepage/homepage.html"
@@ -114,7 +150,7 @@ class HomePageView(TimeLineView):
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
         # reduce the timeline items
-        context['timelineitems'] = context['timelineitems'][:16]
+        context['timelineitems'] = group_comments(context['timelineitems'][:16])
         context['latest_photos'] = Image.objects.all().order_by("-date_added")[:16]
         context['latest_blogs'] = Post.objects.all().filter(status = 2).order_by("-publish")[:10]
         context['latest_tracks'] = Track.objects.all().order_by("-created_at")[:6]
@@ -159,7 +195,7 @@ class FriendsPageView(TemplateView):
         for index, item in enumerate(items):
             item.index = index + 1
 
-        context['timelineitems'] = items
+        context['timelineitems'] = group_comments(items)
         context['prefix_sender'] = True
         return context
 
@@ -201,7 +237,7 @@ class FollowingPageView(TemplateView):
         items = merge(tweets, images, posts, tracks, comments, field="date")
         for index, item in enumerate(items):
             item.index = index + 1
-        context['timelineitems'] = items
+        context['timelineitems'] = group_comments(items)
         context['prefix_sender'] = True
         return context
 
@@ -266,7 +302,7 @@ class UserHomePageView(TemplateView):
         items = merge(tweets, comments, field="date")[:16]
         for index, item in enumerate(items):
             item.index = index + 1
-        context['timelineitems'] = items
+        context['timelineitems'] = group_comments(items)
         context['prefix_sender'] = True
 
 
@@ -412,7 +448,7 @@ class TagHomePageView(TemplateView):
         items = merge(tweets, images, posts, tracks, comments, field="date")
         for index, item in enumerate(items):
             item.index = index + 1
-        context['timelineitems'] = items[:32]
+        context['timelineitems'] = group_comments(items[:32]) 
         context['prefix_sender'] = True
         return context
  

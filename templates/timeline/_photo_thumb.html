@@ -7,20 +7,10 @@
 
 {% block item_content %}
 {% with timelineitem.item  as  photo %}
-<h4><a href="{% url 'photo_details' id=photo.id %}">{{ photo.title }}</a></h4>
-
-<a href="{% url 'photo_details' id=photo.id %}"><img class="img-responsive img-rounded center-block photo-details" src="{{ photo.get_display_url|urlencode }}" alt="{{ photo.title }}" style="max-height: 640px;" /></a>
-<p>{{ photo.caption|urlize|tagalize|smilize }}</p>
-
-
-{% comment %}
 <h4><a href="{% url 'photo_details' id=photo.id %}"><span class="pull-left"><img
       class="img-rounded timeline-thumb" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}"></span>{{ photo.title }}</a></h4>
 {# <a class="timeline-comment-body" href="{% url 'photo_details' id=photo.id %}">{{ photo.caption|urlize|tagalize|smilize|truncatewords:24 }}</a> #}
-{{ photo.caption|urlize|tagalize|smilize }}
-{% endcomment %}
-
-
+{{ photo.caption|urlize|tagalize|smilize|truncatewords:24 }}
 {% endwith %}
 {% endblock %}
 

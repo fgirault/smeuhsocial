@@ -33,7 +33,7 @@
 {% endif %}
 {# <a class="timeline-comment-body" href="{{ comment.content_object.get_absolute_url }}#comment_{{comment.id}}">{{ comment.comment|smilize|truncatewords:24 }}</a> #}
 
-{{ comment.comment|urlize|tagalize|smilize|truncatewords:24 }}
+{{ comment.comment|truncatewords:24|urlize|tagalize|smilize }}
 
 {% endwith %}
 {% endblock %}
