@@ -108,36 +108,29 @@ def merge(*querysets, **kwargs):
     return result
 
 def group_comments(items):
-    group_list = []
-    group_dict = {}
     grouped = []
-    
-    comment_count_dict = {}
-    
-    for tlitem in items:
-        item = tlitem.item
-        if isinstance(item, ThreadedComment):
-            key = (item.content_type_id, item.object_id)
-            if key in comment_count_dict:
-                comment_count_dict[key] += 1
-            else:
-                comment_count_dict[key] = 1
-    
-    for tlitem in items:
-        item = tlitem.item
-        if isinstance(item, ThreadedComment):
-            key = (item.content_type_id, item.object_id)
             
-            if comment_count_dict[key] > 1:             
-                if key in group_dict:
-                    group_dict[key].comments.insert(0, tlitem)
+    for tlitem in items:
+        item = tlitem.item
+        if isinstance(item, ThreadedComment):
+            key = (item.content_type_id, item.object_id)
+            if grouped: 
+                prev = grouped[-1]
+                if isinstance(prev.item, ThreadedComment) and key == (prev.item.content_type_id, prev.item.object_id):
+                    if hasattr(prev, "comments"):
+                        prev.comments.append(tlitem)
+                    else:
+                        prev = grouped.pop()
+                        group_item = TimeLineItem(item, item.date_submitted, item.user, "timeline/_comment_group.html")
+                        group_item.firstcomment = item
+                        group_item.comments = [ group_item, prev ]                    
+                        grouped.append(group_item)
                 else:
-                    group_item = group_dict[key]  = TimeLineItem(item, item.date_submitted, item.user, "timeline/_comment_group.html")
-                    group_item.firstcomment = item
-                    group_item.comments = [ group_item ]                    
-                    grouped.append(group_item)
+                    grouped.append(tlitem)
+                #elif isinstance(prev, class_or_type_or_tuple):
+                #    pass
             else:
-                grouped.append(tlitem)
+                grouped.append(tlitem)            
         else:
             grouped.append(tlitem)
     return grouped
@@ -299,7 +292,7 @@ class UserHomePageView(TemplateView):
             for item in ThreadedComment.objects.all().filter(user = user).order_by("-date_submitted")[:16]
             ]
         
-        items = merge(tweets, comments, field="date")[:16]
+        items = merge(tweets, comments, field="date")[:32]
         for index, item in enumerate(items):
             item.index = index + 1
         context['timelineitems'] = group_comments(items)
