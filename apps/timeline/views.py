@@ -144,7 +144,7 @@ class HomePageView(TimeLineView):
         context = super(HomePageView, self).get_context_data(**kwargs)
         # reduce the timeline items
         context['timelineitems'] = group_comments(context['timelineitems'][:16])
-        context['latest_photos'] = Image.objects.all().order_by("-date_added")[:16]
+        context['latest_photos'] = Image.objects.all().filter(is_public = True).order_by("-date_added")[:16]
         context['latest_blogs'] = Post.objects.all().filter(status = 2).order_by("-publish")[:10]
         context['latest_tracks'] = Track.objects.all().order_by("-created_at")[:6]
         return context
@@ -457,7 +457,7 @@ class LegacyHomePageView(TemplateView):
             "-sent")[:12]
         context['latest_blogs'] = lambda: Post.objects.filter(
             status=2).order_by("-publish")[:10]
-        context['latest_photos'] = lambda: Image.objects.all().order_by(
+        context['latest_photos'] = lambda: Image.objects.all().filter(is_public = True).order_by(
             "-date_added")[:18]
         context['latest_tracks'] = lambda: Track.objects.all().order_by(
             "-created_at")[:6]

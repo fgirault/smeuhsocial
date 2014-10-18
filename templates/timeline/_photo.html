@@ -2,18 +2,19 @@
 
 {% load i18n %}
 {% load tagging_tags %}
+{% load threadedcommentstags %}
 {% load override_tags %}
 
 {% block item_action_label %}a posté une photo{% endblock %}
 
 {% block item_content %}
 {% with timelineitem.item  as  photo %}
-<div class="pull-right">
+<div class="pull-right clearfix">
    {% tags_for_object photo as tags %}
    {% for tag in tags %}
      <small><a href="{% url 'tag_homepage' tag %}"><i class="fa fa-tag"></i> {{ tag }}</a></small>
    {% endfor %}
-   
+	<a href="{% url 'photo_details' id=photo.id %}#photocomments" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-comment"> </i> {% get_comment_count for photo as commentcount %} <small>{{ commentcount }}</small> </a>   
 </div>
 
 <h4><a href="{% url 'photo_details' id=photo.id %}">{{ photo.title }}</a></h4>
@@ -24,6 +25,8 @@
 
 <p class="timeline-comment-body">{{ photo.caption|urlize|profilize|tagalize|smilize|linebreaks }}</p>
 
+
+    
 
 {% comment %}
 <h4><a href="{% url 'photo_details' id=photo.id %}"><span class="pull-left"><img
