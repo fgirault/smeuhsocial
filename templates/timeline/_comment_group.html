@@ -50,7 +50,10 @@
     				<a href="{% url 'profile_detail' commentitem.user %}" id="tli_{{ timelineitem.index }}"><strong>{% user_display commentitem.user %}</strong></a>
     				
 	  				{{ commentitem.item.comment|truncatewords:24|urlize|tagalize|smilize }}
-    
+    				
+    				
+  					<a href="{{ commentitem.item.content_object.get_absolute_url }}#comment_{{commentitem.item.id}}"><small>{% blocktrans %}read{% endblocktrans %}</small></a>
+  					
 				</div>  		    			
   				{% endfor %}
   	</div>    	

@@ -1,16 +1,28 @@
 {% extends "timeline/_item.html" %}
 
 {% load i18n %}
+{% load tagging_tags %}
 {% load override_tags %}
 
 {% block item_action_label %}a posté une photo{% endblock %}
 
 {% block item_content %}
 {% with timelineitem.item  as  photo %}
+<div class="pull-right">
+   {% tags_for_object photo as tags %}
+   {% for tag in tags %}
+     <small><a href="{% url 'tag_homepage' tag %}"><i class="fa fa-tag"></i> {{ tag }}</a></small>
+   {% endfor %}
+   
+</div>
+
 <h4><a href="{% url 'photo_details' id=photo.id %}">{{ photo.title }}</a></h4>
 
 <a href="{% url 'photo_details' id=photo.id %}"><img class="img-responsive img-rounded center-block photo-details" src="{{ photo.get_display_url|urlencode }}" alt="{{ photo.title }}" style="max-height: 640px;" /></a>
-<p>{{ photo.caption|urlize|tagalize|smilize }}</p>
+
+
+
+<p class="timeline-comment-body">{{ photo.caption|urlize|profilize|tagalize|smilize|linebreaks }}</p>
 
 
 {% comment %}
@@ -19,7 +31,6 @@
 {# <a class="timeline-comment-body" href="{% url 'photo_details' id=photo.id %}">{{ photo.caption|urlize|tagalize|smilize|truncatewords:24 }}</a> #}
 {{ photo.caption|urlize|tagalize|smilize }}
 {% endcomment %}
-
 
 {% endwith %}
 {% endblock %}

@@ -1,12 +1,19 @@
 {% extends "timeline/_item.html" %}
 
 {% load i18n %}
+{% load tagging_tags %}
 {% load override_tags %}
 
 {% block item_action_label %}{% trans 'posted a track'%}{% endblock %}
 
 {% block item_content %}
-{% with timelineitem.item as track %}  
+{% with timelineitem.item as track %}
+<div class="pull-right">
+   {% tags_for_object track as tags %}
+   {% for tag in tags %}
+       <small><a href="{% url 'tag_homepage' tag %}"><i class="fa fa-tag"></i> {{ tag }}</a></small>
+   {% endfor %}
+</div>  
   {% include "timeline/homepage/_track.html" %}
 {% endwith %}
 {% endblock %}
