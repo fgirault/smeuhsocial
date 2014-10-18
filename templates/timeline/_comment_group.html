@@ -5,56 +5,53 @@
 {% load cycle from future %}
 
 <div class="timeline-item homepage-item {% if forloop.first %} first{% endif %}{% cycle ' odd' '' %} clearfix">
-
-  <div class="clearfix {% if forloop.last %}last{% endif %}">
-    
-   {% with timelineitem.firstcomment as comment %}
-   	<a href="{{ comment.content_object.get_absolute_url }}#comment_{{comment.id}}">{{ comment.content_object.title }}</a> {% trans 'has been commented' %} 
-   {% endwith %}      
-            
-	    		{% with timelineitem.firstcomment as comment %}	
-				{% if comment.content_object.get_thumbnail_url %}
-				{% with comment.content_object as photo %}				
-	    		<div class="pull-left">
-				    <a href="{% url 'photo_details' id=photo.id %}#comment_{{comment.id}}">
-				        <img class="img-rounded timeline-comment-thumb" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}">
-				    </a>
-				</div>
-				{% endwith %}
-				{% endif %}
+	<div class="clearfix {% if forloop.last %}last{% endif %}">                         
+		{% with timelineitem.firstcomment as comment %}	
+		{% if comment.content_object.get_thumbnail_url %}
+		{% with comment.content_object as photo %}				
+	  		<div class="pull-left">
+		    <a href="{% url 'photo_details' id=photo.id %}#comment_{{comment.id}}">
+		        <img class="img-rounded timeline-comment-thumb" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}">
+		    </a>
+		</div>
+		{% endwith %}
+		{% endif %}
+		
+		{% if comment.content_object.image.url_48x48 %}
+		{% with comment.content_object as track %}
+		<div class="pull-left" style="margin: 3px;">
+		
+		    <a href="{% url 'track_detail' track.user.username track.slug %}#comment_{{comment.id}}">
+		    {% if track.image %}
+		    <img class="img-rounded" src="{{ track.image.url_48x48 }}" alt="{% trans 'Track Image' %}" style="max-height: 48px;"/>
+		    {% else %}
+		    {% avatar_link track.user 48 %}
+		    {% endif %}
+		    </a>
+		 </div>
+		{% endwith %}
+		{% endif %}
+		{% endwith %}
 				
-				{% if comment.content_object.image.url_48x48 %}
-				{% with comment.content_object as track %}
-				<div class="pull-left" style="margin: 3px;">
-				
-				    <a href="{% url 'track_detail' track.user.username track.slug %}#comment_{{comment.id}}">
-				    {% if track.image %}
-				    <img class="img-rounded" src="{{ track.image.url_48x48 }}" alt="{% trans 'Track Image' %}" style="max-height: 48px;"/>
-				    {% else %}
-				    {% avatar_link track.user 48 %}
-				    {% endif %}
-				    </a>
-				 </div>
-				{% endwith %}
-				{% endif %}
-				{% endwith %}
-    			{% for commentitem in timelineitem.comments %}
-				<div class="timeline-item homepage-item {% if forloop.first %} first{% endif %}{% cycle ' odd' '' %}  clearfix" style="margin-left: 1em;">
-			
-	  				 <div class="pull-right">
-    					<span class="timesince">{% blocktrans with commentitem.date|timesince as item_age %}{{ item_age }} ago{% endblocktrans %}</span>
-    				</div>
-    				
-    				{% avatar_link commentitem.user 24 %}
-    				
-    				<a href="{% url 'profile_detail' commentitem.user %}" id="tli_{{ timelineitem.index }}"><strong>{% user_display commentitem.user %}</strong></a>
-    				
-	  				{{ commentitem.item.comment|truncatewords:24|urlize|tagalize|smilize }}
-    				
-    				
-  					<a href="{{ commentitem.item.content_object.get_absolute_url }}#comment_{{commentitem.item.id}}"><small>{% blocktrans %}read{% endblocktrans %}</small></a>
-  					
-				</div>  		    			
-  				{% endfor %}
-  	</div>    	
+		{% with timelineitem.firstcomment as comment %}
+	   	<h4><a href="{{ comment.content_object.get_absolute_url }}#comment_{{comment.id}}">{{ comment.content_object.title }}</a> <small>{% trans 'has been commented' %}</small></h4> 
+	    {% endwith %}
+					
+	    {% for commentitem in timelineitem.comments %}
+		<div class="timeline-item homepage-item {% if forloop.first %} first{% endif %}{% cycle ' odd' '' %}  clearfix" style="margin-left: 1em;">	
+			<div class="pull-right">
+				<span class="timesince">{% blocktrans with commentitem.date|timesince as item_age %}{{ item_age }} ago{% endblocktrans %}</span>
+			</div>
+  				
+  			{% avatar_link commentitem.user 24 %}
+  				
+  			<a href="{% url 'profile_detail' commentitem.user %}" id="tli_{{ timelineitem.index }}"><strong>{% user_display commentitem.user %}</strong></a>
+  				
+ 			{{ commentitem.item.comment|truncatewords:24|urlize|profilize|tagalize|smilize }}
+  				  				
+			<a href="{{ commentitem.item.content_object.get_absolute_url }}#comment_{{commentitem.item.id}}"><small>{% blocktrans %}read{% endblocktrans %}</small></a>
+					
+		</div>  		    			
+  		{% endfor %}
+	</div>    	
  </div>    			    	

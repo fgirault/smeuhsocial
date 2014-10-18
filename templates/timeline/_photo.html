@@ -19,6 +19,7 @@
 
 <h4><a href="{% url 'photo_details' id=photo.id %}">{{ photo.title }}</a></h4>
 
+
 <a href="{% url 'photo_details' id=photo.id %}"><img class="img-responsive img-rounded center-block photo-details" src="{{ photo.get_display_url|urlencode }}" alt="{{ photo.title }}" style="max-height: 640px;" /></a>
 
 

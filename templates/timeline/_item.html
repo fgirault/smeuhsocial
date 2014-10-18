@@ -5,8 +5,8 @@
 {% load cycle from future %}
 
 <div class="timeline-item homepage-item {% if forloop.first %} first{% endif %}{% cycle ' odd' '' %} clearfix">
-  {% avatar_link timelineitem.user 24 %}
   <div class="clearfix {% if forloop.last %}last{% endif %}">
+  	{% avatar_link timelineitem.user 24 %}
     <a href="{% url 'profile_detail' timelineitem.user %}" id="tli_{{ timelineitem.index }}"><strong>{% user_display timelineitem.user %}</strong></a> 
     {% block item_action_label %}{% endblock %}    
     <div class="pull-right">
