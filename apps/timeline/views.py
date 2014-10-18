@@ -123,7 +123,7 @@ def group_comments(items):
                         prev = grouped.pop()
                         group_item = TimeLineItem(item, item.date_submitted, item.user, "timeline/_comment_group.html")
                         group_item.firstcomment = item
-                        group_item.comments = [ group_item, prev ]                    
+                        group_item.comments = [ prev, group_item ]                    
                         grouped.append(group_item)
                 else:
                     grouped.append(tlitem)
