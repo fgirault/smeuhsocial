@@ -263,24 +263,24 @@ class UserHomePageView(TemplateView):
         context['other_user'] = other_user
         tweets = [
             TimeLineItem(item, item.sent, item.sender, "timeline/_tweet.html")
-            for item in Tweet.objects.all().filter(sender_id=user.id, sender_type__name="user").order_by("-sent")[:16]
+            for item in Tweet.objects.all().filter(sender_id=user.id, sender_type__name="user").order_by("-sent")[:32]
             ]
 
-        context['latest_blogs'] = Post.objects.all().filter(status = 2, author=user).order_by("-publish")[:10]
+        context['latest_blogs'] = Post.objects.all().filter(status = 2, author=user).order_by("-publish")[:32]
 
         posts =  [
             TimeLineItem(item, item.updated_at, item.author, "timeline/_post.html")
             for item in context['latest_blogs']
             ]
 
-        context['latest_photos'] = Image.objects.all().filter(is_public = True, member=user).order_by("-date_added")[:16]
+        context['latest_photos'] = Image.objects.all().filter(is_public = True, member=user).order_by("-date_added")[:32]
 
         images = [
             TimeLineItem(item, item.date_added, item.member, "timeline/_photo.html")
             for item in context['latest_photos']
             ]
 
-        context['latest_tracks'] = Track.objects.all().filter(user=user).order_by("-created_at")[:6]
+        context['latest_tracks'] = Track.objects.all().filter(user=user).order_by("-created_at")[:32]
 
         tracks = [
             TimeLineItem(item, item.updated_at, item.user, "timeline/_track.html")
@@ -289,10 +289,10 @@ class UserHomePageView(TemplateView):
 
         comments = [
             TimeLineItem(item, item.date_submitted, item.user, "timeline/_comment.html")
-            for item in ThreadedComment.objects.all().filter(user = user).order_by("-date_submitted")[:16]
+            for item in ThreadedComment.objects.all().filter(user = user).order_by("-date_submitted")[:32]
             ]
         
-        items = merge(tweets, comments, field="date")[:32]
+        items = merge(tweets, images, posts, tracks, comments, field="date")[:32]
         for index, item in enumerate(items):
             item.index = index + 1
         context['timelineitems'] = group_comments(items)
