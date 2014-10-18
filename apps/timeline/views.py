@@ -171,7 +171,7 @@ class FriendsPageView(TemplateView):
 
         images = [
             TimeLineItem(item, item.date_added, item.member, "timeline/_photo.html")
-            for item in Image.objects.all().filter(is_public = True).filter(date_added__gte=ago, member__in=friends).order_by("-date_added")
+            for item in Image.objects.all().filter().filter(date_added__gte=ago, member__in=friends).order_by("-date_added")
             ]
 
         tracks = [
