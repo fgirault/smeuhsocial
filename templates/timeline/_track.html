@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load tagging_tags %}
+{% load threadedcommentstags %}
 {% load override_tags %}
 
 {% block item_action_label %}{% trans 'posted a track'%}{% endblock %}
@@ -13,6 +14,7 @@
    {% for tag in tags %}
        <small><a href="{% url 'tag_homepage' tag %}"><i class="fa fa-tag"></i> {{ tag }}</a></small>
    {% endfor %}
+   <a href="{% url 'track_detail' track.user.username track.slug %}#trackcomments" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-comment"> </i> {% get_comment_count for track as commentcount %} <small>{{ commentcount }}</small> </a>
 </div>  
   {% include "timeline/homepage/_track.html" %}
 {% endwith %}

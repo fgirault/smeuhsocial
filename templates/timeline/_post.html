@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load tagging_tags %}
+{% load threadedcommentstags %}
 {% load override_tags %}
 
 {% block item_action_label %}a posté un article{% endblock %}
@@ -13,6 +14,7 @@
    {% for tag in tags %}
        <small><a href="{% url 'tag_homepage' tag %}"><i class="fa fa-tag"></i> {{ tag }}</a></small>
    {% endfor %}
+   <a href="{{ blog_post.get_absolute_url }}#blogcomments" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-comment"> </i> {% get_comment_count for blog_post as commentcount %} <small>{{ commentcount }}</small> </a>
 </div>
   <h4><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></h4>
   {{ blog_post.tease|urlize|tagalize|smilize|truncatewords:32 }}
