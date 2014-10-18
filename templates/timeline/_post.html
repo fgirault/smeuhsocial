@@ -9,7 +9,7 @@
 
 {% block item_content %}
 {% with timelineitem.item as blog_post %}
-<div class="text-right">
+<div class="pull-right">
    {% tags_for_object blog_post as tags %}
    {% for tag in tags %}
        <small><a href="{% url 'tag_homepage' tag %}"><i class="fa fa-tag"></i> {{ tag }}</a></small>
