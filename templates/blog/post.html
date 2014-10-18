@@ -8,6 +8,7 @@
 {% load blog_tags %}
 {% load theme_tags %}
 {% load markup_tags %}
+{% load avatar_tags %}
 {% load override_tags %}
 
 {% block head_title %}{% blocktrans %}Blog Post{% endblocktrans %} : {{ post.title }}{% endblock %}
@@ -32,10 +33,11 @@ href="{% url 'all_blogs_feed' %}" />
       
       {% endifequal %} 
       
-<p>{% trans 'Posted by' %} 
-<a href="{% url 'profile_detail' post.author.username %}">{% user_display post.author %}</a> 
+<p>{% trans 'Posted by' %} {% avatar_link post.author 24 %}
+<strong><a href="{% url 'profile_detail' post.author.username %}">{% user_display post.author %}</a></strong> 
 {% trans 'on' %}
   {{ post.publish|date:"DATE_FORMAT" }}
+  </p>
   	<p>     
       {% tags_for_object post as tags %}      
       {% for tag in tags %}
@@ -43,13 +45,11 @@ href="{% url 'all_blogs_feed' %}" />
       {% endfor %}
       </p>
       
-    </div>
-
-      
+    </div>      
       
 	<div class="blog-post">
 	  <h1 class="page-header"> {{ post.title }} </h1>
-      {{ post.body|apply_markup:post.markup }}
+      {{ post.body|apply_markup:post.markup|tagalize|smilize|profilize }}
 	</div>
         
     <h3><a id="blogcomments">{% trans 'Comments on this post:' %}</a></h3>
