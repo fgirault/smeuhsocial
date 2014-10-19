@@ -7,10 +7,10 @@
 {% load extra_tagging_tags %}
 {% load override_tags %}
 
-	<div class="col-md-8"  style="margin-bottom: 2em;">
-	    <h3>
+	<div class="col-md-10"  style="margin-bottom: 2em;">
+	    <h2>
 	    	<a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>	    	
-	    </h3>
+	    </h2>
 		
 		<div>
 		
@@ -29,17 +29,17 @@
 		
 		</div>
 		
-	    <div>
+	    <p>
 	        {% if blog_post.tease %}
 	             {% with blog_post.tease as body %}
 	                {{ body|apply_markup:blog_post.markup }}
 	            {% endwith %}
 	        {% else %}
-	            {% with blog_post.body|truncatewords:"150" as body %}
+	            {% with blog_post.body|truncatewords:"84" as body %}
 	                {{ body|apply_markup:blog_post.markup }}
 	            {% endwith %}
 	        {% endif %}
-	    </div>
+	    </p>
 	    
 	    
 	    

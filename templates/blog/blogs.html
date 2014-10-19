@@ -18,24 +18,24 @@
 {% endblock %}
 
 {% block body %}
-<div class="container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-    <h1>{% trans "All Blogs" %}</h1>
-
-    {% if blogs %}        
-        {% autopaginate blogs %}
-
-            {% for blog_post in blogs %}
-                {% show_blog_post blog_post %}
-            {% endfor %}
-
-        {% paginate %}
-
-    {% else %}
-        {% trans "No blog posts yet." %}
-    {% endif %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-11 col-md-offset-1">
+			    <h1>{% trans "All Blogs" %}</h1>
+			
+			    {% if blogs %}        
+			        {% autopaginate blogs %}
+			
+			            {% for blog_post in blogs %}
+			                {% show_blog_post blog_post %}
+			            {% endfor %}
+			
+			        {% paginate %}
+			
+			    {% else %}
+			        {% trans "No blog posts yet." %}
+			    {% endif %}
+			</div>
 		</div>
 	</div>
-</div>
 {% endblock %}
