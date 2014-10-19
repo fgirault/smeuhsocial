@@ -44,7 +44,7 @@ def tag_index(request, template_name="tagging_ext/index.html", *args, **kw):
 
 
 def user_blog_index(request, username, template_name="blog/user_blog.html"):
-    blogs = Post.objects.filter(status=2).select_related(depth=1).order_by("-publish")
+    blogs = Post.objects.filter(status=2).select_related().order_by("-publish")
     if username is not None:
         user = get_object_or_404(User, username=username.lower())
         blogs = blogs.filter(author=user)
