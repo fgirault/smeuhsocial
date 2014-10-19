@@ -6,15 +6,18 @@
 <form id="touite_form" action="{% url 'post_tweet' %}" method="POST" class="form-horizontal">
     {% csrf_token %}
     <input type="hidden" name="success_url" value="{{ request.get_full_path|urlencode  }}">
-   	<div class="input-group">
-   		<input id="new_tweet" type="text" class="form-control" autocomplete="off" name="text" cols="15" rows="1" 
-   		placeholder="{% blocktrans %}Touiter{% endblocktrans %} ..." 
-   		data-placement="bottom" data-trigger="focus" 
-   		data-content='<span id="chars_left">140</span> caractères restant.</small>' data-html="true"
-   		data-animation="false"
-   		/>   		
-    	<span class="input-group-btn">
-    		<button id="touite_bang" type="submit" class="btn btn-default"><i class="fa fa-bullhorn"></i> {% trans 'Bang' %}</button>    		
-    	</span>
+    <div class="form-group">
+	   	<div class="input-group">
+	   		<input id="new_tweet" type="text" class="form-control" autocomplete="off" name="text" cols="15" rows="1" 
+	   		placeholder="{% blocktrans %}Touiter{% endblocktrans %} ..." 
+	   		data-placement="bottom" data-trigger="focus" 
+	   		data-content='<span id="chars_left">140</span> caractères restant.' data-html="true"
+	   		data-animation="false"
+	   		/>   		
+	    	<span class="input-group-btn">
+	    		<button id="touite_bang" type="submit" class="btn btn-default"><i class="fa fa-bullhorn"></i> {% trans 'Bang' %}</button>    		
+	    	</span>
+		</div>
+		<p id="touite_hint" class="help-block pull-right"><small><span id="chars_left">140</span> caractères restant.</small></p>
 	</div>    
 </form>

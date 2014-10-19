@@ -22,6 +22,7 @@ jQuery(document).ready(function($) {
   			    div.slideDown("slow");
   			    $("#touite_form :input").prop("disabled", false);
   			    $('#touite_bang').prop("disabled", true);
+  			    update_chars_left();
   			},
   			error: function(data) {
   				// TODO integrate error report in ui
@@ -32,33 +33,47 @@ jQuery(document).ready(function($) {
   	});
 	
 	$('#touite_bang').prop("disabled", true);
+	$('#touite_hint').hide();
 	
 	$('#new_tweet').keyup(function() {
 		// prevent submit button to be clicked if text is not ok
 		var textarea = $('#new_tweet')[0];
         if(textarea.value.length > 0 && textarea.value.length < 140) {
-        	$("#touite_bang").prop("disabled", false);
+        	$("#touite_bang").prop("disabled", false);        	
         } else {
-        	$('#touite_bang').prop("disabled", true);
+        	$('#touite_bang').prop("disabled", true);        	
+        }
+        
+        if(textarea.value.length > 0) {
+        	update_chars_left();
+        	$('#touite_hint').slideDown();
+        } else {
+        	$('#touite_hint').slideUp();
         }
         
     });
 	
+	function update_chars_left() {
+  	  //$('#new_tweet').popover('show');
+        var max_len = 140;
+        var textarea = $('#new_tweet')[0];
+        var tweet_len = textarea.value.length;
+        var chars_left = max_len - tweet_len;
+        
+        if(tweet_len == 0) {
+        	$('#touite_hint').slideUp();
+        }
+        if (tweet_len >= max_len) {
+            textarea.value = textarea.value.substring(0, max_len); // truncate
+            $('#chars_left').html("0");
+        } else {
+      	  $('#chars_left').html(max_len - tweet_len);
+        }
+    }
 	
 	/*
     if ($('#new_tweet').length) {
-      function update_chars_left() {
-    	  $('#new_tweet').popover('show');
-          var max_len = 140;
-          var textarea = $('#new_tweet')[0];
-          var tweet_len = textarea.value.length;
-          if (tweet_len >= max_len) {
-              textarea.value = textarea.value.substring(0, max_len); // truncate
-              $('#chars_left').html("0");
-          } else {
-        	  $('#chars_left').html(max_len - tweet_len);
-          }
-      }
+      
       /*
       $('#new_tweet').keyup(function() {
           update_chars_left();
