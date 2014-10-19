@@ -1,6 +1,6 @@
-import re
+import json
 from django.shortcuts import render_to_response, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseBadRequest
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -79,6 +79,9 @@ def post_tweet(request, form_class=TweetForm, success_url=None):
                     'tweet': tweet,
                     'prefix_sender': True ,
                     'extra_classes':  "fisrt odd"})
+        else:
+            data = json.dumps(dict([(k, [unicode(e) for e in v]) for k,v in form.errors.items()]))
+            return HttpResponseBadRequest(data, content_type='application/json')
     if success_url is None:
         success_url = reverse('timeline.views.home')
     return HttpResponseRedirect(success_url)
