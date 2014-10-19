@@ -108,8 +108,7 @@ def merge(*querysets, **kwargs):
     return result
 
 def group_comments(items):
-    grouped = []
-            
+    grouped = []            
     for tlitem in items:
         item = tlitem.item
         if isinstance(item, ThreadedComment):
@@ -126,9 +125,7 @@ def group_comments(items):
                         group_item.comments = [ prev, group_item ]                    
                         grouped.append(group_item)
                 else:
-                    grouped.append(tlitem)
-                #elif isinstance(prev, class_or_type_or_tuple):
-                #    pass
+                    grouped.append(tlitem)                
             else:
                 grouped.append(tlitem)            
         else:
