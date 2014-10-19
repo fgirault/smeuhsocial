@@ -11,7 +11,7 @@
 <ul class="responses">
     {% for response in responses %}
         <li class="{% cycle even,odd %} thread-{{ response.depth }} clearfix">
-            <div class="meta">
+            <div class="meta text-center">
                 <div class="avatar">{% avatar response.user 40 %}</div>
                 <div class="details">
                 <strong>
@@ -22,24 +22,7 @@
             </div>            	
             <div class="bulk">
             
-            	<a class="pull-right" id="comment_{{response.id}}" href="{{ response.content_object.get_absolute_url }}#comment_{{response.id}}"> <i class="fa fa-link fa-sm"> </i> </a>
-            
-            			
-						{% comment %}
-						{% ifequal user response.user %}
-						<li role="presentation">
-                
-	                <form method="POST" action="{% url 'tc_comment_delete' response.id %}">
-	                    {% csrf_token %}
-	                    <input type="hidden" name="next" value="{{ request.path }}" />
-                		&nbsp;
-	                    <button id="tc_comment_delete_{{response.id}}" type="submit" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="{% trans "Delete Post" %}"><i class="fa fa-remove"></i> </button>
-	                    <script>$("#tc_comment_delete_{{response.id}}").popConfirm();</script>
-	                </form>
-               	{% endifequal %}
-                {% endcomment %}
-				                       
-                
+            	<a class="pull-right" id="comment_{{response.id}}" href="{{ response.content_object.get_absolute_url }}#comment_{{response.id}}"> <i class="fa fa-link fa-sm"> </i> </a>                        								
             
                 <div class="body">{{ response.comment|urlize|profilize|tagalize|smilize|linebreaks }}</div>
                 
