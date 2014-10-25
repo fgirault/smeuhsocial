@@ -6,41 +6,34 @@
 {% load threadedcommentstags %}
 {% load extra_tagging_tags %}
 {% load override_tags %}
-
 	<div class="col-md-10"  style="margin-bottom: 2em;">
 	    <h2>
-	    	<a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>	    	
-	    </h2>
-		
-		<div>
-		
+	    	<a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>	    	    
+	    </h2>	    
+		<div>		
 		<span class="pull-right">
 	   {% tags_for_object blog_post as tags %}
+	   {% if tags %}<small>
 	   {% for tag in tags %}
-	       <small><a href="{% url 'tag_homepage' tag %}"><i class="fa fa-tag"></i> {{ tag }}</a></small>
-	   {% endfor %}
+	       <a href="{% url 'tag_homepage' tag %}"><i class="fa fa-tag"></i> {{ tag }}</a>
+	   {% endfor %}</small>
+	   {% endif %}	  
 	   <a href="{{ blog_post.get_absolute_url }}#blogcomments" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-comment"> </i> {% get_comment_count for blog_post as commentcount %} <small>{{ commentcount }}</small> </a>
 		</span>
-		{% trans 'Posted by' %} {% avatar_link blog_post.author 16 %}
-<strong><a href="{% url 'profile_detail' blog_post.author.username %}">{% user_display blog_post.author %}</a></strong> 
-{% trans 'on' %}
-  {{ blog_post.publish|date:"DATE_FORMAT" }}
+		<small>{% trans 'Posted by' %}</small>
+	    {% avatar_link blog_post.author 16 %}
+		<strong><a href="{% url 'profile_detail' blog_post.author.username %}">{% user_display blog_post.author %}</a></strong> 
+		{% trans 'on' %}
+		  {{ blog_post.publish|date:"DATE_FORMAT" }}	    				
 
-		
 		</div>
-		
-	    <p>
-	        {% if blog_post.tease %}
-	             {% with blog_post.tease as body %}
-	                {{ body|apply_markup:blog_post.markup }}
-	            {% endwith %}
-	        {% else %}
-	            {% with blog_post.body|truncatewords:"84" as body %}
-	                {{ body|apply_markup:blog_post.markup }}
-	            {% endwith %}
-	        {% endif %}
-	    </p>
-	    
-	    
-	    
+       {% if blog_post.tease %}
+            {% with blog_post.tease as body %}
+               {{ body|apply_markup:blog_post.markup }}
+           {% endwith %}
+       {% else %}
+           {% with blog_post.body|truncatewords:"84" as body %}
+               {{ body|apply_markup:blog_post.markup }}
+           {% endwith %}
+       {% endif %}	    
 	</div>
