@@ -42,9 +42,11 @@
         {# <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/override.css" /> #}
         {% endcompress %}
 
+		{% compress js %}
         <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.11.1.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/js/bootstrap.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.popconfirm.js"></script>
+        {% endcompress %}
         {# <script type="text/javascript" src="{{ STATIC_URL }}js/microblogging.js"></script> #}
 
         {% block extra_head_base %}
