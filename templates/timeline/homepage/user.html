@@ -16,6 +16,8 @@
 {{ block.super }}
 {% endblock %}
 
+{% block timelinelink %}{% user_display other_user as other_user_display %}{% url 'user_timeline' other_user_display %}{% endblock %}
+
 {% block newsblock %}
 {% user_display other_user as other_user_display %}
 	<dl class="dl-horizontal">
@@ -86,9 +88,7 @@
               {% else %}
               
               {% endif %} {# is_friend #}
-	          
-	          
-	          
+	          	          	          
 	          {% endif %}
                                       
 {{ block.super }}
@@ -146,14 +146,12 @@
 
 
 {% block newsfooter %}
-{% comment %}
 {% user_display other_user as other_user_display %}
 {% if timelineitems %}
 <div  class="clearfix" >
 	<a href="{% url 'user_timeline' other_user_display %}" class="btn btn-default btn-sm pull-right"><i class="fa fa-bullhorn"></i> {% trans "More news" %}</a>
 </div> 		
 {% endif %}	
-{% endcomment %}
 {% endblock %}
 
 {% block photosfooter %}

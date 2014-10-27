@@ -231,6 +231,67 @@ class FollowingPageView(TemplateView):
         context['prefix_sender'] = True
         return context
 
+class UserPageView(TemplateView):
+    
+    template_name = "timeline/user.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super(UserPageView, self).get_context_data(**kwargs)
+        name = context.get('username', None)
+        limit = 64
+        if name:
+            user = other_user = get_object_or_404(User, username=name)
+        else:
+            user = other_user = self.request.user
+        
+        if self.request.user == other_user:
+            context['is_me']= True
+            context['is_friend'] = False
+        else:
+            context['is_friend'] = Friendship.objects.are_friends(self.request.user, other_user)
+            context['is_following'] = Following.objects.is_following(self.request.user, other_user)
+        context['other_friends'] = Friendship.objects.friends_for_user(other_user)
+        context['other_user'] = other_user
+        
+        tweets = [
+            TimeLineItem(item, item.sent, item.sender, "timeline/_tweet.html")
+            for item in Tweet.objects.all().filter(sender_id=user.id, sender_type__name="user").order_by("-sent")[:limit]
+            ]
+
+        context['latest_blogs'] = Post.objects.all().filter(status = 2, author=user).order_by("-publish")[:limit]
+
+        posts =  [
+            TimeLineItem(item, item.updated_at, item.author, "timeline/_post.html")
+            for item in context['latest_blogs']
+            ]
+
+        context['latest_photos'] = Image.objects.all().filter(is_public = True, member=user).order_by("-date_added")[:limit]
+
+        images = [
+            TimeLineItem(item, item.date_added, item.member, "timeline/_photo.html")
+            for item in context['latest_photos']
+            ]
+
+        context['latest_tracks'] = Track.objects.all().filter(user=user).order_by("-created_at")[:limit]
+
+        tracks = [
+            TimeLineItem(item, item.updated_at, item.user, "timeline/_track.html")
+            for item in context['latest_tracks']
+            ]
+
+        comments = [
+            TimeLineItem(item, item.date_submitted, item.user, "timeline/_comment.html")
+            for item in ThreadedComment.objects.all().filter(user = user).order_by("-date_submitted")[:limit]
+            ]
+        
+        items = merge(tweets, images, posts, tracks, comments, field="date")
+        for index, item in enumerate(items):
+            item.index = index + 1
+        context['timelineitems'] = group_comments(items)[:limit]
+        context['prefix_sender'] = True        
+        return context
+    
+
 class UserHomePageView(TemplateView):
 
     template_name = "timeline/homepage/user.html"
@@ -255,7 +316,6 @@ class UserHomePageView(TemplateView):
             is_friend = context['is_friend'] = Friendship.objects.are_friends(self.request.user, other_user)
             context['is_following'] = Following.objects.is_following(self.request.user, other_user)
         context['other_friends'] = Friendship.objects.friends_for_user(other_user)
-
 
         context['other_user'] = other_user
         tweets = [
@@ -292,7 +352,7 @@ class UserHomePageView(TemplateView):
         items = merge(tweets, images, posts, tracks, comments, field="date")[:32]
         for index, item in enumerate(items):
             item.index = index + 1
-        context['timelineitems'] = group_comments(items)
+        context['timelineitems'] = group_comments(items)[:16]
         context['prefix_sender'] = True
 
 
@@ -471,8 +531,8 @@ friends = login_required(FriendsPageView.as_view())
 
 following = login_required(FollowingPageView.as_view())
 
-user_home = login_required(UserHomePageView.as_view())
+user_timeline = login_required(UserPageView.as_view())
 
-user_timeline = login_required(UserHomePageView.as_view())
+user_home = login_required(UserHomePageView.as_view())
 
 tag_home = login_required(TagHomePageView.as_view())

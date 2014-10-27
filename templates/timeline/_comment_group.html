@@ -39,7 +39,7 @@
 					
 	    {% for commentitem in timelineitem.comments %}
 		<div class="timeline-item homepage-item {% if forloop.first %} first{% endif %}{% cycle ' odd' '' %}  clearfix" style="margin-left: 1em;">				
-			
+			<span class="pull-right timesince">{% blocktrans with commentitem.date|timesince as item_age %}{{ item_age }} ago{% endblocktrans %}</span> 				
   				
   			{% avatar_link commentitem.user 24 %}
   				
@@ -47,9 +47,7 @@
   				
  			<a class="timeline-comment-body" href="{{ commentitem.item.content_object.get_absolute_url }}#comment_{{commentitem.item.id}}">
  				{{ commentitem.item.comment|truncatewords:24|striptags|smilize }}
- 				
- 				<span class="pull-right timesince">{% blocktrans with commentitem.date|timesince as item_age %}{{ item_age }} ago{% endblocktrans %}</span>
- 				
+ 				 				
  			</a>
   			  			  									
 		</div>  		    			

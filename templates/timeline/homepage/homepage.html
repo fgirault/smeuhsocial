@@ -26,7 +26,7 @@
 			{% if timelineitems %}
 			<h4>
 				<a><i class="fa fa-rss-square"></i></a>
-			    <a href="{% url 'timeline' %}">{% trans 'News' %}</a>
+			    <a href="{% block timelinelink %}{% url 'timeline' %}{% endblock %}">{% trans 'News' %}</a>
 			</h4>
 			<div id="timeline">
 			{% for timelineitem in timelineitems %}
