@@ -9,5 +9,6 @@ urlpatterns = patterns("",
     url(r"^following$", "timeline.views.following", name="following_news"),
     url(r"^user/home/(?P<username>[\w\._-]+)/$", "timeline.views.user_home", name="user_homepage"),
     url(r"^user/(?P<username>[\w\._-]+)/$", "timeline.views.user_timeline", name="user_timeline"),
-    url(r"^tag/(?P<tagname>.+)/$", "timeline.views.tag_home", name="tag_homepage"),
+    url(r"^tag/home/(?P<tagname>.+)/$", "timeline.views.tag_home", name="tag_homepage"),
+    url(r"^tag/(?P<tagname>.+)/$", "timeline.views.tag_timeline", name="tag_timeline"),
 )

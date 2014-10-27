@@ -298,9 +298,7 @@ class UserHomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(UserHomePageView, self).get_context_data(**kwargs)
-        # TODO use a query parameter for the time delta. here is 3 months
-        ago = datetime.datetime.now() - datetime.timedelta(30 * 3)
-        following_list, followers_list = get_following_followers_lists(self.request.user)
+        
         other_friends = None
         username = name = context.get('username', None)
 
@@ -349,10 +347,10 @@ class UserHomePageView(TemplateView):
             for item in ThreadedComment.objects.all().filter(user = user).order_by("-date_submitted")[:32]
             ]
         
-        items = merge(tweets, images, posts, tracks, comments, field="date")[:32]
+        items = merge(tweets, images, posts, tracks, comments, field="date")[:16]
         for index, item in enumerate(items):
             item.index = index + 1
-        context['timelineitems'] = group_comments(items)[:16]
+        context['timelineitems'] = group_comments(items)
         context['prefix_sender'] = True
 
 
@@ -447,6 +445,64 @@ class UserHomePageView(TemplateView):
 
         return HttpResponseRedirect(reverse("timeline.views.user_home", kwargs = {"username": username}))
 
+class TagPageView(TemplateView):
+
+    template_name = "timeline/tag.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super(TagPageView, self).get_context_data(**kwargs)
+        tag_instance = get_object_or_404(Tag, name__iexact=context.get("tagname"))                       
+        
+        context['tag'] = tag = tag_instance.name
+        
+        # ago = datetime.datetime.now() - datetime.timedelta(30)
+        
+        #limit = 64
+        
+        tweets = [
+            TimeLineItem(item, item.sent, item.sender, "timeline/_tweet.html")
+            for item in TaggedItem.objects.get_by_model(Tweet, tag).order_by("-sent")#[:limit]
+            ]
+
+        context['latest_blogs'] = TaggedItem.objects.get_by_model(Post, tag).filter(status = 2).order_by("-publish")#[:limit]
+
+        posts =  [
+            TimeLineItem(item, item.updated_at, item.author, "timeline/_post.html")
+            for item in context['latest_blogs']
+            ]
+
+        context['latest_photos'] = TaggedItem.objects.get_by_model(Image, tag).filter(is_public = True).order_by("-date_added")#[:limit]
+
+        images = [
+            TimeLineItem(item, item.date_added, item.member, "timeline/_photo.html")
+            for item in context['latest_photos']
+            ]
+
+        context['latest_tracks'] = TaggedItem.objects.get_by_model(Track, tag).order_by("-created_at")        
+
+        tracks = [
+            TimeLineItem(item, item.updated_at, item.user, "timeline/_track.html")
+            for item in context['latest_tracks']
+            ]
+
+        comments = [
+            TimeLineItem(item, item.date_submitted, item.user, "timeline/_comment.html")
+            for item in TaggedItem.objects.get_by_model(ThreadedComment, tag).order_by("-date_submitted")
+            ]
+        
+        # no tag for comment yet. so : no comment :)
+        
+        #Tag.objects.get_for_object(self.obj.resolve(context))
+        
+        
+        items = merge(tweets, images, posts, tracks, comments, field="date")
+        for index, item in enumerate(items):
+            item.index = index + 1
+        context['timelineitems'] = group_comments(items) 
+        context['prefix_sender'] = True
+        return context
+    
+
 class TagHomePageView(TemplateView):
 
     template_name = "timeline/homepage/tag.html"
@@ -495,10 +551,10 @@ class TagHomePageView(TemplateView):
         #Tag.objects.get_for_object(self.obj.resolve(context))
         
         
-        items = merge(tweets, images, posts, tracks, comments, field="date")
+        items = merge(tweets, images, posts, tracks, comments, field="date")[:16]
         for index, item in enumerate(items):
             item.index = index + 1
-        context['timelineitems'] = group_comments(items[:32]) 
+        context['timelineitems'] = group_comments(items) 
         context['prefix_sender'] = True
         return context
  
@@ -534,5 +590,7 @@ following = login_required(FollowingPageView.as_view())
 user_timeline = login_required(UserPageView.as_view())
 
 user_home = login_required(UserHomePageView.as_view())
+
+tag_timeline = login_required(TagPageView.as_view())
 
 tag_home = login_required(TagHomePageView.as_view())

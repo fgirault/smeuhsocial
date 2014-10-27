@@ -12,7 +12,7 @@
 <div class="pull-right">
    {% tags_for_object blog_post as tags %}
    {% for tag in tags %}
-       <small><a href="{% url 'tag_homepage' tag %}"><i class="fa fa-tag"></i> {{ tag }}</a></small>
+       <small><a href="{% url 'tag_timeline' tag %}"><i class="fa fa-tag"></i> {{ tag }}</a></small>
    {% endfor %}
    <a href="{{ blog_post.get_absolute_url }}#blogcomments" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-comment"> </i> {% get_comment_count for blog_post as commentcount %} <small>{{ commentcount }}</small> </a>
 </div>

@@ -12,7 +12,7 @@
 <div class="pull-right">
    {% tags_for_object track as tags %}
    {% for tag in tags %}
-       <small><a href="{% url 'tag_homepage' tag %}"><i class="fa fa-tag"></i> {{ tag }}</a></small>
+       <small><a href="{% url 'tag_timeline' tag %}"><i class="fa fa-tag"></i> {{ tag }}</a></small>
    {% endfor %}
    <a href="{% url 'track_detail' track.user.username track.slug %}#trackcomments" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-comment"> </i> {% get_comment_count for track as commentcount %} <small>{{ commentcount }}</small> </a>
 </div>  

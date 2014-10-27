@@ -1,0 +1,8 @@
+{% extends "timeline/index.html" %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Tag Timeline" %}{% endblock %}
+
+{% block title %}<a href="{% url 'tag_homepage' tag %}"><i class="fa fa-tag"> </i> {{ tag }} </a>{% endblock %}
+
+{% block touiteform %}{% endblock %}

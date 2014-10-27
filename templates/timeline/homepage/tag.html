@@ -26,8 +26,14 @@
 {{ block.super }}
 {% endblock %}
 
+{% block timelinelink %}{% url 'tag_timeline' tag %}{% endblock %}
 
 {% block newsfooter %}
+{% if timelineitems %}
+<div  class="clearfix" >
+	<a href="{% url 'tag_timeline' tag %}" class="btn btn-default btn-sm pull-right"><i class="fa fa-bullhorn"></i> {% trans "More news" %}</a>
+</div> 		
+{% endif %}	
 {% endblock %}
 
 {% block photoslink %}{% url 'photo_tag' tagname %}{% endblock %}
