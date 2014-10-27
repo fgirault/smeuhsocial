@@ -9,15 +9,14 @@
 {% load tagging_tags %}
 {% load photo_tags %}
 {% load threadedcommentstags %}
-{% load bootstrap3 %}
 
 {% block body_class %}profile{% endblock %}
 
 {% block subnav %}
     {% if user.is_authenticated %}
         <ul class="nav navbar-nav subnav" >
-            <li><a href="{% url 'profile_detail' user.username %} ">{% bootstrap_icon "user" %} {% trans "Your Profile" %}</a></li>
-            <li><a href="{% url 'profile_list' %} ">{% bootstrap_icon "list" %} {% trans "All Profiles" %}</a></li>            
+            <li><a href="{% url 'profile_detail' user.username %} "><i class="fa fa-user"></i> {% trans "Your Profile" %}</a></li>
+            <li><a href="{% url 'profile_list' %} "><i class="fa fa-list"></i> {% trans "All Profiles" %}</a></li>            
         </ul>
     {% else %}
         &nbsp;

@@ -1,7 +1,7 @@
 {% load override_tags %}
 {% load i18n %}
 {% load tagging_tags %}
-{% load bootstrap3 %}
+
   <div class="audiotracks-list-entry">
     
 	{% if track.user == request.user %}
@@ -10,8 +10,8 @@
 	      <span class="caret"></span>
 	    </button>
 	    <ul class="dropdown-menu" role="menu">
-			<li role="presentation"><a href="{% url 'edit_track' track.id %}" role="menuitem">{% bootstrap_icon "pencil" %} {% trans 'Edit' %}</a></li>
-			<li role="presentation"><a href="{% url 'confirm_delete_track' track.id %}" role="menuitem">{% bootstrap_icon "remove" %} {% trans 'Delete' %}</a></li>        
+			<li role="presentation"><a href="{% url 'edit_track' track.id %}" role="menuitem"><i class=" fa fa-arrow-right"> </i>  <i class=" fa fa-edit"> </i> {% trans 'Edit' %}</a></li>
+			<li role="presentation"><a href="{% url 'confirm_delete_track' track.id %}" role="menuitem"><i class=" fa fa-remove"> </i> {% trans 'Delete' %}</a></li>        
 		</ul>
     </div>
 	{% endif %}
@@ -35,7 +35,7 @@
       </p>
       {% if track.tags %}
       <ul class="tags">
-      	<li>{% bootstrap_icon "tag" %}</li>
+      	<li><i class=" fa fa-tag"> </i> </li>
           {% tags_for_object track as tags %}
           {% for tag in tags %}          
               <li> <a href="/tags/{{ tag }}">{{ tag }} </a></li>

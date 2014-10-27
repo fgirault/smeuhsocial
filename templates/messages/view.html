@@ -3,7 +3,6 @@
 {% load i18n %}
 {% load timezone_filters %}
 {% load account_tags %}
-{% load bootstrap3 %}
 
 {% block body %}
  <div class="container">
@@ -29,10 +28,10 @@
 	</div>
     
     {% ifequal message.recipient user %}
-    <div class="pull-left"><a href="{% url 'messages_reply' message.id %}" class="btn btn-default">{% bootstrap_icon "envelope" %} {% trans "Reply" %}</a></div>
+    <div class="pull-left"><a href="{% url 'messages_reply' message.id %}" class="btn btn-default"><i class="fa fa-envelope"> </i> {% trans "Reply" %}</a></div>
     {% endifequal %}
 	
-	<div class="pull-right"><a href="{% url 'messages_delete' message.id %}" class="btn btn-default">{% bootstrap_icon "remove" %} {% trans "Delete" %}</a></div>
+	<div class="pull-right"><a href="{% url 'messages_delete' message.id %}" class="btn btn-default"><i class="fa fa-remove"> </i> {% trans "Delete" %}</a></div>
         
         </dd>
     </dl>        

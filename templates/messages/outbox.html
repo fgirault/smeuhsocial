@@ -3,7 +3,6 @@
 {% load i18n %}
 {% load timezone_filters %}
 {% load account_tags %}
-{% load bootstrap3 %}
 
 {% block body %}
  <div class="container">
@@ -21,7 +20,7 @@
                         <a href="{{ message.get_absolute_url }}">{{ message.subject }}</a>
                     </td>
                     <td>{{ message.sent_at|localtime:account.timezone|date:_("DATETIME_FORMAT") }}</td>
-                    <td><a href="{% url 'messages_delete' message.id %}?next={% url 'messages_outbox' %}" class="btn btn-default">{% bootstrap_icon "remove" %} {% trans "delete" %}</a></td>
+                    <td><a href="{% url 'messages_delete' message.id %}?next={% url 'messages_outbox' %}" class="btn btn-default"><i class="fa fa-remove"> </i> {% trans "delete" %}</a></td>
                 </tr>
             {% endfor %}
         </tbody>

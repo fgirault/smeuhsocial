@@ -4,7 +4,6 @@
 {% load uni_form_tags %}
 {% load ifsetting_tag %}
 {% load account_tags %}
-{% load bootstrap3 %}
 
 {% block head_title %}{% trans "Login" %}{% endblock %}
 
@@ -63,7 +62,7 @@
             
          <div class="form-group">
          	<div class="col-sm-offset-3 col-sm-9">
-             	<button class="btn btn-default">{% bootstrap_icon "log-in" %} {% trans "Log in" %}</button>
+             	<button class="btn btn-default"><i class="fa fa-sign-in"> </i> {% trans "Log in" %}</button>
          	<a class="pull-right" href="{% url 'acct_passwd_reset' %}">{% trans "Forgot password?" %}</a>
              </div>
          </div>
@@ -95,7 +94,7 @@
         </div>
         <div class="form-group">
          	<div class="col-sm-offset-2 col-sm-10">
-             	<button class="btn btn-default pull-right">{% bootstrap_icon "log-in" %} {% trans "Log in" %}</button>
+             	<button class="btn btn-default pull-right"><i class="fa fa-sign-in"> </i> {% trans "Log in" %}</button>
              </div>
          </div>
     </form>

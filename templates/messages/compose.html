@@ -2,7 +2,6 @@
 
 {% load i18n %}
 {% load uni_form_tags %}
-{% load bootstrap3 %}
 
 {% block body %}
  <div class="container">
@@ -16,7 +15,7 @@
         <div class="form-group">
     		<div class="col-sm-offset-2 col-sm-10">
       			<input type="hidden" name="action" value="create" />
-      			<button class="btn btn-default">{% bootstrap_icon "send" %} {% trans "Send" %}</button>                
+      			<button class="btn btn-default"><i class=" fa fa-send"> </i> {% trans "Send" %}</button>                
 		    </div>
 		</div>
         

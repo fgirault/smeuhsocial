@@ -1,6 +1,5 @@
 {% load i18n %}
 {% load compress %}
-{% load bootstrap3 %}
 
 <!DOCTYPE html>
 <html dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}" lang="{{ LANGUAGE_CODE }}">
@@ -90,9 +89,20 @@
        </nav><!--/.nav-collapse -->
 
         {% block body_outer %}
+        
         {% if messages %}
-            <div class="container"><div class="row">{% bootstrap_messages %}</div></div>
-        {% endif %}
+        <div class="container">
+		<ul id="messages">
+		{% for message in messages %}
+			<li id="message_{{ forloop.counter }}"{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+				<a href="#"><small>{% trans "clear" %}</small></a>
+			{{ message }}
+			</li>
+		{% endfor %}
+		</ul>
+		</div>
+		{% endif %}
+               
         <!--
         <div id="body-wrapper">
           <div id="body">
@@ -117,8 +127,6 @@
           | Bored ? Try <a href="{% url 'fukung' %}">fusmeuh</a>, a fukung-like photo-roulette fed with mysmeuh data !
         {% endblock %}
         {% block locale_switcher %}{% endblock %}
-        <div class="pull-right">Icons from <a href="http://GLYPHICONS.com">GLYPHICONS.com</a> / <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> licence</div>
-        </div>
         </footer>
         {% endblock %}
 

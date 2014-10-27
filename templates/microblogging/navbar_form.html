@@ -1,4 +1,3 @@
-{% load bootstrap3 %}
 {% load i18n %}
 <form id="touite_navbar_form" action="{% url 'tweets_you_follow' %}" method="POST" class="form-horizontal">
     {% csrf_token %}
@@ -12,7 +11,7 @@
                 value="{{ form.text.value }}"
    		/>
     	<span class="input-group-btn">
-    		<button type="submit" class="btn btn-default">{% bootstrap_icon "bullhorn" %} {% trans 'Bang' %}</button>    		
+    		<button type="submit" class="btn btn-default"><i class="fa fa-bullhorn"> </i> {% trans 'Bang' %}</button>    		
     	</span>
 	</div>    
 </form>

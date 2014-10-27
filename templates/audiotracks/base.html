@@ -1,5 +1,5 @@
 {% extends "site_base.html" %}
-{% load bootstrap3 %}
+
 {% comment %}
 This template is copied from the base templates to provide the friends
 photos link which is specific to social_project.
@@ -15,11 +15,11 @@ crash.
 {% block subnav %}
     {% if user.is_authenticated %}
         <ul class="nav navbar-nav subnav">
-          <li><a href="{% url 'upload_track' %}">{% bootstrap_icon "upload" %} {% trans 'Upload track' %}</a></li>
-          <li><a href="{% url 'artist_index' %}">{% bootstrap_icon "list" %} {% trans 'Artists' %}</a></li>                    
+          <li><a href="{% url 'upload_track' %}"><i class=" fa fa-upload"> </i> {% trans 'Upload track' %}</a></li>
+          <li><a href="{% url 'artist_index' %}"><i class=" fa fa-users"> </i>   {% trans 'Artists' %}</a></li>                    
         </ul>
         <ul class="nav navbar-nav navbar-right subnav">
-          <li><a href="{% url 'user_index' user.username %}">{% bootstrap_icon "user" %} {% trans 'Your tracks' %}</a></li>
+          <li><a href="{% url 'user_index' user.username %}"><i class=" fa fa-user"> </i>  {% trans 'Your tracks' %}</a></li>
         </ul> 
     {% else %}
         &nbsp;
