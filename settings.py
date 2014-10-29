@@ -176,7 +176,7 @@ INSTALLED_APPS = [
     "avatar",
     "microblogging",
     "django_sorting",
-    "django_markwhat",
+    "django_markup",
     "markup_deprecated",
     "tagging_ext",
     'bootstrap3',

@@ -184,6 +184,11 @@ class TestBlog(BaseTestCase):
         return Post.objects.create(title=u"A Neat Title", slug="the-slug",
                                    author=self.me, body="Some content")
 
+    def test_view_post(self):
+        self.create_post()
+        response = self.client.get("/bob/blog/the-slug")
+        self.assertContains(response, "Some content")
+
     def test_view_source(self):
         self.create_post()
         response = self.client.get("/bob/blog/the-slug/source")
@@ -198,9 +203,6 @@ class TestBlog(BaseTestCase):
         self.create_post()
         response = self.client.get("/{}/blog/feed/".format(self.me.username))
         self.assertEqual(response.status_code, 200)
-
-    def test_long_comment(self):
-        self.create_post()
 
 
 class TestEditProfile(BaseTestCase):
