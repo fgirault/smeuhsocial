@@ -413,7 +413,10 @@ p {
 
 .blog-post .highlight pre {
     padding: 24px;
-    font-size: 14px;
+    background-color: #000;
+    border: none;
+    color: #f8f8f2;
+    font-size: 16px;
 }
 
 .blog-post .literal {
