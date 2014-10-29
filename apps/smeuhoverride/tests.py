@@ -199,6 +199,9 @@ class TestBlog(BaseTestCase):
         response = self.client.get("/{}/blog/feed/".format(self.me.username))
         self.assertEqual(response.status_code, 200)
 
+    def test_long_comment(self):
+        self.create_post()
+
 
 class TestEditProfile(BaseTestCase):
 

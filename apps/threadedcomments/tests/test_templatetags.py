@@ -118,10 +118,15 @@ class TemplateTagTestCase(TestCase):
         )
     
     def test_get_threaded_comment_form(self):
-        self.assertEquals(
-            Template('{% load threadedcommentstags %}{% get_threaded_comment_form as form %}{{ form }}').render(Context({})),
-            u'<tr><th><label for="id_comment">comment:</label></th><td><textarea id="id_comment" rows="10" cols="40" name="comment"></textarea></td></tr>\n<tr><th><label for="id_markup">Markup:</label></th><td><select name="markup" id="id_markup">\n<option value="">---------</option>\n<option value="1">markdown</option>\n<option value="2">textile</option>\n<option value="3">restructuredtext</option>\n<option value="5" selected="selected">plaintext</option>\n</select></td></tr>'
-        )
+        with self.settings(LANGUAGE_CODE='en'):
+            template_string = """
+            {% load threadedcommentstags %}
+            {% get_threaded_comment_form as form %}
+            {{ form }}
+            """
+            self.assertIn(
+                '<option value="1">markdown</option>',
+                Template(template_string).render(Context({})))
     
     def test_get_latest_comments(self):
         

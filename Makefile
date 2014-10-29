@@ -9,7 +9,7 @@ test:
 	python manage.py test smeuhoverride
 
 fasttest:
-	DJANGO_TEST_FAST=1 python manage.py test --failfast smeuhoverride
+	DJANGO_TEST_FAST=1 python manage.py test --failfast smeuhoverride threadedcomments
 
 
 .PHONY: deploy
