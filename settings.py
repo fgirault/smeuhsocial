@@ -335,6 +335,8 @@ ldap_log.addHandler(ldap_log_handler)
 AUDIOTRACKS_MODEL = 'smeuhoverride.Track'
 AUDIOTRACKS_PER_PAGE = 6
 
+DEFAULT_MAX_COMMENT_LENGTH = 100000
+
 SECRET_KEY = 'coin'
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
