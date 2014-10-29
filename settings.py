@@ -212,10 +212,8 @@ ABSOLUTE_URL_OVERRIDES = {
 
 MARKUP_FILTER_FALLBACK = "none"
 MARKUP_CHOICES = [
-    ("restructuredtext", u"reStructuredText"),
-    ("textile", u"Textile"),
     ("markdown", u"Markdown"),
-    ("creole", u"Creole"),
+    ("restructuredtext", u"reStructuredText"),
 ]
 
 MARKUP_SETTINGS = {
