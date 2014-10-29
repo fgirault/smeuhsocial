@@ -125,7 +125,7 @@ class TemplateTagTestCase(TestCase):
             {{ form }}
             """
             self.assertIn(
-                '<option value="1">markdown</option>',
+                'textarea',
                 Template(template_string).render(Context({})))
     
     def test_get_latest_comments(self):

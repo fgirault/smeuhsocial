@@ -18,11 +18,8 @@ REST = 3
 #HTML = 4
 PLAINTEXT = 5
 MARKUP_CHOICES = (
-    (MARKDOWN, _("markdown")),
-    (TEXTILE, _("textile")),
-    (REST, _("restructuredtext")),
-    #    (HTML, _("html")),
-    (PLAINTEXT, _("plaintext")),
+    (MARKDOWN, _("Markdown")),
+    (PLAINTEXT, _("Plain text")),
 )
 
 DEFAULT_MARKUP = getattr(settings, 'DEFAULT_MARKUP', PLAINTEXT)
@@ -188,9 +185,9 @@ class ThreadedComment(models.Model):
         _('date/time approved'), default=None, null=True, blank=True)
 
     # Meat n' Potatoes
-    comment = models.TextField(_('comment'))
+    comment = models.TextField(verbose_name=_('Comment'))
     markup = models.IntegerField(
-        choices=MARKUP_CHOICES, default=DEFAULT_MARKUP, null=True, blank=True)
+        choices=MARKUP_CHOICES, default=DEFAULT_MARKUP, blank=True)
 
     # Status Fields
     is_public = models.BooleanField(_('is public'), default=True)

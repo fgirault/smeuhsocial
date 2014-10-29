@@ -14,14 +14,14 @@ class ThreadedCommentForm(forms.ModelForm):
     """
 
     comment = forms.CharField(
-        label=_('comment'),
+        label=_('Comment'),
         max_length=DEFAULT_MAX_COMMENT_LENGTH,
         widget=forms.Textarea
     )
 
     class Meta:
         model = ThreadedComment
-        fields = ('comment', 'markup')
+        fields = ('comment', )
 
 
 class FreeThreadedCommentForm(forms.ModelForm):

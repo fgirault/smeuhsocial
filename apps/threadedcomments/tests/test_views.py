@@ -13,7 +13,6 @@ __all__ = ("ViewsTestCase",)
 
 
 class ViewsTestCase(TestCase):
-    urls = "threadedcomments.tests.threadedcomments_urls"
 
     def test_freecomment_create(self):
 
@@ -38,7 +37,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test1',
             'name': u'eric',
             'parent': None,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'is_public': True,
             'ip_address': u'127.0.0.1',
@@ -94,7 +93,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test1_edited',
             'name': u'eric',
             'parent': None,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'is_public': True,
             'ip_address': u'127.0.0.1',
@@ -132,7 +131,7 @@ class ViewsTestCase(TestCase):
             'comment': u'My test free comment!',
             'name': u'',
             'parent': None,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'is_public': True,
             'ip_address': u'127.0.0.1',
@@ -166,7 +165,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test2',
             'name': u'eric',
             'parent': None,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'is_public': True,
             'ip_address': u'127.0.0.1',
@@ -203,7 +202,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test2_edited',
             'name': u'eric',
             'parent': None,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'is_public': True,
             'ip_address': u'127.0.0.1',
@@ -234,7 +233,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test3',
             'name': u'eric',
             'parent': None,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'is_public': True,
             'ip_address': u'127.0.0.1',
@@ -270,7 +269,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test2_edited',
             'name': u'eric',
             'parent': None,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'is_public': True,
             'ip_address': u'127.0.0.1',
@@ -308,7 +307,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test4',
             'name': u'eric',
             'parent': parent,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'is_public': True,
             'ip_address': u'127.0.0.1',
@@ -347,7 +346,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test5',
             'name': u'eric',
             'parent': parent,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'is_public': True,
             'ip_address': u'127.0.0.1',
@@ -385,7 +384,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test6',
             'name': u'eric',
             'parent': parent,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'is_public': True,
             'ip_address': u'127.0.0.1',
@@ -426,7 +425,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test7',
             'is_approved': False,
             'parent': None,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'user': user,
             'is_public': True,
@@ -478,7 +477,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test7_edited',
             'is_approved': False,
             'parent': None,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'user': user,
             'is_public': True,
@@ -514,7 +513,7 @@ class ViewsTestCase(TestCase):
             'comment': u'My test comment!',
             'is_approved': False,
             'parent': None,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'user': user,
             'is_public': True,
@@ -541,7 +540,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test8',
             'is_approved': False,
             'parent': None,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'user': user,
             'is_public': True,
@@ -574,7 +573,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test8_edited',
             'is_approved': False,
             'parent': None,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'user': user,
             'is_public': True,
@@ -602,7 +601,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test9',
             'is_approved': False,
             'parent': None,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'user': user,
             'is_public': True,
@@ -633,7 +632,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test8_edited',
             'is_approved': False,
             'parent': None,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'user': user,
             'is_public': True,
@@ -670,7 +669,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test10',
             'is_approved': False,
             'parent': parent,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'user': user,
             'is_public': True,
@@ -705,7 +704,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test11',
             'is_approved': False,
             'parent': parent,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'user': user,
             'is_public': True,
@@ -740,7 +739,7 @@ class ViewsTestCase(TestCase):
             'comment': u'test12',
             'is_approved': False,
             'parent': parent,
-            'markup': u'plaintext',
+            'markup': u'Plain text',
             'content_object': topic,
             'user': user,
             'is_public': True,
@@ -773,7 +772,7 @@ class ViewsTestCase(TestCase):
 
         response = self.client.post(url, {'next': '/'})
         o = response['Location'].split(
-            '?')[-1] == 'next=/freecomment/%d/delete/' % deleted_id
+            '?')[-1] == 'next=/comments/freecomment/%d/delete/' % deleted_id
         self.assertEquals(o, True)
 
         # become super user and try deleting comment
@@ -827,7 +826,7 @@ class ViewsTestCase(TestCase):
         })
         response = self.client.post(url, {'next': '/'})
         self.assertEquals(response['Location'].split(
-            '?')[-1], 'next=/comment/%s/delete/' % deleted_id)
+            '?')[-1], 'next=/comments/comment/%s/delete/' % deleted_id)
 
         user.is_superuser = True
         user.save()

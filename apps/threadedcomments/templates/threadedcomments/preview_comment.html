@@ -1,17 +1,22 @@
-{% extends "threadedcomments_base.html" %}
-
+{% extends "site_base.html" %}
+{% load override_tags %}
 {% load threadedcommentstags %}
+{% load bootstrap3 %}
+{% load i18n %}
 
-{% block content %}
+{% block body %}
+<div class="container">
     {% if comment %}
-        <div id="comment_preview">{% auto_transform_markup comment %}</div>
+        <div id="comment_preview">{{ comment.comment|urlize|profilize|tagalize|smilize|linebreaks }}</div>
     {% endif %}
     <form method="POST" action="">
-        <ul>
-            {{ form.as_ul }}
-            <li><input type="submit" value="Submit Comment" /></li>
-            <li><input type="submit" value="Preview Updated Comment" name="preview" /></li>
-        </ul>
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <p>
+        <input type="submit" value="{% trans 'Post Response' %}" />
+        <button type="submit" name="preview" value="1">{% trans "Preview" %}</button>
+        </p>
         <input type="hidden" name="next" value="{{ next }}" />
     </form>
+</div>
 {% endblock %}

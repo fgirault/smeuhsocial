@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-31 12:38+0200\n"
+"POT-Creation-Date: 2014-10-29 20:00+0100\n"
 "PO-Revision-Date: 2010-03-04 09:26+0100\n"
 "Last-Translator: James Pic <http://jamespic.com>\n"
 "Language-Team: Pinax French <http://www.transifex.net/projects/p/pinax/team/"
@@ -16,221 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-
-#: apps/account/forms.py:47 apps/account/forms.py:121
-#: apps/account/forms.py:357 apps/account/forms.py:481
-#, fuzzy
-msgid "Password"
-msgstr "Définir le mot de passe"
-
-#: apps/account/forms.py:51
-msgid "Remember Me"
-msgstr ""
-
-#: apps/account/forms.py:52
-msgid "If checked you will stay logged in for 3 weeks"
-msgstr ""
-
-#: apps/account/forms.py:63 apps/account/forms.py:138
-#: apps/account/forms.py:293 apps/account/forms.py:379
-msgid "E-mail"
-msgstr ""
-
-#: apps/account/forms.py:68 apps/account/forms.py:116
-#: apps/account/forms.py:479
-msgid "Username"
-msgstr ""
-
-#: apps/account/forms.py:96
-msgid "This account is currently inactive."
-msgstr ""
-
-#: apps/account/forms.py:99
-msgid "The e-mail address and/or password you specified are not correct."
-msgstr ""
-
-#: apps/account/forms.py:101
-msgid "The username and/or password you specified are not correct."
-msgstr ""
-
-#: apps/account/forms.py:125 apps/account/forms.py:361
-msgid "Password (again)"
-msgstr ""
-
-#: apps/account/forms.py:141
-msgid "E-mail (optional)"
-msgstr ""
-
-#: apps/account/forms.py:146
-msgid "Usernames can only contain letters, numbers and underscores."
-msgstr ""
-
-#: apps/account/forms.py:151
-msgid "This username is already taken. Please choose another."
-msgstr ""
-
-#: apps/account/forms.py:160
-msgid "A user is registered with this e-mail address."
-msgstr ""
-
-#: apps/account/forms.py:166 apps/account/forms.py:346
-#: apps/account/forms.py:368 apps/account/forms.py:436
-msgid "You must type the same password each time."
-msgstr ""
-
-#: apps/account/forms.py:214
-#, fuzzy
-msgid "Your e-mail address has already been verified"
-msgstr "Quelqu'un avec cette adresse email est déjà membre du site:"
-
-#: apps/account/forms.py:224 apps/account/forms.py:234
-#, python-format
-msgid "Confirmation e-mail sent to %(email)s"
-msgstr ""
-
-#: apps/account/forms.py:301
-#, fuzzy
-msgid "This e-mail address already associated with this account."
-msgstr "Vous avez déjà autorisé un compte twitter."
-
-#: apps/account/forms.py:302
-#, fuzzy
-msgid "This e-mail address already associated with another account."
-msgstr "Vous avez déjà autorisé un compte twitter."
-
-#: apps/account/forms.py:326
-#, fuzzy
-msgid "Current Password"
-msgstr "Définir le mot de passe"
-
-#: apps/account/forms.py:330 apps/account/forms.py:420
-#, fuzzy
-msgid "New Password"
-msgstr "Définir le mot de passe"
-
-#: apps/account/forms.py:334 apps/account/forms.py:424
-#, fuzzy
-msgid "New Password (again)"
-msgstr "Définir le mot de passe"
-
-#: apps/account/forms.py:340
-msgid "Please type your current password."
-msgstr ""
-
-#: apps/account/forms.py:386
-msgid "E-mail address not verified for any user account"
-msgstr ""
-
-#: apps/account/forms.py:406
-msgid "Password reset e-mail sent"
-msgstr ""
-
-#: apps/account/forms.py:450 templates/account/base.html:22
-msgid "Timezone"
-msgstr "Fuseau horaire"
-
-#: apps/account/forms.py:464 templates/account/base.html:21
-msgid "Language"
-msgstr "Langage"
-
-#: apps/account/models.py:20 apps/account/models.py:37
-#: apps/account/models.py:116 apps/notification/models.py:64
-#: apps/notification/models.py:391 apps/profiles/models.py:14
-msgid "user"
-msgstr ""
-
-#: apps/account/models.py:22
-#, fuzzy
-msgid "timezone"
-msgstr "Fuseau horaire"
-
-#: apps/account/models.py:23
-#, fuzzy
-msgid "language"
-msgstr "Langage"
-
-#: apps/account/models.py:38
-#, fuzzy
-msgid "Other Service Info Key"
-msgstr "Autres services"
-
-#: apps/account/models.py:39
-#, fuzzy
-msgid "Other Service Info Value"
-msgstr "Autres services"
-
-#: apps/account/models.py:118
-msgid "temp_key"
-msgstr ""
-
-#: apps/account/models.py:119
-msgid "timestamp"
-msgstr ""
-
-#: apps/account/models.py:120
-msgid "reset yet?"
-msgstr ""
-
-#: apps/account/openid_consumer.py:124 apps/account/views.py:93
-#: apps/account/views.py:147
-#, python-format
-msgid "Successfully logged in as %(user)s."
-msgstr ""
-
-#: apps/account/views.py:178 apps/account/views.py:193
-#, python-format
-msgid "Confirmation email sent to %(email)s"
-msgstr ""
-
-#: apps/account/views.py:209
-#, python-format
-msgid "Removed email address %(email)s"
-msgstr ""
-
-#: apps/account/views.py:249 apps/account/views.py:377
-msgid "Password successfully changed."
-msgstr ""
-
-#: apps/account/views.py:279
-msgid "Password successfully set."
-msgstr ""
-
-#: apps/account/views.py:406
-msgid "Timezone successfully updated."
-msgstr ""
-
-#: apps/account/views.py:432
-msgid "Language successfully updated."
-msgstr ""
-
-#: apps/account/views.py:470
-msgid "Twitter authentication failed"
-msgstr ""
-
-#: apps/account/views.py:475
-msgid "Successfully authenticated."
-msgstr ""
-
-#: apps/account/views.py:503
-msgid "Removed twitter account information successfully."
-msgstr ""
-
-#: apps/avatar/models.py:32
-#, fuzzy, python-format
-msgid "Avatar for %s"
-msgstr "Avatar"
-
-#: apps/avatar/views.py:60
-msgid "Successfully uploaded a new avatar."
-msgstr ""
-
-#: apps/avatar/views.py:68
-msgid "Successfully updated your avatar."
-msgstr ""
-
-#: apps/avatar/views.py:101
-msgid "Successfully deleted the requested avatars."
-msgstr ""
 
 #: apps/avatar/management/__init__.py:9
 #, fuzzy
@@ -249,152 +34,26 @@ msgstr ""
 msgid "a friend has updated his avatar"
 msgstr ""
 
+#: apps/avatar/models.py:32
+#, fuzzy, python-format
+msgid "Avatar for %s"
+msgstr "Avatar"
+
 #: apps/avatar/templatetags/avatar_tags.py:53
 #, fuzzy
 msgid "Default Avatar"
 msgstr "Avatar"
 
-#: apps/blog/forms.py:14
-msgid ""
-"a short version of the title consisting only of letters, numbers, "
-"underscores and hyphens."
+#: apps/avatar/views.py:60
+msgid "Successfully uploaded a new avatar."
 msgstr ""
 
-#: apps/blog/management.py:11
-#, fuzzy
-msgid "Friend Posted to Blog"
-msgstr "Blogs de vos amis"
-
-#: apps/blog/management.py:11
-msgid "a friend of yours posted to their blog"
+#: apps/avatar/views.py:68
+msgid "Successfully updated your avatar."
 msgstr ""
 
-#: apps/blog/management.py:12
-#, fuzzy
-msgid "New Comment on Blog Post"
-msgstr "Commentaires sur ce billet"
-
-#: apps/blog/management.py:12
-msgid "a comment was made on one of your blog posts"
-msgstr ""
-
-#: apps/blog/models.py:31 templates/blog/your_posts.html:49
-msgid "Draft"
-msgstr ""
-
-#: apps/blog/models.py:32 apps/photos/models.py:19
-msgid "Public"
-msgstr ""
-
-#: apps/blog/models.py:35 apps/photos/models.py:52
-msgid "title"
-msgstr ""
-
-#: apps/blog/models.py:36 apps/photos/models.py:53
-msgid "slug"
-msgstr ""
-
-#: apps/blog/models.py:38
-msgid "IP Address of the Post Creator"
-msgstr ""
-
-#: apps/blog/models.py:42
-msgid "body"
-msgstr ""
-
-#: apps/blog/models.py:43
-msgid "tease"
-msgstr ""
-
-#: apps/blog/models.py:44
-msgid "status"
-msgstr ""
-
-#: apps/blog/models.py:45
-#, fuzzy
-msgid "allow comments"
-msgstr "commentaires"
-
-#: apps/blog/models.py:46
-msgid "publish"
-msgstr ""
-
-#: apps/blog/models.py:47
-msgid "created at"
-msgstr ""
-
-#: apps/blog/models.py:48
-msgid "updated at"
-msgstr ""
-
-#: apps/blog/models.py:49
-msgid "Post Content Markup"
-msgstr ""
-
-#: apps/blog/models.py:58
-msgid "post"
-msgstr ""
-
-#: apps/blog/models.py:59
-msgid "posts"
-msgstr ""
-
-#: apps/blog/views.py:70
-msgid "You can't delete posts that aren't yours"
-msgstr ""
-
-#: apps/blog/views.py:77
-#, python-format
-msgid "Successfully deleted post '%s'"
-msgstr ""
-
-#: apps/blog/views.py:101
-#, python-format
-msgid "Successfully saved post '%s'"
-msgstr ""
-
-#: apps/blog/views.py:126
-msgid "You can't edit posts that aren't yours"
-msgstr ""
-
-#: apps/blog/views.py:135
-#, python-format
-msgid "Successfully updated post '%s'"
-msgstr ""
-
-#: apps/blog/templates/notification/blog_friend_post/full.txt:1
-#, python-format
-msgid ""
-"%(author_display)s has posted %(post_title)s to their blog.\n"
-"\n"
-"http://%(current_site)s%(post_url)s"
-msgstr ""
-
-#: apps/blog/templates/notification/blog_friend_post/notice.html:2
-#: templates/notification/blog_friend_post/notice.html:3
-#, python-format
-msgid ""
-"<a href=\"%(author_url)s\">%(author_display)s</a> has posted <a href="
-"\"%(post_url)s\">%(post_title)s</a> to their blog."
-msgstr ""
-
-#: apps/blog/templates/notification/blog_post_comment/full.txt:1
-#: templates/notification/blog_post_comment/full.txt:1
-#, python-format
-msgid ""
-"%(user_display)s has commented on your blog post '%(post)s':\n"
-"\n"
-"%(post_comment)s\n"
-"\n"
-"http://%(current_site)s%(post_url)s"
-msgstr ""
-
-#: apps/blog/templates/notification/blog_post_comment/notice.html:2
-#: templates/notification/blog_post_comment/notice.html:4
-#, python-format
-msgid ""
-"<a href=\"%(user_url)s\">%(user_display)s</a> has commented on your blog "
-"post '<a href=\"%(post_url)s\">%(post)s</a>'."
+#: apps/avatar/views.py:101
+msgid "Successfully deleted the requested avatars."
 msgstr ""
 
 #: apps/django_openid/templates/django_openid/admin_login.html:17
@@ -411,7 +70,8 @@ msgid "Password:"
 msgstr "Définir le mot de passe"
 
 #: apps/django_openid/templates/django_openid/admin_login.html:28
-#: templates/_account_bar.html:13
+#: templates/_account_bar.html:13 templates/account/login.html:65
+#: templates/account/login.html.py:97 templates/site_base.html:70
 msgid "Log in"
 msgstr "Connexion"
 
@@ -603,389 +263,6 @@ msgstr ""
 msgid "%(total)s vCards found, %(imported)s contacts imported."
 msgstr ""
 
-#: apps/messages/admin.py:19 apps/messages/forms.py:20
-#: apps/messages/models.py:52 apps/messages/templates/messages/outbox.html:8
-#: apps/messages/templates/messages/view.html:12
-#: templates/messages/outbox.html:12 templates/messages/view.html:17
-msgid "Recipient"
-msgstr ""
-
-#: apps/messages/admin.py:21
-msgid "group"
-msgstr ""
-
-#: apps/messages/admin.py:22
-msgid "Creates the message optionally for all users or a group of users."
-msgstr ""
-
-#: apps/messages/admin.py:29
-#, fuzzy
-msgid "All users"
-msgstr "Tous les touites"
-
-#: apps/messages/admin.py:44 apps/messages/models.py:88
-msgid "Message"
-msgstr ""
-
-#: apps/messages/admin.py:51
-msgid "Date/time"
-msgstr ""
-
-#: apps/messages/fields.py:53
-#, python-format
-msgid "The following usernames are incorrect: %(users)s"
-msgstr ""
-
-#: apps/messages/forms.py:21 apps/messages/models.py:49
-#: apps/messages/templates/messages/inbox.html:8
-#: apps/messages/templates/messages/outbox.html:8
-#: apps/messages/templates/messages/trash.html:8
-#: apps/messages/templates/messages/view.html:6
-#: templates/messages/inbox.html:12 templates/messages/outbox.html:12
-#: templates/messages/view.html:13
-msgid "Subject"
-msgstr ""
-
-#: apps/messages/forms.py:22 apps/messages/models.py:50
-msgid "Body"
-msgstr ""
-
-#: apps/messages/management.py:9
-msgid "Message Received"
-msgstr ""
-
-#: apps/messages/management.py:9
-msgid "you have received a message"
-msgstr ""
-
-#: apps/messages/management.py:10
-msgid "Message Sent"
-msgstr ""
-
-#: apps/messages/management.py:10
-#, fuzzy
-msgid "you have sent a message"
-msgstr "Envoyer un message"
-
-#: apps/messages/management.py:11
-msgid "Message Replied"
-msgstr ""
-
-#: apps/messages/management.py:11
-msgid "you have replied to a message"
-msgstr ""
-
-#: apps/messages/management.py:12
-msgid "Reply Received"
-msgstr ""
-
-#: apps/messages/management.py:12
-msgid "you have received a reply to a message"
-msgstr ""
-
-#: apps/messages/management.py:13
-msgid "Message Deleted"
-msgstr ""
-
-#: apps/messages/management.py:13
-#, fuzzy
-msgid "you have deleted a message"
-msgstr "Envoyer un message"
-
-#: apps/messages/management.py:14
-msgid "Message Recovered"
-msgstr ""
-
-#: apps/messages/management.py:14
-#, fuzzy
-msgid "you have undeleted a message"
-msgstr "Envoyer un message"
-
-#: apps/messages/models.py:51 apps/messages/templates/messages/inbox.html:8
-#: apps/messages/templates/messages/trash.html:8
-#: apps/messages/templates/messages/view.html:8
-#: templates/messages/inbox.html:12 templates/messages/view.html:11
-msgid "Sender"
-msgstr ""
-
-#: apps/messages/models.py:53
-#, fuzzy
-msgid "Parent message"
-msgstr "Envoyer un message"
-
-#: apps/messages/models.py:54
-msgid "sent at"
-msgstr ""
-
-#: apps/messages/models.py:55
-msgid "read at"
-msgstr ""
-
-#: apps/messages/models.py:56
-msgid "replied at"
-msgstr ""
-
-#: apps/messages/models.py:57
-msgid "Sender deleted at"
-msgstr ""
-
-#: apps/messages/models.py:58
-msgid "Recipient deleted at"
-msgstr ""
-
-#: apps/messages/models.py:89
-msgid "Messages"
-msgstr ""
-
-#: apps/messages/utils.py:27
-#, python-format
-msgid "New Message: %(subject)s"
-msgstr ""
-
-#: apps/messages/views.py:77 apps/messages/views.py:111
-msgid "Message successfully sent."
-msgstr ""
-
-#: apps/messages/views.py:117
-#, python-format
-msgid ""
-"%(sender)s wrote:\n"
-"%(body)s"
-msgstr ""
-
-#: apps/messages/views.py:121
-#, python-format
-msgid "Re: %(subject)s"
-msgstr ""
-
-#: apps/messages/views.py:157
-msgid "Message successfully deleted."
-msgstr ""
-
-#: apps/messages/views.py:184
-msgid "Message successfully recovered."
-msgstr ""
-
-#: apps/messages/templates/messages/base.html:8
-#: apps/messages/templates/messages/inbox.html:4
-#: apps/messages/templates/messages/new_message.html:10
-#: templates/site_base.html:36 templates/messages/base.html:12
-#: templates/messages/inbox.html:8
-msgid "Inbox"
-msgstr "Boite de réception"
-
-#: apps/messages/templates/messages/base.html:9
-#: apps/messages/templates/messages/outbox.html:4
-#: templates/messages/outbox.html:8
-#, fuzzy
-msgid "Sent Messages"
-msgstr "Envoyer un message"
-
-#: apps/messages/templates/messages/base.html:10
-#, fuzzy
-msgid "New Message"
-msgstr "Envoyer un message"
-
-#: apps/messages/templates/messages/base.html:11
-#: templates/messages/base.html:14
-msgid "Trash"
-msgstr ""
-
-#: apps/messages/templates/messages/compose.html:4
-#: templates/messages/compose.html:7
-msgid "Compose Message"
-msgstr ""
-
-#: apps/messages/templates/messages/compose.html:9
-#: templates/messages/compose.html:14
-msgid "Send"
-msgstr ""
-
-#: apps/messages/templates/messages/inbox.html:8
-#: templates/messages/inbox.html:12
-msgid "Received"
-msgstr ""
-
-#: apps/messages/templates/messages/inbox.html:8
-#: apps/messages/templates/messages/outbox.html:8
-#: apps/messages/templates/messages/trash.html:8
-#: templates/messages/inbox.html:12 templates/messages/outbox.html:12
-#, fuzzy
-msgid "Action"
-msgstr "Lieu"
-
-#: apps/messages/templates/messages/inbox.html:20
-#: apps/messages/templates/messages/outbox.html:17
-#: apps/messages/templates/messages/trash.html:17
-#: apps/messages/templates/messages/view.html:11
-#: templates/messages/inbox.html:24 templates/messages/outbox.html:21
-#: templates/messages/view.html:16
-msgid "DATETIME_FORMAT"
-msgstr ""
-
-#: apps/messages/templates/messages/inbox.html:21
-#: apps/messages/templates/messages/outbox.html:18
-#: templates/messages/inbox.html:25 templates/messages/outbox.html:22
-msgid "delete"
-msgstr ""
-
-#: apps/messages/templates/messages/inbox.html:27
-#: apps/messages/templates/messages/outbox.html:24
-#: apps/messages/templates/messages/trash.html:24
-#, fuzzy
-msgid "No messages."
-msgstr "Envoyer un message"
-
-#: apps/messages/templates/messages/new_message.html:1
-#, python-format
-msgid ""
-"Hello %(recipient)s,\n"
-"\n"
-"you received a private message from %(sender)s with\n"
-"the following contents:"
-msgstr ""
-
-#: apps/messages/templates/messages/new_message.html:9
-#, python-format
-msgid "Sent from %(site_url)s"
-msgstr ""
-
-#: apps/messages/templates/messages/new_message.html:11
-#: apps/messages/templates/messages/view.html:18
-#: templates/messages/view.html:24
-#, fuzzy
-msgid "Reply"
-msgstr "répondre"
-
-#: apps/messages/templates/messages/outbox.html:8
-#: templates/messages/base.html:13 templates/messages/outbox.html:12
-msgid "Sent"
-msgstr ""
-
-#: apps/messages/templates/messages/trash.html:4
-#, fuzzy
-msgid "Deleted Messages"
-msgstr "Envoyer un message"
-
-#: apps/messages/templates/messages/trash.html:8
-#: apps/messages/templates/messages/view.html:10
-#: templates/audiotracks/detail.html:37 templates/messages/view.html:15
-#: templates/profiles/profiles.html:28
-msgid "Date"
-msgstr ""
-
-#: apps/messages/templates/messages/trash.html:18
-msgid "undelete"
-msgstr ""
-
-#: apps/messages/templates/messages/trash.html:27
-msgid ""
-"Deleted Messages are removed from the trash at unregular intervals, don't "
-"rely on this feature for long-time storage."
-msgstr ""
-
-#: apps/messages/templates/messages/view.html:4 templates/messages/view.html:8
-#, fuzzy
-msgid "View Message"
-msgstr "Envoyer un message"
-
-#: apps/messages/templates/messages/view.html:20
-#: templates/audiotracks/_track_entry.html:41 templates/messages/view.html:27
-msgid "Delete"
-msgstr ""
-
-#: apps/messages/templates/notification/messages_deleted/full.txt:1
-#, python-format
-msgid "You have deleted the message '%(message)s'."
-msgstr ""
-
-#: apps/messages/templates/notification/messages_deleted/notice.html:1
-#, fuzzy, python-format
-msgid ""
-"You have deleted the message <a href=\"%(message_url)s\">%(message)s</a>."
-msgstr ""
-"Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
-
-#: apps/messages/templates/notification/messages_received/full.txt:1
-#, python-format
-msgid ""
-"%(message_sender)s has sent you a message:\n"
-"\n"
-"%(message)s\n"
-"\n"
-"%(message_body)s\n"
-"\n"
-"http://%(current_site)s%(message_url)s"
-msgstr ""
-
-#: apps/messages/templates/notification/messages_received/notice.html:2
-#, python-format
-msgid ""
-"You have received the message <a href=\"%(message_url)s\">%(message)s</a> "
-"from %(message_sender)s."
-msgstr ""
-
-#: apps/messages/templates/notification/messages_received/short.txt:1
-#: apps/messages/templates/notification/messages_reply_received/short.txt:1
-#, python-format
-msgid "%(notice)s by %(message_sender)s"
-msgstr ""
-
-#: apps/messages/templates/notification/messages_recovered/full.txt:1
-#, python-format
-msgid "You have recovered the message '%(message)s'."
-msgstr ""
-
-#: apps/messages/templates/notification/messages_recovered/notice.html:1
-#, fuzzy, python-format
-msgid ""
-"You have recovered the message <a href=\"%(message_url)s\">%(message)s</a>."
-msgstr ""
-"Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
-
-#: apps/messages/templates/notification/messages_replied/full.txt:1
-#, python-format
-msgid ""
-"You have replied to '%(message_parent_msg)s' from %(message_recipient)s."
-msgstr ""
-
-#: apps/messages/templates/notification/messages_replied/notice.html:2
-#, python-format
-msgid ""
-"You have replied to <a href=\"%(message_url)s\">%(message_parent_msg)s</a> "
-"from %(message_recipient)s."
-msgstr ""
-
-#: apps/messages/templates/notification/messages_reply_received/full.txt:1
-#, python-format
-msgid ""
-"%(message_sender)s replied to '%(message_parent_msg)s':\n"
-"\n"
-"%(message)s\n"
-"\n"
-"%(message_body)s\n"
-"\n"
-"http://%(current_site)s%(message_url)s"
-msgstr ""
-
-#: apps/messages/templates/notification/messages_reply_received/notice.html:2
-#, python-format
-msgid "%(message_sender)s has sent you a reply to %(message_parent_msg)s."
-msgstr ""
-
-#: apps/messages/templates/notification/messages_sent/full.txt:1
-#, python-format
-msgid "You have sent the message '%(message)s' to %(message_recipient)s."
-msgstr ""
-
-#: apps/messages/templates/notification/messages_sent/notice.html:2
-#, fuzzy, python-format
-msgid ""
-"You have sent the message <a href=\"%(message_url)s\">%(message)s</a> to "
-"%(message_recipient)s."
-msgstr ""
-"Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
-
 #: apps/microblogging/management.py:8
 #, fuzzy
 msgid "New Tweet Follower"
@@ -1021,12 +298,12 @@ msgstr "Abonnés"
 msgid "followed"
 msgstr "Se désabonner"
 
-#: apps/microblogging/views.py:112
+#: apps/microblogging/views.py:126
 #, fuzzy, python-format
 msgid "You are now following %(other_user)s"
 msgstr "Vous êtes « « ami » avec %(other_user_display)s."
 
-#: apps/microblogging/views.py:117
+#: apps/microblogging/views.py:131
 #, fuzzy, python-format
 msgid "You have stopped following %(other_user)s"
 msgstr "Vous êtes « « ami » avec %(other_user_display)s."
@@ -1052,7 +329,7 @@ msgstr ""
 msgid "display"
 msgstr ""
 
-#: apps/notification/models.py:35 apps/photos/models.py:31
+#: apps/notification/models.py:35
 msgid "description"
 msgstr ""
 
@@ -1072,6 +349,10 @@ msgstr "Notifications"
 
 #: apps/notification/models.py:50
 msgid "Email"
+msgstr ""
+
+#: apps/notification/models.py:64 apps/notification/models.py:391
+msgid "user"
 msgstr ""
 
 #: apps/notification/models.py:66
@@ -1165,318 +446,325 @@ msgstr ""
 msgid "%(notice)s"
 msgstr "Notifications"
 
-#: apps/photos/forms.py:19
-msgid ""
-"Image filename contains an invalid character: '#'. Please remove the "
-"character and try again."
+#: apps/smeuhoverride/models.py:35 templates/site_base.html:37
+#: templates/tags/index.html:13
+msgid "Tags"
+msgstr "Tags"
+
+#: apps/tagging/fields.py:70
+#, python-format
+msgid "%s can only be set on instances."
 msgstr ""
 
-#: apps/photos/models.py:20
-msgid "Private"
+#: apps/tagging/forms.py:21
+msgid "Multiple tags were given."
 msgstr ""
 
-#: apps/photos/models.py:30 apps/profiles/models.py:15
+#: apps/tagging/forms.py:24
+#, python-format
+msgid "A tag may be no more than %s characters long."
+msgstr ""
+
+#: apps/tagging/forms.py:41
+#, python-format
+msgid "Each tag may be no more than %s characters long."
+msgstr ""
+
+#: apps/tagging/models.py:56
+#, python-format
+msgid "No tags were given: \"%s\"."
+msgstr ""
+
+#: apps/tagging/models.py:58
+#, python-format
+msgid "Multiple tags were given: \"%s\"."
+msgstr ""
+
+#: apps/tagging/models.py:460 apps/threadedcomments/models.py:286
 msgid "name"
 msgstr ""
 
-#: apps/photos/models.py:32
-msgid "publish_type"
+#: apps/tagging/models.py:466 apps/tagging/models.py:478
+msgid "tag"
 msgstr ""
 
-#: apps/photos/models.py:39 apps/photos/models.py:74
+#: apps/tagging/models.py:467
+msgid "tags"
+msgstr ""
+
+#: apps/tagging/models.py:479
 #, fuzzy
-msgid "photo set"
-msgstr "Photos"
+msgid "content type"
+msgstr "Notifications"
 
-#: apps/photos/models.py:40
+#: apps/tagging/models.py:480
+msgid "object id"
+msgstr ""
+
+#: apps/tagging/models.py:488
+msgid "tagged item"
+msgstr ""
+
+#: apps/tagging/models.py:489
+msgid "tagged items"
+msgstr ""
+
+#: apps/tagging/templatetags/tagging_tags.py:25
+#, python-format
+msgid "tags_for_model tag was given an invalid model: %s"
+msgstr ""
+
+#: apps/tagging/templatetags/tagging_tags.py:39
+#, python-format
+msgid "tag_cloud_for_model tag was given an invalid model: %s"
+msgstr ""
+
+#: apps/tagging/templatetags/tagging_tags.py:65
+#, python-format
+msgid "tagged_objects tag was given an invalid model: %s"
+msgstr ""
+
+#: apps/tagging/templatetags/tagging_tags.py:99
+#, python-format
+msgid "%s tag requires either three or five arguments"
+msgstr ""
+
+#: apps/tagging/templatetags/tagging_tags.py:101
+#: apps/tagging/templatetags/tagging_tags.py:154
+#: apps/tagging/templatetags/tagging_tags.py:210
+#, python-format
+msgid "second argument to %s tag must be 'as'"
+msgstr ""
+
+#: apps/tagging/templatetags/tagging_tags.py:104
+#: apps/tagging/templatetags/tagging_tags.py:158
+#, python-format
+msgid "if given, fourth argument to %s tag must be 'with'"
+msgstr ""
+
+#: apps/tagging/templatetags/tagging_tags.py:106
+#, python-format
+msgid "if given, fifth argument to %s tag must be 'counts'"
+msgstr ""
+
+#: apps/tagging/templatetags/tagging_tags.py:152
+#, python-format
+msgid "%s tag requires either three or between five and seven arguments"
+msgstr ""
+
+#: apps/tagging/templatetags/tagging_tags.py:166
+#, python-format
+msgid "%(tag)s tag's '%(option)s' option was not a valid integer: '%(value)s'"
+msgstr ""
+
+#: apps/tagging/templatetags/tagging_tags.py:175
+#, python-format
+msgid "%(tag)s tag's '%(option)s' option was not a valid choice: '%(value)s'"
+msgstr ""
+
+#: apps/tagging/templatetags/tagging_tags.py:181
+#, python-format
+msgid "%(tag)s tag was given an invalid option: '%(option)s'"
+msgstr ""
+
+#: apps/tagging/templatetags/tagging_tags.py:186
+#, python-format
+msgid "%(tag)s tag was given a badly formatted option: '%(option)s'"
+msgstr ""
+
+#: apps/tagging/templatetags/tagging_tags.py:208
+#, python-format
+msgid "%s tag requires exactly three arguments"
+msgstr ""
+
+#: apps/tagging/templatetags/tagging_tags.py:234
+#, python-format
+msgid "%s tag requires exactly five arguments"
+msgstr ""
+
+#: apps/tagging/templatetags/tagging_tags.py:236
+#, python-format
+msgid "second argument to %s tag must be 'in'"
+msgstr ""
+
+#: apps/tagging/templatetags/tagging_tags.py:238
+#, python-format
+msgid "fourth argument to %s tag must be 'as'"
+msgstr ""
+
+#: apps/tagging/utils.py:191
+msgid ""
+"If a list or tuple of tags is provided, they must all be tag names, Tag "
+"objects or Tag ids."
+msgstr ""
+
+#: apps/tagging/utils.py:193
+msgid "The tag input given was invalid."
+msgstr ""
+
+#: apps/tagging/utils.py:238
+#, python-format
+msgid "Invalid distribution algorithm specified: %s."
+msgstr ""
+
+#: apps/tagging/views.py:34
+msgid "tagged_object_list must be called with a queryset or a model."
+msgstr ""
+
+#: apps/tagging/views.py:40
+msgid "tagged_object_list must be called with a tag."
+msgstr ""
+
+#: apps/tagging/views.py:44
+#, python-format
+msgid "No Tag found matching \"%s\"."
+msgstr ""
+
+#: apps/threadedcomments/admin.py:9 apps/threadedcomments/admin.py:25
 #, fuzzy
-msgid "photo sets"
-msgstr "Photos"
+msgid "Parent"
+msgstr "Envoyer un message"
 
-#: apps/photos/models.py:49
-msgid "Safe"
-msgstr ""
-
-#: apps/photos/models.py:50
-msgid "Not Safe"
-msgstr ""
-
-#: apps/photos/models.py:54
+#: apps/threadedcomments/admin.py:10 apps/threadedcomments/admin.py:26
 #, fuzzy
-msgid "caption"
-msgstr "Lieu"
+#| msgid "Contacts"
+msgid "Content"
+msgstr "Contacts"
 
-#: apps/photos/models.py:55
-msgid "date added"
+#: apps/threadedcomments/admin.py:11 apps/threadedcomments/admin.py:27
+msgid "Meta"
 msgstr ""
 
-#: apps/photos/models.py:59
+#: apps/threadedcomments/forms.py:17 apps/threadedcomments/models.py:188
+#, fuzzy
+#| msgid "Comments"
+msgid "Comment"
+msgstr "Commentaires"
+
+#: apps/threadedcomments/forms.py:38 apps/threadedcomments/models.py:299
+#, fuzzy
+#| msgid "comments"
+msgid "comment"
+msgstr "commentaires"
+
+#: apps/threadedcomments/models.py:21
+msgid "Markdown"
+msgstr ""
+
+#: apps/threadedcomments/models.py:22
+msgid "Plain text"
+msgstr ""
+
+#: apps/threadedcomments/models.py:169 apps/threadedcomments/models.py:278
+msgid "object ID"
+msgstr ""
+
+#: apps/threadedcomments/models.py:181 apps/threadedcomments/models.py:292
+msgid "date/time submitted"
+msgstr ""
+
+#: apps/threadedcomments/models.py:183 apps/threadedcomments/models.py:294
+msgid "date/time modified"
+msgstr ""
+
+#: apps/threadedcomments/models.py:185 apps/threadedcomments/models.py:296
+msgid "date/time approved"
+msgstr ""
+
+#: apps/threadedcomments/models.py:193 apps/threadedcomments/models.py:304
 msgid "is public"
 msgstr ""
 
-#: apps/photos/models.py:61
-msgid "Public photographs will be displayed in the default views."
+#: apps/threadedcomments/models.py:194 apps/threadedcomments/models.py:305
+msgid "is approved"
 msgstr ""
 
-#: apps/photos/models.py:68
-msgid "safetylevel"
-msgstr ""
-
-#: apps/photos/models.py:94
-msgid "created_at"
-msgstr ""
-
-#: apps/photos/models.py:99
-msgid "pool"
-msgstr ""
-
-#: apps/photos/models.py:100
-msgid "pools"
-msgstr ""
-
-#: apps/photos/views.py:71
-#, python-format
-msgid "Successfully uploaded photo '%s'"
-msgstr ""
-
-#: apps/photos/views.py:167
+#: apps/threadedcomments/models.py:197 apps/threadedcomments/models.py:308
 #, fuzzy
-msgid "Most Viewed Photos"
-msgstr "Les Plus Vues"
+msgid "IP address"
+msgstr "Adresses email"
 
-#: apps/photos/views.py:271 apps/photos/views.py:334
-msgid "You can't edit photos that aren't yours"
+#: apps/threadedcomments/models.py:255
+msgid "Threaded Comment"
 msgstr ""
 
-#: apps/photos/views.py:287
-#, python-format
-msgid "Successfully updated photo '%s'"
-msgstr ""
-
-#: apps/photos/views.py:341
-#, python-format
-msgid "Successfully deleted photo '%s'"
-msgstr ""
-
-#: apps/profiles/models.py:16
+#: apps/threadedcomments/models.py:256
 #, fuzzy
-msgid "about"
-msgstr "A propos"
+#| msgid "Comments"
+msgid "Threaded Comments"
+msgstr "Commentaires"
 
-#: apps/profiles/models.py:17
+#: apps/threadedcomments/models.py:287
 #, fuzzy
-msgid "location"
-msgstr "Lieu"
-
-#: apps/profiles/models.py:22
-#, fuzzy
-msgid "website"
+msgid "site"
 msgstr "Site Web"
 
-#: apps/profiles/models.py:28
+#: apps/threadedcomments/models.py:288
 #, fuzzy
-msgid "profile"
-msgstr "Profil"
+msgid "e-mail address"
+msgstr "Adresses email"
 
-#: apps/profiles/models.py:29
-#, fuzzy
-msgid "profiles"
-msgstr "Profil"
+#: apps/threadedcomments/models.py:368
+msgid "Free Threaded Comment"
+msgstr ""
 
-#: apps/profiles/views.py:80
+#: apps/threadedcomments/models.py:369
+msgid "Free Threaded Comments"
+msgstr ""
+
+#: apps/timeline/views.py:365 apps/timeline/views.py:409
 #, fuzzy, python-format
 msgid "You have removed %(from_user)s from friends"
 msgstr "Ôter de votre liste d'« amis »"
 
-#: apps/profiles/views.py:87 apps/profiles/views.py:102
-#: apps/profiles/views.py:137
+#: apps/timeline/views.py:372 apps/timeline/views.py:381
+#: apps/timeline/views.py:418
 msgid "Let's be friends!"
 msgstr ""
 
-#: apps/profiles/views.py:96
+#: apps/timeline/views.py:401
 #, fuzzy, python-format
 msgid "Friendship requested with %(username)s"
 msgstr "Demande d'ajout d'« ami » envoyée."
 
-#: apps/profiles/views.py:111
+#: apps/timeline/views.py:427
 #, fuzzy, python-format
 msgid "You have accepted the friendship request from %(from_user)s"
 msgstr "%(from_user)s vous a ajouté comme « ami »"
 
-#: apps/profiles/views.py:125
+#: apps/timeline/views.py:439
 #, fuzzy, python-format
 msgid "You have declined the friendship request from %(from_user)s"
 msgstr "%(from_user)s ne vous a pas ajouté comme « ami »"
-
-#: apps/profiles/views.py:173
-msgid "Your profile has been updated."
-msgstr ""
-
-#: apps/profiles/templates/profile_item.html:11 templates/profile_item.html:11
-#: templates/profiles/profile.html:37 templates/profiles/profiles.html:26
-msgid "Name"
-msgstr "Nom"
-
-#: apps/profiles/templates/profile_item.html:12 templates/base.html:83
-#: templates/profile_item.html:12 templates/profiles/profile.html:38
-msgid "About"
-msgstr "A propos"
-
-#: apps/profiles/templates/profile_item.html:13 templates/profile_item.html:13
-#: templates/profiles/profile.html:39
-msgid "Location"
-msgstr "Lieu"
-
-#: apps/profiles/templates/profile_item.html:14 templates/profile_item.html:14
-#: templates/profiles/profile.html:40
-msgid "Website"
-msgstr "Site Web"
-
-#: apps/smeuhoverride/models.py:35 templates/site_base.html:35
-#: templates/tags/index.html:12
-msgid "Tags"
-msgstr "Tags"
 
 #: templates/_account_bar.html:3
 msgid "Logged in with OpenID"
 msgstr ""
 
-#: templates/_account_bar.html:5
+#: templates/_account_bar.html:5 templates/account/email.html:6
+#: templates/account/email.html.py:10 templates/site_base.html:58
 msgid "Account"
 msgstr "Compte"
 
-#: templates/_account_bar.html:11
+#: templates/_account_bar.html:11 templates/account/logout.html:5
+#: templates/site_base.html:64
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: templates/_account_bar.html:13
+#: templates/_account_bar.html:13 templates/site_base.html:71
 msgid "or"
 msgstr "ou"
 
 #: templates/_account_bar.html:13 templates/account/signup.html:11
+#: templates/site_base.html:72
 msgid "Sign Up"
 msgstr "Inscription"
 
-#: templates/base.html:48
-msgid "Hide announcement"
-msgstr ""
-
-#: templates/base.html:70
-msgid "clear"
-msgstr "Cacher"
-
-#: templates/base.html:85
-msgid ""
-"\n"
-"          Site powered by \n"
-"          <a href=\"https://github.com/amarandon/smeuhsocial\">SmeuhSocial</"
-"a>\n"
-"          "
-msgstr ""
-
-#: templates/homepage.html:10
-msgid "Welcome"
-msgstr "Bienvenue"
-
-#: templates/homepage.html:33
-msgid "This is your Smeuh"
-msgstr "Bienvenue dans votre Smeuh"
-
-#: templates/homepage.html:35
-msgid ""
-"\n"
-"  This site is a platform for members and friends of <a\n"
-"    href=\"http://smeuh.org/\">Smeuh.org</a> to share pictures, sound and "
-"ideas.\n"
-"  "
-msgstr ""
-
-#: templates/homepage.html:43
-#, python-format
-msgid ""
-"You can <a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s"
-"\">Log in</a> to try out the site."
-msgstr ""
-"Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
-"\"%(login_url)s\">vous authentifier</a> pour essayer le site."
-
-#: templates/homepage.html:45
-#, python-format
-msgid "You can <a href=\"%(login_url)s\">Log in</a> to try out the site."
-msgstr ""
-"Vous pouvez <a href=\"%(login_url)s\">vous authentifier</a> pour essayer le "
-"site."
-
-#: templates/homepage.html:48
-msgid ""
-"\n"
-"  To know more about the code that runs this site, report bugs and maybe\n"
-"  contribute, please check <a\n"
-"    href=\"https://github.com/amarandon/smeuhsocial\">the GitHub\n"
-"    repository</a>.\n"
-"  "
-msgstr ""
-"\n"
-"Pour en savoir plus sur le code qui fait tourner ce site, signaler des      "
-"bugs et      éventuellement contribuer, c'est <a        href=\"https://"
-"github.com/amarandon/smeuhsocial\">par ici</a>."
-
-#: templates/homepage.html:62 templates/microblogging/personal.html:22
-msgid "Touites"
-msgstr ""
-
-#: templates/homepage.html:70 templates/microblogging/personal.html:36
-msgid "Bang"
-msgstr "Pan!"
-
-#: templates/homepage.html:87
-msgid "Comments"
-msgstr "Commentaires"
-
-#: templates/homepage.html:94
-msgid " on "
-msgstr " à propos de "
-
-#: templates/homepage.html:95 templates/microblogging/_tweet.html:12
-#, python-format
-msgid "%(tweet_age)s ago"
-msgstr "il y a %(tweet_age)s"
-
-#: templates/homepage.html:108 templates/site_base.html:31
-#: templates/profiles/profile.html:152
-msgid "Photos"
-msgstr "Photos"
-
-#: templates/homepage.html:122 templates/profiles/profile.html:130
-msgid "Tracks"
-msgstr "Morceaux"
-
-#: templates/homepage.html:132 templates/site_base.html:34
-msgid "Blogs"
-msgstr "Blogs"
-
-#: templates/homepage.html:139
-msgid "by"
-msgstr "posté par"
-
-#: templates/site_base.html:30
-msgid "Profile"
-msgstr "Profil"
-
-#: templates/site_base.html:32
-msgid "Music"
-msgstr "Musique"
-
-#: templates/site_base.html:33 templates/microblogging/personal.html:7
-#: templates/profiles/profile.html:120
-msgid "Tweets"
-msgstr "Touites"
-
-#: templates/about/what_next.html:6 templates/about/what_next.html.py:9
+#: templates/about/what_next.html:6 templates/about/what_next.html.py:10
 msgid "What Next?"
 msgstr "Que faire maintenant?"
 
-#: templates/about/what_next.html:43
+#: templates/about/what_next.html:44
 #, python-format
 msgid ""
 "Start by <a href=\"%(signup_url)s\">signing up</a> and <a href="
@@ -1485,7 +773,7 @@ msgstr ""
 "Commencez par <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
 "\"%(login_url)s\">vous authentifier</a>."
 
-#: templates/about/what_next.html:45
+#: templates/about/what_next.html:46
 #, python-format
 msgid "Start by <a href=\"%(login_url)s\">logging in</a>."
 msgstr "Commencez par <a href=\"%(login_url)s\">vous authentifier</a>."
@@ -1498,63 +786,151 @@ msgstr "Adresses email"
 msgid "OpenID Associations"
 msgstr "Associations OpenID"
 
-#: templates/account/base.html:14
+#: templates/account/base.html:14 templates/account/password_change.html:5
+#: templates/account/password_change.html:9
+#: templates/account/password_reset_from_key.html:5
+#: templates/account/password_reset_from_key.html:9
 msgid "Change Password"
 msgstr "Changer de mot de passe"
 
-#: templates/account/base.html:16
+#: templates/account/base.html:16 templates/account/password_set.html:6
+#: templates/account/password_set.html:10
 msgid "Set Password"
 msgstr "Définir le mot de passe"
 
-#: templates/account/base.html:19
+#: templates/account/base.html:19 templates/account/password_delete.html:5
+#: templates/account/password_delete.html:9
 #, fuzzy
 msgid "Delete Password"
 msgstr "Définir le mot de passe"
+
+#: templates/account/base.html:21 templates/account/language_change.html:6
+#: templates/account/language_change.html:10
+msgid "Language"
+msgstr "Langage"
+
+#: templates/account/base.html:22 templates/account/timezone_change.html:6
+#: templates/account/timezone_change.html:10
+msgid "Timezone"
+msgstr "Fuseau horaire"
+
+#: templates/account/email.html:12
+#, fuzzy
+#| msgid "E-Mail Addresses"
+msgid "E-mail Addresses"
+msgstr "Adresses email"
+
+#: templates/account/email.html:21
+msgid "verified"
+msgstr ""
+
+#: templates/account/email.html:23
+msgid "primary"
+msgstr ""
+
+#: templates/account/email.html:31
+msgid "make primary"
+msgstr ""
+
+#: templates/account/email.html:36
+msgid "unverified"
+msgstr ""
+
+#: templates/account/email.html:43
+msgid "re-send verification e-mail"
+msgstr ""
+
+#: templates/account/email.html:54
+msgid "remove"
+msgstr ""
+
+#: templates/account/email.html:61
+msgid "None"
+msgstr ""
+
+#: templates/account/email.html:61
+msgid ""
+"You should really add one so you can receive notifications, reset your "
+"password if you forget it, etc."
+msgstr ""
+
+#: templates/account/email.html:64
+#, fuzzy
+#| msgid "E-Mail Addresses"
+msgid "Add E-mail Address"
+msgstr "Adresses email"
+
+#: templates/account/email.html:73
+msgid "add"
+msgstr ""
+
+#: templates/account/language_change.html:12
+msgid "Pinax can be used in your preferred language."
+msgstr ""
+
+#: templates/account/language_change.html:19
+#, fuzzy
+msgid "Change my language"
+msgstr "Langage"
 
 #: templates/account/login.html:8
 msgid "Login"
 msgstr ""
 
-#: templates/account/login.html:16 templates/account/signup.html:22
+#: templates/account/login.html:19
 #, fuzzy
 msgid "Log In"
 msgstr "Connexion"
 
-#: templates/account/login.html:20
+#: templates/account/login.html:23 templates/account/password_reset.html:13
+#: templates/account/password_reset_done.html:13
 msgid "Note"
 msgstr ""
 
-#: templates/account/login.html:20
+#: templates/account/login.html:23 templates/account/password_reset.html:13
+#: templates/account/password_reset_done.html:13
 #, fuzzy, python-format
 msgid "you are already logged in as %(user_display)s."
 msgstr "Vous êtes « « ami » avec %(other_user_display)s."
 
-#: templates/account/login.html:24
+#: templates/account/login.html:27
 #, python-format
 msgid "Don't have an account? <a href=\"%(signup_url)s\">Sign up</a>!"
 msgstr ""
 
-#: templates/account/login.html:32
+#: templates/account/login.html:37
+msgid "Username"
+msgstr ""
+
+#: templates/account/login.html:44
+#, fuzzy
+msgid "Password"
+msgstr "Définir le mot de passe"
+
+#: templates/account/login.html:53
+msgid "Remember Me"
+msgstr ""
+
+#: templates/account/login.html:66
 #, fuzzy
 msgid "Forgot password?"
 msgstr "Définir le mot de passe"
 
-#: templates/account/login.html:39 templates/account/login.html.py:64
-#: templates/account/signup.html:64
-#, fuzzy
-msgid "Log in &raquo;"
-msgstr "Connexion"
-
-#: templates/account/login.html:44 templates/account/signup.html:48
+#: templates/account/login.html:73 templates/account/signup.html:48
 msgid "Or sign in with your OpenID"
 msgstr ""
 
-#: templates/account/login.html:69
+#: templates/account/login.html:102
 #, python-format
 msgid ""
 "If you have any trouble logging in to your account, contact us at <a href="
 "\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
 msgstr ""
+
+#: templates/account/logout.html:9
+#, fuzzy
+msgid "You've been logged out."
+msgstr "Vous avez déjà autorisé un compte twitter."
 
 #: templates/account/other_services.html:5
 #: templates/account/other_services.html:9
@@ -1577,7 +953,124 @@ msgstr "Changez votre compte avec ce formulaire"
 msgid "save"
 msgstr "sauvegarder"
 
-#: templates/account/signup.html:6
+#: templates/account/password_change.html:15
+#: templates/account/password_reset_from_key.html:21
+#, fuzzy
+#| msgid "Change Password"
+msgid "change password"
+msgstr "Changer de mot de passe"
+
+#: templates/account/password_delete.html:10
+msgid ""
+"You may delete your password since you are currently logged in using OpenID."
+msgstr ""
+
+#: templates/account/password_delete.html:13
+#, fuzzy
+msgid "delete my password"
+msgstr "Définir le mot de passe"
+
+#: templates/account/password_delete_done.html:5
+#: templates/account/password_delete_done.html:9
+#, fuzzy
+msgid "Password Deleted"
+msgstr "Définir le mot de passe"
+
+#: templates/account/password_delete_done.html:10
+msgid "Your password has been deleted."
+msgstr ""
+
+#: templates/account/password_reset.html:7
+#: templates/account/password_reset.html:11
+#: templates/account/password_reset_done.html:6
+#: templates/account/password_reset_done.html:10
+#, fuzzy
+msgid "Password Reset"
+msgstr "Définir le mot de passe"
+
+#: templates/account/password_reset.html:16
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+
+#: templates/account/password_reset.html:23
+#, fuzzy
+#| msgid "Set Password"
+msgid "Reset my password"
+msgstr "Définir le mot de passe"
+
+#: templates/account/password_reset.html:28
+#, fuzzy, python-format
+#| msgid ""
+#| "If you have any trouble creating your account, contact us at <a href="
+#| "\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgid ""
+"If you have any trouble resetting your password, contact us at <a href="
+"\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgstr ""
+"Si vous avez des problèmes pour vous connecter, contactez nous à <a href="
+"\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+
+#: templates/account/password_reset_done.html:16
+#, fuzzy, python-format
+#| msgid ""
+#| "If you have any trouble creating your account, contact us at <a href="
+#| "\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgid ""
+"We have sent you an e-mail. If you do not receive it within a few minutes, "
+"contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgstr ""
+"Si vous avez des problèmes pour vous connecter, contactez nous à <a href="
+"\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+
+#: templates/account/password_reset_from_key.html:9
+msgid "Bad Token"
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:13
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: templates/account/password_reset_key_message.txt:1
+#, python-format
+msgid ""
+"You're receiving this e-mail becuase you or someone else has requested a "
+"password for your user account at Pinax.\n"
+"It can be safely ignored if you did not request a password reset. Click the "
+"link below to reset your password.\n"
+"\n"
+"http://%(domain)s%(password_reset_url)s\n"
+"\n"
+"Thanks for using our site!\n"
+msgstr ""
+
+#: templates/account/password_reset_message.txt:1
+#, python-format
+msgid ""
+"You're receiving this e-mail because you requested a password reset\n"
+"for your user account at Pinax.\n"
+"\n"
+"Your new password is: %(new_password)s\n"
+"\n"
+"Your username, in case you've forgotten: %(username)s\n"
+"\n"
+"You should log in as soon as possible and change your password.\n"
+"\n"
+"Thanks for using our site!\n"
+msgstr ""
+
+#: templates/account/password_set.html:17
+#, fuzzy
+#| msgid "Set Password"
+msgid "set password"
+msgstr "Définir le mot de passe"
+
+#: templates/account/signup.html:4
 #, fuzzy
 msgid "Signup"
 msgstr "Inscription"
@@ -1588,6 +1081,7 @@ msgid "You are already logged in."
 msgstr "Vous avez déjà autorisé un compte twitter."
 
 #: templates/account/signup.html:17
+#, python-format
 msgid ""
 "\n"
 "            %(smeuhorg)s members can already connect with their usual "
@@ -1624,76 +1118,163 @@ msgstr "Créer un compte (pas nécessaire pour les membres de Smeuh.Org)"
 msgid "Sign Up &raquo;"
 msgstr "Inscription"
 
-#: templates/audiotracks/_track_entry.html:6
+#: templates/account/signup.html:64
+#, fuzzy
+msgid "Log in &raquo;"
+msgstr "Connexion"
+
+#: templates/account/timezone_change.html:12
+msgid ""
+"Pinax can localize all times into your preferred timezone. Change your "
+"timezone below."
+msgstr ""
+
+#: templates/account/timezone_change.html:19
+#, fuzzy
+msgid "Change my timezone"
+msgstr "Fuseau horaire"
+
+#: templates/account/verification_sent.html:5
+#: templates/account/verification_sent.html:9
+#, fuzzy
+msgid "Verify your e-mail address"
+msgstr "Adresses email"
+
+#: templates/account/verification_sent.html:11
+#, python-format
+msgid ""
+"We have sent you an e-mail to <b>%(email)s</b> for verification. Follow the "
+"link provided to finalize the signup process. If you do not receive it "
+"within a few minutes, contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">"
+"%(CONTACT_EMAIL)s</a>."
+msgstr ""
+
+#: templates/artist/base.html:11 templates/audiotracks/base.html:18
+#: templates/call_to_action.html:12 templates/cta_drop.html:13
+msgid "Upload track"
+msgstr "Uploader un morceau"
+
+#: templates/artist/base.html:12 templates/site_base.html:35
+msgid "Music"
+msgstr "Musique"
+
+#: templates/artist/base.html:13 templates/audiotracks/base.html:19
+#, fuzzy
+#| msgid "Artist"
+msgid "Artists"
+msgstr "Artiste"
+
+#: templates/artist/base.html:16 templates/audiotracks/base.html:22
+#: templates/site_base.html:55
+msgid "Your tracks"
+msgstr "Vos morceaux"
+
+#: templates/audiotracks/_track_entry.html:13
+msgid "Edit"
+msgstr ""
+
+#: templates/audiotracks/_track_entry.html:14 templates/messages/view.html:34
+msgid "Delete"
+msgstr ""
+
+#: templates/audiotracks/_track_entry.html:20
+#: templates/timeline/_comment.html:26
+#: templates/timeline/_comment_group.html:26
+#: templates/timeline/homepage/_track.html:10
 msgid "Track Image"
 msgstr ""
 
-#: templates/audiotracks/_track_entry.html:17
+#: templates/audiotracks/_track_entry.html:32
+#: templates/timeline/homepage/_track.html:21
 msgid "uploaded by"
 msgstr "envoyé par"
 
-#: templates/audiotracks/_track_entry.html:19
+#: templates/audiotracks/_track_entry.html:34
 #, python-format
 msgid "%(track_age)s ago"
 msgstr "il y a %(track_age)s"
 
-#: templates/audiotracks/_track_entry.html:40
-msgid "Edit"
-msgstr ""
-
-#: templates/audiotracks/base.html:17
-msgid "Latest tracks"
-msgstr "Derniers sons"
-
-#: templates/audiotracks/base.html:18
-msgid "Your tracks"
-msgstr "Vos morceaux"
-
-#: templates/audiotracks/base.html:19
-msgid "Upload track"
-msgstr "Uploader un morceau"
-
-#: templates/audiotracks/base_listing.html:4
-#: templates/audiotracks/base_listing.html:7
+#: templates/audiotracks/base_listing.html:6
+#: templates/audiotracks/base_listing.html:11
 #: templates/audiotracks/latest.html:4 templates/audiotracks/latest.html:5
 msgid "Latest Tracks"
 msgstr "Derniers Morceaux"
 
-#: templates/audiotracks/base_listing.html:10
+#: templates/audiotracks/base_listing.html:14
 msgid "Podcast feed"
 msgstr ""
 
-#: templates/audiotracks/base_listing.html:11
-#: templates/audiotracks/base_listing.html:12
+#: templates/audiotracks/base_listing.html:15
+#: templates/audiotracks/base_listing.html:16
 msgid "M3U playlist"
 msgstr ""
 
-#: templates/audiotracks/detail.html:16
+#: templates/audiotracks/detail.html:19
 msgid "Previous track"
 msgstr "Morceau précédent"
 
-#: templates/audiotracks/detail.html:19
+#: templates/audiotracks/detail.html:22
 msgid "Next track"
 msgstr "Morceau suivant"
 
-#: templates/audiotracks/detail.html:32
+#: templates/audiotracks/detail.html:35
 msgid "Artist"
 msgstr "Artiste"
 
-#: templates/audiotracks/detail.html:42
+#: templates/audiotracks/detail.html:40 templates/messages/trash.html:13
+#: templates/messages/view.html:16 templates/profiles/profiles.html:32
+msgid "Date"
+msgstr ""
+
+#: templates/audiotracks/detail.html:45
 msgid "Genre"
 msgstr ""
 
-#: templates/audiotracks/detail.html:62
+#: templates/audiotracks/detail.html:65
 msgid "Download Track"
 msgstr ""
 
-#: templates/audiotracks/detail.html:66
+#: templates/audiotracks/detail.html:69
 msgid "Comments on this track:"
 msgstr "Commentaires sur ce morceau"
 
-#: templates/audiotracks/track_right_panel.html:10 templates/blog/post.html:25
-#: templates/photos/latest.html:24 templates/photos/photo_right_panel.html:10
+#: templates/audiotracks/edit.html:13
+#, fuzzy
+#| msgid "Edit Track"
+msgid "Edit track"
+msgstr "Editer"
+
+#: templates/audiotracks/edit.html:39
+#, fuzzy
+msgid "Delete image"
+msgstr "Envoyer un message"
+
+#: templates/audiotracks/edit.html:117
+msgid "Save your changes"
+msgstr ""
+
+#: templates/audiotracks/edit.html:125
+#, fuzzy
+#| msgid "Delete Track"
+msgid "Delete this track"
+msgstr "Supprimer"
+
+#: templates/audiotracks/new.html:17
+#, fuzzy
+#| msgid "Upload track"
+msgid "Upload a new track"
+msgstr "Uploader un morceau"
+
+#: templates/audiotracks/new.html:23 templates/photos/upload.html:27
+#, fuzzy
+#| msgid "upload"
+msgid "Upload"
+msgstr "upload"
+
+#: templates/audiotracks/track_right_panel.html:10
+#: templates/blog/blog_item.html:23 templates/blog/post.html:36
+#: templates/photos/details.html:42 templates/photos/photo_thumb.html:8
+#: templates/timeline/homepage/homepage.html:57
 msgid "Posted by"
 msgstr "Posté par"
 
@@ -1711,137 +1292,182 @@ msgstr "Supprimer"
 msgid "Tracks from %(username)s"
 msgstr "Blog de %(username)s"
 
-#: templates/avatar/change.html:6 templates/avatar/change.html.py:9
+#: templates/avatar/change.html:6 templates/avatar/change.html.py:11
 #: templates/avatar/confirm_delete.html:5
-#: templates/avatar/confirm_delete.html:8
+#: templates/avatar/confirm_delete.html:9 templates/profiles/profile.html:36
+#: templates/timeline/homepage/user.html:68
 msgid "Avatar"
 msgstr "Avatar"
 
-#: templates/avatar/change.html:10
+#: templates/avatar/change.html:12
 msgid "Here is your current avatar:"
 msgstr ""
 
-#: templates/avatar/change.html:26
+#: templates/avatar/change.html:28
 #, python-format
 msgid ""
 "Don&rsquo;t like these avatars? You can <a href=\"%(avatar_delete_url)s"
 "\">choose which ones to delete</a>."
 msgstr ""
 
-#: templates/avatar/change.html:31
+#: templates/avatar/change.html:33
 #, fuzzy
 msgid "Upload an Avatar:"
 msgstr "Envoyer une photo"
 
-#: templates/avatar/change.html:32
+#: templates/avatar/change.html:34
 #, fuzzy
 msgid "Avatar Image"
 msgstr "Avatar"
 
-#: templates/avatar/change.html:33
+#: templates/avatar/change.html:35
 msgid "Upload New Image"
 msgstr ""
 
-#: templates/blog/base.html:10
-msgid "Friends' Blogs"
-msgstr "Blogs de vos amis"
+#: templates/base.html:66
+msgid "Hide announcement"
+msgstr ""
 
-#: templates/blog/base.html:11 templates/blog/blogs.html:13
-#: templates/blog/blogs.html.py:22 templates/blog/user_blog.html:13
-msgid "All Blogs"
-msgstr "Tous les blogs"
+#: templates/base.html:100
+msgid "clear"
+msgstr "Cacher"
 
-#: templates/blog/base.html:12 templates/blog/your_posts.html:21
-msgid "Your Posts"
-msgstr "Vos posts"
+#: templates/base.html:123 templates/profile_item.html:13
+#: templates/profiles/profile.html:74 templates/timeline/homepage/user.html:45
+msgid "About"
+msgstr "A propos"
 
-#: templates/blog/base.html:13 templates/blog/new.html:6
+#: templates/base.html:125
+msgid ""
+"\n"
+"          Site powered by\n"
+"          <a href=\"https://github.com/amarandon/smeuhsocial\">SmeuhSocial</"
+"a>\n"
+"          "
+msgstr ""
+
+#: templates/blog/base.html:12 templates/blog/new.html:6
+#: templates/call_to_action.html:13 templates/cta_drop.html:14
 msgid "Write a Blog Post"
 msgstr "Écrire un billet"
 
-#: templates/blog/blogs.html:25 templates/tags/index.html:36
-msgid "These are blog posts from everyone:"
-msgstr "Tous les articles de blog:"
+#: templates/blog/base.html:13 templates/blog/blogs.html:13
+#: templates/blog/blogs.html.py:24 templates/blog/user_blog.html:13
+#: templates/timeline/homepage/homepage.html:107
+#: templates/timeline/homepage/user.html:178
+msgid "All Blogs"
+msgstr "Tous les blogs"
 
-#: templates/blog/blogs.html:36 templates/blog/user_blog.html:38
-#: templates/blog/your_posts.html:70 templates/profiles/profile.html:145
+#: templates/blog/base.html:14 templates/blog/friends_posts.html:7
+#: templates/blog/friends_posts.html:13
+msgid "Friends' Blogs"
+msgstr "Blogs de vos amis"
+
+#: templates/blog/base.html:17 templates/blog/your_posts.html:24
+#: templates/site_base.html:56
+msgid "Your Posts"
+msgstr "Vos posts"
+
+#: templates/blog/blog_item.html:26 templates/blog/post.html:38
+msgid "on"
+msgstr "le"
+
+#: templates/blog/blogs.html:36 templates/blog/friends_posts.html:24
+#: templates/blog/user_blog.html:39 templates/blog/your_posts.html:73
+#: templates/profiles/profile.html:209
 msgid "No blog posts yet."
 msgstr "Aucun billet pour le moment."
 
-#: templates/blog/edit.html:6
+#: templates/blog/edit.html:7
 #, fuzzy
 msgid "Editing Post"
 msgstr "Éditer ce billet"
 
-#: templates/blog/edit.html:16
+#: templates/blog/edit.html:20 templates/photos/edit.html:40
 msgid "Update"
 msgstr ""
 
-#: templates/blog/edit.html:21
+#: templates/blog/edit.html:25
 msgid "You are not the author of this post"
 msgstr ""
 
+#: templates/blog/friends_posts.html:15
+#, fuzzy
+#| msgid "These are tweets from your friends:"
+msgid "These are blog posts from your friends:"
+msgstr "Voici les touites de vos amis:"
+
 #: templates/blog/new.html:17
-msgid "create"
+msgid "Create"
 msgstr ""
 
-#: templates/blog/post.html:13
+#: templates/blog/post.html:14
 msgid "Blog Post"
 msgstr "Billet"
 
-#: templates/blog/post.html:27
-msgid "on"
-msgstr "le"
-
-#: templates/blog/post.html:39
+#: templates/blog/post.html:32 templates/blog/your_posts.html:59
 msgid "Edit Post"
 msgstr "Éditer ce billet"
 
-#: templates/blog/post.html:51
+#: templates/blog/post.html:55
 msgid "Comments on this post:"
 msgstr "Commentaires sur ce billet"
 
-#: templates/blog/post.html:54
+#: templates/blog/post.html:58
 msgid "View source in "
 msgstr "Voir le code source en "
 
-#: templates/blog/user_blog.html:22
+#: templates/blog/user_blog.html:23
 #, python-format
 msgid "Blog posts by %(username)s"
 msgstr "Blog de %(username)s"
 
-#: templates/blog/your_posts.html:12
+#: templates/blog/your_posts.html:13
 #, fuzzy
 msgid "Your Blog Posts"
 msgstr "Billets"
 
-#: templates/blog/your_posts.html:25
+#: templates/blog/your_posts.html:28
 msgid "Title"
 msgstr ""
 
-#: templates/blog/your_posts.html:26
+#: templates/blog/your_posts.html:29
 msgid "Published On"
 msgstr ""
 
-#: templates/blog/your_posts.html:27
+#: templates/blog/your_posts.html:30
 msgid "Status"
 msgstr ""
 
-#: templates/blog/your_posts.html:48
+#: templates/blog/your_posts.html:52
 msgid "Published"
 msgstr ""
 
-#: templates/blog/your_posts.html:62
-#: templates/threadedcomments/comments.html:25
+#: templates/blog/your_posts.html:53
+msgid "Draft"
+msgstr ""
+
+#: templates/blog/your_posts.html:66
+#: templates/threadedcomments/comments.html:48
 msgid "Delete Post"
 msgstr "Supprimer post"
 
-#: templates/django_openid/associations.html:8
+#: templates/call_to_action.html:11 templates/cta_drop.html:12
+#: templates/photos/base.html:20 templates/photos/upload.html:9
+#: templates/photos/upload.html.py:20
+msgid "Upload a Photo"
+msgstr "Envoyer une photo"
+
+#: templates/cta_drop.html:10
+msgid "Contribute"
+msgstr ""
+
+#: templates/django_openid/associations.html:9
 #, fuzzy
 msgid "Manage OpenID Associations"
 msgstr "Associations OpenID"
 
-#: templates/django_openid/associations.html:11
+#: templates/django_openid/associations.html:12
 #, python-format
 msgid ""
 "You have not set a password for this user account. You are unable to remove "
@@ -1849,76 +1475,78 @@ msgid ""
 "password</a>."
 msgstr ""
 
-#: templates/django_openid/associations.html:14
+#: templates/django_openid/associations.html:15
 #, python-format
 msgid ""
 "Your account is currently associated with the following OpenID %(buttons)s:"
 msgstr ""
 
-#: templates/django_openid/associations.html:22
+#: templates/django_openid/associations.html:23
 #, fuzzy
 msgid "Remove association"
 msgstr "Associations OpenID"
 
-#: templates/django_openid/associations.html:29
+#: templates/django_openid/associations.html:30
 msgid "To associate a new OpenID with this account, sign in with it here:"
 msgstr ""
 
-#: templates/django_openid/associations.html:36
+#: templates/django_openid/associations.html:37
 msgid "Authenticate and associate with this account"
 msgstr ""
 
 #: templates/friends_app/contacts.html:7
-#: templates/friends_app/contacts.html:10 templates/messages/base.html:17
+#: templates/friends_app/contacts.html:11
 msgid "Contacts"
 msgstr "Contacts"
 
-#: templates/friends_app/contacts.html:38
+#: templates/friends_app/contacts.html:39
 msgid "No contacts."
 msgstr "Pas de contacts"
 
 #: templates/friends_app/invitations.html:6
-#: templates/friends_app/invitations.html:9 templates/messages/base.html:16
+#: templates/friends_app/invitations.html:10 templates/messages/base.html:12
 msgid "Invitations"
 msgstr "Invitations"
 
-#: templates/friends_app/invitations.html:11
+#: templates/friends_app/invitations.html:12
 #: templates/friends_app/invite.html:5 templates/friends_app/invite.html:9
 #: templates/friends_app/invite_facebox.html:3
 msgid "Invite someone new to join"
 msgstr "Invitez quelqu'un de nouveau à nous rejoindre"
 
-#: templates/friends_app/invitations.html:13
+#: templates/friends_app/invitations.html:14
 msgid "Friendship Requests Received"
 msgstr "Demande d'« ami » reçue"
 
-#: templates/friends_app/invitations.html:28
-#: templates/profiles/profile.html:86
+#: templates/friends_app/invitations.html:29
+#: templates/profiles/profile.html:118
+#: templates/timeline/homepage/user.html:113
 msgid "accept"
 msgstr "accepter"
 
-#: templates/friends_app/invitations.html:34
-#: templates/profiles/profile.html:92
+#: templates/friends_app/invitations.html:35
+#: templates/profiles/profile.html:124
+#: templates/timeline/homepage/user.html:119
 msgid "decline"
 msgstr "décliner"
 
-#: templates/friends_app/invitations.html:48
+#: templates/friends_app/invitations.html:49
 msgid "No friendship requests received."
 msgstr "Aucune demande d'« ami » reçue."
 
-#: templates/friends_app/invitations.html:52
+#: templates/friends_app/invitations.html:53
 msgid "Friendship Requests Sent"
 msgstr "Demande d'« ami » envoyée"
 
-#: templates/friends_app/invitations.html:65
+#: templates/friends_app/invitations.html:66
 msgid "No friendship requests sent."
 msgstr "Pas de demande d'« ami » envoyé"
 
-#: templates/friends_app/invitations.html:69
+#: templates/friends_app/invitations.html:70
 msgid "Join Requests Sent"
 msgstr "Demandes d'inscription envoyées"
 
-#: templates/friends_app/invitations.html:87
+#: templates/friends_app/invitations.html:88
 msgid "No join requests sent."
 msgstr "Pas de demande d'inscriptio envoyée."
 
@@ -1934,92 +1562,141 @@ msgstr ""
 msgid "Someone with this email address has already joined:"
 msgstr "Quelqu'un avec cette adresse email est déjà membre du site:"
 
-#: templates/messages/base.html:11
-msgid "Compose"
-msgstr ""
+#: templates/messages/base.html:10 templates/messages/inbox.html:9
+msgid "Inbox"
+msgstr "Boite de réception"
 
-#: templates/messages/base.html:15 templates/notification/notices.html:8
+#: templates/messages/base.html:11 templates/notification/notices.html:8
 #: templates/notification/notices.html:12
 msgid "Notices"
 msgstr "Notifications"
+
+#: templates/messages/compose.html:8
+msgid "Compose Message"
+msgstr ""
+
+#: templates/messages/compose.html:18
+msgid "Send"
+msgstr ""
+
+#: templates/messages/inbox.html:10
+msgid "Compose"
+msgstr ""
+
+#: templates/messages/inbox.html:11 templates/messages/outbox.html:13
+msgid "Sent"
+msgstr ""
+
+#: templates/messages/inbox.html:12
+msgid "Trash"
+msgstr ""
+
+#: templates/messages/inbox.html:16 templates/messages/trash.html:13
+#: templates/messages/view.html:12
+msgid "Sender"
+msgstr ""
+
+#: templates/messages/inbox.html:16 templates/messages/outbox.html:13
+#: templates/messages/trash.html:13 templates/messages/view.html:14
+msgid "Subject"
+msgstr ""
+
+#: templates/messages/inbox.html:16
+msgid "Received"
+msgstr ""
+
+#: templates/messages/inbox.html:16 templates/messages/outbox.html:13
+#: templates/messages/trash.html:13
+#, fuzzy
+msgid "Action"
+msgstr "Lieu"
+
+#: templates/messages/inbox.html:28 templates/messages/outbox.html:22
+#: templates/messages/trash.html:22 templates/messages/view.html:17
+msgid "DATETIME_FORMAT"
+msgstr ""
+
+#: templates/messages/inbox.html:29 templates/messages/outbox.html:23
+msgid "delete"
+msgstr ""
+
+#: templates/messages/outbox.html:9
+#, fuzzy
+msgid "Sent Messages"
+msgstr "Envoyer un message"
+
+#: templates/messages/outbox.html:13 templates/messages/view.html:18
+msgid "Recipient"
+msgstr ""
+
+#: templates/messages/trash.html:9
+#, fuzzy
+msgid "Deleted Messages"
+msgstr "Envoyer un message"
+
+#: templates/messages/trash.html:23
+msgid "undelete"
+msgstr ""
+
+#: templates/messages/trash.html:29
+msgid ""
+"Deleted Messages are removed from the trash at irregular intervals, don't "
+"rely on this feature for long-time storage."
+msgstr ""
+
+#: templates/messages/view.html:9
+#, fuzzy
+msgid "View Message"
+msgstr "Envoyer un message"
+
+#: templates/messages/view.html:31
+#, fuzzy
+msgid "Reply"
+msgstr "répondre"
+
+#: templates/microblogging/_followers.html:7
+msgid "Your Followers"
+msgstr "Abonnés à vos touites"
+
+#: templates/microblogging/_followers.html:17
+msgid "No followers."
+msgstr "Aucun abonné."
+
+#: templates/microblogging/_following.html:7
+msgid "Who You Are Following"
+msgstr "Abonnements"
+
+#: templates/microblogging/_following.html:17
+msgid "Not following anyone."
+msgstr "Aucun abonnement"
+
+#: templates/microblogging/_tweet.html:9
+#: templates/timeline/homepage/legacy.html:88
+#, python-format
+msgid "%(tweet_age)s ago"
+msgstr "il y a %(tweet_age)s"
 
 #: templates/microblogging/_tweet.html:13
 msgid "reply"
 msgstr "répondre"
 
-#: templates/microblogging/base.html:10
-msgid "Tweets You Follow"
-msgstr "Abonnements"
-
-#: templates/microblogging/base.html:11
-#: templates/microblogging/friends_tweets.html:9
-#: templates/microblogging/friends_tweets.html:12
-msgid "Friends' Tweets"
-msgstr "Touites de vos amis"
-
-#: templates/microblogging/base.html:12
+#: templates/microblogging/base.html:10 templates/microblogging/public.html:17
 msgid "All Tweets"
 msgstr "Tous les touites"
 
-#: templates/microblogging/base.html:13
-msgid "Your Followers"
-msgstr "Abonnés à vos touites"
+#: templates/microblogging/base.html:11
+#: templates/microblogging/friends_tweets.html:9
+#: templates/microblogging/friends_tweets.html:17
+msgid "Friends' Tweets"
+msgstr "Touites de vos amis"
 
-#: templates/microblogging/base.html:14
-msgid "Who You Are Following"
+#: templates/microblogging/friends_tweets.html:11
+#: templates/timeline/following.html:4 templates/timeline/following.html:6
+#: templates/timeline/index.html:17
+msgid "Tweets You Follow"
 msgstr "Abonnements"
 
-#: templates/microblogging/followers.html:9
-#: templates/microblogging/followers.html:14
-#, python-format
-msgid "Followers of %(other_user_display)s"
-msgstr "Abonnés à %(other_user_display)s"
-
-#: templates/microblogging/followers.html:18
-#, python-format
-msgid ""
-"Followers of <a href=\"%(other_user_url)s\">%(other_user_display)s</a>'s "
-"tweets:"
-msgstr "Abonnés à <a href=\"%(other_user_url)s\">%(other_user_display)s</a>'s "
-
-#: templates/microblogging/followers.html:30
-msgid "No followers."
-msgstr "Aucun abonné."
-
-#: templates/microblogging/followers.html:34
-#, python-format
-msgid ""
-"Also see <a href=\"%(tweet_following_url)s\">who %(other_user_display)s is "
-"following</a>."
-msgstr ""
-"Voir <a href=\"%(tweet_following_url)s\">les abonnements de "
-"%(other_user_display)s </a>."
-
-#: templates/microblogging/following.html:9
-#: templates/microblogging/following.html:14
-#, python-format
-msgid "%(other_user_display)s is Following"
-msgstr "Abonnements de %(other_user_display)s"
-
-#: templates/microblogging/following.html:17
-#, python-format
-msgid ""
-"Users whose tweets <a href=\"%(other_user_url)s\">%(other_user_display)s</a> "
-"is following:"
-msgstr ""
-
-#: templates/microblogging/following.html:29
-msgid "Not following anyone."
-msgstr "Aucun abonnement"
-
-#: templates/microblogging/following.html:33
-#, python-format
-msgid ""
-"Also see <a href=\"%(tweet_followers_url)s\">who is following</a> "
-"%(other_user_display)s."
-msgstr ""
-
-#: templates/microblogging/friends_tweets.html:22
+#: templates/microblogging/friends_tweets.html:32
 msgid "No tweets yet."
 msgstr "Pas encore de touites."
 
@@ -2033,40 +1710,71 @@ msgstr ""
 msgid "There are currently no tweets to be listed."
 msgstr "Il n'y a aucun tweet pour le moment."
 
-#: templates/microblogging/personal.html:29
+#: templates/microblogging/navbar_form.html:7
+#: templates/microblogging/tweet_form.html:12
+msgid "Touiter"
+msgstr ""
+
+#: templates/microblogging/navbar_form.html:14
+#: templates/microblogging/tweet_form.html:18
+msgid "Bang"
+msgstr "Pan!"
+
+#: templates/microblogging/personal.html:7 templates/profiles/profile.html:175
+msgid "Tweets"
+msgstr "Touites"
+
+#: templates/microblogging/personal.html:25
+#: templates/timeline/homepage/legacy.html:65
+msgid "Touites"
+msgstr ""
+
+#: templates/microblogging/public.html:6
 #, fuzzy
-msgid "You have authorized a twitter account."
-msgstr "Vous avez déjà autorisé un compte twitter."
+#| msgid "All Tweets"
+msgid "Public Tweets"
+msgstr "Tous les touites"
 
-#: templates/microblogging/personal.html:31
-msgid "Publish to Twitter?"
-msgstr ""
+#: templates/microblogging/public.html:19
+#, fuzzy
+#| msgid "These are blog posts from everyone:"
+msgid "These are tweets from everyone:"
+msgstr "Tous les articles de blog:"
 
-#: templates/microblogging/personal.html:35
-msgid "chars left."
-msgstr ""
-
-#: templates/microblogging/personal.html:40
-msgid "person,people"
-msgstr ""
-
-#: templates/microblogging/personal.html:40
-#, python-format
-msgid ""
-"\n"
-"        These are tweets from the %(follow_count)s %(follow_name)s you are "
-"following (plus your own)"
-msgstr ""
-
-#: templates/microblogging/single.html:6 templates/microblogging/single.html:9
+#: templates/microblogging/single.html:6
+#: templates/microblogging/single.html:11
 msgid "Single Tweet"
 msgstr "Un touite"
+
+#: templates/notification/blog_friend_post/notice.html:3
+#, python-format
+msgid ""
+"<a href=\"%(author_url)s\">%(author_display)s</a> has posted <a href="
+"\"%(post_url)s\">%(post_title)s</a> to their blog."
+msgstr ""
+
+#: templates/notification/blog_post_comment/full.txt:1
+#, python-format
+msgid ""
+"%(user_display)s has commented on your blog post '%(post)s':\n"
+"\n"
+"%(post_comment)s\n"
+"\n"
+"http://%(current_site)s%(post_url)s"
+msgstr ""
+
+#: templates/notification/blog_post_comment/notice.html:4
+#, python-format
+msgid ""
+"<a href=\"%(user_url)s\">%(user_display)s</a> has commented on your blog "
+"post '<a href=\"%(post_url)s\">%(post)s</a>'."
+msgstr ""
 
 #: templates/notification/notices.html:17
 msgid "Mark all unseen notices seen"
 msgstr ""
 
-#: templates/notification/notices.html:23 templates/profiles/profiles.html:38
+#: templates/notification/notices.html:23 templates/profiles/profiles.html:42
 msgid "MONTH_DAY_FORMAT"
 msgstr ""
 
@@ -2075,33 +1783,34 @@ msgstr ""
 msgid "No notices."
 msgstr "Notifications"
 
-#: templates/notification/single.html:7 templates/notification/single.html:10
+#: templates/notification/single.html:7 templates/notification/single.html:11
 msgid "Notice"
 msgstr "Notifications"
 
-#: templates/photos/base.html:17
+#: templates/photos/base.html:21 templates/timeline/homepage/homepage.html:65
+#: templates/timeline/homepage/user.html:162
 msgid "Latest Photos"
 msgstr "Dernières photos"
 
-#: templates/photos/base.html:18
-msgid "Most Viewed"
-msgstr "Les Plus Vues"
-
-#: templates/photos/base.html:19 templates/photos/yourphotos.html:11
-#: templates/photos/yourphotos.html:15
-msgid "Your Photos"
-msgstr "Vos photos"
-
-#: templates/photos/base.html:20 templates/photos/friends_photos.html:11
-#: templates/photos/friends_photos.html:15
+#: templates/photos/base.html:22 templates/photos/friends_photos.html:5
+#: templates/photos/friends_photos.html:7
 msgid "Friends' Photos"
 msgstr "Photos de vos amis"
 
-#: templates/photos/base.html:21
-msgid "Upload a Photo"
-msgstr "Envoyer une photo"
+#: templates/photos/base.html:25
+msgid "Random"
+msgstr ""
 
-#: templates/photos/details.html:24
+#: templates/photos/base.html:26
+msgid "Most Viewed"
+msgstr "Les Plus Vues"
+
+#: templates/photos/base.html:27 templates/photos/yourphotos.html:5
+#: templates/photos/yourphotos.html.py:7 templates/site_base.html:54
+msgid "Your Photos"
+msgstr "Vos photos"
+
+#: templates/photos/details.html:22
 msgid "Previous picture"
 msgstr "Image précédente"
 
@@ -2109,58 +1818,94 @@ msgstr "Image précédente"
 msgid "Next picture"
 msgstr "Image suivante"
 
-#: templates/photos/details.html:37
-msgid "Comments on this photo:"
-msgstr "Commentaires sur cette photo"
+#: templates/photos/details.html:39
+msgid "Edit Photo"
+msgstr "Éditer cette photo"
 
-#: templates/photos/latest.html:11
-#, python-format
-msgid "%(title)s"
-msgstr ""
-
-#: templates/photos/latest.html:25
-msgid "comments"
-msgstr "commentaires"
-
-#: templates/photos/latest.html:26 templates/photos/photo_right_panel.html:13
+#: templates/photos/details.html:44
 #, python-format
 msgid "Viewed %(view_count)s times"
 msgstr "Vue %(view_count)s fois"
 
-#: templates/photos/latest.html:32
-msgid "No photos were found."
-msgstr ""
-
-#: templates/photos/photo_right_panel.html:28
-msgid "Get Embed Code"
-msgstr ""
-
-#: templates/photos/photo_right_panel.html:37
+#: templates/photos/details.html:57
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "        The person who posted this picture is a huge Sarah Palin fan who "
+#| "hasn't\n"
+#| "        added any tag.\n"
+#| "        "
 msgid ""
 "\n"
-"        The person who posted this picture is a huge Sarah Palin fan who "
+"       The person who posted this picture is a huge Sarah Palin fan who "
 "hasn't\n"
-"        added any tag.\n"
-"        "
+"       added any tag.\n"
+"       "
 msgstr ""
 "\n"
 "La personne qui a posté cette image est une grosse buse copéiste qui n'a pas "
 "mis de tags."
 
-#: templates/photos/photo_right_panel.html:47
+#: templates/photos/details.html:70
+msgid "Comments on this photo:"
+msgstr "Commentaires sur cette photo"
+
+#: templates/photos/edit.html:12 templates/photos/edit.html.py:33
+#, fuzzy
+msgid "Editing Photo Details"
+msgstr "Éditer ce billet"
+
+#: templates/photos/edit.html:25
 msgid "Delete Photo"
 msgstr "Supprimer cette photo"
 
-#: templates/photos/photo_right_panel.html:52
-msgid "Edit Photo"
-msgstr "Éditer cette photo"
+#: templates/photos/gallery_base.html:24
+msgid "No photos were found."
+msgstr ""
 
-#: templates/profiles/base.html:10
+#: templates/photos/photo_thumb.html:18
+#, fuzzy, python-format
+#| msgid "Viewed %(view_count)s times"
+msgid "  %(view_count)s "
+msgstr "Vue %(view_count)s fois"
+
+#: templates/photos/tagged_photos.html:5
+#, python-format
+msgid "Photos with tag #%(tag)s"
+msgstr ""
+
+#: templates/photos/user_photos.html:5 templates/photos/user_photos.html:7
+#, fuzzy, python-format
+msgid "Photos from %(username)s"
+msgstr "Blog de %(username)s"
+
+#: templates/pinax_tagging_ext/blogs.html:4 templates/tags/index.html:38
+msgid "These are blog posts from everyone:"
+msgstr "Tous les articles de blog:"
+
+#: templates/profile_item.html:12 templates/profiles/profile.html:70
+#: templates/profiles/profiles.html:30
+#: templates/timeline/homepage/user.html:41
+msgid "Name"
+msgstr "Nom"
+
+#: templates/profile_item.html:14 templates/profiles/profile.html:78
+#: templates/timeline/homepage/user.html:49
+msgid "Location"
+msgstr "Lieu"
+
+#: templates/profile_item.html:15 templates/profiles/profile.html:82
+#: templates/timeline/homepage/user.html:53
+msgid "Website"
+msgstr "Site Web"
+
+#: templates/profiles/base.html:18 templates/site_base.html:51
 #, fuzzy
 msgid "Your Profile"
 msgstr "Profil"
 
-#: templates/profiles/base.html:11 templates/profiles/profiles.html:9
+#: templates/profiles/base.html:19 templates/profiles/profiles.html:9
+#: templates/site_base.html:52
 #, fuzzy
 msgid "All Profiles"
 msgstr "Profil"
@@ -2170,99 +1915,107 @@ msgstr "Profil"
 msgid "%(other_user_display)s"
 msgstr "Abonnements de %(other_user_display)s"
 
-#: templates/profiles/profile.html:26
+#: templates/profiles/profile.html:24 templates/timeline/homepage/user.html:28
 msgid "replace"
 msgstr "modifier"
 
-#: templates/profiles/profile.html:31
+#: templates/profiles/profile.html:29 templates/timeline/homepage/user.html:34
 #, fuzzy, python-format
 msgid "<span class=\"nickname\">%(other_user_display)s</span>"
 msgstr "Profil de <span class=\"nickname\">%(other_user_display)s</span>"
 
-#: templates/profiles/profile.html:33
+#: templates/profiles/profile.html:31 templates/timeline/homepage/user.html:36
 #, fuzzy, python-format
 msgid "<span class=\"fn nickname\">%(other_user_display)s</span>"
 msgstr "Profil de <span class=\"fn nickname\">%(other_user_display)s</span>"
 
-#: templates/profiles/profile.html:44
+#: templates/profiles/profile.html:35 templates/timeline/homepage/user.html:69
 msgid "Edit profile"
 msgstr "Modifier votre profil"
 
-#: templates/profiles/profile.html:49
-msgid "Followers"
-msgstr "Abonnés"
-
-#: templates/profiles/profile.html:50
-msgid "Following"
-msgstr "Abonnements"
-
-#: templates/profiles/profile.html:60
-msgid "unfollow"
-msgstr "Se désabonner"
-
-#: templates/profiles/profile.html:62
-msgid "follow tweets"
-msgstr "Suivre les Touites"
-
-#: templates/profiles/profile.html:69
+#: templates/profiles/profile.html:40
 #, python-format
 msgid "You are friends with %(other_user_display)s."
 msgstr "Vous êtes « « ami » avec %(other_user_display)s."
 
-#: templates/profiles/profile.html:69
+#: templates/profiles/profile.html:46 templates/timeline/homepage/user.html:80
 msgid "Send a message"
 msgstr "Envoyer un message"
 
-#: templates/profiles/profile.html:73
+#: templates/profiles/profile.html:50 templates/timeline/homepage/user.html:75
+msgid "unfollow"
+msgstr "Se désabonner"
+
+#: templates/profiles/profile.html:53 templates/timeline/homepage/user.html:77
+msgid "follow tweets"
+msgstr "Suivre les Touites"
+
+#: templates/profiles/profile.html:60 templates/timeline/homepage/user.html:87
 msgid "remove from friends"
 msgstr "Ôter de votre liste d'« amis »"
 
-#: templates/profiles/profile.html:78
+#: templates/profiles/profile.html:110
+#: templates/timeline/homepage/user.html:105
 #, python-format
 msgid "%(other_user_display)s has requested friendship."
 msgstr "%(other_user_display)s demande à être votre « ami »"
 
-#: templates/profiles/profile.html:99
+#: templates/profiles/profile.html:131
+#: templates/timeline/homepage/user.html:126
 msgid "Friendship request sent."
 msgstr "Demande d'ajout d'« ami » envoyée."
 
-#: templates/profiles/profile.html:101
+#: templates/profiles/profile.html:135
+#: templates/timeline/homepage/user.html:130
 msgid "Add As Friend"
 msgstr "Ajouter comme « ami »"
 
-#: templates/profiles/profile.html:108
+#: templates/profiles/profile.html:140
+#: templates/timeline/homepage/user.html:134
 msgid "invite"
 msgstr "inviter"
 
-#: templates/profiles/profile.html:109
-#, python-format
-msgid "%(other_user_display)s to be a friend."
-msgstr "%(other_user_display)s comme « ami »"
-
-#: templates/profiles/profile.html:133
-msgid "No tracks yet."
-msgstr "Pas de morceau."
-
-#: templates/profiles/profile.html:137
-msgid "Blog Posts"
-msgstr "Billets"
-
-#: templates/profiles/profile.html:143
-msgid "View all posts"
-msgstr "Voir tous les billets"
-
-#: templates/profiles/profile.html:161
-msgid "No photos uploaded yet..."
-msgstr "Il n'y a pas encore de photo..."
-
-#: templates/profiles/profile.html:167
-#, python-format
+#: templates/profiles/profile.html:155
+#, fuzzy, python-format
+#| msgid ""
+#| "<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log "
+#| "in </a> to add this person as a friend and see their tweets and blog "
+#| "posts."
 msgid ""
-"<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log in "
-"</a> to add this person as a friend and see their tweets and blog posts."
+"<a href=\"%(signup_url)s\" class=\"btn btn-default\">Sign up</a> and <a href="
+"\"%(login_url)s\" class=\"btn btn-default\">log in </a> to add this person "
+"as a friend and see their tweets and blog posts."
 msgstr ""
 "Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
 "\"%(login_url)s\">vous authentifier</a> pour essayer le site."
+
+#: templates/profiles/profile.html:161 templates/site_base.html:34
+#: templates/timeline/homepage/homepage.html:52
+#: templates/timeline/homepage/legacy.html:101
+msgid "Photos"
+msgstr "Photos"
+
+#: templates/profiles/profile.html:170
+msgid "No photos uploaded yet..."
+msgstr "Il n'y a pas encore de photo..."
+
+#: templates/profiles/profile.html:193
+#: templates/timeline/homepage/homepage.html:76
+#: templates/timeline/homepage/legacy.html:115
+msgid "Tracks"
+msgstr "Morceaux"
+
+#: templates/profiles/profile.html:196
+msgid "No tracks yet."
+msgstr "Pas de morceau."
+
+#: templates/profiles/profile.html:201
+msgid "Blog Posts"
+msgstr "Billets"
+
+#: templates/profiles/profile.html:207
+msgid "View all posts"
+msgstr "Voir tous les billets"
 
 #: templates/profiles/profile_right_panel.html:9
 msgid "Your Friends"
@@ -2280,20 +2033,39 @@ msgstr ""
 msgid "%(other_user_display)s's Friends"
 msgstr "Abonnements de %(other_user_display)s"
 
-#: templates/profiles/profiles.html:12
+#: templates/profiles/profiles.html:14
 #, fuzzy
 msgid "Profiles"
 msgstr "Profil"
 
-#: templates/profiles/profiles.html:24
+#: templates/profiles/profiles.html:19
+#, fuzzy
+msgid "Search profile"
+msgstr "Profil"
+
+#: templates/profiles/profiles.html:28
 msgid "Order by:"
 msgstr ""
 
-#: templates/tags/index.html:15
+#: templates/site_base.html:33 templates/timeline/homepage/homepage.html:29
+#: templates/timeline/index.html:30
+msgid "News"
+msgstr ""
+
+#: templates/site_base.html:36 templates/timeline/homepage/homepage.html:97
+#: templates/timeline/homepage/legacy.html:125
+msgid "Blogs"
+msgstr "Blogs"
+
+#: templates/site_base.html:49
+msgid "Messages"
+msgstr ""
+
+#: templates/tags/index.html:17
 msgid "All Photos Matching "
 msgstr "Toutes les photos correspondantes "
 
-#: templates/tags/index.html:33
+#: templates/tags/index.html:35
 msgid "All Blog Posts Matching "
 msgstr "Tout les articles de blog correspondants "
 
@@ -2301,16 +2073,21 @@ msgstr "Tout les articles de blog correspondants "
 msgid "Reply to This Post"
 msgstr ""
 
-#: templates/threadedcomments/comments.html:33
-#: templates/threadedcomments/comments.html:53
+#: templates/threadedcomments/comments.html:35
+#: templates/threadedcomments/comments.html:68
 msgid "Post Response"
 msgstr ""
 
-#: templates/threadedcomments/comments.html:48
+#: templates/threadedcomments/comments.html:36
+#: templates/threadedcomments/comments.html:69
+msgid "Preview"
+msgstr "Prévisualiser"
+
+#: templates/threadedcomments/comments.html:63
 msgid "Enter your comment"
 msgstr "Saisissez votre commentaire ci-dessous"
 
-#: templates/threadedcomments/comments.html:60
+#: templates/threadedcomments/comments.html:76
 #, python-format
 msgid ""
 "\n"
@@ -2319,8 +2096,294 @@ msgid ""
 "    "
 msgstr ""
 
-#~ msgid "upload"
-#~ msgstr "upload"
+#: templates/timeline/_comment.html:6
+#, fuzzy
+#| msgid "comments"
+msgid "commented"
+msgstr "commentaires"
+
+#: templates/timeline/_comment_group.html:37
+#, fuzzy
+#| msgid "Latest comments"
+msgid "has been commented"
+msgstr "Derniers commentaires"
+
+#: templates/timeline/_comment_group.html:42 templates/timeline/_item.html:13
+#, fuzzy, python-format
+#| msgid "%(tweet_age)s ago"
+msgid "%(item_age)s ago"
+msgstr "il y a %(tweet_age)s"
+
+#: templates/timeline/_track.html:8
+#, fuzzy
+#| msgid "Upload track"
+msgid "posted a track"
+msgstr "Uploader un morceau"
+
+#: templates/timeline/friends.html:4 templates/timeline/friends.html.py:6
+#: templates/timeline/index.html:16
+#, fuzzy
+#| msgid "Friends' Tweets"
+msgid "Friends' News"
+msgstr "Touites de vos amis"
+
+#: templates/timeline/friends.html:8 templates/timeline/index.html:15
+#, fuzzy
+msgid "All News"
+msgstr "Tous les touites"
+
+#: templates/timeline/homepage/_post.html:8
+#: templates/timeline/homepage/legacy.html:132
+msgid "by"
+msgstr "posté par"
+
+#: templates/timeline/homepage/homepage.html:7
+msgid "Homepage"
+msgstr ""
+
+#: templates/timeline/homepage/homepage.html:41
+#: templates/timeline/homepage/tag.html:34
+#: templates/timeline/homepage/user.html:153
+msgid "More news"
+msgstr ""
+
+#: templates/timeline/homepage/homepage.html:85
+msgid "Latest tracks"
+msgstr "Derniers sons"
+
+#: templates/timeline/homepage/legacy.html:10
+msgid "Welcome"
+msgstr "Bienvenue"
+
+#: templates/timeline/homepage/legacy.html:36
+msgid "This is your Smeuh"
+msgstr "Bienvenue dans votre Smeuh"
+
+#: templates/timeline/homepage/legacy.html:38
+msgid ""
+"\n"
+"  This site is a platform for members and friends of <a\n"
+"    href=\"http://smeuh.org/\">Smeuh.org</a> to share pictures, sound and "
+"ideas.\n"
+"  "
+msgstr ""
+
+#: templates/timeline/homepage/legacy.html:46
+#, python-format
+msgid ""
+"You can <a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s"
+"\">Log in</a> to try out the site."
+msgstr ""
+"Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
+"\"%(login_url)s\">vous authentifier</a> pour essayer le site."
+
+#: templates/timeline/homepage/legacy.html:48
+#, python-format
+msgid "You can <a href=\"%(login_url)s\">Log in</a> to try out the site."
+msgstr ""
+"Vous pouvez <a href=\"%(login_url)s\">vous authentifier</a> pour essayer le "
+"site."
+
+#: templates/timeline/homepage/legacy.html:51
+msgid ""
+"\n"
+"  To know more about the code that runs this site, report bugs and maybe\n"
+"  contribute, please check <a\n"
+"    href=\"https://github.com/amarandon/smeuhsocial\">the GitHub\n"
+"    repository</a>.\n"
+"  "
+msgstr ""
+"\n"
+"Pour en savoir plus sur le code qui fait tourner ce site, signaler des      "
+"bugs et      éventuellement contribuer, c'est <a        href=\"https://"
+"github.com/amarandon/smeuhsocial\">par ici</a>."
+
+#: templates/timeline/homepage/legacy.html:80
+msgid "Comments"
+msgstr "Commentaires"
+
+#: templates/timeline/homepage/legacy.html:87
+msgid " on "
+msgstr " à propos de "
+
+#: templates/timeline/homepage/tag.html:10
+msgid "Tag Homepage"
+msgstr ""
+
+#: templates/timeline/homepage/tag.html:44
+msgid "Photos with tag"
+msgstr ""
+
+#: templates/timeline/homepage/user.html:10
+msgid "User Homepage"
+msgstr ""
+
+#: templates/timeline/index.html:7
+#, fuzzy
+#| msgid "Timezone"
+msgid "Timeline"
+msgstr "Fuseau horaire"
+
+#: templates/timeline/tag.html:4
+#, fuzzy
+#| msgid "Timezone"
+msgid "Tag Timeline"
+msgstr "Fuseau horaire"
+
+#: templates/timeline/user.html:4
+msgid "User Timeline"
+msgstr ""
+
+#: templates/uni_form/whole_uni_form.html:7
+msgid "Required fields"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Your e-mail address has already been verified"
+#~ msgstr "Quelqu'un avec cette adresse email est déjà membre du site:"
+
+#, fuzzy
+#~ msgid "This e-mail address already associated with this account."
+#~ msgstr "Vous avez déjà autorisé un compte twitter."
+
+#, fuzzy
+#~ msgid "This e-mail address already associated with another account."
+#~ msgstr "Vous avez déjà autorisé un compte twitter."
+
+#, fuzzy
+#~ msgid "Current Password"
+#~ msgstr "Définir le mot de passe"
+
+#, fuzzy
+#~ msgid "New Password"
+#~ msgstr "Définir le mot de passe"
+
+#, fuzzy
+#~ msgid "New Password (again)"
+#~ msgstr "Définir le mot de passe"
+
+#, fuzzy
+#~ msgid "Other Service Info Key"
+#~ msgstr "Autres services"
+
+#, fuzzy
+#~ msgid "Other Service Info Value"
+#~ msgstr "Autres services"
+
+#, fuzzy
+#~ msgid "Friend Posted to Blog"
+#~ msgstr "Blogs de vos amis"
+
+#, fuzzy
+#~ msgid "New Comment on Blog Post"
+#~ msgstr "Commentaires sur ce billet"
+
+#, fuzzy
+#~ msgid "allow comments"
+#~ msgstr "commentaires"
+
+#, fuzzy
+#~ msgid "you have sent a message"
+#~ msgstr "Envoyer un message"
+
+#, fuzzy
+#~ msgid "you have deleted a message"
+#~ msgstr "Envoyer un message"
+
+#, fuzzy
+#~ msgid "you have undeleted a message"
+#~ msgstr "Envoyer un message"
+
+#, fuzzy
+#~ msgid "New Message"
+#~ msgstr "Envoyer un message"
+
+#, fuzzy
+#~ msgid "No messages."
+#~ msgstr "Envoyer un message"
+
+#, fuzzy
+#~ msgid ""
+#~ "You have deleted the message <a href=\"%(message_url)s\">%(message)s</a>."
+#~ msgstr ""
+#~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+
+#, fuzzy
+#~ msgid ""
+#~ "You have recovered the message <a href=\"%(message_url)s\">%(message)s</"
+#~ "a>."
+#~ msgstr ""
+#~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+
+#, fuzzy
+#~ msgid ""
+#~ "You have sent the message <a href=\"%(message_url)s\">%(message)s</a> to "
+#~ "%(message_recipient)s."
+#~ msgstr ""
+#~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+
+#, fuzzy
+#~ msgid "photo set"
+#~ msgstr "Photos"
+
+#, fuzzy
+#~ msgid "photo sets"
+#~ msgstr "Photos"
+
+#, fuzzy
+#~ msgid "caption"
+#~ msgstr "Lieu"
+
+#, fuzzy
+#~ msgid "Most Viewed Photos"
+#~ msgstr "Les Plus Vues"
+
+#, fuzzy
+#~ msgid "about"
+#~ msgstr "A propos"
+
+#, fuzzy
+#~ msgid "location"
+#~ msgstr "Lieu"
+
+#, fuzzy
+#~ msgid "profiles"
+#~ msgstr "Profil"
+
+#~ msgid "Profile"
+#~ msgstr "Profil"
+
+#~ msgid "Followers of %(other_user_display)s"
+#~ msgstr "Abonnés à %(other_user_display)s"
+
+#~ msgid ""
+#~ "Followers of <a href=\"%(other_user_url)s\">%(other_user_display)s</a>'s "
+#~ "tweets:"
+#~ msgstr ""
+#~ "Abonnés à <a href=\"%(other_user_url)s\">%(other_user_display)s</a>'s "
+
+#~ msgid ""
+#~ "Also see <a href=\"%(tweet_following_url)s\">who %(other_user_display)s "
+#~ "is following</a>."
+#~ msgstr ""
+#~ "Voir <a href=\"%(tweet_following_url)s\">les abonnements de "
+#~ "%(other_user_display)s </a>."
+
+#~ msgid "%(other_user_display)s is Following"
+#~ msgstr "Abonnements de %(other_user_display)s"
+
+#, fuzzy
+#~ msgid "You have authorized a twitter account."
+#~ msgstr "Vous avez déjà autorisé un compte twitter."
+
+#~ msgid "Followers"
+#~ msgstr "Abonnés"
+
+#~ msgid "Following"
+#~ msgstr "Abonnements"
+
+#~ msgid "%(other_user_display)s to be a friend."
+#~ msgstr "%(other_user_display)s comme « ami »"
 
 #~ msgid "Import Google Contacts"
 #~ msgstr "Importer les contacts google"
@@ -2333,9 +2396,6 @@ msgstr ""
 
 #~ msgid "Your Tracks"
 #~ msgstr "Vos morceaux"
-
-#~ msgid "Latest comments"
-#~ msgstr "Derniers commentaires"
 
 #~ msgid "View all"
 #~ msgstr "Tout voir"
@@ -2352,9 +2412,6 @@ msgstr ""
 #~ msgid "Wondering <a href=\"%(what_next_url)s\">What Next</a>?"
 #~ msgstr ""
 #~ "Vous demandez-vous <a href=\"%(what_next_url)s\">Que faire maintenant</a>?"
-
-#~ msgid "These are tweets from your friends:"
-#~ msgstr "Voici les touites de vos amis:"
 
 #, fuzzy
 #~ msgid "Post"

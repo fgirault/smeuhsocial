@@ -135,7 +135,7 @@ def auto_transform_markup(comment):
         if comment.markup == MARKDOWN:
             from markdown import markdown
             return markdown(comment.comment)
-        elif comment.markup == PLAINTEXT:
+        else:
             return escape(comment.comment)
     except ImportError:
         # Not marking safe, in case tag fails and users input malicious code.
