@@ -515,3 +515,10 @@ p {
    width: 24px;
    height: 24px;
 }
+
+/***
+ * Fix MediaElement.js layout bug caused by interaction with Twitter Bootstrap
+ */
+.audiotracks .mejs-container .mejs-controls .mejs-time {
+    height: auto;
+}
