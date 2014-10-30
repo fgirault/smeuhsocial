@@ -179,7 +179,6 @@ INSTALLED_APPS = [
     "django_markup",
     "markup_deprecated",
     "tagging_ext",
-    'bootstrap3',
     "django_extensions",
     
     # Pinax
