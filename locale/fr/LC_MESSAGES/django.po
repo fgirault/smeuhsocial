@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-29 20:00+0100\n"
+"POT-Creation-Date: 2014-10-30 16:54+0100\n"
 "PO-Revision-Date: 2010-03-04 09:26+0100\n"
 "Last-Translator: James Pic <http://jamespic.com>\n"
 "Language-Team: Pinax French <http://www.transifex.net/projects/p/pinax/team/"
@@ -711,6 +711,23 @@ msgstr ""
 #: apps/threadedcomments/models.py:369
 msgid "Free Threaded Comments"
 msgstr ""
+
+#: apps/threadedcomments/templates/threadedcomments/preview_comment.html:7
+#| msgid "Comments"
+msgid "Comment Preview"
+msgstr "Prévisualisation d'un commentaire"
+
+#: apps/threadedcomments/templates/threadedcomments/preview_comment.html:18
+#: templates/threadedcomments/comments.html:35
+#: templates/threadedcomments/comments.html:68
+msgid "Post Response"
+msgstr ""
+
+#: apps/threadedcomments/templates/threadedcomments/preview_comment.html:19
+#: templates/threadedcomments/comments.html:36
+#: templates/threadedcomments/comments.html:69
+msgid "Preview"
+msgstr "Prévisualiser"
 
 #: apps/timeline/views.py:365 apps/timeline/views.py:409
 #, fuzzy, python-format
@@ -2072,16 +2089,6 @@ msgstr "Tout les articles de blog correspondants "
 #: templates/threadedcomments/comments.html:29
 msgid "Reply to This Post"
 msgstr ""
-
-#: templates/threadedcomments/comments.html:35
-#: templates/threadedcomments/comments.html:68
-msgid "Post Response"
-msgstr ""
-
-#: templates/threadedcomments/comments.html:36
-#: templates/threadedcomments/comments.html:69
-msgid "Preview"
-msgstr "Prévisualiser"
 
 #: templates/threadedcomments/comments.html:63
 msgid "Enter your comment"
