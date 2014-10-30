@@ -13,7 +13,7 @@
 <div class="right_panel">
     {% include "audiotracks/track_right_panel.html" %}
 </div>
-<div class="left_panel audiotracks-details">
+<div class="left_panel audiotracks-details js-audiotracks-container">
   <div class="next-previous">
     {% if track.get_previous_by_created_at %}
     <a href="{{ track.get_previous_by_created_at.get_absolute_url }}">&lt;&lt; {% trans 'Previous track' %}</a>
@@ -26,7 +26,7 @@
     {% if track.image %}
     <img src="{{ track.image.url_200x200 }}" class="img-rounded"/>
     {% endif %}
-    <h1 class="track-title">
+    <h1 class="js-audiotracks-title">
       {{ track.title }}
     </h1>
     <ul class="audiotracks-track-attributes">

@@ -2,7 +2,7 @@
 {% load override_tags %}
 {% load cycle from future %}
 
-<div class="homepage-item {% if forloop.first %} first{% endif %}{% cycle ' odd' '' %} clearfix">
+<div class="homepage-item {% if forloop.first %} first{% endif %}{% cycle ' odd' '' %} clearfix js-audiotracks-container">
 
 	<div class="clearfix">
 		<div class="pull-left" style="margin: 3px;">
@@ -14,7 +14,7 @@
 		</div>
 
 		<div>
-			<a href="{% url 'track_detail' track.user.username track.slug %}">{{ track.title|title }}</a>
+			<a href="{% url 'track_detail' track.user.username track.slug %}" class="js-audiotracks-title">{{ track.title|title }}</a>
 			{% if track.artist %}<small>&#8211; {{ track.artist }} </small><br>{% endif %}
 			</div>
 			<div>

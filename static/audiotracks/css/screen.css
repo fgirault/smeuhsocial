@@ -59,6 +59,10 @@
   list-style: none;
 }
 
+.audiotracks-list-entry .track-details {
+  margin-bottom: 5px;
+}
+
 .tags-placeholder {
    height: 12px;
 }
