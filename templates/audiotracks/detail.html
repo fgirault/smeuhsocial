@@ -2,73 +2,94 @@
 {% load account_tags %}
 {% load tagging_tags %}
 {% load comments_tag %}
+{% load avatar_tags %}
 {% load i18n %}
 
 {% block head_title %}{{ track.title }}{% endblock %}
 
 {% block body %}
 <div class="container">
+	<div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
+            <ul class="pager">
+                  {% if track.get_previous_by_created_at %}
+                  <li class="previous">
+                    <a id="previous_link" href="{{ track.get_previous_by_created_at.get_absolute_url }}" title="{% trans 'Previous track' %}"><i class="fa fa-arrow-left"></i> <span class="hidden-xs">{% trans 'Previous track' %}</span></a>
+                  </li>
+                  {% endif %}
+                  {% if track.get_next_by_created_at %}
+                  <li class="next">
+                    <a  id="next_link" href="{{ track.get_next_by_created_at.get_absolute_url }}" title="{% trans 'Next track' %}"><span class="hidden-xs">{% trans 'Next track' %}</span>  <i class="fa fa-arrow-right"></i></a>
+                  </li>
+                  {% endif %}
+            </ul>
+        </div>
+    </div>
+	<div class="row">
+        <div class="col-sm-2 col-md-2 col-md-offset-1 col-lg-offset-1">
+            <img class="img-responsive img-rounded center-block" src="{% if track.image %}{{ track.image.url_200x200 }}{% else %}{% avatar_url track.user 200 %}{% endif %}" alt="{{ track.title }}" style="margin-top: 25px" />        	
+        </div>
 
+        <div class="col-sm-10 col-md-8">
+        	{% if track.user == request.user %}<a href="{% url 'edit_track' track.id  %}" class="btn btn-default btn-sm pull-right" title="{% trans 'Edit Track' %}"><i class="fa fa-pencil"></i> {% trans 'Edit Track' %}</a>{% endif %}
+        
+        
+        	<h1> {{ track.title }} 
+        		<small>
+        		{% if track.artist %}{{ track.artist }}{% endif %}
+        		{% if track.date %}- {{ track.date }}{% endif %}        		
+        		</small>           		        		
+        		     		
+        	</h1>        	
+        	<p>        	          			    
+        	{% trans "Posted by" %}
+        	<a href="{% url 'profile_detail' track.user.username %}" title="{% user_display track.user %}">{% avatar track.user.username 24 %} <strong>{% user_display track.user %}</strong></a>
+        	
+        	    - <small>{{ track.created_at|date:"DATE_FORMAT" }}</small>
+        	    
+        	{% if track.genre %}<span class="label">{{ track.genre }}</span>{% endif %}
+        	</p>
+        	
+		    {% if track.tags %}
+            <p>            
+            {% tags_for_object track as tags %}
+            {% for tag in tags %}
+                <a class="badge" href="{% url 'tag_homepage' tag %}"><i class="fa fa-tag"></i> {{ tag }}</a>
+            {% endfor %}
+            </p>
+		    {% endif %}		    		    		    				    		    							    		   		    		    		   		                    	        
+        </div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-md-10 col-md-offset-1">
+			<br>			
+			<div id="audioplayer" >
+			    <audio controls="controls" preload="auto">
+			      <source  src="{{ track.audio_file.url }}" type="{{ track.mimetype }}">
+			      Your browser does not support the audio element.  Maybe you should
+			      consider using <a href="http://www.mozilla.com/firefox/">Firefox</a>, <a
+			        href="http://www.google.com/chrome">Chrome</a> or <a
+			        href="http://www.opera.com/browser/">Opera</a>.
+			    </audio>
+			  </div>
+			  
+			{% if track.description %}
+			  <br>
+			  <p class="lead">
+			    {{ track.description|urlize|linebreaksbr }}
+			  </p>
+  			{% endif %}
+  			<br>
+  			<a class="btn btn-primary pull-right" href="{{ track.audio_file.url }}"><i class="fa fa-download"></i>  {% trans 'Download Track' %} ({{ track.audio_file.size|filesizeformat}})</a>						 
+		</div>
+	</div>
+	<div class="row">
+        <div class="col-md-10 block-comment col-md-offset-1">
+            <h4><a id="trackcomments"> {% trans 'Comments on this track:' %}</a></h4>
+            {% comments track %}
+        </div>
+    </div>
+</div>   
 
-<div class="right_panel">
-    {% include "audiotracks/track_right_panel.html" %}
-</div>
-<div class="left_panel audiotracks-detail">
-  <div class="next-previous">
-    {% if track.get_previous_by_created_at %}
-    <a href="{{ track.get_previous_by_created_at.get_absolute_url }}">&lt;&lt; {% trans 'Previous track' %}</a>
-    {% endif %}
-    {% if track.get_next_by_created_at %}
-    <a class="previous" href="{{ track.get_next_by_created_at.get_absolute_url }}">{% trans 'Next track'  %} &gt;&gt;</a>
-    {% endif %}
-  </div>
-  <div class="audiotracks-details-container">
-    {% if track.image %}
-    <img src="{{ track.image.url_200x200 }}" class="img-rounded"/>
-    {% endif %}
-    <h1>
-      {{ track.title }}
-    </h1>
-    <ul class="audiotracks-track-attributes">
-      {% if track.artist %}
-      <li>
-      {% trans 'Artist' %}: {{ track.artist }}
-      </li>
-      {% endif %}
-      {% if track.date %}
-      <li>
-      {% trans 'Date' %}: {{ track.date }}
-      </li>
-      {% endif %}
-      {% if track.genre %}
-      <li>
-      {% trans 'Genre' %}: {{ track.genre }} 
-      </li>
-      {% endif %}
-    </ul>
-  </div>
-  <div id="audioplayer">
-    <audio controls="controls" preload="auto">
-      <source  src="{{ track.audio_file.url }}" type="{{ track.mimetype }}">
-      Your browser does not support the audio element.  Maybe you should
-      consider using <a href="http://www.mozilla.com/firefox/">Firefox</a>, <a
-        href="http://www.google.com/chrome">Chrome</a> or <a
-        href="http://www.opera.com/browser/">Opera</a>.
-    </audio>
-  </div>
-  {% if track.description %}
-  <div class="audiotracks-description">
-    {{ track.description }}
-  </div>
-  {% endif %}
-  <div class="audiotracks-download">
-    <a class="border-shadow round-border" href="{{ track.audio_file.url }}">{% trans 'Download Track' %} ({{ track.audio_file.size|filesizeformat}})</a>
-  </div>
-</div>
-<div class="clear">
-<h3><a id="#trackcomments">{% trans 'Comments on this track:' %}</a></h3>
-{% comments track %}
-</div>
-</div>
 {% endblock %}
 
