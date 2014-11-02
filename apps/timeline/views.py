@@ -481,7 +481,7 @@ class TagPageView(TemplateView):
         context['latest_tracks'] = TaggedItem.objects.get_by_model(Track, tag).order_by("-created_at")        
 
         tracks = [
-            TimeLineItem(item, item.updated_at, item.user, "timeline/_track.html")
+            TimeLineItem(item, item.created_at, item.user, "timeline/_track.html")
             for item in context['latest_tracks']
             ]
 
