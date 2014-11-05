@@ -34,10 +34,6 @@
   margin: 0;
 }
 
-.audiotracks-list-entry .track-details {
-  margin-bottom: 5px;
-}
-
 .audiotracks-list-entry .track-title {
   font-size: 16px;
   line-height: 18px;
@@ -63,6 +59,10 @@
   list-style: none;
 }
 
+.audiotracks-list-entry .track-details {
+  margin-bottom: 5px;
+}
+
 .tags-placeholder {
    height: 12px;
 }
@@ -72,12 +72,12 @@
     padding-bottom: 10px;
 }
 
-.audiotracks-detail img {
+.audiotracks-details img {
     float: right;
     margin-left: 20px;
 }
 
-.audiotracks-detail #audioplayer {
+.audiotracks-details #audioplayer {
   margin-top: 24px;
   clear: both;
   max-width: 450px;

@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load tagging_tags %}
 
-  <div class="audiotracks-list-entry">
+  <div class="audiotracks-list-entry js-audiotracks-container">
     
 	{% if track.user == request.user %}
     <div class="dropdown pull-right">
@@ -24,7 +24,7 @@
 					
     <div class="track-details">
       <a href="{% url 'track_detail' track.user.username track.slug %}">
-        <p class="track-title">
+        <p class="track-title js-audiotracks-title">
         {% if track.artist %} {{ track.artist }} &#8211; {% endif %}{{ track.title|title }}
         </p>
       </a>

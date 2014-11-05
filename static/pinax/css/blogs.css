@@ -8,8 +8,32 @@
 }
 
 .blog-post h2 {
-    margin: 48px 0 0 0;
+    color: #00B000;
+    margin: 48px 0 24px 0;
 }
+
+.blogs h3 {
+    color: #00B000;
+    margin: 48px 0 24px 0;
+}
+
+.blog-post p {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.blog-post a {
+  text-decoration: underline;
+}
+
+.blog-post a:hover {
+  color: #009000;
+}
+
+.blog-post a:visited {
+  color: #00D000;
+}
+
 
 .blog-post-tease {
     width: 500px;
@@ -39,4 +63,8 @@
 
 .blog-post-meta img.noborder {
     border: 0;
+}
+
+.blogs .form_block {
+  margin: 12px 0;
 }
