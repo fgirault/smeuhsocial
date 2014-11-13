@@ -124,8 +124,8 @@ def photos(request, template_name="photos/latest.html"):
     group, bridge = group_and_bridge(request)
     
     photos = Image.objects.filter(
-        Q(is_public=True) |
-        Q(is_public=False, member__in = friend_set_for(request.user))
+        Q(is_public=True) | Q(member=request.user)  | 
+        Q(member__in=friend_set_for(request.user))
     )
     
     if group:
@@ -153,8 +153,8 @@ def most_viewed(request, template_name="photos/latest.html"):
     group, bridge = group_and_bridge(request)
     
     photos = Image.objects.filter(
-        Q(is_public=True) |
-        Q(is_public=False, member=request.user)
+        Q(is_public=True) | Q(member=request.user) 
+        | Q(member__in=friend_set_for(request.user))
     )
     
     if group:
@@ -188,10 +188,10 @@ def details(request, id, template_name="photos/details.html"):
     
     photo = get_object_or_404(photos, id=id)
 
-    image_filter = Q(is_public = True)
+    image_filter = Q(is_public=True)
 
     if request.user.is_authenticated():
-        image_filter = image_filter | Q(member__in = friend_set_for(request.user))
+        image_filter = image_filter | Q(member=request.user) | Q(member__in=friend_set_for(request.user))
     elif not photo.is_public:
         raise Http404
 
@@ -225,14 +225,14 @@ def user_photos(request, username, template_name="photos/user_photos.html"):
         
     user = get_object_or_404(User, username=username)
     
-    image_filter = Q(is_public = True)
+    image_filter = Q(is_public=True)
 
     if request.user.is_authenticated():
-        image_filter = image_filter | Q(member__in = friend_set_for(request.user))
+        image_filter = image_filter | Q(member=self.request.user) | Q(member__in=friend_set_for(request.user))
     
     photos = Image.objects.filter(
-        image_filter, 
-        member = user
+        image_filter,
+        member=user
         
     )           
     photos = photos.order_by("-date_added")
@@ -250,10 +250,10 @@ def tagged_photos(request, tagname, template_name="photos/tagged_photos.html"):
     Get the photos with a tag and display them
     """
         
-    image_filter = Q(is_public = True)
+    image_filter = Q(is_public=True)
 
     if request.user.is_authenticated():
-        image_filter = image_filter | Q(member__in = friend_set_for(request.user))
+        image_filter = image_filter | Q(member=self.request.user) | Q(member__in=friend_set_for(request.user))
         
     photos = TaggedItem.objects.get_by_model(Image, tagname).filter(image_filter).order_by("-date_added")   
     group, bridge = group_and_bridge(request)
@@ -360,10 +360,10 @@ def destroy(request, id):
 
 @login_required
 def random(request):
-    image_filter = Q(is_public = True)
+    image_filter = Q(is_public=True)
 
     if request.user.is_authenticated():
-        image_filter = image_filter | Q(member__in = friend_set_for(request.user))
+        image_filter = image_filter | Q(member=self.request.user) | Q(member__in=friend_set_for(request.user))
         
     photo = Image.objects.filter(image_filter).order_by('?')[0]    
     return HttpResponseRedirect(reverse('photo_details', args=(photo.id,)))

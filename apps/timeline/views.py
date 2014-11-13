@@ -9,7 +9,7 @@ blogs is strongly needed.
 import datetime
 from django.db.models import Q
 
-from django.views.generic import TemplateView #, RedirectView
+from django.views.generic import TemplateView  # , RedirectView
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -50,15 +50,15 @@ class TimeLineView(TemplateView):
             for item in Tweet.objects.all().filter(sent__gte=ago).order_by("-sent")
             ]
 
-        posts =  [
+        posts = [
             TimeLineItem(item, item.updated_at, item.author, "timeline/_post.html")
-            for item in Post.objects.all().filter(publish__gte=ago, status = 2).order_by("-publish")
+            for item in Post.objects.all().filter(publish__gte=ago, status=2).order_by("-publish")
             ]
 
-        image_filter = Q(is_public = True)
+        image_filter = Q(is_public=True)
 
         if self.request.user.is_authenticated():
-            image_filter = image_filter | Q(member__in = friend_set_for(self.request.user))
+            image_filter = image_filter | Q(member=self.request.user) | Q(member__in=friend_set_for(self.request.user))
         
         images = [
             TimeLineItem(item, item.date_added, item.member, "timeline/_photo.html")
@@ -146,12 +146,12 @@ class HomePageView(TimeLineView):
         context = super(HomePageView, self).get_context_data(**kwargs)
         # reduce the timeline items
         context['timelineitems'] = group_comments(context['timelineitems'][:16])
-        image_filter = Q(is_public = True)
+        image_filter = Q(is_public=True)
 
         if self.request.user.is_authenticated():
-            image_filter = image_filter | Q(member__in = friend_set_for(self.request.user))
+            image_filter = image_filter | Q(member=self.request.user) | Q(member__in=friend_set_for(self.request.user))
         context['latest_photos'] = Image.objects.all().filter(image_filter).order_by("-date_added")[:16]
-        context['latest_blogs'] = Post.objects.all().filter(status = 2).order_by("-publish")[:10]
+        context['latest_blogs'] = Post.objects.all().filter(status=2).order_by("-publish")[:10]
         context['latest_tracks'] = Track.objects.all().order_by("-created_at")[:6]
         return context
 
@@ -170,14 +170,14 @@ class FriendsPageView(TemplateView):
             for item in Tweet.objects.all().filter(sent__gte=ago, sender_id__in=[user.id for user in friends], sender_type__name="user").order_by("-sent")
             ]
 
-        posts =  [
+        posts = [
             TimeLineItem(item, item.publish, item.author, "timeline/_post.html")
-            for item in Post.objects.all().filter(publish__gte=ago, status = 2, author__in=friends).order_by("-publish")
+            for item in Post.objects.all().filter(publish__gte=ago, status=2, author__in=friends).order_by("-publish")
             ]
 
         images = [
             TimeLineItem(item, item.date_added, item.member, "timeline/_photo.html")
-            for item in Image.objects.all().filter(Q(is_public = True) | Q(member__in = friend_set_for(self.request.user))).filter(date_added__gte=ago, member__in=friends).order_by("-date_added")
+            for item in Image.objects.all().filter(Q(is_public=True) | Q(member__in=friend_set_for(self.request.user))).filter(date_added__gte=ago, member__in=friends).order_by("-date_added")
             ]
 
         tracks = [
@@ -213,14 +213,14 @@ class FollowingPageView(TemplateView):
             for item in Tweet.objects.all().filter(sent__gte=ago, sender_id__in=[user.id for user in following_list], sender_type__name="user").order_by("-sent")
             ]
 
-        posts =  [
+        posts = [
             TimeLineItem(item, item.updated_at, item.author, "timeline/_post.html")
-            for item in Post.objects.all().filter(publish__gte=ago, status = 2, author__in=following_list).order_by("-publish")
+            for item in Post.objects.all().filter(publish__gte=ago, status=2, author__in=following_list).order_by("-publish")
             ]
 
         images = [
             TimeLineItem(item, item.date_added, item.member, "timeline/_photo.html")
-            for item in Image.objects.all().filter(Q(is_public = True) | Q(member__in = friend_set_for(self.request.user))).filter(date_added__gte=ago, member__in=following_list).order_by("-date_added")
+            for item in Image.objects.all().filter(Q(is_public=True) | Q(member__in=friend_set_for(self.request.user))).filter(date_added__gte=ago, member__in=following_list).order_by("-date_added")
             ]
 
         tracks = [
@@ -254,7 +254,7 @@ class UserPageView(TemplateView):
             user = other_user = self.request.user
         
         if self.request.user == other_user:
-            context['is_me']= True
+            context['is_me'] = True
             context['is_friend'] = False
         else:
             context['is_friend'] = Friendship.objects.are_friends(self.request.user, other_user)
@@ -267,17 +267,17 @@ class UserPageView(TemplateView):
             for item in Tweet.objects.all().filter(sender_id=user.id, sender_type__name="user").order_by("-sent")[:limit]
             ]
 
-        context['latest_blogs'] = Post.objects.all().filter(status = 2, author=user).order_by("-publish")[:limit]
+        context['latest_blogs'] = Post.objects.all().filter(status=2, author=user).order_by("-publish")[:limit]
 
-        posts =  [
+        posts = [
             TimeLineItem(item, item.updated_at, item.author, "timeline/_post.html")
             for item in context['latest_blogs']
             ]
 
-        image_filter = Q(is_public = True, member=user)
+        image_filter = Q(is_public=True, member=user)
 
         if self.request.user.is_authenticated():
-            image_filter = image_filter | Q(member__in = friend_set_for(self.request.user))
+            image_filter = image_filter | Q(member=self.request.user) | Q(member__in=friend_set_for(self.request.user))
 
         context['latest_photos'] = Image.objects.all().filter(image_filter).order_by("-date_added")[:limit]
 
@@ -295,7 +295,7 @@ class UserPageView(TemplateView):
 
         comments = [
             TimeLineItem(item, item.date_submitted, item.user, "timeline/_comment.html")
-            for item in ThreadedComment.objects.all().filter(user = user).order_by("-date_submitted")[:limit]
+            for item in ThreadedComment.objects.all().filter(user=user).order_by("-date_submitted")[:limit]
             ]
         
         items = merge(tweets, images, posts, tracks, comments, field="date")
@@ -322,7 +322,7 @@ class UserHomePageView(TemplateView):
             user = other_user = self.request.user
 
         if self.request.user == other_user:
-            context['is_me']= True
+            context['is_me'] = True
             is_friend = False
         else:
             is_friend = context['is_friend'] = Friendship.objects.are_friends(self.request.user, other_user)
@@ -335,17 +335,17 @@ class UserHomePageView(TemplateView):
             for item in Tweet.objects.all().filter(sender_id=user.id, sender_type__name="user").order_by("-sent")[:32]
             ]
 
-        context['latest_blogs'] = Post.objects.all().filter(status = 2, author=user).order_by("-publish")[:32]
+        context['latest_blogs'] = Post.objects.all().filter(status=2, author=user).order_by("-publish")[:32]
 
-        posts =  [
+        posts = [
             TimeLineItem(item, item.updated_at, item.author, "timeline/_post.html")
             for item in context['latest_blogs']
             ]
 
-        image_filter = Q(is_public = True, member=user)
+        image_filter = Q(is_public=True, member=user)
 
         if self.request.user.is_authenticated():
-            image_filter = image_filter | Q(member__in = friend_set_for(self.request.user))
+            image_filter = image_filter | Q(member=self.request.user) | Q(member__in=friend_set_for(self.request.user))
 
         context['latest_photos'] = Image.objects.all().filter(image_filter).order_by("-date_added")[:32]
 
@@ -363,7 +363,7 @@ class UserHomePageView(TemplateView):
 
         comments = [
             TimeLineItem(item, item.date_submitted, item.user, "timeline/_comment.html")
-            for item in ThreadedComment.objects.all().filter(user = user).order_by("-date_submitted")[:32]
+            for item in ThreadedComment.objects.all().filter(user=user).order_by("-date_submitted")[:32]
             ]
         
         items = merge(tweets, images, posts, tracks, comments, field="date")[:16]
@@ -378,7 +378,7 @@ class UserHomePageView(TemplateView):
             previous_invitations_to = None
             previous_invitations_from = None
             if self.request.method == "POST":
-                if self.request.POST.get("action") == "remove": # @@@ perhaps the form should just post to friends and be redirected here
+                if self.request.POST.get("action") == "remove":  # @@@ perhaps the form should just post to friends and be redirected here
                     Friendship.objects.remove(self.request.user, other_user)
                     messages.add_message(self.request, messages.SUCCESS,
                         ugettext("You have removed %(from_user)s from friends") % {
@@ -462,7 +462,7 @@ class UserHomePageView(TemplateView):
                 except FriendshipInvitation.DoesNotExist:
                     pass
 
-        return HttpResponseRedirect(reverse("timeline.views.user_home", kwargs = {"username": username}))
+        return HttpResponseRedirect(reverse("timeline.views.user_home", kwargs={"username": username}))
 
 class TagPageView(TemplateView):
 
@@ -476,26 +476,26 @@ class TagPageView(TemplateView):
         
         # ago = datetime.datetime.now() - datetime.timedelta(30)
         
-        #limit = 64
+        # limit = 64
         
         tweets = [
             TimeLineItem(item, item.sent, item.sender, "timeline/_tweet.html")
-            for item in TaggedItem.objects.get_by_model(Tweet, tag).order_by("-sent")#[:limit]
+            for item in TaggedItem.objects.get_by_model(Tweet, tag).order_by("-sent")  # [:limit]
             ]
 
-        context['latest_blogs'] = TaggedItem.objects.get_by_model(Post, tag).filter(status = 2).order_by("-publish")#[:limit]
+        context['latest_blogs'] = TaggedItem.objects.get_by_model(Post, tag).filter(status=2).order_by("-publish")  # [:limit]
 
-        posts =  [
+        posts = [
             TimeLineItem(item, item.updated_at, item.author, "timeline/_post.html")
             for item in context['latest_blogs']
             ]
 
-        image_filter = Q(is_public = True)
+        image_filter = Q(is_public=True)
 
         if self.request.user.is_authenticated():
-            image_filter = image_filter | Q(member__in = friend_set_for(self.request.user))
+            image_filter = image_filter | Q(member=self.request.user) | Q(member__in=friend_set_for(self.request.user))
 
-        context['latest_photos'] = TaggedItem.objects.get_by_model(Image, tag).filter(image_filter).order_by("-date_added")#[:limit]
+        context['latest_photos'] = TaggedItem.objects.get_by_model(Image, tag).filter(image_filter).order_by("-date_added")  # [:limit]
 
         images = [
             TimeLineItem(item, item.date_added, item.member, "timeline/_photo.html")
@@ -516,7 +516,7 @@ class TagPageView(TemplateView):
         
         # no tag for comment yet. so : no comment :)
         
-        #Tag.objects.get_for_object(self.obj.resolve(context))
+        # Tag.objects.get_for_object(self.obj.resolve(context))
         
         
         items = merge(tweets, images, posts, tracks, comments, field="date")
@@ -544,17 +544,17 @@ class TagHomePageView(TemplateView):
             for item in TaggedItem.objects.get_by_model(Tweet, tag).order_by("-sent")[:16]
             ]
 
-        context['latest_blogs'] = TaggedItem.objects.get_by_model(Post, tag).filter(status = 2).order_by("-publish")[:10]
+        context['latest_blogs'] = TaggedItem.objects.get_by_model(Post, tag).filter(status=2).order_by("-publish")[:10]
 
-        posts =  [
+        posts = [
             TimeLineItem(item, item.updated_at, item.author, "timeline/_post.html")
             for item in context['latest_blogs']
             ]
 
-        image_filter = Q(is_public = True)
+        image_filter = Q(is_public=True)
 
         if self.request.user.is_authenticated():
-            image_filter = image_filter | Q(member__in = friend_set_for(self.request.user))
+            image_filter = image_filter | Q(member=self.request.user) | Q(member__in=friend_set_for(self.request.user))
 
         context['latest_photos'] = TaggedItem.objects.get_by_model(Image, tag).filter(image_filter).order_by("-date_added")[:16]
 
@@ -577,7 +577,7 @@ class TagHomePageView(TemplateView):
         
         # no tag for comment yet. so : no comment :)
         
-        #Tag.objects.get_for_object(self.obj.resolve(context))
+        # Tag.objects.get_for_object(self.obj.resolve(context))
         
         
         items = merge(tweets, images, posts, tracks, comments, field="date")[:16]
@@ -600,10 +600,10 @@ class LegacyHomePageView(TemplateView):
         context['latest_blogs'] = lambda: Post.objects.filter(
             status=2).order_by("-publish")[:10]
             
-        image_filter = Q(is_public = True)
+        image_filter = Q(is_public=True)
 
         if self.request.user.is_authenticated():
-            image_filter = image_filter | Q(member__in = friend_set_for(self.request.user))
+            image_filter = image_filter | Q(member=self.request.user) | Q(member__in=friend_set_for(self.request.user))
             
         context['latest_photos'] = lambda: Image.objects.all().filter(image_filter).order_by(
             "-date_added")[:18]
