@@ -12,6 +12,8 @@ from django.contrib.auth.decorators import login_required
 
 from photologue.models import *
 
+from friends.models import friend_set_for
+
 from photos.models import Image, Pool
 from photos.forms import PhotoUploadForm, PhotoEditForm
 
@@ -123,7 +125,7 @@ def photos(request, template_name="photos/latest.html"):
     
     photos = Image.objects.filter(
         Q(is_public=True) |
-        Q(is_public=False, member=request.user)
+        Q(is_public=False, member__in = friend_set_for(request.user))
     )
     
     if group:
@@ -186,29 +188,28 @@ def details(request, id, template_name="photos/details.html"):
     
     photo = get_object_or_404(photos, id=id)
 
-    previous_photo_id = get_first_id_or_none(
-            photos.filter(id__lt=photo.id, is_public=True).order_by('-id'))
-    next_photo_id = get_first_id_or_none(photos.filter(id__gt=photo.id,
-        is_public=True).order_by('id'))
-    
-    # @@@: test
-    if not photo.is_public and request.user != photo.member:
+    image_filter = Q(is_public = True)
+
+    if request.user.is_authenticated():
+        image_filter = image_filter | Q(member__in = friend_set_for(request.user))
+    elif not photo.is_public:
         raise Http404
+
+    previous_photo_id = get_first_id_or_none(
+                                             
+            photos.filter(image_filter, id__lt=photo.id).order_by('-id'))
+    next_photo_id = get_first_id_or_none(photos.filter(image_filter, id__gt=photo.id
+        ).order_by('id'))         
     
     photo_url = photo.get_display_url()
     
     host = "http://%s" % request.get_host()
-    
-    if photo.member == request.user:
-        is_me = True
-    else:
-        is_me = False
-    
+            
     ctx = {
         "host": host,
         "photo": photo,
         "photo_url": photo_url,
-        "is_me": is_me,
+        "is_me": photo.member == request.user,
         "previous_photo_id": previous_photo_id,
         "next_photo_id": next_photo_id,
     }
@@ -223,10 +224,16 @@ def user_photos(request, username, template_name="photos/user_photos.html"):
     """
         
     user = get_object_or_404(User, username=username)
-    # TODO add non-public photos to result if authenticated user is a friend
+    
+    image_filter = Q(is_public = True)
+
+    if request.user.is_authenticated():
+        image_filter = image_filter | Q(member__in = friend_set_for(request.user))
+    
     photos = Image.objects.filter(
-        member = user,
-        is_public = True,
+        image_filter, 
+        member = user
+        
     )           
     photos = photos.order_by("-date_added")
     group, bridge = group_and_bridge(request)
@@ -243,8 +250,12 @@ def tagged_photos(request, tagname, template_name="photos/tagged_photos.html"):
     Get the photos with a tag and display them
     """
         
-    # TODO add non-public photos to result if authenticated user is a friend
-    photos = TaggedItem.objects.get_by_model(Image, tagname).filter(is_public = True).order_by("-date_added")   
+    image_filter = Q(is_public = True)
+
+    if request.user.is_authenticated():
+        image_filter = image_filter | Q(member__in = friend_set_for(request.user))
+        
+    photos = TaggedItem.objects.get_by_model(Image, tagname).filter(image_filter).order_by("-date_added")   
     group, bridge = group_and_bridge(request)
     ctx = group_context(group, bridge)
     ctx.update({
@@ -349,5 +360,10 @@ def destroy(request, id):
 
 @login_required
 def random(request):
-    photo = Image.objects.filter(Q(is_public = True)).order_by('?')[0]    
+    image_filter = Q(is_public = True)
+
+    if request.user.is_authenticated():
+        image_filter = image_filter | Q(member__in = friend_set_for(request.user))
+        
+    photo = Image.objects.filter(image_filter).order_by('?')[0]    
     return HttpResponseRedirect(reverse('photo_details', args=(photo.id,)))

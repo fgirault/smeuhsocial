@@ -122,7 +122,7 @@ urlpatterns = patterns(
 
 friends_photos_kwargs = {
     "template_name": "photos/friends_photos.html",
-    "friends_objects_function": lambda users: Image.objects.filter(is_public=True, member__in=users).order_by("-date_added"),
+    "friends_objects_function": lambda users: Image.objects.filter(member__in=users).order_by("-date_added"),
 }
 
 friends_blogs_kwargs = {
