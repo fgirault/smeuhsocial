@@ -256,7 +256,7 @@ class UserPageView(TemplateView):
         if self.request.user == other_user:
             context['is_me'] = True
             context['is_friend'] = False
-        else:
+        elif self.request.user.is_authenticated():
             context['is_friend'] = Friendship.objects.are_friends(self.request.user, other_user)
             context['is_following'] = Following.objects.is_following(self.request.user, other_user)
         context['other_friends'] = Friendship.objects.friends_for_user(other_user)
@@ -324,9 +324,11 @@ class UserHomePageView(TemplateView):
         if self.request.user == other_user:
             context['is_me'] = True
             is_friend = False
-        else:
+        elif self.request.user.is_authenticated():
             is_friend = context['is_friend'] = Friendship.objects.are_friends(self.request.user, other_user)
             context['is_following'] = Following.objects.is_following(self.request.user, other_user)
+        else:
+            is_friend = False
         context['other_friends'] = Friendship.objects.friends_for_user(other_user)
 
         context['other_user'] = other_user
