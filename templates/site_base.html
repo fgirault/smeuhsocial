@@ -69,7 +69,7 @@
     	<ul class="nav navbar-nav navbar-right">    	
             <li><a href="{% url 'acct_login' %}"><i class="fa fa-sign-in"></i>  {% trans "Log in" %}</a></li>
             <li><a>{% trans "or" %}</a></li>       
-    		<li><a href="{% url 'acct_signup' %}" class="active"><i class="fa fa-plus"></i> {% trans "Sign Up" %}</a></li>
+    		<li class="active"><a href="{% url 'acct_signup' %}" class="active"><i class="fa fa-plus"></i> {% trans "Sign Up" %}</a></li>
     	</ul>
     {% endif %}
 {% endblock %}
