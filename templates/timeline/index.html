@@ -12,9 +12,11 @@
 {% block subnav %}
 <ul class="nav navbar-nav subnav">
 	{% include 'cta_drop.html' %}
-	<li><a href="{% url 'timeline' %}"><i class="fa fa-list"></i> {% trans "All News" %}</a></li>		
+	<li><a href="{% url 'timeline' %}"><i class="fa fa-list"></i> {% trans "All News" %}</a></li>
+	{% if user.is_authenticated %}       		
 	<li><a href="{% url 'friends_news' %}"><i class="fa fa-heart"></i> {% trans "Friends' News" %}</a></li>
 	<li><a href="{% url 'following_news' %}"><i class="fa fa-comment"></i> {% trans "Tweets You Follow" %}</a></li>
+	{% endif %}
 {#   	<li><a href="{% url 'tweets_you_follow' %}" title="{% trans "Tweets" %}" ><i class="fa fa-comment"></i> {% trans "Tweets" %}</a></li> #}
 	
 </ul>

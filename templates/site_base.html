@@ -28,7 +28,6 @@
 {% endblock %}
 
 {% block right_tabs %}
-    {% if user.is_authenticated %}       
         <ul class="nav navbar-nav main-nav">         
             <li {% block nav_news_li %}{% endblock %}><a href="{% url 'timeline' %}" title="{% trans "News" %}"><i class="fa fa-bullhorn"></i> <span class="visible-xs-inline-block">{% trans "News" %}</span></a></li>
             <li {% block nav_photos_li %}{% endblock %}><a href="{% url 'photos' %}" title="{% trans "Photos" %}"><i class="fa fa-camera"></i> <span class="visible-xs-inline-block">{% trans "Photos" %}</span></a></li>
@@ -36,6 +35,7 @@
             <li {% block nav_blogs_li %}{% endblock %}><a href="{% url 'blog_list_all' %}" title="{% trans "Blogs" %}" ><i class="fa fa-pencil"></i> <span class="visible-xs-inline-block">{% trans "Blogs" %}</span></a></li>
             <li {% block nav_tags_li %}{% endblock %}><a href="{% url 'tagging_ext_index' %}" title="{% trans "Tags" %}"><i class="fa fa-tags"></i> <span class="visible-xs-inline-block">{% trans "Tags" %}</span></a></li>                               
         </ul>
+    {% if user.is_authenticated %}       
         <ul class="nav navbar-nav navbar-right">
         	<li class="dropdown">
 		        <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="{% user_display user %}">
@@ -69,7 +69,7 @@
     	<ul class="nav navbar-nav navbar-right">    	
             <li><a href="{% url 'acct_login' %}"><i class="fa fa-sign-in"></i>  {% trans "Log in" %}</a></li>
             <li><a>{% trans "or" %}</a></li>       
-    		<li><a href="{% url 'acct_signup' %}"><i class="fa fa-plus"></i> {% trans "Sign Up" %}</a></li>
+    		<li><a href="{% url 'acct_signup' %}" class="active"><i class="fa fa-plus"></i> {% trans "Sign Up" %}</a></li>
     	</ul>
     {% endif %}
 {% endblock %}

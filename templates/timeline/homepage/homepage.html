@@ -14,11 +14,13 @@
 {% block body %}
 <div class="container">
 	{% block touiteform %}
+	{% if user.is_authenticated %}       	
 	<div class="row">
 		<div class="col-xs-12">
 			{% include 'microblogging/tweet_form.html' %}	
 		</div>		
 	</div>
+	{% endif %}
 	{% endblock %}
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-6">
