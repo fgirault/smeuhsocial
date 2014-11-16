@@ -277,7 +277,7 @@ class UserPageView(TemplateView):
         image_filter = Q(is_public=True, member=user)
 
         if self.request.user.is_authenticated():
-            image_filter = image_filter | Q(member=self.request.user) | Q(member__in=friend_set_for(self.request.user))
+            image_filter = image_filter | Q(member=user, member__in=friend_set_for(self.request.user))
 
         context['latest_photos'] = Image.objects.all().filter(image_filter).order_by("-date_added")[:limit]
 
@@ -347,7 +347,7 @@ class UserHomePageView(TemplateView):
         image_filter = Q(is_public=True, member=user)
 
         if self.request.user.is_authenticated():
-            image_filter = image_filter | Q(member=self.request.user) | Q(member__in=friend_set_for(self.request.user))
+            image_filter = image_filter | Q(member=user, member__in=friend_set_for(self.request.user))
 
         context['latest_photos'] = Image.objects.all().filter(image_filter).order_by("-date_added")[:32]
 
