@@ -363,7 +363,7 @@ def random(request):
     image_filter = Q(is_public=True)
 
     if request.user.is_authenticated():
-        image_filter = image_filter | Q(member=self.request.user) | Q(member__in=friend_set_for(request.user))
+        image_filter = image_filter | Q(member=request.user) | Q(member__in=friend_set_for(request.user))
         
     photo = Image.objects.filter(image_filter).order_by('?')[0]    
     return HttpResponseRedirect(reverse('photo_details', args=(photo.id,)))
