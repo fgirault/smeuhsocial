@@ -253,7 +253,7 @@ def tagged_photos(request, tagname, template_name="photos/tagged_photos.html"):
     image_filter = Q(is_public=True)
 
     if request.user.is_authenticated():
-        image_filter = image_filter | Q(member=self.request.user) | Q(member__in=friend_set_for(request.user))
+        image_filter = image_filter | Q(member=request.user) | Q(member__in=friend_set_for(request.user))
         
     photos = TaggedItem.objects.get_by_model(Image, tagname).filter(image_filter).order_by("-date_added")   
     group, bridge = group_and_bridge(request)

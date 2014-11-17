@@ -549,7 +549,7 @@ class TagHomePageView(TemplateView):
         context['latest_blogs'] = TaggedItem.objects.get_by_model(Post, tag).filter(status=2).order_by("-publish")[:10]
 
         posts = [
-            TimeLineItem(item, item.updated_at, item.author, "timeline/_post.html")
+            TimeLineItem(item, item.publish, item.author, "timeline/_post.html")
             for item in context['latest_blogs']
             ]
 
