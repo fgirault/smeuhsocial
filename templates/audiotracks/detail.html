@@ -5,6 +5,19 @@
 {% load avatar_tags %}
 {% load i18n %}
 
+{% block head_attr %}prefix="og: http://ogp.me/ns# music: http://ogp.me/ns/music#"{% endblock %}
+
+{% block extra_meta %}
+		<meta property="og:type" content="music.song" />
+		<meta property="og:title" content="{{ track.title|escape }}" />
+		<meta property="og:url" content="{{ track.get_absolute_url }}" />
+		<meta property="og:image" content="{% if track.image %}{{ track.image.url_200x200 }}{% else %}{% avatar_url track.user 200 %}{% endif %}" />
+		<meta property="og:description" content="{{ track.description }}" />
+		<meta property="og:audio" content="{{ track.audio_file.url }}" />
+		<meta property="og:audio:type" content="{{ track.mimetype }}" />
+		{% if track.artist %}<meta property="music:musician" content="{{ track.artist }}" />{% endif %}								
+{% endblock %}
+
 {% block head_title %}{{ track.title }}{% endblock %}
 
 {% block body %}

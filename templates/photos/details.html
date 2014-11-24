@@ -8,9 +8,18 @@
 {% load theme_tags %}
 {% load avatar_tags %}
 {% load override_tags %}
+
 {% block head_title %}{{ photo.title }}{% endblock %}
 
-{% block extra_meta %}{% endblock %}
+{% block head_attr %}prefix="og: http://ogp.me/ns#"{% endblock %}
+
+{% block extra_meta %}
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="{{ photo.title|escape }}" />
+		<meta property="og:url" content="{{ url }}" />
+		<meta property="og:image" content="{{ photo_url }}" />
+		<meta property="og:description" content="{{ photo.caption|escape }}" />						
+{% endblock %}
 
 {% block body %}
 <div class="container">

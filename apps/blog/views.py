@@ -50,6 +50,7 @@ def post(request, username, slug,
     
     return render_to_response(template_name, {
         "post": post[0],
+        "url": request.build_absolute_uri(post[0].get_absolute_url()),
     }, context_instance=RequestContext(request))
 
 
