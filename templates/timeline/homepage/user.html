@@ -7,7 +7,14 @@
 {% load microblogging_tags %}
 {% load override_tags %}
 
-{% block head_title %}{% trans "User Homepage" %}{% endblock %}
+{% block head_title %}{% trans "User Homepage" %} - {{ other_user }}{% endblock %}
+
+{% block head_attr %}prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#"{% endblock %}
+
+{% block extra_meta %}
+		<meta property="og:type" content="profile" />
+		<meta property="profile:username" content="{{ other_user }}" />								
+{% endblock %}
 
 {% block touiteform %}{% endblock %}
 

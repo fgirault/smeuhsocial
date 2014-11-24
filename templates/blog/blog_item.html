@@ -10,8 +10,15 @@
 	    <h2>
 	    	<a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>	    	    
 	    </h2>	    
-		<div>		
-		<span class="pull-right">
+		<div>				
+		<small>{% trans 'Posted by' %}</small>
+	    {% avatar_link blog_post.author 16 %}
+		<strong><a href="{% url 'profile_detail' blog_post.author.username %}">{% user_display blog_post.author %}</a></strong> 
+		{% trans 'on' %}
+		  {{ blog_post.publish|date:"DATE_FORMAT" }}	    				
+
+		</div>
+		<div class="text-right">
 	   {% tags_for_object blog_post as tags %}
 	   {% if tags %}<small>
 	   {% for tag in tags %}
@@ -19,13 +26,6 @@
 	   {% endfor %}</small>
 	   {% endif %}	  
 	   <a href="{{ blog_post.get_absolute_url }}#blogcomments" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-comment"> </i> {% get_comment_count for blog_post as commentcount %} <small>{{ commentcount }}</small> </a>
-		</span>
-		<small>{% trans 'Posted by' %}</small>
-	    {% avatar_link blog_post.author 16 %}
-		<strong><a href="{% url 'profile_detail' blog_post.author.username %}">{% user_display blog_post.author %}</a></strong> 
-		{% trans 'on' %}
-		  {{ blog_post.publish|date:"DATE_FORMAT" }}	    				
-
 		</div>
        {% if blog_post.tease %}
             {% with blog_post.tease as body %}
@@ -35,5 +35,6 @@
            {% with blog_post.body|truncatewords:"84" as body %}
                {{ body|apply_markup:blog_post.markup }}
            {% endwith %}
-       {% endif %}	    
+       {% endif %}
+       <a href="{{ blog_post.get_absolute_url }}">{% trans 'Read post' %}</a>
 	</div>

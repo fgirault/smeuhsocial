@@ -182,33 +182,34 @@ def details(request, id, template_name="photos/details.html"):
     """
     show the photo details
     """
-
     photos = Image.objects.all()
     photos = photos.filter(pool__object_id=None)
     
-    photo = get_object_or_404(photos, id=id)
 
     image_filter = Q(is_public=True)
 
     if request.user.is_authenticated():
+        # allow owner and friend to see a private photo
         image_filter = image_filter | Q(member=request.user) | Q(member__in=friend_set_for(request.user))
-    elif not photo.is_public:
+        
+    try:
+        photo = photos.filter(image_filter, id=id)[0]
+    except IndexError:                            
         raise Http404
-
-    previous_photo_id = get_first_id_or_none(
-                                             
-            photos.filter(image_filter, id__lt=photo.id).order_by('-id'))
-    next_photo_id = get_first_id_or_none(photos.filter(image_filter, id__gt=photo.id
-        ).order_by('id'))         
+        
+    previous_photo_id = get_first_id_or_none(                                             
+        photos.filter(image_filter, id__lt=photo.id).order_by('-id')
+        )
     
-    photo_url = photo.get_display_url()
+    next_photo_id = get_first_id_or_none(
+        photos.filter(image_filter, id__gt=photo.id).order_by('id')
+        )         
     
-    host = "http://%s" % request.get_host()
             
     ctx = {
-        "host": host,
         "photo": photo,
-        "photo_url": photo_url,
+        "photo_url": request.build_absolute_uri(photo.get_display_url()),
+        "url": request.build_absolute_uri(),
         "is_me": photo.member == request.user,
         "previous_photo_id": previous_photo_id,
         "next_photo_id": next_photo_id,
