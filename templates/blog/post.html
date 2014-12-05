@@ -10,6 +10,7 @@
 {% load markup_tags %}
 {% load avatar_tags %}
 {% load override_tags %}
+{% load bleach_tags %}
 
 {% block head_title %}{% blocktrans %}Blog Post{% endblocktrans %} : {{ post.title }}{% endblock %}
 
@@ -49,7 +50,7 @@ href="{% url 'all_blogs_feed' %}" />
       
 	<div class="blog-post">
 	  <h1 class="page-header"> {{ post.title }} </h1>
-      {{ post.body|apply_markup:post.markup|tagalize|smilize|profilize }}
+      {{ post.body|apply_markup:post.markup|tagalize|smilize|profilize|bleach }}
 	</div>
         
     <h3><a id="blogcomments">{% trans 'Comments on this post:' %}</a></h3>

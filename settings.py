@@ -6,6 +6,7 @@ import os.path
 import posixpath
 import pinax
 import logging
+import bleach
 
 PINAX_ROOT = os.path.abspath(os.path.dirname(pinax.__file__))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -181,6 +182,7 @@ INSTALLED_APPS = [
     "tagging_ext",
     'bootstrap3',
     "django_extensions",
+    "django_bleach",
     
     # Pinax
     "account",
@@ -334,6 +336,21 @@ ldap_log.addHandler(ldap_log_handler)
 
 AUDIOTRACKS_MODEL = 'smeuhoverride.Track'
 AUDIOTRACKS_PER_PAGE = 6
+
+BLEACH_ALLOWED_TAGS = bleach.ALLOWED_TAGS + [
+    'h2', 'h3', 'p', 'table', 'strong', 'blockquote', 'tr', 'td', 'th', 'img',
+    'div', 'pre', 'span', 'tt'
+]
+
+
+BLEACH_ALLOWED_ATTRIBUTES = {
+    '*': ['class'],
+    u'acronym': [u'title'], u'abbr': [u'title'],
+    'img': ['src', 'height', 'width'],
+}
+
+
+
 
 DEFAULT_MAX_COMMENT_LENGTH = 100000
 
