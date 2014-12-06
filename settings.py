@@ -181,6 +181,7 @@ INSTALLED_APPS = [
     "tagging_ext",
     'bootstrap3',
     "django_extensions",
+    "django_bleach",
     
     # Pinax
     "account",
@@ -334,6 +335,27 @@ ldap_log.addHandler(ldap_log_handler)
 
 AUDIOTRACKS_MODEL = 'smeuhoverride.Track'
 AUDIOTRACKS_PER_PAGE = 6
+
+BLEACH_ALLOWED_TAGS = [
+    'a', 'abbr', 'acronym', 'b', 'blockquote', 'code', 'em', 'i', 'li', 'ol',
+    'strong', 'ul' 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'blockquote',
+    'div', 'pre', 'span', 'tt', 'table', 'tr', 'td', 'th', 'img', 'audio',
+    'video',
+]
+
+
+BLEACH_MEDIA_ATTRIBUTES = ['src', 'height', 'width', 'alt', 'controls']
+
+BLEACH_ALLOWED_ATTRIBUTES = {
+    '*': ['class', 'title'],
+    'a': ['href'],
+    'img': BLEACH_MEDIA_ATTRIBUTES,
+    'video': BLEACH_MEDIA_ATTRIBUTES,
+    'audio': BLEACH_MEDIA_ATTRIBUTES,
+}
+
+
+
 
 DEFAULT_MAX_COMMENT_LENGTH = 100000
 
