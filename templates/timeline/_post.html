@@ -1,8 +1,8 @@
 {% extends "timeline/_item.html" %}
-
 {% load i18n %}
 {% load tagging_tags %}
 {% load threadedcommentstags %}
+{% load bleach_tags %}
 {% load override_tags %}
 
 {% block item_action_label %}a posté un article{% endblock %}
@@ -17,6 +17,6 @@
    {% endfor %}
    <a href="{{ blog_post.get_absolute_url }}#blogcomments" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-comment"> </i> {% get_comment_count for blog_post as commentcount %} <small>{{ commentcount }}</small> </a>
 </div>
-  {{ blog_post.tease|urlize|tagalize|smilize|truncatewords:32 }}
+  {{ blog_post.tease|urlize|tagalize|smilize|truncatewords:32|bleach }}
 {% endwith %}
 {% endblock %}
