@@ -1,0 +1,61 @@
+{% load account_tags %}
+{% load tagging_tags %}
+{% load comments_tag %}
+{% load avatar_tags %}
+{% load i18n %}
+
+	<div class="row">
+        <div class="col-sm-2 col-md-2 hidden-xs">
+            <a href="{% url 'track_detail' track.user.username track.slug %}" class="js-audiotracks-title"><img class="img-responsive img-rounded center-block" src="{% if track.image %}{{ track.image.url_200x200 }}{% else %}{% avatar_url track.user 200 %}{% endif %}" alt="{{ track.title }}" style="margin-top: 25px" /></a>        	
+        </div>
+
+        <div class="col-xs-11 col-sm-10 col-md-10">
+        	{% if track.user == request.user %}<a href="{% url 'edit_track' track.id  %}" class="btn btn-default btn-sm pull-right" title="{% trans 'Edit Track' %}"><i class="fa fa-pencil"></i> {% trans 'Edit Track' %}</a>{% endif %}
+        
+        
+        	<h1> <a href="{% url 'track_detail' track.user.username track.slug %}" class="js-audiotracks-title">{{ track.title }}</a> 
+        		<small>
+                        <span class="hide"> - </span>
+        		{% if track.artist %}<a href="{% url 'artist_tracks' track.artist %}">{{ track.artist }}</a>{% endif %}
+        		{% if track.date %}- {{ track.date }}{% endif %}        		        		
+        		</small>           		        		
+				{% if track.genre %}<span class="pull-right label">{{ track.genre }}</span>{% endif %}
+        	</h1>        	
+        	<p>        	          			    
+        	{% trans "Posted by" %}
+        	<a href="{% url 'profile_detail' track.user.username %}" title="{% user_display track.user %}">{% avatar track.user.username 24 %} <strong>{% user_display track.user %}</strong></a>
+        	
+        	    - <small>{{ track.created_at|date:"DATE_FORMAT" }}</small>
+        	            	
+        	</p>
+        	
+		    {% if track.tags %}
+            <p class="pull-right">            
+            {% tags_for_object track as tags %}
+            {% for tag in tags %}
+                <a class="badge" href="{% url 'tag_homepage' tag %}"><i class="fa fa-tag"></i> {{ tag }}</a>
+            {% endfor %}
+            </p>
+		    {% endif %}
+		    {% if track.description %}
+			  <p class="hidden-xs">
+			    {{ track.description|urlize|linebreaksbr }}
+			  </p>
+  			{% endif %}
+  			<a class="btn btn-primary btn-xs" href="{{ track.audio_file.url }}"><i class="fa fa-download"></i>  {% trans 'Download Track' %} ({{ track.audio_file.size|filesizeformat}})</a>		    		    		    				    		    							    		   		    		    		   		                    	        
+        </div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 audiotracks-list-entry js-audiotracks-container">
+			<br>			
+			<div id="audioplayer" >
+			    <audio controls="controls" preload="auto">
+			      <source  src="{{ track.audio_file.url }}" type="{{ track.mimetype }}">
+			      Your browser does not support the audio element.  Maybe you should
+			      consider using <a href="http://www.mozilla.com/firefox/">Firefox</a>, <a
+			        href="http://www.google.com/chrome">Chrome</a> or <a
+			        href="http://www.opera.com/browser/">Opera</a>.
+			    </audio>
+			  </div>						 
+		</div>
+	</div>
