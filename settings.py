@@ -344,10 +344,14 @@ BLEACH_ALLOWED_TAGS = [
 ]
 
 
+BLEACH_MEDIA_ATTRIBUTES = ['src', 'height', 'width', 'alt', 'controls']
+
 BLEACH_ALLOWED_ATTRIBUTES = {
     '*': ['class', 'title'],
     'a': ['href'],
-    'img': ['src', 'height', 'width'],
+    'img': BLEACH_MEDIA_ATTRIBUTES,
+    'video': BLEACH_MEDIA_ATTRIBUTES,
+    'audio': BLEACH_MEDIA_ATTRIBUTES,
 }
 
 
