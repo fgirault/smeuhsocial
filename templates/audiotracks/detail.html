@@ -50,7 +50,7 @@
         	<h1 class="js-audiotracks-title"> {{ track.title }} 
         		<small>
                         <span class="hide"> - </span>
-        		{% if track.artist %}{{ track.artist }}{% endif %}
+        		{% if track.artist %}<a href="{% url 'artist_tracks' track.artist %}">{{ track.artist }}</a>{% endif %}
         		{% if track.date %}- {{ track.date }}{% endif %}        		
         		</small>           		        		
         		     		
