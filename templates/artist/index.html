@@ -13,7 +13,9 @@
 <div class="col-xs-12 col-sm-4 col-md-4 col-md-4">
 <ul class="nav nav-pills nav-stacked" style="font-size: 18px">
 	{% for artist in column %}
-		<li ><a href="#">{{artist.artist}}<span class="badge pull-right">{{artist.total}}</span></a></li>
+		{% if artist.artist %}
+		<li ><a href="{% url 'artist_tracks' artist.artist  %}">{{artist.artist}}<span class="badge pull-right">{{artist.total}}</span></a></li>
+		{% endif %}
 		{% endfor %} 
 </ul>
 </div>
