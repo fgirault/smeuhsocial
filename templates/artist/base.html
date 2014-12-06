@@ -1,4 +1,4 @@
-{% extends "site_base.html" %}
+{% extends "audiotracks/mediaelement_base.html" %}
 {% load i18n %}
 
 {% block body_class %}artist{% endblock %}
@@ -6,17 +6,15 @@
 {% block nav_tracks_li %}class="active"{% endblock%}
 
 {% block subnav %}
-    {% if user.is_authenticated %}
         <ul class="nav navbar-nav subnav">
           <li><a href="{% url 'upload_track' %}"><i class="fa fa-upload"></i>{% trans 'Upload track' %}</a></li>
           <li><a href="{% url 'audiotracks' %}" title="{% trans "Music" %}" ><i class="fa fa-list"></i> {% trans "Music" %}</a></li>
-          <li><a href="{% url 'artist_index' %}"><i class="fa fa-list"></i>{% trans 'Artists' %}</a></li>  
+          <li><a href="{% url 'artist_index' %}"><i class="fa fa-list"></i> {% trans 'Artists' %}</a></li>  
         </ul>
+    {% if user.is_authenticated %}
         <ul class="nav navbar-nav navbar-right subnav">
           <li><a href="{% url 'user_index' user.username %}"><i class="fa fa-user"></i> {% trans 'Your tracks' %}</a></li>
         </ul> 
-    {% else %}
-        &nbsp;
     {% endif %}
 {% endblock %}
 

@@ -1,0 +1,21 @@
+{% extends "artist/base.html" %}
+
+{% load i18n %}
+
+{% block body_class %}audiotracks{% endblock %}
+
+{% block body %}
+<div class="container js-audiotracks-container">
+<div class="col-md-10 col-md-offset-1">
+<h1>{{ artist }}</h1>
+
+<div  class="audiotracks-list">
+{% for track in tracks %}
+{% include "artist/_track.html" %}
+<br><br>
+{% endfor %}
+</div>
+</div>
+</div>
+
+{% endblock %}
