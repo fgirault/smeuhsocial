@@ -338,7 +338,7 @@ AUDIOTRACKS_PER_PAGE = 6
 
 BLEACH_ALLOWED_TAGS = [
     'a', 'abbr', 'acronym', 'b', 'blockquote', 'code', 'em', 'i', 'li', 'ol',
-    'strong', 'ul' 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'blockquote',
+    'ul', 'strong', 'ul' 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'blockquote',
     'div', 'pre', 'span', 'tt', 'table', 'tr', 'td', 'th', 'img', 'audio',
     'video',
 ]
