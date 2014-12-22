@@ -189,7 +189,7 @@ INSTALLED_APPS = [
     "profiles",
     "photos",
     "pinax.apps.topics",
-    "pinax.apps.threadedcomments_extras",
+    "apps.threadedcomments_extras",
     
     # project
     "about",

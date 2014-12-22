@@ -61,7 +61,9 @@ def login(request, **kwargs):
     
     form_class = kwargs.pop("form_class", LoginForm)
     template_name = kwargs.pop("template_name", "account/login.html")
-    success_url = kwargs.pop("success_url", None)
+    success_url = (request.GET.get("success_url")
+                   or request.POST.get("success_url")
+                   or kwargs.pop("success_url", None))
     associate_openid = kwargs.pop("associate_openid", False)
     openid_success_url = kwargs.pop("openid_success_url", None)
     url_required = kwargs.pop("url_required", False)
@@ -104,6 +106,7 @@ def login(request, **kwargs):
         "url_required": url_required,
         "redirect_field_name": redirect_field_name,
         "redirect_field_value": request.REQUEST.get(redirect_field_name),
+        "success_url": success_url,
     })
     ctx.update(extra_context)
     
