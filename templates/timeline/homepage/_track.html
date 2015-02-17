@@ -15,7 +15,7 @@
 
 		<div>
 			<a href="{% url 'track_detail' track.user.username track.slug %}" class="js-audiotracks-title">{{ track.title|title }}</a>
-			{% if track.artist %}<small>&#8211; {{ track.artist }} </small><br>{% endif %}
+			{% if track.artist %}<small>&#8211; <a href="{% url 'artist_tracks' track.artist %}">{{ track.artist }}</a></small><br>{% endif %}
 			</div>
 			<div>
 				<small>{% trans 'uploaded by' %}
