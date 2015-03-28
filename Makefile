@@ -18,3 +18,7 @@ deploy:
 
 serve:
 	python manage.py runserver
+
+.PHONY: backup
+backup:
+	fab backup
