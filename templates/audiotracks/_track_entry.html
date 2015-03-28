@@ -23,11 +23,12 @@
     {% endif %}					
 					
     <div class="track-details">
-      <a href="{% url 'track_detail' track.user.username track.slug %}">
         <p class="track-title js-audiotracks-title">
-        {% if track.artist %} {{ track.artist }} &#8211; {% endif %}{{ track.title|title }}
-        </p>
+      	<a href="{% url 'track_detail' track.user.username track.slug %}">        
+        {{ track.title|title }}
       </a>
+        {% if track.artist %}&#8211; <a href="{% url 'artist_tracks' track.artist %}">{{ track.artist }}</a>{% endif %}
+        </p>
       <p class="upload-details">
         {% trans 'uploaded by' %}
         <a href="{% url 'profile_detail' username=track.user.username %}">{{ track.user.username }}</a>
