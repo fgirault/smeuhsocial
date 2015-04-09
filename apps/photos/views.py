@@ -229,7 +229,7 @@ def user_photos(request, username, template_name="photos/user_photos.html"):
     image_filter = Q(is_public=True)
 
     if request.user.is_authenticated():
-        image_filter = image_filter | Q(member=self.request.user) | Q(member__in=friend_set_for(request.user))
+        image_filter = image_filter | Q(member=request.user) | Q(member__in=friend_set_for(request.user))
     
     photos = Image.objects.filter(
         image_filter,
