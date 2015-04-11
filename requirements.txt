@@ -37,8 +37,8 @@ django-bootstrap
 psycopg2
 django-bootstrap3
 
--e git+ssh://git@github.com/amarandon/pinax.git#egg=Pinax
--e git+ssh://git@github.com/amarandon/django-audiotracks.git#egg=django_audiotracks
+-e git+https://git@github.com/amarandon/pinax.git#egg=Pinax
+-e git+https://git@github.com/amarandon/django-audiotracks.git#egg=django_audiotracks
 
 # We pull django-pagination from github because Pypi distribution doesn't
 # include locales
