@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/amarandon/smeusocial.svg?branch=master)
+[![Build Status](https://travis-ci.org/amarandon/smeuhsocial.svg?branch=master)](https://travis-ci.org/amarandon/smeuhsocial)
 
 Introduction
 ============
