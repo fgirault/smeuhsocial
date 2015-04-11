@@ -1,3 +1,5 @@
+https://travis-ci.org/amarandon/smeusocial.svg?branch=master
+
 Introduction
 ============
 
