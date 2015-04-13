@@ -15,10 +15,11 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
+from django.apps import apps
 
 from emailconfirmation.models import EmailAddress, EmailConfirmation
 
-association_model = models.get_model("django_openid", "Association")
+association_model = apps.get_app_config("django_openid").get_model("Association")
 if association_model is not None:
     from django_openid.models import UserOpenidAssociation
 

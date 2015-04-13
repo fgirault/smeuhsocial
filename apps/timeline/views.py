@@ -32,7 +32,6 @@ from microblogging.models import get_following_followers_lists
 from friends.forms import InviteFriendForm
 from friends.models import FriendshipInvitation, Friendship
 from microblogging.models import Following
-from django.db.transaction import is_managed
 from tagging.models import TaggedItem, Tag
 from timeline.models import TimeLineItem
 
@@ -334,7 +333,7 @@ class UserHomePageView(TemplateView):
         context['other_user'] = other_user
         tweets = [
             TimeLineItem(item, item.sent, item.sender, "timeline/_tweet.html")
-            for item in Tweet.objects.all().filter(sender_id=user.id, sender_type__name="user").order_by("-sent")[:32]
+            for item in Tweet.objects.all().filter(sender_id=user.id, sender_type__model="user").order_by("-sent")[:32]
             ]
 
         context['latest_blogs'] = Post.objects.all().filter(status=2, author=user).order_by("-publish")[:32]

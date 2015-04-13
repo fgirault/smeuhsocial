@@ -35,7 +35,7 @@ class Post(models.Model):
     title = models.CharField(_("title"), max_length=200)
     slug = models.SlugField(_("slug"))
     author = models.ForeignKey(User, related_name="added_posts")
-    creator_ip = models.IPAddressField(_("IP Address of the Post Creator"),
+    creator_ip = models.GenericIPAddressField(_("IP Address of the Post Creator"),
         blank = True,
         null = True
     )

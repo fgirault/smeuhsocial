@@ -2,7 +2,7 @@
 # executable documentation
 install:
 	pip install -r requirements.txt
-	python manage.py syncdb
+	python manage.py migrate
 
 
 test:

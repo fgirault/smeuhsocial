@@ -12,7 +12,6 @@ from microblogging.feeds import TweetFeedAll, TweetFeedUser
 from microblogging.feeds import TweetFeedUserWithFriends
 from microblogging.models import Tweet
 from photos.models import Image
-from pinax.apps.topics.models import Topic
 from tagging.models import TaggedItem
 
 from account.openid_consumer import PinaxConsumer
@@ -39,7 +38,8 @@ blogs_feed_dict = {"feed_dict": {
 urlpatterns = patterns(
     "",
     url(r"^favicon.ico/?$", RedirectView.as_view(
-        url=settings.STATIC_URL + 'img/favicon.ico')),
+        url=settings.STATIC_URL + 'img/favicon.ico',
+        permanent=True)),
     url(r"^$", "timeline.views.home", name="home"),
     url(r"5c/$", "timeline.views.legacy",),
     url(r"^admin/", include(admin.site.urls)),

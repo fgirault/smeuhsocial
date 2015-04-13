@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.auth.models import User
 from datetime import datetime
 from django.db.models import Q
@@ -167,7 +167,7 @@ class ThreadedComment(models.Model):
     # Generic Foreign Key Fields
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField(_('object ID'))
-    content_object = generic.GenericForeignKey()
+    content_object = GenericForeignKey()
 
     # Hierarchy Field
     parent = models.ForeignKey(
@@ -194,7 +194,8 @@ class ThreadedComment(models.Model):
     is_approved = models.BooleanField(_('is approved'), default=False)
 
     # Extra Field
-    ip_address = models.IPAddressField(_('IP address'), null=True, blank=True)
+    ip_address = models.GenericIPAddressField(_('IP address'), null=True,
+                                              blank=True)
 
     objects = ThreadedCommentManager()
     public = PublicThreadedCommentManager()
@@ -276,7 +277,7 @@ class FreeThreadedComment(models.Model):
     # Generic Foreign Key Fields
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField(_('object ID'))
-    content_object = generic.GenericForeignKey()
+    content_object = GenericForeignKey()
 
     # Hierarchy Field
     parent = models.ForeignKey(
@@ -305,7 +306,8 @@ class FreeThreadedComment(models.Model):
     is_approved = models.BooleanField(_('is approved'), default=False)
 
     # Extra Field
-    ip_address = models.IPAddressField(_('IP address'), null=True, blank=True)
+    ip_address = models.GenericIPAddressField(_('IP address'), null=True,
+                                              blank=True)
 
     objects = ThreadedCommentManager()
     public = PublicThreadedCommentManager()

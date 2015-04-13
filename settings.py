@@ -188,7 +188,6 @@ INSTALLED_APPS = [
     "pinax.apps.analytics",
     "profiles",
     "photos",
-    "pinax.apps.topics",
     "apps.threadedcomments_extras",
     
     # project
@@ -201,6 +200,11 @@ INSTALLED_APPS = [
     
    
 ]
+
+
+MIGRATION_MODULES = {
+    'django_openid': 'migrations.django_openid',
+}
 
 FIXTURE_DIRS = [
     os.path.join(PROJECT_ROOT, "fixtures"),

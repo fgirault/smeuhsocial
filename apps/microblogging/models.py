@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey
 
 try:
     from notification import models as notification
@@ -31,7 +31,7 @@ class Tweet(models.Model):
     text = models.CharField(_('text'), max_length=140)
     sender_type = models.ForeignKey(ContentType)
     sender_id = models.PositiveIntegerField()
-    sender = generic.GenericForeignKey('sender_type', 'sender_id')
+    sender = GenericForeignKey('sender_type', 'sender_id')
     sent = models.DateTimeField(_('sent'), default=datetime.now)
 
     def __unicode__(self):
@@ -62,7 +62,7 @@ class TweetInstance(models.Model):
     text = models.CharField(_('text'), max_length=140)
     sender_type = models.ForeignKey(ContentType, related_name='tweet_instances')
     sender_id = models.PositiveIntegerField()
-    sender = generic.GenericForeignKey('sender_type', 'sender_id')
+    sender = GenericForeignKey('sender_type', 'sender_id')
     sent = models.DateTimeField(_('sent'))
 
     # to migrate to generic foreign key, find out the content_type id of User and do something like:
@@ -77,7 +77,7 @@ class TweetInstance(models.Model):
 
     recipient_type = models.ForeignKey(ContentType)
     recipient_id = models.PositiveIntegerField()
-    recipient = generic.GenericForeignKey('recipient_type', 'recipient_id')
+    recipient = GenericForeignKey('recipient_type', 'recipient_id')
 
     objects = TweetInstanceManager()
 
@@ -138,11 +138,11 @@ class FollowingManager(models.Manager):
 class Following(models.Model):
     follower_content_type = models.ForeignKey(ContentType, related_name="followed", verbose_name=_('follower'))
     follower_object_id = models.PositiveIntegerField()
-    follower_content_object = generic.GenericForeignKey('follower_content_type', 'follower_object_id')
+    follower_content_object = GenericForeignKey('follower_content_type', 'follower_object_id')
 
     followed_content_type = models.ForeignKey(ContentType, related_name="followers", verbose_name=_('followed'))
     followed_object_id = models.PositiveIntegerField()
-    followed_content_object = generic.GenericForeignKey('followed_content_type', 'followed_object_id')
+    followed_content_object = GenericForeignKey('followed_content_type', 'followed_object_id')
 
     objects = FollowingManager()
 
