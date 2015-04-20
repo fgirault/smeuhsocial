@@ -1,5 +1,6 @@
 --extra-index-url=http://dist.pinaxproject.com/dev/
 
+mock
 django_extensions
 Django==1.8
 django-markup-deprecated==0.0.3
