@@ -31,6 +31,7 @@ QUEUE_ALL = getattr(settings, "NOTIFICATION_QUEUE_ALL", False)
 class LanguageStoreNotAvailable(Exception):
     pass
 
+
 class NoticeType(models.Model):
     
     label = models.CharField(_("label"), max_length=40)

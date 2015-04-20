@@ -10,6 +10,9 @@ install:
 	pip install -r requirements.txt
 	python manage.py migrate
 
+develop:
+	pip install -r test-requirements.txt
+
 
 test:
 	python $(TEST_COMMAND)
