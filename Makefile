@@ -13,6 +13,7 @@ test:
 
 coverage:
 	coverage run --source=. $(TEST_COMMAND)
+	coverage report
 
 fasttest:
 	DJANGO_TEST_FAST=1 python manage.py test --failfast smeuhoverride threadedcomments
