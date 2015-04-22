@@ -7,3 +7,4 @@ dev.sqlite3
 backup
 local_settings.py
 secret_settings.py
+/backup
