@@ -35,7 +35,7 @@ jQuery(document).ready(function($) {
     $('#touite_bang').prop("disabled", true);
     $('#touite_hint').hide();
 
-    $('#new_tweet').on('input', function() {
+    function handleTweetInput() {
         // prevent submit button to be clicked if text is not ok
         var textarea = $('#new_tweet')[0];
         if(textarea.value.length > 0 && textarea.value.length < 140) {
@@ -50,7 +50,41 @@ jQuery(document).ready(function($) {
         } else {
             $('#touite_hint').slideUp();
         }
+    }
 
+    $('#new_tweet').on('input', handleTweetInput);
+
+    $('.tweet .reply').on('click', function(evt) {
+        var $sender = $(this).parent('.tweet').find('.sender');
+        var $newTweetInput = $('#new_tweet');
+        var $newTweetText = '@' + $sender.text() + ' ' + $newTweetInput.val();
+        var headerHeight = (function() {
+            try {
+                return $('.navbar').height() + $('.subnav-smeuh').height();
+            } catch (e) {
+                return 50; // Default in case header class names change
+            }
+        }());
+
+        function setNewTweetText() {
+            $newTweetInput.focus().val($newTweetText);
+            // Setting val doesn't trigger input event, so call input handler
+            // explicitely
+            handleTweetInput();
+        }
+
+        if ($(window).scrollTop() > headerHeight) {
+            // Page is scrolled down enough that we want to scroll up
+            $('body,html').animate({scrollTop: 0}, {
+                duration: 500,
+                complete: setNewTweetText
+            });
+            $('#back-to-top').fadeIn();
+        } else {
+            // No need to scroll up
+            setNewTweetText();
+        }
+        return false;
     });
 
     function update_chars_left() {
