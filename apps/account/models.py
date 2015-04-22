@@ -17,7 +17,7 @@ from timezones.fields import TimeZoneField
 
 class Account(models.Model):
     
-    user = models.ForeignKey(User, unique=True, verbose_name=_("user"))
+    user = models.OneToOneField(User, verbose_name=_("user"))
     
     timezone = TimeZoneField(_("timezone"))
     language = models.CharField(_("language"),

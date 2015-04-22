@@ -23,6 +23,10 @@ def avatar_file_path(instance=None, filename=None, user=None):
     return os.path.join(AVATAR_STORAGE_DIR, user.username, filename)
 
 class Avatar(models.Model):
+
+    class Meta:
+        app_label = 'avatar'
+
     user = models.ForeignKey(User)
     primary = models.BooleanField(default=False)
     avatar = models.ImageField(max_length=1024, upload_to=avatar_file_path, blank=True)

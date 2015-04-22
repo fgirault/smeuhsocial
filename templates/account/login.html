@@ -30,6 +30,7 @@
     
     <form class="form-horizontal" method="POST" action="{% url 'acct_login' %}">
         {% csrf_token %}
+        <input type="hidden" value="{{ success_url }}" name="success_url">
         
         {{ form.non_field_errors }}
         <div class="form-group">

@@ -188,8 +188,7 @@ INSTALLED_APPS = [
     "pinax.apps.analytics",
     "profiles",
     "photos",
-    "pinax.apps.topics",
-    "pinax.apps.threadedcomments_extras",
+    "apps.threadedcomments_extras",
     
     # project
     "about",
@@ -201,6 +200,11 @@ INSTALLED_APPS = [
     
    
 ]
+
+
+MIGRATION_MODULES = {
+    'django_openid': 'migrations.django_openid',
+}
 
 FIXTURE_DIRS = [
     os.path.join(PROJECT_ROOT, "fixtures"),
@@ -338,7 +342,7 @@ AUDIOTRACKS_PER_PAGE = 6
 
 BLEACH_ALLOWED_TAGS = [
     'a', 'abbr', 'acronym', 'b', 'blockquote', 'code', 'em', 'i', 'li', 'ol',
-    'strong', 'ul' 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'blockquote',
+    'ul', 'strong', 'ul' 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'blockquote',
     'div', 'pre', 'span', 'tt', 'table', 'tr', 'td', 'th', 'img', 'audio',
     'video',
 ]

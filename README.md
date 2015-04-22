@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/amarandon/smeuhsocial.svg?branch=master)](https://travis-ci.org/amarandon/smeuhsocial)
+[![Coverage Status](https://coveralls.io/repos/amarandon/smeuhsocial/badge.svg)](https://coveralls.io/r/amarandon/smeuhsocial)
+
 Introduction
 ============
 

@@ -4,6 +4,8 @@ try:
     import cPickle as pickle
 except ImportError:
     import pickle
+import logging
+log = logging.getLogger('django.request')
 
 from django.db import models
 from django.db.models.query import QuerySet
@@ -20,13 +22,15 @@ from django.contrib.sites.models import Site
 from django.contrib.auth.models import User
 from django.contrib.auth.models import AnonymousUser
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.apps import apps
 
 QUEUE_ALL = getattr(settings, "NOTIFICATION_QUEUE_ALL", False)
 
 
 class LanguageStoreNotAvailable(Exception):
     pass
+
 
 class NoticeType(models.Model):
     
@@ -221,7 +225,7 @@ def get_notification_language(user):
     if getattr(settings, "NOTIFICATION_LANGUAGE_MODULE", False):
         try:
             app_label, model_name = settings.NOTIFICATION_LANGUAGE_MODULE.split(".")
-            model = models.get_model(app_label, model_name)
+            model = apps.get_app_config(app_label).get_model(model_name)
             language_model = model._default_manager.get(user__id__exact=user.id)
             if hasattr(language_model, "language"):
                 return language_model.language
@@ -324,7 +328,10 @@ def send_now(users, label, extra_context=None, on_site=True, sender=None):
             notice_type=notice_type, on_site=on_site, sender=sender)
         if should_send(user, notice_type, "1") and user.email and user.is_active: # Email
             recipients.append(user.email)
-        send_mail(subject, body, settings.DEFAULT_FROM_EMAIL, recipients)
+        try:
+            send_mail(subject, body, settings.DEFAULT_FROM_EMAIL, recipients)
+        except Exception as exc:
+            log.error(u"Failed sending notification email: %s", exc)
     
     # reset environment to original language
     activate(current_language)
@@ -392,7 +399,7 @@ class ObservedItem(models.Model):
     
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
-    observed_object = generic.GenericForeignKey("content_type", "object_id")
+    observed_object = GenericForeignKey("content_type", "object_id")
     
     notice_type = models.ForeignKey(NoticeType, verbose_name=_("notice type"))
     

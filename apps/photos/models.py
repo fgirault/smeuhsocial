@@ -5,7 +5,7 @@ from django.db import models
 
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey
 
 from photologue.models import *
 
@@ -90,7 +90,7 @@ class Pool(models.Model):
     photo = models.ForeignKey(Image)
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
-    content_object = generic.GenericForeignKey()
+    content_object = GenericForeignKey()
     created_at = models.DateTimeField(_("created_at"), default=datetime.now)
     
     class Meta:

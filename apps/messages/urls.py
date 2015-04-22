@@ -4,7 +4,7 @@ from django.views.generic import RedirectView
 from messages.views import *
 
 urlpatterns = patterns('',
-    url(r'^$', RedirectView.as_view(url='inbox/')),
+    url(r'^$', RedirectView.as_view(url='inbox/', permanent=True)),
     url(r'^inbox/$', inbox, name='messages_inbox'),
     url(r'^outbox/$', outbox, name='messages_outbox'),
     url(r'^compose/$', compose, name='messages_compose'),
