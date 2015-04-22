@@ -55,6 +55,10 @@ jQuery(document).ready(function($) {
     $('#new_tweet').on('input', handleTweetInput);
 
     $('.tweet .reply').on('click', function(evt) {
+        if ($('.logout-action').size() === 0) {
+            // Don't try to handle reply if not logged in
+            return;
+        }
         var $sender = $(this).parent('.tweet').find('.sender');
         var $newTweetInput = $('#new_tweet');
         var $newTweetText = '@' + $sender.text() + ' ' + $newTweetInput.val();
