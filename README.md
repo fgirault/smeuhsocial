@@ -25,7 +25,7 @@ Requirements
 
     $ sudo apt-get install python-dev libldap-dev libsasl2-dev libssl-dev \
                            zlib1g-dev libfreetype6-dev liblcms1-dev \
-                           libjpeg62-dev
+                           libjpeg62-dev libtiff-dev
 
  - [OpenLDAP](http://www.openldap.org/) server. OpenLDAP server is necessary
    *only if you want to work on OpenLDAP authentication*. You might get into
