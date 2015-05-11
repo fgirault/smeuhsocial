@@ -15,7 +15,8 @@ def get_default_redirect(request, fallback_url, redirect_field_name="next",
     - LOGIN_REDIRECT_URL - the URL in the setting
     - LOGIN_REDIRECT_URLNAME - the name of a URLconf entry in the settings
     """
-    redirect_to = request.REQUEST.get(redirect_field_name)
+    redirect_to = request.GET.get(redirect_field_name,
+                                  request.POST.get(redirect_field_name))
     if not redirect_to:
         # try the session if available
         if hasattr(request, "session"):
