@@ -245,13 +245,16 @@ if 'test' in sys.argv:
         "account.auth_backends.AuthenticationBackend",
     ]
     PASSWORD_HASHERS = (
-            'django.contrib.auth.hashers.MD5PasswordHasher',
+        'django.contrib.auth.hashers.MD5PasswordHasher',
     )
 else:
     AUTHENTICATION_BACKENDS = [
         "django_auth_ldap.backend.LDAPBackend",
         "account.auth_backends.AuthenticationBackend",
     ]
+
+AUTHENTICATION_BACKENDS.append(
+    'django.contrib.auth.backends.ModelBackend')
 
 LOGIN_URL = "/account/login/" # @@@ any way this can be a url name?
 LOGIN_REDIRECT_URLNAME = "home"
