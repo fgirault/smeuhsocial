@@ -37,7 +37,7 @@
 
         <link rel="stylesheet" href="{{ STATIC_URL }}audiotracks/css/screen.css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" />
-        <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap-theme-mysmeuh.css" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap-theme-thsf.css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}font-awesome/css/font-awesome.css" />        
         {# <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/override.css" /> #}
         {% endcompress %}
@@ -74,10 +74,11 @@
           <div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <i class="fa fa-navicon"></i> MENU
+				<i class="fa fa-navicon"></i> MENU
               </button>
-              <span class="logo" dir="ltr">{% block logo_link_image %}{% endblock %}</span>
+              {# <span class="logo" dir="ltr">{% block logo_link_image %}{% endblock %}</span> #}
+              
+              <a class="navbar-brand" href="{% url 'home' %}">[THSF]:/less/is/more/social</a>
             </div>
             <div class="navbar-collapse collapse">
               {% block right_tabs %}{% endblock %}
@@ -120,13 +121,13 @@
         <footer>
          <div class="container">
         {% block footer %}
-          <a href="/al/blog/manifeste-mysmeuh">{% trans 'About' %}</a>
+          <a href="/mutah/blog/a-propos">{% trans 'About' %}</a>
           |
           {% blocktrans %}
           Site powered by
           <a href="https://github.com/amarandon/smeuhsocial">SmeuhSocial</a>
           {% endblocktrans %}
-          | Bored ? Try <a href="{% url 'fukung' %}">fusmeuh</a>, a fukung-like photo-roulette fed with mysmeuh data !
+          | Bored ? Try <a href="{% url 'fukung' %}">fusmeuh</a>, a fukung-like photo-roulette !
         {% endblock %}
         {% block locale_switcher %}{% endblock %}
         </div>

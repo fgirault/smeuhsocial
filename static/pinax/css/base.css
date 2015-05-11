@@ -19,7 +19,7 @@ a:visited {
 }
 
 a:hover {
-    color: #00B000;
+    color: #f1592a;
     text-decoration: none;
     transition-property: color;
 	transition-duration: 0.33s;
