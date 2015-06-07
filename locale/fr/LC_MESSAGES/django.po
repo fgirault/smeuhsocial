@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-10 22:27+0200\n"
+"POT-Creation-Date: 2015-06-07 10:40+0200\n"
 "PO-Revision-Date: 2010-03-04 09:26+0100\n"
 "Last-Translator: James Pic <http://jamespic.com>\n"
 "Language-Team: Pinax French <http://www.transifex.net/projects/p/pinax/team/"
@@ -20,37 +20,37 @@ msgstr ""
 #: apps/avatar/management/__init__.py:9
 #, fuzzy
 msgid "Avatar Updated"
-msgstr "Avatar"
+msgstr "Avatar mis à jour"
 
 #: apps/avatar/management/__init__.py:9
 msgid "avatar have been updated"
-msgstr ""
+msgstr "L'avatar a été mis à jour"
 
 #: apps/avatar/management/__init__.py:10
 msgid "Friend Updated Avatar"
-msgstr ""
+msgstr "Un ami a mis à jour son avatar"
 
 #: apps/avatar/management/__init__.py:10
 msgid "a friend has updated his avatar"
-msgstr ""
+msgstr "Un ami a mis à jour son avatar"
 
 #: apps/avatar/models.py:36
 #, fuzzy, python-format
 msgid "Avatar for %s"
-msgstr "Avatar"
+msgstr "Avatar de %s"
 
 #: apps/avatar/templatetags/avatar_tags.py:53
 #, fuzzy
 msgid "Default Avatar"
-msgstr "Avatar"
+msgstr "Avatar par défaut"
 
 #: apps/avatar/views.py:60
 msgid "Successfully uploaded a new avatar."
-msgstr ""
+msgstr "Un nouvel avatar a été téléchargé avec succès"
 
 #: apps/avatar/views.py:68
 msgid "Successfully updated your avatar."
-msgstr ""
+msgstr "Avatar mis à jour"
 
 #: apps/avatar/views.py:101
 msgid "Successfully deleted the requested avatars."
@@ -132,7 +132,7 @@ msgstr "Invitations"
 
 #: apps/friends/management.py:11
 msgid "you have sent an invitation"
-msgstr ""
+msgstr "vous avez envoyé une invitation"
 
 #: apps/friends/management.py:12
 msgid "Acceptance Received"
@@ -140,7 +140,7 @@ msgstr ""
 
 #: apps/friends/management.py:12
 msgid "an invitation you sent has been accepted"
-msgstr ""
+msgstr "une invitation a été acceptée"
 
 #: apps/friends/management.py:13
 msgid "Acceptance Sent"
@@ -148,7 +148,7 @@ msgstr ""
 
 #: apps/friends/management.py:13
 msgid "you have accepted an invitation you received"
-msgstr ""
+msgstr "vous avez accepté une invitation"
 
 #: apps/friends/management.py:14
 msgid "Other Connection"
@@ -272,7 +272,7 @@ msgstr ""
 
 #: apps/microblogging/management.py:9
 msgid "New Tweet Reply"
-msgstr ""
+msgstr "Nouvel réponse de touite"
 
 #: apps/microblogging/management.py:9
 msgid "someone sent a tweet reply to you"
@@ -296,12 +296,12 @@ msgstr "Abonnés"
 msgid "followed"
 msgstr "Se désabonner"
 
-#: apps/microblogging/views.py:126
+#: apps/microblogging/views.py:117
 #, fuzzy, python-format
 msgid "You are now following %(other_user)s"
 msgstr "Vous êtes « « ami » avec %(other_user_display)s."
 
-#: apps/microblogging/views.py:131
+#: apps/microblogging/views.py:122
 #, fuzzy, python-format
 msgid "You have stopped following %(other_user)s"
 msgstr "Vous êtes « « ami » avec %(other_user_display)s."
@@ -625,7 +625,6 @@ msgstr "Envoyer un message"
 
 #: apps/threadedcomments/admin.py:10 apps/threadedcomments/admin.py:26
 #, fuzzy
-#| msgid "Contacts"
 msgid "Content"
 msgstr "Contacts"
 
@@ -635,13 +634,11 @@ msgstr ""
 
 #: apps/threadedcomments/forms.py:17 apps/threadedcomments/models.py:188
 #, fuzzy
-#| msgid "Comments"
 msgid "Comment"
 msgstr "Commentaires"
 
 #: apps/threadedcomments/forms.py:38 apps/threadedcomments/models.py:300
 #, fuzzy
-#| msgid "comments"
 msgid "comment"
 msgstr "commentaires"
 
@@ -688,7 +685,6 @@ msgstr ""
 
 #: apps/threadedcomments/models.py:257
 #, fuzzy
-#| msgid "Comments"
 msgid "Threaded Comments"
 msgstr "Commentaires"
 
@@ -726,30 +722,42 @@ msgstr ""
 msgid "Preview"
 msgstr "Prévisualiser"
 
-#: apps/timeline/views.py:385 apps/timeline/views.py:429
+#: apps/timeline/views.py:386 apps/timeline/views.py:430
 #, fuzzy, python-format
 msgid "You have removed %(from_user)s from friends"
 msgstr "Ôter de votre liste d'« amis »"
 
-#: apps/timeline/views.py:392 apps/timeline/views.py:401
-#: apps/timeline/views.py:438
+#: apps/timeline/views.py:393 apps/timeline/views.py:402
+#: apps/timeline/views.py:439
 msgid "Let's be friends!"
-msgstr ""
+msgstr "Soyons amis !"
 
-#: apps/timeline/views.py:421
+#: apps/timeline/views.py:422
 #, fuzzy, python-format
 msgid "Friendship requested with %(username)s"
 msgstr "Demande d'ajout d'« ami » envoyée."
 
-#: apps/timeline/views.py:447
+#: apps/timeline/views.py:448
 #, fuzzy, python-format
 msgid "You have accepted the friendship request from %(from_user)s"
 msgstr "%(from_user)s vous a ajouté comme « ami »"
 
-#: apps/timeline/views.py:459
+#: apps/timeline/views.py:460
 #, fuzzy, python-format
 msgid "You have declined the friendship request from %(from_user)s"
 msgstr "%(from_user)s ne vous a pas ajouté comme « ami »"
+
+#: src/django-audiotracks/example_project/templates/base.html:30
+#: templates/artist/base.html:16 templates/audiotracks/base.html:22
+#: templates/site_base.html:55
+msgid "Your tracks"
+msgstr "Vos morceaux"
+
+#: src/django-audiotracks/example_project/templates/base.html:31
+#: templates/artist/base.html:10 templates/audiotracks/base.html:17
+#: templates/call_to_action.html:12 templates/cta_drop.html:13
+msgid "Upload track"
+msgstr "Uploader un morceau"
 
 #: templates/_account_bar.html:3
 msgid "Logged in with OpenID"
@@ -830,7 +838,6 @@ msgstr "Fuseau horaire"
 
 #: templates/account/email.html:12
 #, fuzzy
-#| msgid "E-Mail Addresses"
 msgid "E-mail Addresses"
 msgstr "Adresses email"
 
@@ -870,7 +877,6 @@ msgstr ""
 
 #: templates/account/email.html:64
 #, fuzzy
-#| msgid "E-Mail Addresses"
 msgid "Add E-mail Address"
 msgstr "Adresses email"
 
@@ -970,7 +976,6 @@ msgstr "sauvegarder"
 #: templates/account/password_change.html:15
 #: templates/account/password_reset_from_key.html:21
 #, fuzzy
-#| msgid "Change Password"
 msgid "change password"
 msgstr "Changer de mot de passe"
 
@@ -1010,15 +1015,11 @@ msgstr ""
 
 #: templates/account/password_reset.html:23
 #, fuzzy
-#| msgid "Set Password"
 msgid "Reset my password"
 msgstr "Définir le mot de passe"
 
 #: templates/account/password_reset.html:28
 #, fuzzy, python-format
-#| msgid ""
-#| "If you have any trouble creating your account, contact us at <a href="
-#| "\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
 msgid ""
 "If you have any trouble resetting your password, contact us at <a href="
 "\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
@@ -1028,9 +1029,6 @@ msgstr ""
 
 #: templates/account/password_reset_done.html:16
 #, fuzzy, python-format
-#| msgid ""
-#| "If you have any trouble creating your account, contact us at <a href="
-#| "\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
 msgid ""
 "We have sent you an e-mail. If you do not receive it within a few minutes, "
 "contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
@@ -1080,7 +1078,6 @@ msgstr ""
 
 #: templates/account/password_set.html:17
 #, fuzzy
-#| msgid "Set Password"
 msgid "set password"
 msgstr "Définir le mot de passe"
 
@@ -1178,12 +1175,7 @@ msgstr "Posté par"
 
 #: templates/artist/_track.html:45 templates/audiotracks/detail.html:97
 msgid "Download Track"
-msgstr ""
-
-#: templates/artist/base.html:10 templates/audiotracks/base.html:17
-#: templates/call_to_action.html:12 templates/cta_drop.html:13
-msgid "Upload track"
-msgstr "Uploader un morceau"
+msgstr "Télécharger le morceau"
 
 #: templates/artist/base.html:11 templates/site_base.html:34
 msgid "Music"
@@ -1191,29 +1183,23 @@ msgstr "Musique"
 
 #: templates/artist/base.html:12 templates/audiotracks/base.html:18
 #, fuzzy
-#| msgid "Artist"
 msgid "Artists"
 msgstr "Artiste"
 
-#: templates/artist/base.html:16 templates/audiotracks/base.html:22
-#: templates/site_base.html:55
-msgid "Your tracks"
-msgstr "Vos morceaux"
-
 #: templates/audiotracks/_track_entry.html:13
 msgid "Edit"
-msgstr ""
+msgstr "Éditer"
 
 #: templates/audiotracks/_track_entry.html:14 templates/messages/view.html:34
 msgid "Delete"
-msgstr ""
+msgstr "Supprimer"
 
 #: templates/audiotracks/_track_entry.html:20
 #: templates/timeline/_comment.html:26
 #: templates/timeline/_comment_group.html:26
 #: templates/timeline/homepage/_track.html:10
 msgid "Track Image"
-msgstr ""
+msgstr "Image"
 
 #: templates/audiotracks/_track_entry.html:33
 #: templates/timeline/homepage/_track.html:21
@@ -1233,12 +1219,12 @@ msgstr "Derniers Morceaux"
 
 #: templates/audiotracks/base_listing.html:14
 msgid "Podcast feed"
-msgstr ""
+msgstr "Flux Podcast"
 
 #: templates/audiotracks/base_listing.html:15
 #: templates/audiotracks/base_listing.html:16
 msgid "M3U playlist"
-msgstr ""
+msgstr "Playlist M3U"
 
 #: templates/audiotracks/detail.html:30
 msgid "Previous track"
@@ -1254,7 +1240,6 @@ msgstr "Commentaires sur ce morceau"
 
 #: templates/audiotracks/edit.html:13
 #, fuzzy
-#| msgid "Edit Track"
 msgid "Edit track"
 msgstr "Editer"
 
@@ -1265,23 +1250,20 @@ msgstr "Envoyer un message"
 
 #: templates/audiotracks/edit.html:117
 msgid "Save your changes"
-msgstr ""
+msgstr "Sauvegarder vos changements"
 
 #: templates/audiotracks/edit.html:125
 #, fuzzy
-#| msgid "Delete Track"
 msgid "Delete this track"
 msgstr "Supprimer"
 
 #: templates/audiotracks/new.html:17
 #, fuzzy
-#| msgid "Upload track"
 msgid "Upload a new track"
 msgstr "Uploader un morceau"
 
 #: templates/audiotracks/new.html:23 templates/photos/upload.html:27
 #, fuzzy
-#| msgid "upload"
 msgid "Upload"
 msgstr "upload"
 
@@ -1304,7 +1286,7 @@ msgstr "Avatar"
 
 #: templates/avatar/change.html:12
 msgid "Here is your current avatar:"
-msgstr ""
+msgstr "Voici votre avatar actuel"
 
 #: templates/avatar/change.html:28
 #, python-format
@@ -1325,7 +1307,7 @@ msgstr "Avatar"
 
 #: templates/avatar/change.html:35
 msgid "Upload New Image"
-msgstr ""
+msgstr "Télécharger une nouvelle image"
 
 #: templates/base.html:66
 msgid "Hide announcement"
@@ -1377,7 +1359,6 @@ msgstr "le"
 
 #: templates/blog/blog_item.html:40
 #, fuzzy
-#| msgid "View all posts"
 msgid "Read post"
 msgstr "Voir tous les billets"
 
@@ -1394,21 +1375,20 @@ msgstr "Éditer ce billet"
 
 #: templates/blog/edit.html:20 templates/photos/edit.html:40
 msgid "Update"
-msgstr ""
+msgstr "Mettre à jour"
 
 #: templates/blog/edit.html:25
 msgid "You are not the author of this post"
-msgstr ""
+msgstr "Vous n'êtes pas l'auteur de ce billet"
 
 #: templates/blog/friends_posts.html:15
 #, fuzzy
-#| msgid "These are tweets from your friends:"
 msgid "These are blog posts from your friends:"
 msgstr "Voici les touites de vos amis:"
 
 #: templates/blog/new.html:17
 msgid "Create"
-msgstr ""
+msgstr "Créer"
 
 #: templates/blog/post.html:15
 msgid "Blog Post"
@@ -1438,23 +1418,23 @@ msgstr "Billets"
 
 #: templates/blog/your_posts.html:28
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: templates/blog/your_posts.html:29
 msgid "Published On"
-msgstr ""
+msgstr "Publié le"
 
 #: templates/blog/your_posts.html:30
 msgid "Status"
-msgstr ""
+msgstr "Etat"
 
 #: templates/blog/your_posts.html:52
 msgid "Published"
-msgstr ""
+msgstr "Publié"
 
 #: templates/blog/your_posts.html:53
 msgid "Draft"
-msgstr ""
+msgstr "Brouillon"
 
 #: templates/blog/your_posts.html:66
 #: templates/threadedcomments/comments.html:48
@@ -1469,7 +1449,7 @@ msgstr "Envoyer une photo"
 
 #: templates/cta_drop.html:10
 msgid "Contribute"
-msgstr ""
+msgstr "Contribuer"
 
 #: templates/django_openid/associations.html:9
 #, fuzzy
@@ -1582,37 +1562,37 @@ msgstr "Notifications"
 
 #: templates/messages/compose.html:8
 msgid "Compose Message"
-msgstr ""
+msgstr "Écrire un message"
 
 #: templates/messages/compose.html:18
 msgid "Send"
-msgstr ""
+msgstr "Envoyer"
 
 #: templates/messages/inbox.html:10
 msgid "Compose"
-msgstr ""
+msgstr "Écrire"
 
 #: templates/messages/inbox.html:11 templates/messages/outbox.html:13
 msgid "Sent"
-msgstr ""
+msgstr "Envoyés"
 
 #: templates/messages/inbox.html:12
 msgid "Trash"
-msgstr ""
+msgstr "Poubelle"
 
 #: templates/messages/inbox.html:16 templates/messages/trash.html:13
 #: templates/messages/view.html:12
 msgid "Sender"
-msgstr ""
+msgstr "Expéditeur"
 
 #: templates/messages/inbox.html:16 templates/messages/outbox.html:13
 #: templates/messages/trash.html:13 templates/messages/view.html:14
 msgid "Subject"
-msgstr ""
+msgstr "Sujet"
 
 #: templates/messages/inbox.html:16
 msgid "Received"
-msgstr ""
+msgstr "Reçus"
 
 #: templates/messages/inbox.html:16 templates/messages/outbox.html:13
 #: templates/messages/trash.html:13
@@ -1627,7 +1607,7 @@ msgstr ""
 
 #: templates/messages/inbox.html:29 templates/messages/outbox.html:23
 msgid "delete"
-msgstr ""
+msgstr "supprimer"
 
 #: templates/messages/outbox.html:9
 #, fuzzy
@@ -1636,7 +1616,7 @@ msgstr "Envoyer un message"
 
 #: templates/messages/outbox.html:13 templates/messages/view.html:18
 msgid "Recipient"
-msgstr ""
+msgstr "Destinataire"
 
 #: templates/messages/trash.html:9
 #, fuzzy
@@ -1646,11 +1626,11 @@ msgstr "Envoyer un message"
 #: templates/messages/trash.html:13 templates/messages/view.html:16
 #: templates/profiles/profiles.html:32
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 #: templates/messages/trash.html:23
 msgid "undelete"
-msgstr ""
+msgstr "Annuler"
 
 #: templates/messages/trash.html:29
 msgid ""
@@ -1745,13 +1725,11 @@ msgstr ""
 
 #: templates/microblogging/public.html:6
 #, fuzzy
-#| msgid "All Tweets"
 msgid "Public Tweets"
 msgstr "Tous les touites"
 
 #: templates/microblogging/public.html:19
 #, fuzzy
-#| msgid "These are blog posts from everyone:"
 msgid "These are tweets from everyone:"
 msgstr "Tous les articles de blog:"
 
@@ -1813,7 +1791,7 @@ msgstr "Photos de vos amis"
 
 #: templates/photos/base.html:25
 msgid "Random"
-msgstr ""
+msgstr "Au hasard"
 
 #: templates/photos/base.html:26
 msgid "Most Viewed"
@@ -1843,12 +1821,6 @@ msgstr "Vue %(view_count)s fois"
 
 #: templates/photos/details.html:66
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "        The person who posted this picture is a huge Sarah Palin fan who "
-#| "hasn't\n"
-#| "        added any tag.\n"
-#| "        "
 msgid ""
 "\n"
 "       The person who posted this picture is a huge Sarah Palin fan who "
@@ -1875,18 +1847,17 @@ msgstr "Supprimer cette photo"
 
 #: templates/photos/gallery_base.html:24
 msgid "No photos were found."
-msgstr ""
+msgstr "Aucune photo n'a été trouvée"
 
 #: templates/photos/photo_thumb.html:18
 #, fuzzy, python-format
-#| msgid "Viewed %(view_count)s times"
 msgid "  %(view_count)s "
 msgstr "Vue %(view_count)s fois"
 
 #: templates/photos/tagged_photos.html:5
 #, python-format
 msgid "Photos with tag #%(tag)s"
-msgstr ""
+msgstr "Photos taggées #%(tag)s"
 
 #: templates/photos/user_photos.html:5 templates/photos/user_photos.html:7
 #, fuzzy, python-format
@@ -1991,10 +1962,6 @@ msgstr "inviter"
 
 #: templates/profiles/profile.html:155
 #, fuzzy, python-format
-#| msgid ""
-#| "<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log "
-#| "in </a> to add this person as a friend and see their tweets and blog "
-#| "posts."
 msgid ""
 "<a href=\"%(signup_url)s\" class=\"btn btn-default\">Sign up</a> and <a href="
 "\"%(login_url)s\" class=\"btn btn-default\">log in </a> to add this person "
@@ -2059,12 +2026,12 @@ msgstr "Profil"
 
 #: templates/profiles/profiles.html:28
 msgid "Order by:"
-msgstr ""
+msgstr "Trier par"
 
 #: templates/site_base.html:32 templates/timeline/homepage/homepage.html:31
 #: templates/timeline/index.html:32
 msgid "News"
-msgstr ""
+msgstr "Actualités"
 
 #: templates/site_base.html:35 templates/timeline/homepage/homepage.html:99
 #: templates/timeline/homepage/legacy.html:125
@@ -2085,7 +2052,7 @@ msgstr "Tout les articles de blog correspondants "
 
 #: templates/threadedcomments/comments.html:29
 msgid "Reply to This Post"
-msgstr ""
+msgstr "Répondre à ce commentaire"
 
 #: templates/threadedcomments/comments.html:63
 msgid "Enter your comment"
@@ -2102,32 +2069,27 @@ msgstr ""
 
 #: templates/timeline/_comment.html:6
 #, fuzzy
-#| msgid "comments"
 msgid "commented"
 msgstr "commentaires"
 
 #: templates/timeline/_comment_group.html:37
 #, fuzzy
-#| msgid "Latest comments"
 msgid "has been commented"
-msgstr "Derniers commentaires"
+msgstr "a été commenté"
 
 #: templates/timeline/_comment_group.html:42 templates/timeline/_item.html:13
 #, fuzzy, python-format
-#| msgid "%(tweet_age)s ago"
 msgid "%(item_age)s ago"
 msgstr "il y a %(tweet_age)s"
 
 #: templates/timeline/_track.html:8
 #, fuzzy
-#| msgid "Upload track"
 msgid "posted a track"
-msgstr "Uploader un morceau"
+msgstr "a posté un morceau"
 
 #: templates/timeline/friends.html:4 templates/timeline/friends.html.py:6
 #: templates/timeline/index.html:17
 #, fuzzy
-#| msgid "Friends' Tweets"
 msgid "Friends' News"
 msgstr "Touites de vos amis"
 
@@ -2143,13 +2105,13 @@ msgstr "posté par"
 
 #: templates/timeline/homepage/homepage.html:7
 msgid "Homepage"
-msgstr ""
+msgstr "Accueil"
 
 #: templates/timeline/homepage/homepage.html:43
 #: templates/timeline/homepage/tag.html:34
 #: templates/timeline/homepage/user.html:160
 msgid "More news"
-msgstr ""
+msgstr "Plus d'actualités"
 
 #: templates/timeline/homepage/homepage.html:87
 msgid "Latest tracks"
@@ -2212,38 +2174,41 @@ msgstr " à propos de "
 
 #: templates/timeline/homepage/tag.html:10
 msgid "Tag Homepage"
-msgstr ""
+msgstr "Contenus taggés"
 
 #: templates/timeline/homepage/tag.html:44
 msgid "Photos with tag"
-msgstr ""
+msgstr "Photos taggées"
 
 #: templates/timeline/homepage/user.html:10
 msgid "User Homepage"
-msgstr ""
+msgstr "Page de l'utilisateur"
 
 #: templates/timeline/index.html:7
 #, fuzzy
-#| msgid "Timezone"
 msgid "Timeline"
 msgstr "Fuseau horaire"
 
 #: templates/timeline/tag.html:4
 #, fuzzy
-#| msgid "Timezone"
 msgid "Tag Timeline"
-msgstr "Fuseau horaire"
+msgstr "Actualités taggées"
 
 #: templates/timeline/user.html:4
 msgid "User Timeline"
-msgstr ""
+msgstr "Actualités de l'utilisateur"
 
 #: templates/uni_form/whole_uni_form.html:7
 msgid "Required fields"
-msgstr ""
+msgstr "Champs requis"
 
-#~ msgid "Artist"
-#~ msgstr "Artiste"
+#, fuzzy
+#~ msgid "The e-mail address and/or password you specified are not correct."
+#~ msgstr "Vous avez déjà autorisé un compte twitter."
+
+#, fuzzy
+#~ msgid "Password (again)"
+#~ msgstr "Définir le mot de passe"
 
 #, fuzzy
 #~ msgid "Your e-mail address has already been verified"
@@ -2270,15 +2235,35 @@ msgstr ""
 #~ msgstr "Définir le mot de passe"
 
 #, fuzzy
-#~ msgid "Other Service Info Key"
-#~ msgstr "Autres services"
+#~ msgid "Password reset e-mail sent"
+#~ msgstr "Définir le mot de passe"
 
 #, fuzzy
-#~ msgid "Other Service Info Value"
-#~ msgstr "Autres services"
+#~ msgid "timezone"
+#~ msgstr "Fuseau horaire"
+
+#, fuzzy
+#~ msgid "language"
+#~ msgstr "Langu"
+
+#, fuzzy
+#~ msgid "Successfully logged in as %(user)s."
+#~ msgstr "Vous êtes « « ami » avec %(other_user_display)s."
+
+#, fuzzy
+#~ msgid "Removed email address %(email)s"
+#~ msgstr "Adresses email"
+
+#, fuzzy
+#~ msgid "Password successfully set."
+#~ msgstr "Définir le mot de passe"
 
 #, fuzzy
 #~ msgid "Friend Posted to Blog"
+#~ msgstr "Blogs de vos amis"
+
+#, fuzzy
+#~ msgid "a friend of yours posted to their blog"
 #~ msgstr "Blogs de vos amis"
 
 #, fuzzy
@@ -2286,12 +2271,48 @@ msgstr ""
 #~ msgstr "Commentaires sur ce billet"
 
 #, fuzzy
+#~ msgid "Public"
+#~ msgstr "Tous les touites"
+
+#, fuzzy
 #~ msgid "allow comments"
 #~ msgstr "commentaires"
 
 #, fuzzy
+#~ msgid "post"
+#~ msgstr "Voir tous les billets"
+
+#, fuzzy
+#~ msgid "All users"
+#~ msgstr "Tous les touites"
+
+#, fuzzy
+#~ msgid "Message"
+#~ msgstr "Envoyer un message"
+
+#, fuzzy
+#~ msgid "you have received a message"
+#~ msgstr "Envoyer un message"
+
+#, fuzzy
+#~ msgid "Message Sent"
+#~ msgstr "Envoyer un message"
+
+#, fuzzy
 #~ msgid "you have sent a message"
 #~ msgstr "Envoyer un message"
+
+#, fuzzy
+#~ msgid "you have replied to a message"
+#~ msgstr "Envoyer un message"
+
+#, fuzzy
+#~ msgid "you have received a reply to a message"
+#~ msgstr "Envoyer un message"
+
+#, fuzzy
+#~ msgid "Message Deleted"
+#~ msgstr "Définir le mot de passe"
 
 #, fuzzy
 #~ msgid "you have deleted a message"
@@ -2299,6 +2320,18 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "you have undeleted a message"
+#~ msgstr "Envoyer un message"
+
+#, fuzzy
+#~ msgid "Parent message"
+#~ msgstr "Envoyer un message"
+
+#, fuzzy
+#~ msgid "read at"
+#~ msgstr "Voir tous les billets"
+
+#, fuzzy
+#~ msgid "New Message: %(subject)s"
 #~ msgstr "Envoyer un message"
 
 #, fuzzy
@@ -2310,8 +2343,28 @@ msgstr ""
 #~ msgstr "Envoyer un message"
 
 #, fuzzy
+#~ msgid "Sent from %(site_url)s"
+#~ msgstr "Blog de %(username)s"
+
+#, fuzzy
+#~ msgid "You have deleted the message '%(message)s'."
+#~ msgstr "Envoyer un message"
+
+#, fuzzy
 #~ msgid ""
 #~ "You have deleted the message <a href=\"%(message_url)s\">%(message)s</a>."
+#~ msgstr ""
+#~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+
+#, fuzzy
+#~ msgid ""
+#~ "You have received the message <a href=\"%(message_url)s\">%(message)s</a> "
+#~ "from %(message_sender)s."
+#~ msgstr ""
+#~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+
+#, fuzzy
+#~ msgid "You have recovered the message '%(message)s'."
 #~ msgstr ""
 #~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
 
@@ -2324,10 +2377,32 @@ msgstr ""
 
 #, fuzzy
 #~ msgid ""
+#~ "You have replied to '%(message_parent_msg)s' from %(message_recipient)s."
+#~ msgstr ""
+#~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+
+#, fuzzy
+#~ msgid ""
+#~ "You have replied to <a href=\"%(message_url)s\">%(message_parent_msg)s</"
+#~ "a> from %(message_recipient)s."
+#~ msgstr ""
+#~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+
+#, fuzzy
+#~ msgid "You have sent the message '%(message)s' to %(message_recipient)s."
+#~ msgstr ""
+#~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+
+#, fuzzy
+#~ msgid ""
 #~ "You have sent the message <a href=\"%(message_url)s\">%(message)s</a> to "
 #~ "%(message_recipient)s."
 #~ msgstr ""
 #~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+
+#, fuzzy
+#~ msgid "previous"
+#~ msgstr "Morceau précédent"
 
 #, fuzzy
 #~ msgid "photo set"
@@ -2354,11 +2429,331 @@ msgstr ""
 #~ msgstr "Lieu"
 
 #, fuzzy
+#~ msgid "website"
+#~ msgstr "Site Web"
+
+#, fuzzy
+#~ msgid "profile"
+#~ msgstr "Profil"
+
+#, fuzzy
 #~ msgid "profiles"
 #~ msgstr "Profil"
 
+#, fuzzy
+#~ msgid "\"%(title)s\" posted by %(username)s"
+#~ msgstr "Blog de %(username)s"
+
+#, fuzzy
+#~ msgid "Audio file"
+#~ msgstr "Modifier votre profil"
+
+#~ msgid "Artist"
+#~ msgstr "Artiste"
+
+#, fuzzy
+#~ msgid "Description"
+#~ msgstr "Lieu"
+
+#, fuzzy
+#~ msgid "\"%s\" has been deleted."
+#~ msgstr "Derniers commentaires"
+
+#, fuzzy
+#~ msgid "Yes, delete this track"
+#~ msgstr "Supprimer"
+
+#, fuzzy
+#~ msgid "Other Service Info Key"
+#~ msgstr "Autres services"
+
+#, fuzzy
+#~ msgid "Other Service Info Value"
+#~ msgstr "Autres services"
+
+#, fuzzy
+#~ msgid "project"
+#~ msgstr "Projets"
+
+#, fuzzy
+#~ msgid "away_message"
+#~ msgstr "Envoyer un message"
+
+#, fuzzy
+#~ msgid "Successfully logged in as %(username)s."
+#~ msgstr "Vous êtes « « ami » avec %(other_user_display)s."
+
+#, fuzzy
+#~ msgid "New Task"
+#~ msgstr "Définir le mot de passe"
+
+#, fuzzy
+#~ msgid "a new task been created"
+#~ msgstr "Derniers commentaires"
+
+#, fuzzy
+#~ msgid "Task Comment"
+#~ msgstr "Commentaires"
+
+#, fuzzy
+#~ msgid "Task Status Update"
+#~ msgstr "Avatar"
+
+#, fuzzy
+#~ msgid "Task Tag Update"
+#~ msgstr "Avatar"
+
+#, fuzzy
+#~ msgid "You've removed your nudge from this task"
+#~ msgstr "Ôter de votre liste d'« amis »"
+
+#, fuzzy
+#~ msgid "a new tribe has been created"
+#~ msgstr "Derniers commentaires"
+
+#, fuzzy
+#~ msgid "You have already joined tribe %(tribe_name)s"
+#~ msgstr "Vous avez déjà autorisé un compte twitter."
+
+#, fuzzy
+#~ msgid ""
+#~ "A new group <a href=\"%(tribe_url)s\">%(tribe)s</a> has been created."
+#~ msgstr ""
+#~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+
+#~ msgid "Welcome to Pinax"
+#~ msgstr "Bienvenue sur notre site"
+
+#~ msgid "About this project"
+#~ msgstr "A propos de ce projet"
+
+#~ msgid "Wondering <a href=\"%(what_next_url)s\">What Next</a>?"
+#~ msgstr ""
+#~ "Vous demandez-vous <a href=\"%(what_next_url)s\">Que faire maintenant</a>?"
+
+#~ msgid "&copy; 2010 &lt;your company here&gt;"
+#~ msgstr "&copy; 2010 &lt;votre entreprise ici&gt;"
+
+#~ msgid "Terms of Service"
+#~ msgstr "Termes du service"
+
+#~ msgid "Privacy Policy"
+#~ msgstr "Politique de confidentialité"
+
+#, fuzzy
+#~ msgid "DMCA Notice"
+#~ msgstr "Notifications"
+
 #~ msgid "Profile"
 #~ msgstr "Profil"
+
+#, fuzzy
+#~ msgid "About Us"
+#~ msgstr "A propos"
+
+#, fuzzy
+#~ msgid "Prices"
+#~ msgstr "Notifications"
+
+#, fuzzy
+#~ msgid "Contact"
+#~ msgstr "Contacts"
+
+#~ msgid "Projects"
+#~ msgstr "Projets"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Favoris"
+
+#, fuzzy
+#~ msgid "Add Bookmark"
+#~ msgstr "Favoris"
+
+#, fuzzy
+#~ msgid "Your Bookmarks"
+#~ msgstr "Favoris"
+
+#, fuzzy
+#~ msgid "All Bookmarks"
+#~ msgstr "Favoris"
+
+#, fuzzy
+#~ msgid "a new group has been created"
+#~ msgstr "Derniers commentaires"
+
+#, fuzzy
+#~ msgid "Your Groups"
+#~ msgstr "Vos posts"
+
+#, fuzzy
+#~ msgid "All Groups"
+#~ msgstr "Profil"
+
+#, fuzzy
+#~ msgid ""
+#~ "<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log "
+#~ "in </a> to create your own group or join an existing one."
+#~ msgstr ""
+#~ "Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
+#~ "\"%(login_url)s\">vous authentifier</a> pour essayer le site."
+
+#, fuzzy
+#~ msgid "Edit details"
+#~ msgstr "Éditer ce billet"
+
+#, fuzzy
+#~ msgid "Delete Group"
+#~ msgstr "Supprimer post"
+
+#, fuzzy
+#~ msgid ""
+#~ "<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log "
+#~ "in </a> to join this group."
+#~ msgstr ""
+#~ "Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
+#~ "\"%(login_url)s\">vous authentifier</a> pour essayer le site."
+
+#~ msgid "Tribes"
+#~ msgstr "Tribus"
+
+#, fuzzy
+#~ msgid "Project"
+#~ msgstr "Projets"
+
+#~ msgid "Swaps"
+#~ msgstr "Échanges"
+
+#~ msgid "Locations"
+#~ msgstr "Lieux"
+
+#, fuzzy
+#~ msgid "upload"
+#~ msgstr "upload"
+
+#~ msgid "Import Google Contacts"
+#~ msgstr "Importer les contacts google"
+
+#~ msgid "Import Yahoo Address Book"
+#~ msgstr "Importer les contacts Yahoo!"
+
+#~ msgid "All Tribes Matching <i>%(tag)s</i>"
+#~ msgstr "Toutes les tribus correspondant à <i>%(tag)s</i>"
+
+#~ msgid "All Wiki Articles Matching <i>%(tag)s</i>"
+#~ msgstr "Tout les articles wiki correspondant à <i>%(tag)s</i>"
+
+#~ msgid "Admin"
+#~ msgstr "Administration"
+
+#, fuzzy
+#~ msgid ""
+#~ "<a href=\"%(acct_login_url)s\">Log in</a> or <a href=\"%(acct_signup_url)s"
+#~ "\">Sign Up</a>"
+#~ msgstr ""
+#~ "Commencez par <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
+#~ "\"%(login_url)s\">vous authentifier</a>."
+
+#, fuzzy
+#~ msgid "<a href=\"%(acct_login_url)s\">Log in</a>"
+#~ msgstr "Commencez par <a href=\"%(login_url)s\">vous authentifier</a>."
+
+#, fuzzy
+#~ msgid "Posted:"
+#~ msgstr "Posté par"
+
+#, fuzzy
+#~ msgid "add bookmark"
+#~ msgstr "Favoris"
+
+#, fuzzy
+#~ msgid "Friends' Bookmarks"
+#~ msgstr "Blogs de vos amis"
+
+#, fuzzy
+#~ msgid "These are bookmarks from everyone:"
+#~ msgstr "Tous les articles de blog:"
+
+#, fuzzy
+#~ msgid "No bookmarks yet."
+#~ msgstr "Pas de morceau."
+
+#, fuzzy
+#~ msgid "These are bookmarks from your friends:"
+#~ msgstr "Voici les touites de vos amis:"
+
+#, fuzzy
+#~ msgid "Delete Bookmark"
+#~ msgstr "Favoris"
+
+#, fuzzy
+#~ msgid "Already logged in"
+#~ msgstr "Vous avez déjà autorisé un compte twitter."
+
+#, fuzzy
+#~ msgid "Verify this Association"
+#~ msgstr "Associations OpenID"
+
+#, fuzzy
+#~ msgid "Choose a Username"
+#~ msgstr "Blog de %(username)s"
+
+#, fuzzy
+#~ msgid "Signup closed"
+#~ msgstr "Inscription"
+
+#~ msgid "Profile for %(other_user_display)s"
+#~ msgstr "%(other_user_display)s"
+
+#, fuzzy
+#~ msgid "Profile for <span class=\"nickname\">%(other_user_display)s</span>"
+#~ msgstr "Profil de <span class=\"nickname\">%(other_user_display)s</span>"
+
+#, fuzzy
+#~ msgid ""
+#~ "Profile for <span class=\"fn nickname\">%(other_user_display)s</span>"
+#~ msgstr "Profil de <span class=\"fn nickname\">%(other_user_display)s</span>"
+
+#, fuzzy
+#~ msgid "Edit Profile"
+#~ msgstr "Modifier votre profil"
+
+#, fuzzy
+#~ msgid "Your Checkins"
+#~ msgstr "Vos morceaux"
+
+#, fuzzy
+#~ msgid "Friends Checkins"
+#~ msgstr "Touites de vos amis"
+
+#, fuzzy
+#~ msgid ""
+#~ "You have received the message <a href=\"%(message_url)s\">%(message)s</a> "
+#~ "from <a href=\"%(sender_url)s\">%(sender_display)s</a>."
+#~ msgstr ""
+#~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+
+#, fuzzy
+#~ msgid "%(notice)s by %(sender_display)s"
+#~ msgstr "Abonnements de %(other_user_display)s"
+
+#, fuzzy
+#~ msgid ""
+#~ "You have replied to <a href=\"%(message_url)s\">%(message_parent_msg)s</"
+#~ "a> from <a href=\"%(recipient_url)s\">%(recipient_display)s</a>."
+#~ msgstr ""
+#~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+
+#, fuzzy
+#~ msgid "You have sent the message '%(message)s' to %(recipient_display)s."
+#~ msgstr ""
+#~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+
+#, fuzzy
+#~ msgid ""
+#~ "You have sent the message <a href=\"%(message_url)s\">%(message)s</a> to "
+#~ "<a href=\"%(recipient_url)s\">%(recipient_display)s</a>."
+#~ msgstr ""
+#~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
 
 #~ msgid "Followers of %(other_user_display)s"
 #~ msgstr "Abonnés à %(other_user_display)s"
@@ -2380,8 +2775,46 @@ msgstr ""
 #~ msgstr "Abonnements de %(other_user_display)s"
 
 #, fuzzy
+#~ msgid ""
+#~ "Users whose tweets <a href=\"%(other_user_url)s\">%(other_user_display)s</"
+#~ "a> is following:"
+#~ msgstr ""
+#~ "Abonnés à <a href=\"%(other_user_url)s\">%(other_user_display)s</a>'s "
+
+#, fuzzy
+#~ msgid ""
+#~ "Also see <a href=\"%(tweet_followers_url)s\">who is following</a> "
+#~ "%(other_user_display)s."
+#~ msgstr ""
+#~ "Voir <a href=\"%(tweet_following_url)s\">les abonnements de "
+#~ "%(other_user_display)s </a>."
+
+#, fuzzy
+#~ msgid "These are tweets from your friends:"
+#~ msgstr "Voici les touites de vos amis:"
+
+#, fuzzy
 #~ msgid "You have authorized a twitter account."
 #~ msgstr "Vous avez déjà autorisé un compte twitter."
+
+#, fuzzy
+#~ msgid "Post"
+#~ msgstr "Posté par"
+
+#, fuzzy
+#~ msgid "change under <a href=\"%(email_url)s\">Account</a>"
+#~ msgstr "Commencez par <a href=\"%(login_url)s\">vous authentifier</a>."
+
+#, fuzzy
+#~ msgid "Photo Details"
+#~ msgstr "Éditer ce billet"
+
+#~ msgid "Flag as inappropriate"
+#~ msgstr "Signaler comme contenu inapproprié"
+
+#, fuzzy
+#~ msgid "Photos from "
+#~ msgstr "Blog de %(username)s"
 
 #~ msgid "Followers"
 #~ msgstr "Abonnés"
@@ -2391,62 +2824,6 @@ msgstr ""
 
 #~ msgid "%(other_user_display)s to be a friend."
 #~ msgstr "%(other_user_display)s comme « ami »"
-
-#~ msgid "Import Google Contacts"
-#~ msgstr "Importer les contacts google"
-
-#~ msgid "Import Yahoo Address Book"
-#~ msgstr "Importer les contacts Yahoo!"
-
-#~ msgid "Flag as inappropriate"
-#~ msgstr "Signaler comme contenu inapproprié"
-
-#~ msgid "Your Tracks"
-#~ msgstr "Vos morceaux"
-
-#~ msgid "View all"
-#~ msgstr "Tout voir"
-
-#~ msgid "Latest photos"
-#~ msgstr "Dernières photos"
-
-#~ msgid "Latest tweets"
-#~ msgstr "Derniers touites"
-
-#~ msgid "Latest blog posts"
-#~ msgstr "Derniers billets de blog"
-
-#~ msgid "Wondering <a href=\"%(what_next_url)s\">What Next</a>?"
-#~ msgstr ""
-#~ "Vous demandez-vous <a href=\"%(what_next_url)s\">Que faire maintenant</a>?"
-
-#, fuzzy
-#~ msgid "Post"
-#~ msgstr "Posté par"
-
-#~ msgid "View all tracks"
-#~ msgstr "Voir tous les morceaux"
-
-#~ msgid "Tribes"
-#~ msgstr "Tribus"
-
-#~ msgid "Bookmarks"
-#~ msgstr "Favoris"
-
-#~ msgid "Swaps"
-#~ msgstr "Échanges"
-
-#~ msgid "Locations"
-#~ msgstr "Lieux"
-
-#~ msgid "&copy; 2010 &lt;your company here&gt;"
-#~ msgstr "&copy; 2010 &lt;votre entreprise ici&gt;"
-
-#~ msgid "Terms of Service"
-#~ msgstr "Termes du service"
-
-#~ msgid "Privacy Policy"
-#~ msgstr "Politique de confidentialité"
 
 #~ msgid "Wiki Articles"
 #~ msgstr "Articles Wiki"
@@ -2459,6 +2836,19 @@ msgstr ""
 #~ msgstr ""
 #~ "Vous n'avez ajouté aucun <a href=\"%(add_bookmark_url)s\">bookmarks</a> "
 #~ "pour le moment."
+
+#, fuzzy
+#~ msgid "No photos uploaded yet."
+#~ msgstr "Il n'y a pas encore de photo..."
+
+#, fuzzy
+#~ msgid ""
+#~ "<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log "
+#~ "in </a> to add this person as a friend and see their tweets and blog "
+#~ "posts."
+#~ msgstr ""
+#~ "Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
+#~ "\"%(login_url)s\">vous authentifier</a> pour essayer le site."
 
 #~ msgid "Your Tribes"
 #~ msgstr "Vos Tribus"
@@ -2473,26 +2863,157 @@ msgstr ""
 #~ msgid "%(other_user_display)s's Tribes"
 #~ msgstr "Abonnements de %(other_user_display)s"
 
-#~ msgid "All Tribes Matching <i>%(tag)s</i>"
-#~ msgstr "Toutes les tribus correspondant à <i>%(tag)s</i>"
+#, fuzzy
+#~ msgid "Not yet a member of any tribes."
+#~ msgstr ""
+#~ "Vous n'avez pas encore envoyé de <a href=\"%(tweets_url)s\">tweets</a>."
+
+#, fuzzy
+#~ msgid "Your Projects"
+#~ msgstr "Vos posts"
+
+#, fuzzy
+#~ msgid "All Projects"
+#~ msgstr "Projets"
+
+#, fuzzy
+#~ msgid "Create Project"
+#~ msgstr "Projets"
+
+#, fuzzy
+#~ msgid ""
+#~ "<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log "
+#~ "in </a> to create your own project or join an existing one."
+#~ msgstr ""
+#~ "Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
+#~ "\"%(login_url)s\">vous authentifier</a> pour essayer le site."
+
+#, fuzzy
+#~ msgid "Delete project"
+#~ msgstr "Supprimer post"
+
+#, fuzzy
+#~ msgid "Delete Project"
+#~ msgstr "Supprimer post"
+
+#, fuzzy
+#~ msgid "None yet. <a href=\"%(new_topic_url)s\">Start one...</a>"
+#~ msgstr ""
+#~ "Vous demandez-vous <a href=\"%(what_next_url)s\">Que faire maintenant</a>?"
+
+#, fuzzy
+#~ msgid "Your Offers"
+#~ msgstr "Abonnés à vos touites"
+
+#, fuzzy
+#~ msgid "Proposed by you"
+#~ msgstr "Posté par"
+
+#, fuzzy
+#~ msgid "Accepted"
+#~ msgstr "accepter"
+
+#, fuzzy
+#~ msgid "Editing Offer"
+#~ msgstr "Éditer ce billet"
+
+#, fuzzy
+#~ msgid "Edit Offer"
+#~ msgstr "Modifier votre profil"
+
+#, fuzzy
+#~ msgid "Delete Offer"
+#~ msgstr "Envoyer un message"
+
+#, fuzzy
+#~ msgid "Accept"
+#~ msgstr "accepter"
+
+#, fuzzy
+#~ msgid "Swap"
+#~ msgstr "Échanges"
+
+#, fuzzy
+#~ msgid "Your Tasks"
+#~ msgstr "Vos morceaux"
+
+#, fuzzy
+#~ msgid "All Tasks"
+#~ msgstr "Tous les touites"
+
+#, fuzzy
+#~ msgid "Delete Topic"
+#~ msgstr "Supprimer"
+
+#, fuzzy
+#~ msgid "All Tribes"
+#~ msgstr "Tribus"
+
+#, fuzzy
+#~ msgid "Create Tribe"
+#~ msgstr "Vos Tribus"
+
+#, fuzzy
+#~ msgid ""
+#~ "<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log "
+#~ "in </a> to create your own tribe or join an existing one."
+#~ msgstr ""
+#~ "Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
+#~ "\"%(login_url)s\">vous authentifier</a> pour essayer le site."
+
+#, fuzzy
+#~ msgid "Tribe"
+#~ msgstr "Tribus"
+
+#, fuzzy
+#~ msgid "Delete tribe"
+#~ msgstr "Envoyer un message"
+
+#, fuzzy
+#~ msgid "Delete Tribe"
+#~ msgstr "Supprimer"
+
+#, fuzzy
+#~ msgid ""
+#~ "<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log "
+#~ "in </a> to join this tribe."
+#~ msgstr ""
+#~ "Vous pouvez <a href=\"%(signup_url)s\">vous inscrire</a> et <a href="
+#~ "\"%(login_url)s\">vous authentifier</a> pour essayer le site."
+
+#, fuzzy
+#~ msgid "All Pages"
+#~ msgstr "Tous les touites"
+
+#, fuzzy
+#~ msgid "Changed"
+#~ msgstr "Changer de mot de passe"
+
+#, fuzzy
+#~ msgid "Modified by"
+#~ msgstr "envoyé par"
+
+#, fuzzy
+#~ msgid "View"
+#~ msgstr "Tout voir"
+
+#, fuzzy
+#~ msgid "min"
+#~ msgid_plural "min"
+#~ msgstr[0] "Administration"
+#~ msgstr[1] "Administration"
+
+#~ msgid "Latest photos"
+#~ msgstr "Dernières photos"
+
+#~ msgid "Latest tweets"
+#~ msgstr "Derniers touites"
+
+#~ msgid "Latest blog posts"
+#~ msgstr "Derniers billets de blog"
+
+#~ msgid "View all tracks"
+#~ msgstr "Voir tous les morceaux"
 
 #~ msgid "All Tribe Topics Matching <i>%(tag)s</i>"
 #~ msgstr "Tout les sujets de tribus correspondant à <i>%(tag)s</i>"
-
-#~ msgid "All Wiki Articles Matching <i>%(tag)s</i>"
-#~ msgstr "Tout les articles wiki correspondant à <i>%(tag)s</i>"
-
-#~ msgid "Profile for %(other_user_display)s"
-#~ msgstr "%(other_user_display)s"
-
-#~ msgid "Welcome to Pinax"
-#~ msgstr "Bienvenue sur notre site"
-
-#~ msgid "About this project"
-#~ msgstr "A propos de ce projet"
-
-#~ msgid "Admin"
-#~ msgstr "Administration"
-
-#~ msgid "Projects"
-#~ msgstr "Projets"
