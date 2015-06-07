@@ -9,7 +9,7 @@
 		{% with timelineitem.firstcomment as comment %}	
 		{% if comment.content_object.get_thumbnail_url %}
 		{% with comment.content_object as photo %}				
-	  		<div class="pull-left">
+	  	<div class="pull-left">
 		    <a href="{% url 'photo_details' id=photo.id %}#comment_{{comment.id}}">
 		        <img class="img-rounded timeline-comment-thumb" src="{{ photo.get_thumbnail_url|urlencode }}" alt="{{ photo.title }}">
 		    </a>
@@ -19,8 +19,7 @@
 		
 		{% if comment.content_object.image.url_48x48 %}
 		{% with comment.content_object as track %}
-		<div class="pull-left" style="margin: 3px;">
-		
+		<div class="pull-left" style="margin: 3px;">		
 		    <a href="{% url 'track_detail' track.user.username track.slug %}#comment_{{comment.id}}">
 		    {% if track.image %}
 		    <img class="img-rounded" src="{{ track.image.url_48x48 }}" alt="{% trans 'Track Image' %}" style="max-height: 48px;"/>
@@ -46,8 +45,7 @@
   			<a href="{% url 'profile_detail' commentitem.user %}" id="tli_{{ timelineitem.index }}"><strong>{% user_display commentitem.user %}</strong></a>
   				
  			<a class="timeline-comment-body" href="{{ commentitem.item.content_object.get_absolute_url }}#comment_{{commentitem.item.id}}">
- 				{{ commentitem.item.comment|truncatewords:24|striptags|smilize }}
- 				 				
+ 				{{ commentitem.item.comment|truncatewords:24|striptags|smilize }} 				 				
  			</a>
   			  			  									
 		</div>  		    			

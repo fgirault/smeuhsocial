@@ -33,7 +33,7 @@ from friends.forms import InviteFriendForm
 from friends.models import FriendshipInvitation, Friendship
 from microblogging.models import Following
 from tagging.models import TaggedItem, Tag
-from timeline.models import TimeLineItem
+from timeline.models import TimeLineItem, group_comments
 
 class TimeLineView(TemplateView):
 
@@ -42,7 +42,7 @@ class TimeLineView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(TimeLineView, self).get_context_data(**kwargs)
         # TODO use a query parameter for the time delta. here is 3 months
-        ago = datetime.datetime.now() - datetime.timedelta(30)
+        ago = datetime.datetime.now() - datetime.timedelta(90)
 
         tweets = [
             TimeLineItem(item, item.sent, item.sender, "timeline/_tweet.html")
@@ -111,32 +111,6 @@ def merge(*querysets, **kwargs):
         result = merge_lists(result, q, field)
     return result
 
-def group_comments(items):
-    grouped = []            
-    for tlitem in items:
-        item = tlitem.item
-        if isinstance(item, ThreadedComment):
-            key = (item.content_type_id, item.object_id)
-            if grouped: 
-                prev = grouped[-1]
-                if isinstance(prev.item, ThreadedComment) and key == (prev.item.content_type_id, prev.item.object_id):
-                    if hasattr(prev, "comments"):
-                        prev.comments.append(tlitem)
-                    else:
-                        prev = grouped.pop()
-                        group_item = TimeLineItem(item, item.date_submitted, item.user, "timeline/_comment_group.html")
-                        group_item.firstcomment = prev.item
-                        group_item.comments = [ prev, group_item ]                    
-                        grouped.append(group_item)
-                else:
-                    grouped.append(tlitem)                
-            else:
-                grouped.append(tlitem)            
-        else:
-            grouped.append(tlitem)
-    return grouped
-            
-        
 class HomePageView(TimeLineView):
 
     template_name = "timeline/homepage/homepage.html"
