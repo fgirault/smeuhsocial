@@ -54,7 +54,8 @@ def group_comments(items):
         grouped[index] = group_item
         # remove contained comments from the timeline
         for comment in group_item.comments:
-            grouped.remove(comment)
+            if comment in grouped:
+                grouped.remove(comment)
 
     # done !        
     return grouped 
